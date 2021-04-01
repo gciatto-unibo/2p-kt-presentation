@@ -1,0 +1,153 @@
+% !TeX spellcheck = en_GB
+%
+\documentclass[presentation]{beamer}
+\mode<presentation>{\usetheme{AMSCesenaPurpleAndGold}}
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+%
+\usepackage{2p-kt-talk}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title[\twopkt]{
+    \twopkt{}: A Kotlin Multi-Platform ecosystem for Symbolic AI 
+}
+%
+% \subtitle{Extended Abstract}
+%
+% same authors order of the presented paper
+\author[Ciatto G.]{
+	\emph{Giovanni Ciatto}$^{*}$ % empth the presenting author
+}
+%
+\institute[UniBo]{
+    $^{*}$Dipartimento di Informatica -- Scienza e Ingegneria (DISI)
+    \\
+    \textsc{Alma Mater Studiorum} -- Università di Bologna
+    \\
+    \texttt{
+        giovanni.ciatto@unibo.it % emph the presenting author's email
+    }
+}
+%
+\date[A.Y. 20-21]{
+	Autonomous Systems Course, A.Y. 2020-2021
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\AtBeginSection[]{
+    \begin{frame}<beamer>[c,noframenumbering]\frametitle{Next in Line\ldots}
+        \tableofcontents[sectionstyle=show/shaded,subsectionstyle=hide]
+    \end{frame}
+}
+\AtBeginSubsection[]{
+    \begin{frame}<beamer>[shrink,noframenumbering]\frametitle{Focus on\ldots}
+        \mbox{~}
+        \tableofcontents[currentsubsection,sectionstyle=shaded,subsectionstyle=show/shaded]
+        \mbox{~}
+    \end{frame}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\\\\\\\\\\\\\\\\\\\\\
+\frame{\titlepage}
+%\\\\\\\\\\\\\\\\\\\\\
+
+\section{Historical Perspective}
+
+\subsection{Prolog History}
+
+\subsection{\tuprolog{} History}
+
+\section{Motivation}
+
+\begin{frame}{Why \twopkt{}}
+    \begin{itemize}
+        \item builging an open an extensible ecosystem\ldots
+        \item \ldots supporting multiple logics, inference procedures, and resolution strategies (on the long run)
+        \item making each aspect of LP individually usable \emph{per se}
+        \item reaching widest possible platform support 
+        \item blending LP with OOP and FP
+        \item bridging symbolic and sub-symbolic AI
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Which features of LP}
+    \begin{itemize}
+        \item knowledge representation: term, clauses, and knowledge bases
+        \item unification, based on \cite{MartelliMontanari1982} but possibly customisable
+        \item clauses indexing and in-memory storage facilities
+        \item Prolog-like syntax parsing \& formatting
+        \item serialization/deserialization of terms, clauses, and theories
+        \item generic resolution API, possibly customisable via pluggable features
+        \item SLDFNF (Prolog-like) resolution streategy
+        \item other resolution strategies
+        \item common UI facilities
+        \item \ldots
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Why Kotlin}
+    \begin{itemize}
+        \item multi platform support
+    \end{itemize}
+\end{frame}
+
+
+\section{Overview of the Project}
+
+\begin{frame}{Project Map}
+    \begin{itemize}
+        \item project map image
+        \item modules explanations
+        \item dependencies among modules
+    \end{itemize}
+\end{frame}
+
+\section{Knowledge Representation: the \module{core} Module}
+
+\subsection{The \kt{Term} Hierarchy}
+
+\subsubsection{Main Sorts of \kt{Term}s and \kt{Clause}s}
+
+\subsubsection{Creating \kt{Term}s}
+
+\subsubsection{About \kt{Term}s' Immutable Design}
+
+\subsection{\kt{Var}iables and \kt{Scope}s}
+
+\subsection{\kt{Subtitution}s as First Class Entities}
+
+\subsubsection{Refreshing \kt{Term}s}
+
+\subsection{\kt{Operator}s and \kt{OperatorSet}s}
+
+\subsection{Pattern Matching over \kt{Term}s Types}
+
+\subsection{Exceptions}
+
+\section{Logic Unification: the \module{unify} Module}
+
+\section{Storing and Indexing Clauses: the \module{theory} Module}
+
+\section{Generic Logic Resolution: the \module{solve} Module}
+
+\section*{}
+\frame{\titlepage}
+
+\section*{\bibname}
+
+\setbeamertemplate{page number in head/foot}{}
+
+\begin{frame}[t,allowframebreaks,noframenumbering]\frametitle{\refname}
+% \begin{frame}[c]\frametitle{\refname}
+	\footnotesize
+%	\scriptsize
+    \bibliographystyle{plain}
+	\bibliography{2p-kt-talk}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

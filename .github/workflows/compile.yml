@@ -13,7 +13,7 @@ jobs:
       - name: Set up Environment
         uses: allenevans/set-env@v1.0.0
         with:
-          LATEX_ROOT: abcd-venue-20XX-talk
+          LATEX_ROOT: 2p-kt-talk
           
       - name: Build latex
         uses: xu-cheng/latex-action@v2
