@@ -1,0 +1,210 @@
+% !TEX root = 2p-kt-talk.tex
+\begin{figure}
+\tikzstyle{inactive}=[rectangle, draw=black, rounded corners, fill=gray!50, drop shadow,
+        text centered, anchor=north, text=black]
+\tikzstyle{active}=[rectangle, draw=black, rounded corners, fill=white, drop shadow,
+        text centered, anchor=north, text=black]
+\tikzstyle{myarrow}=[->, >=open triangle 90, thick]
+\tikzstyle{line}=[-, thick]
+
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+\usetikzlibrary{positioning}
+\begin{adjustbox}{width=1\textwidth}    
+    \begin{tikzpicture}[node distance=.6cm]
+    % \node (Prolog0) [inactive, rectangle split, rectangle split parts=2]
+    %     {
+    %         \textbf{Prolog 0}
+    %         \nodepart{second}{\scriptsize first Prolog System}
+    %     };
+    \node (Prolog1) [inactive, rectangle split, rectangle split parts=2]
+        {
+            \textbf{Prolog 0 \& I}
+            \nodepart{second}{\scriptsize negation as failure}
+        };
+    % \draw[-Stealth] (Prolog0.south) -- (Prolog1.north) ;
+
+    \node (Prolog2) [inactive, rectangle split, rectangle split parts=2, below=of Prolog1]
+        {
+            \textbf{Prolog II}
+            \nodepart{second}{\scriptsize cyclic structures}
+        };
+    \draw[-Stealth] (Prolog1.south) -- (Prolog2.north) ;
+
+    \node (Prolog3) [inactive, rectangle split, rectangle split parts=2, below=of Prolog2]
+        {
+            \textbf{Prolog III}
+            \nodepart{second}{\scriptsize constraints}
+        };
+    \draw[-Stealth] (Prolog2.south) -- (Prolog3.north) ;
+
+    \node (Prolog4) [inactive,
+      % rectangle split, rectangle split  parts=2,
+    below=of Prolog3]
+        {
+            \textbf{Prolog IV}
+            % \nodepart{second}{\scriptsize constraints}
+        };
+    \draw[-Stealth] (Prolog3.south) -- (Prolog4.north) ;
+
+    \node (DEC10) [inactive, rectangle split, rectangle split parts=2, right=of Prolog1, yshift=-3mm]
+        {
+            \textbf{DEC-10 Prolog}
+            \nodepart{second}{\scriptsize compiled, de facto standard}
+        };
+    \draw[-Stealth] (Prolog1.east) -- (DEC10.west);
+
+    \node (CProlog) [inactive, rectangle split, rectangle split parts=2, right=of DEC10, yshift=-2mm]
+        {
+            \textbf{C-Prolog}
+            \nodepart{second}{\scriptsize interpreted, portable}
+        };
+    \draw[-Stealth] (DEC10.east) -- (CProlog.west);
+
+    \node (WAM) [inactive, rectangle split, rectangle split parts=2, below=of DEC10, yshift=1mm]
+        {
+            \textbf{The WAM} % Warren Abstract Machine (WAM)
+            \nodepart{second}{\scriptsize compiled, portable}
+        };
+    \draw[-Stealth] (DEC10.south) -- (WAM.north);
+    \node (Quintus) [inactive, rectangle split, rectangle split parts=2, below=of WAM, yshift=2mm]
+        {
+            \textbf{Quintus}
+            \nodepart{second}{\scriptsize commercial, de-facto standard}
+        };
+    \draw[-Stealth] (WAM.south) -- (Quintus.north);
+
+    \node (SICStus) [active, rectangle split, rectangle split parts=2, below=of Quintus, yshift=3mm]
+        {
+            \textbf{SICStus}
+            \nodepart{second}{\scriptsize commercial support, JIT}
+        };
+    \draw[-Stealth] (Quintus.south) -- (SICStus.north);
+
+    \node (BIM) [inactive, rectangle split, rectangle split parts=2, right=of Quintus, xshift=6mm, yshift=-4mm]
+        {
+            \textbf{BIM} % -Prolog
+            \nodepart{second}{\scriptsize commercial, native}
+        };
+    \draw[-Stealth] (WAM.east) -| (BIM.north);
+
+    \node (Ciao) [active, rectangle split, rectangle split parts=2, below=of SICStus, yshift=3mm]
+        {
+            \textbf{\&-Prolog/Ciao}
+            \nodepart{second}{\scriptsize parallel, assertions}
+        };
+    \draw[-Stealth] (SICStus.south) -- (Ciao.north);
+
+    \node (SWI) [active, rectangle split, rectangle split parts=2, right=of Ciao]
+        {
+            \textbf{\ SWI\ } % SWI-Prolog
+            \nodepart{second}{\scriptsize libraries}
+        };
+    \draw[-Stealth] (Quintus.south east) -- (SWI.north);
+
+    \node (YAP) [active, rectangle split, rectangle split parts=2, right=of SWI]
+        {
+            \textbf{YAP} % -Prolog
+            \nodepart{second}{\scriptsize indexing}
+        };
+    \draw[-Stealth] (Quintus.east) -- (YAP.north west);
+
+    \node (SB) [inactive,
+    % rectangle split, rectangle split parts=2,
+    right=of YAP]
+        {
+            \textbf{SB-Prolog}
+            \nodepart{second}
+        };
+    \draw[-Stealth] (WAM.east) -| (SB.north);
+
+    \node (XSB) [active, rectangle split, rectangle split parts=2, below=of SB]
+        {
+            \textbf{XSB}
+            \nodepart{second}{\scriptsize tabling}
+        };
+    \draw[-Stealth] (SB.south) -- (XSB.north);
+
+    \node (GNU) [active, rectangle split, rectangle split parts=2, right=of XSB]
+        {
+            \textbf{GNU} % -Prolog
+            \nodepart{second}{\scriptsize fd/indexicals}
+        };
+    \draw[-Stealth] (WAM.east) -| (GNU.north);
+
+    \node (OtherW) [active, right=of GNU, xshift=-2mm]
+        {
+            \textbf{\ \ \ldots\ \ }
+        };
+
+    \node (BProlog) [active, rectangle split, rectangle split parts=2, left=of XSB]
+        {
+            \textbf{B-Prolog}
+            \nodepart{second}{\tiny TOAM}
+        };
+    \draw[-Stealth] (SB.south west) -- (BProlog.north east);
+
+    \node (Bin) [active, rectangle split, rectangle split parts=2, left=of BProlog, xshift=3mm]
+        {
+            \textbf{BinProlog}
+            \nodepart{second}{\scriptsize binarization}
+        };
+
+    \node (tuProlog) [active, rectangle split, rectangle split parts=2, left=of Bin, xshift=3mm]
+        {
+            \textbf{tuProlog}
+            \nodepart{second}{\scriptsize jvm, interop.} % interoperability
+        };
+
+    \node (OtherNW) [active, below=of BProlog, xshift=3mm, yshift=4mm]
+        {
+            \textbf{\ \ \ldots\ \ } 
+        };
+
+    \node (Marseille1) [below= 2mm of Prolog4]
+        {
+            \textbf{Marseille}
+        };
+    \node (Marseille2) [below= -1mm of Marseille1]
+        {
+            \textbf{Prolog-line}
+        };
+
+    \node (WAM-comment2) [right=of Quintus, xshift=-2mm, yshift=4mm]
+        {
+            \textbf{Prologs}
+        };
+    \node (WAM-comment1) [above=0mm of WAM-comment2]
+        {
+            \textbf{WAM-based}
+        };
+    % \node (WAM-comment) [below= 1mm of GNU, align=right,xshift=-6mm]
+    %     {
+    %         \textbf{WAM-based Prologs}
+    %     };
+
+    \node (NWAM-comment) [below=1mm of tuProlog,align=right,xshift=5mm]
+        {
+            \textbf{WAM alternatives}
+        };
+
+        \begin{pgfonlayer}{background}
+        \path (Prolog1.west |- Prolog1.north)+(-0.2,0.2) node (a) {};
+        \path (Marseille2.east |- Marseille2.south)+(+0.3,0) node (c) {};
+        \path[fill=gray!5,rounded corners, draw=black!50, dashed]
+              (a) rectangle (c);
+
+        \path (Quintus.west |- WAM.north)+(-0.2,0.2) node (wam-a) {};
+        \path (OtherW.east |- GNU.south)+(+0.2,-0.2) node (wam-c) {};
+        \path[fill=gray!5,rounded corners, draw=black!50, dashed]
+              (wam-a) rectangle (wam-c);
+
+        \path (tuProlog.west |- tuProlog.north)+(-0.2,0.2) node (nwam-a) {};
+        \path (BProlog.east |- NWAM-comment.south)+(+0.3,-0.1) node (nwam-c) {};
+        \path[fill=gray!5,rounded corners, draw=black!50, dashed]
+              (nwam-a) rectangle (nwam-c);
+        \end{pgfonlayer}
+    \end{tikzpicture}
+\end{adjustbox}
+\end{figure}

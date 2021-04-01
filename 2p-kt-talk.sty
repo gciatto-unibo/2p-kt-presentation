@@ -2,13 +2,19 @@
 
 % Packages
 \usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
 \usepackage{graphicx}
 \usepackage{hyperref}
-\usepackage{cleveref}
-\usepackage{makecell}
-\usepackage{subcaption}
 \usepackage{xcolor}
 \usepackage{listings}
+\usepackage{chronosys}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{pgfplots}
+\usepackage{adjustbox}
+\usepackage{tabularx}
+\usepackage{multirow}
 
 % Macros
 \newcommand{\unibo}{\textsc{Alma Mater Studiorum}---Univerisità di Bologna}
@@ -21,6 +27,9 @@
 \newcommand{\argtwop}{Arg2P}
 \newcommand{\tenderfone}{Tenderfone}
 \newcommand{\linda}{\textsc{Linda}}
+\newcommand{\eclipse}[0]{ECL$^i$PS$^e$} % {{\tt \small ignore(#1)}}
+\newcommand{\cmark}{$\checkmark$}%
+\newcommand{\xmark}{$\times$}%
 
 % Environments and commands
 \newcommand{\impliedBy}{\texttt{ :- }}
@@ -29,6 +38,18 @@
 \newcommand{\module}[1]{\moduleStyle{:#1}}
 \newcommand{\kt}[1]{\texttt{#1}}
 \newcommand{\pl}[1]{\texttt{#1}}
+
+\pgfplotsset{
+   compat=1.13, % nur für Overleaf, sonst bitte 1.13
+   /pgf/number format/.cd,
+      fixed,
+      set thousands separator = \thinspace, % Änderung des Tausendertrennzeichens
+      min exponent for 1000 sep=4 % nicht bei vierstelligen Zahlen
+}
+%\usepackage{booktabs}
+\usetikzlibrary{positioning}% To get more advances positioning options
+\usetikzlibrary{arrows.meta}% To get more arrow heads
+\usetikzlibrary{shadows,shapes}
 
 \definecolor{aliceblue}{rgb}{0.94, 0.97, 1.0}
 

@@ -1,0 +1,34 @@
+% !TEX root = 2p-kt-talk.tex
+\begin{figure}[h]\centering
+    \tiny
+    \catcode`\@=11
+    \def\chron@selectmonth#1{\ifcase#1\or January\or February\or
+    March\or April\or May\or June\or
+    July\or August\or September\or
+    October\or November\or December\fi}
+    \startchronology[startyear=1972,startdate=false,stopdate=false,stopyear=1995]
+    \chronoevent[markdepth=-20pt]{1972}{1st Prolog}
+    \chronoevent{1973}{Final Marseille's Prolog}
+    \chronoevent[markdepth=-20pt]{1977}{Prolog II}
+    \chronoevent[markdepth=40pt]{1977}{DEC-10 Prolog}
+    \chronoevent[markdepth=-20pt]{1982}{C-Prolog}
+    \chronoevent[markdepth=10pt]{1983}{\textbf{\emph{(The WAM)}}}
+    \chronoevent[markdepth=-50pt]{1984}{Quintus}
+    \chronoevent[markdepth=-20pt]{1986}{SICStus~ ~}
+    \chronoevent[markdepth=40pt]{1986}{\&-Prolog/Ciao}
+    \chronoevent[markdepth=-20pt]{1988}{~CLP(R)} % Could be in 87 also, but does not fit
+    \chronoevent[markdepth=-50pt]{1987}{SWI-Prolog}
+    \chronoevent[markdepth=10pt]{1988}{SB-Prolog}
+    \chronoevent[markdepth=-50pt]{1990}{\eclipse{}}
+    \chronoevent[markdepth=40pt]{1991}{BinProlog}
+    \chronoevent[markdepth=-20pt]{1993}{XSB}
+    \chronoevent[markdepth=5pt]{1993}{wamcc}
+    \chronoevent[markdepth=40pt]{1994}{B-Prolog}
+    \chronoevent[markdepth=15pt]{1995}{GNU Prolog}
+    \chronoevent[markdepth=-50pt]{1995}{\textbf{\emph{(ISO Prolog)}}}
+    % SICStus, YAP somewhat unclear
+    % Cannot fit MU-Prolog...
+    \stopchronology
+    % \caption{Timeline of Early Prolog-Related Systems (up to the ISO Standard)}%
+    \label{fig:timeline}
+\end{figure}

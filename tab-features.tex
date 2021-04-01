@@ -1,0 +1,70 @@
+% !TEX root = 2p-kt-talk.tex
+\centering
+
+\begin{adjustbox}{width=.8\textwidth} 
+    \begin{tabular}{|l|ccccccc|}
+        \hline
+        System            & Open Source  & Modules  & Tabling  & Parallelism  & CLP            & CHR      & Global Variables  \hfill \\
+        \hline\hline
+        B-Prolog          & \xmark       & \xmark   & \cmark   & \xmark       & FD, B, Set     & (\cmark) & \cmark \\
+        Ciao              & \cmark       & \cmark   & \cmark   & \cmark       & Q, R, FD       & \cmark   & \cmark \\
+        ECLiPSe           & \cmark       & \cmark   & \xmark   & \cmark       & FD, Q, R, Set  & \cmark   & \cmark \\
+        GNU Prolog        & \cmark       & \xmark   & \xmark   & \xmark       & FD, B          & \xmark   & \cmark \\
+        Jekejeke          & \xmark       & \cmark   & \xmark   & \cmark       & FD, B          & \cmark   & \xmark \\
+        JIProlog          & \cmark       & \cmark   & \xmark   & \xmark       & \xmark         & \xmark   & \xmark \\
+        SWI               & \cmark       & \cmark   & \cmark   & \cmark       & FD, B, Q, R    & \cmark   & \cmark \\
+        SICStus           & \xmark       & \cmark   & \xmark   & \xmark       & FD, B, Q, R    & \cmark   & \xmark \\
+        tauProlog         & \cmark       & \cmark   & \xmark   & \xmark       & \xmark         & \xmark   & \xmark \\
+        tuProlog          & \cmark       & \xmark   & \xmark   & \cmark       & \xmark         & \xmark   & \xmark \\
+        XSB               & \cmark       & \cmark   & \cmark   & \cmark       & R              & \cmark   & \xmark \\
+        YAP               & \cmark       & \cmark   & \cmark   & \xmark       & \cmark         & \cmark   & \cmark \\
+        \hline
+    \end{tabular}
+\end{adjustbox}
+
+\framebreak
+
+\begin{adjustbox}{width=.8\textwidth} 
+    \begin{tabular}{|l|cccccc|}
+        \hline
+        System            &  Indexing       & Type / Mode & Co-Routines  & Testing      & Debugger          & Mutable Terms \hfill\\
+        \hline\hline
+        B-Prolog          &  N-FA           & \xmark      & (\cmark)     & \xmark       & trace             & \xmark \\
+        Ciao              &  FA, MA         & \cmark      & \cmark       & \cmark       & trace / source    & \cmark \\
+        ECLiPSe           &  most suitable  & \xmark      & \cmark       & \cmark       & trace             & \xmark \\
+        GNU Prolog        &  FA             & \xmark      & \xmark       & \xmark       & trace             & \cmark \\
+        Jekejeke          &  FA, N-FA, MA   & \xmark      & \cmark       & \xmark       & spy               & \xmark \\
+        JIProlog          &  undocumented   & \xmark      & \xmark       & \xmark       & trace             & \xmark \\
+        SWI               &  JIT, MA, deep  & \xmark      & \cmark       & \cmark       & trace / graphical & \cmark \\
+        SICStus           &  FA             & \xmark      & \cmark       & \cmark       & trace / source    & \cmark \\
+        tauProlog         &  undocumented   & \xmark      & \xmark       & \xmark       & \xmark            & \xmark \\
+        tuProlog          &  FA             & \xmark      & \xmark       & \xmark       & spy               & \xmark \\
+        XSB               &  all, trie      & \xmark      & \cmark       & \xmark       & trace             & \xmark \\
+        YAP               &  FA,MA,jit      & \xmark      & \xmark       & \xmark       & trace             & \xmark \\
+        \hline
+    \end{tabular}
+\end{adjustbox}
+
+\framebreak
+
+\begin{adjustbox}{width=.5\textwidth} 
+    \begin{tabular}{|l|cc|}
+        \hline
+        System            & FLI                  & Non-Standard Data Types     \\ 
+        \hline\hline
+        B-Prolog          & C, Java              & arrays, sets, hashtables               \\
+        Ciao              & C, Java, Python, JS  & \xmark\\
+        ECLiPSe           & C, Java, Python, PHP & arrays, strings,         \\
+        Jekejeke          & Java                 & arrays          \\
+        JIProlog          & Java                 & \xmark \\
+        GNU Prolog        & C, Java, PHP         & arrays          \\
+        tauProlog         & JavaScript           & \xmark          \\
+        tuProlog          & Java, .NET, Android, iOS           & arrays          \\
+        SWI               & C, C++, Java         & dicts, strings \\
+        SICStus           & C, Java, .NET, Tcl/Tk & \xmark              \\
+        XSB               & C, Java, PERL        & \xmark                \\
+        YAP               & C, Python, R         & \xmark                \\
+        \hline
+    \end{tabular}
+\end{adjustbox}
+

@@ -4,9 +4,6 @@
 \mode<presentation>{\usetheme{AMSCesenaPurpleAndGold}}
 \setbeamertemplate{bibliography item}{\insertbiblabel}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage[english]{babel}
-\usepackage[utf8]{inputenc}
-%
 \usepackage{2p-kt-talk}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title[\twopkt]{
@@ -35,14 +32,16 @@
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \AtBeginSection[]{
-    \begin{frame}<beamer>[c,noframenumbering]\frametitle{Next in Line\ldots}
-        \tableofcontents[sectionstyle=show/shaded,subsectionstyle=hide]
+    \begin{frame}<beamer>[shrink,noframenumbering]\frametitle{Next in Line\ldots}
+        \mbox{~}
+        \tableofcontents[sectionstyle=show/shaded,subsectionstyle=hide,subsubsectionstyle=hide]
+        \mbox{~}
     \end{frame}
 }
 \AtBeginSubsection[]{
     \begin{frame}<beamer>[shrink,noframenumbering]\frametitle{Focus on\ldots}
         \mbox{~}
-        \tableofcontents[currentsubsection,sectionstyle=shaded,subsectionstyle=show/shaded]
+        \tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded,subsubsectionstyle=hide]%[currentsection,currentsubsection,sectionstyle=shaded,subsectionstyle=shaded,subsubsectionstyle=hide]
         \mbox{~}
     \end{frame}
 }
@@ -54,9 +53,27 @@
 \frame{\titlepage}
 %\\\\\\\\\\\\\\\\\\\\\
 
+\begin{frame}<beamer>[shrink,noframenumbering]\frametitle{Outline}
+    \mbox{~}
+    \tableofcontents
+    \mbox{~}
+\end{frame}
+
 \section{Historical Perspective}
 
 \subsection{Prolog History}
+
+\begin{frame}{Implementations of Prolog -- Chronological Perspective}
+    \input{fig-timeline.tex}
+\end{frame}
+
+\begin{frame}{Implementations of Prolog -- Familiy Tree}
+    \input{fig-familytree.tex}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Implementations of Prolog -- Features}
+    \input{tab-features.tex}
+\end{frame}
 
 \subsection{\tuprolog{} History}
 
@@ -151,6 +168,27 @@
 
 \subsection{About \kt{PrimitiveWrappers} and \kt{SideEffect}s}
 
+\subsection{Logic \kt{Function}s and Evaluators}
+
+\subsection{Writing \kt{Library}}
+
+\section{Prolog as a State Machine: the \module{solve-classic} Module}
+
+\section{Reading and Writing Data: the \module{io-lib} Module}
+
+\section{OOP and Prolog: the \module{oop-lib} Module}
+
+\subsection{\kt{Ref}erences: \kt{TypeRef}erences and \kt{ObjectRef}}
+
+\subsection{OOP to/frm LP Conversions}
+
+\subsection{Logic Predicates and Operators for OOP}
+
+\section{LP + OOP + FP in Kotlin: the \module{dsl-*} Modules}
+
+\section{Parsing Logic Knowledge: the \module{parser-*} Modules}
+
+\section{(De)Serialising Logic Knowledge: the \module{serialize-*} Modules}
 
 \section*{}
 \frame{\titlepage}
