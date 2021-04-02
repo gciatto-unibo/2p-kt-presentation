@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>it.unibo.tuprolog.core.Atom</OriginalElement>
+  <nodes>
+    <node x="376.0" y="320.0">it.unibo.tuprolog.core.Set</node>
+    <node x="239.62318840579707" y="400.0">it.unibo.tuprolog.core.EmptySet</node>
+    <node x="544.0" y="80.0">it.unibo.tuprolog.core.Term</node>
+    <node x="157.7536231884058" y="160.0">it.unibo.tuprolog.core.Constant</node>
+    <node x="772.0" y="400.0">it.unibo.tuprolog.core.Fact</node>
+    <node x="284.0" y="320.0">it.unibo.tuprolog.core.Truth</node>
+    <node x="588.463768115942" y="240.0">it.unibo.tuprolog.core.Indicator</node>
+    <node x="636.0" y="160.0">it.unibo.tuprolog.core.Var</node>
+    <node x="589.0" y="400.0">it.unibo.tuprolog.core.Cons</node>
+    <node x="108.0" y="320.0">it.unibo.tuprolog.core.Real</node>
+    <node x="712.463768115942" y="240.0">it.unibo.tuprolog.core.Clause</node>
+    <node x="536.0" y="160.0">it.unibo.tuprolog.core.Struct</node>
+    <node x="648.0" y="320.0">it.unibo.tuprolog.core.Directive</node>
+    <node x="0.0" y="320.0">it.unibo.tuprolog.core.Integer</node>
+    <node x="550.0" y="320.0">it.unibo.tuprolog.core.List</node>
+    <node x="465.0" y="400.0">it.unibo.tuprolog.core.EmptyList</node>
+    <node x="458.0" y="320.0">it.unibo.tuprolog.core.Tuple</node>
+    <node x="455.768115942029" y="240.0">it.unibo.tuprolog.core.Collection</node>
+    <node x="247.13043478260872" y="240.0">it.unibo.tuprolog.core.Atom</node>
+    <node x="772.0" y="320.0">it.unibo.tuprolog.core.Rule</node>
+    <node x="512.0" y="0.0">java.lang.Comparable</node>
+    <node x="49.13043478260869" y="240.0">it.unibo.tuprolog.core.Numeric</node>
+    <node x="192.0" y="320.0">it.unibo.tuprolog.core.Empty</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="it.unibo.tuprolog.core.Constant" target="it.unibo.tuprolog.core.Term">
+      <point x="0.0" y="-15.0" />
+      <point x="205.7536231884058" y="135.0" />
+      <point x="554.6666666666666" y="135.0" />
+      <point x="-21.33333333333337" y="15.0" />
+    </edge>
+    <edge source="it.unibo.tuprolog.core.Clause" target="it.unibo.tuprolog.core.Struct">
+      <point x="0.0" y="-15.0" />
+      <point x="752.463768115942" y="210.0" />
+      <point x="606.0" y="210.0" />
+      <point x="30.0" y="15.0" />
+    </edge>
+    <edge source="it.unibo.tuprolog.core.Atom" target="it.unibo.tuprolog.core.Constant">
+      <point x="-16.0" y="-15.0" />
+      <point x="263.13043478260875" y="220.0" />
+      <point x="229.7536231884058" y="220.0" />
+      <point x="24.0" y="15.0" />
+    </edge>
+    <edge source="it.unibo.tuprolog.core.Collection" target="it.unibo.tuprolog.core.Struct">
+      <point x="5.6843418860808015E-14" y="-15.0" />
+      <point x="511.768115942029" y="220.0" />
+      <point x="566.0" y="220.0" />
+      <point x="-10.0" y="15.0" />
+    </edge>
+    <edge source="it.unibo.tuprolog.core.Var" target="it.unibo.tuprolog.core.Term">
+      <point x="0.0" y="-15.0" />
+      <point x="664.0" y="135.0" />
+      <point x="597.3333333333334" y="135.0" />
+      <point x="21.33333333333337" y="15.0" />
+    </edge>
+    <edge source="it.unibo.tuprolog.core.Integer" target="it.unibo.tuprolog.core.Numeric">
+      <point x="0.0" y="-15.0" />
+      <point x="44.0" y="295.0" />
+      <point x="71.13043478260869" y="295.0" />
+      <point x="-22.0" y="15.0" />
+    </edge>
+    <edge source="it.unibo.tuprolog.core.Tuple" target="it.unibo.tuprolog.core.Collection">
+      <point x="0.0" y="-15.0" />
+      <point x="494.0" y="295.0" />
+      <point x="511.768115942029" y="295.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="it.unibo.tuprolog.core.Rule" target="it.unibo.tuprolog.core.Clause">
+      <point x="0.0" y="-15.0" />
+      <point x="804.0" y="295.0" />
+      <point x="772.463768115942" y="295.0" />
+      <point x="20.0" y="15.0" />
+    </edge>
+    <edge source="it.unibo.tuprolog.core.Term" target="java.lang.Comparable">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="it.unibo.tuprolog.core.Set" target="it.unibo.tuprolog.core.Collection">
+      <point x="0.0" y="-15.0" />
+      <point x="404.0" y="295.0" />
+      <point x="474.4347826086956" y="295.0" />
+      <point x="-37.333333333333314" y="15.0" />
+    </edge>
+    <edge source="it.unibo.tuprolog.core.EmptyList" target="it.unibo.tuprolog.core.List">
+      <point x="26.0" y="-15.0" />
+      <point x="543.0" y="380.0" />
+      <point x="566.0" y="380.0" />
+      <point x="-16.0" y="15.0" />
+    </edge>
+    <edge source="it.unibo.tuprolog.core.Atom" target="it.unibo.tuprolog.core.Struct">
+      <point x="16.0" y="-15.0" />
+      <point x="295.13043478260875" y="210.0" />
+      <point x="546.0" y="210.0" />
+      <point x="-30.0" y="15.0" />
+    </edge>
+    <edge source="it.unibo.tuprolog.core.Cons" target="it.unibo.tuprolog.core.List">
+      <point x="0.0" y="-15.0" />
+      <point x="621.0" y="380.0" />
+      <point x="598.0" y="380.0" />
+      <point x="16.0" y="15.0" />
+    </edge>
+    <edge source="it.unibo.tuprolog.core.Empty" target="it.unibo.tuprolog.core.Atom">
+      <point x="0.0" y="-15.0" />
+      <point x="228.0" y="295.0" />
+      <point x="263.13043478260875" y="295.0" />
+      <point x="-16.0" y="15.0" />
+    </edge>
+    <edge source="it.unibo.tuprolog.core.Truth" target="it.unibo.tuprolog.core.Atom">
+      <point x="0.0" y="-15.0" />
+      <point x="320.0" y="295.0" />
+      <point x="295.13043478260875" y="295.0" />
+      <point x="16.0" y="15.0" />
+    </edge>
+    <edge source="it.unibo.tuprolog.core.EmptySet" target="it.unibo.tuprolog.core.Set">
+      <point x="24.0" y="-15.0" />
+      <point x="311.62318840579707" y="380.0" />
+      <point x="404.0" y="380.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="it.unibo.tuprolog.core.List" target="it.unibo.tuprolog.core.Collection">
+      <point x="0.0" y="-15.0" />
+      <point x="582.0" y="295.0" />
+      <point x="549.1014492753623" y="295.0" />
+      <point x="37.333333333333314" y="15.0" />
+    </edge>
+    <edge source="it.unibo.tuprolog.core.EmptySet" target="it.unibo.tuprolog.core.Empty">
+      <point x="-24.0" y="-15.0" />
+      <point x="263.62318840579707" y="380.0" />
+      <point x="210.0" y="380.0" />
+      <point x="-18.0" y="15.0" />
+    </edge>
+    <edge source="it.unibo.tuprolog.core.Numeric" target="it.unibo.tuprolog.core.Constant">
+      <point x="0.0" y="-15.0" />
+      <point x="93.13043478260869" y="220.0" />
+      <point x="181.7536231884058" y="220.0" />
+      <point x="-24.0" y="15.0" />
+    </edge>
+    <edge source="it.unibo.tuprolog.core.Fact" target="it.unibo.tuprolog.core.Rule">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="it.unibo.tuprolog.core.Indicator" target="it.unibo.tuprolog.core.Struct">
+      <point x="0.0" y="-15.0" />
+      <point x="640.463768115942" y="220.0" />
+      <point x="586.0" y="220.0" />
+      <point x="10.0" y="15.0" />
+    </edge>
+    <edge source="it.unibo.tuprolog.core.Directive" target="it.unibo.tuprolog.core.Clause">
+      <point x="0.0" y="-15.0" />
+      <point x="700.0" y="295.0" />
+      <point x="732.463768115942" y="295.0" />
+      <point x="-20.0" y="15.0" />
+    </edge>
+    <edge source="it.unibo.tuprolog.core.Struct" target="it.unibo.tuprolog.core.Term">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="it.unibo.tuprolog.core.EmptyList" target="it.unibo.tuprolog.core.Empty">
+      <point x="-26.0" y="-15.0" />
+      <point x="491.0" y="370.0" />
+      <point x="246.0" y="370.0" />
+      <point x="18.0" y="15.0" />
+    </edge>
+    <edge source="it.unibo.tuprolog.core.Real" target="it.unibo.tuprolog.core.Numeric">
+      <point x="0.0" y="-15.0" />
+      <point x="140.0" y="295.0" />
+      <point x="115.13043478260869" y="295.0" />
+      <point x="22.0" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.8999999999999997" x="337.9206349206346" y="229.62698412698415" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

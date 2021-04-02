@@ -3,6 +3,7 @@
 \documentclass[presentation]{beamer}
 \mode<presentation>{\usetheme{AMSCesenaPurpleAndGold}}
 \setbeamertemplate{bibliography item}{\insertbiblabel}
+\setbeamersize{description width=0.57cm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{2p-kt-talk}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -14,7 +15,7 @@
 %
 % same authors order of the presented paper
 \author[Ciatto G.]{
-	\emph{Giovanni Ciatto}$^{*}$ % empth the presenting author
+    \emph{Giovanni Ciatto}$^{*}$ % empth the presenting author
 }
 %
 \institute[UniBo]{
@@ -28,7 +29,7 @@
 }
 %
 \date[A.Y. 20-21]{
-	Autonomous Systems Course, A.Y. 2020-2021
+    Autonomous Systems Course, A.Y. 2020-2021
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \AtBeginSection[]{
@@ -81,52 +82,287 @@
 
 \begin{frame}{Why \twopkt{}}
     \begin{itemize}
-        \item builging an open an extensible ecosystem\ldots
-        \item \ldots supporting multiple logics, inference procedures, and resolution strategies (on the long run)
-        \item making each aspect of LP individually usable \emph{per se}
-        \item reaching widest possible platform support 
-        \item blending LP with OOP and FP
-        \item bridging symbolic and sub-symbolic AI
+        \item Building an open an extensible ecosystem\ldots
+        \vfill
+        \item \ldots supporting \alert{multiple logics} (e.g. FOL, DL, TL, BDI, etc)
+        %
+        \begin{itemize}
+            \item via as many \alert{inference rules} as possible (e.g. deduction, abduction, induction)
+            %
+            \begin{itemize}
+                \item implemented, in turn, via multiple \alert{resolution strategies} (e.g. SLDNF, IFF, Probabilistic, etc.)
+            \end{itemize}
+        \end{itemize}
+        \vfill
+        \item Making each aspect of LP individually usable \emph{per se}
+        \vfill
+        \item Reaching widest possible platform support 
+        \vfill
+        \item Blending LP with OOP and FP
+        \vfill
+        \item Bridging symbolic and sub-symbolic AI
     \end{itemize}
 \end{frame}
 
 \begin{frame}{Which features of LP}
-    \begin{itemize}
-        \item knowledge representation: term, clauses, and knowledge bases
-        \item unification, based on \cite{MartelliMontanari1982} but possibly customisable
-        \item clauses indexing and in-memory storage facilities
-        \item Prolog-like syntax parsing \& formatting
-        \item serialization/deserialization of terms, clauses, and theories
-        \item generic resolution API, possibly customisable via pluggable features
-        \item SLDFNF (Prolog-like) resolution streategy
-        \item other resolution strategies
-        \item common UI facilities
-        \item \ldots
-    \end{itemize}
+    \begin{enumerate}
+        \item Knowledge representation: \alert{terms}, and \alert{clauses}
+        \vfill
+        \item \alert{Unification}, based on \cite{MartelliMontanari1982} but possibly customisable
+        \vfill
+        \item Clauses \alert{indexing} and in-memory \alert{storage} facilities for \alert{knowledge bases}
+        \vfill
+        \item Prolog-like syntax \alert{parsing} \& \alert{formatting}
+        \vfill
+        \item \alert{Serialization} / \alert{deserialization} of terms, clauses, and knowledge bases
+        \vfill
+        \item Generic \alert{resolution} API, possibly customisable via \alert{pluggable features}
+        \vfill
+        \item \alert{SLD NF} (Prolog-like) resolution streategy \cite{Robinson65SLD,Clark77}
+        \vfill
+        \item Support for other resolution strategies
+        \vfill
+        \item Common \alert{UI} facilities
+        \vfill
+        \item[\vdots]
+    \end{enumerate}
 \end{frame}
 
 \begin{frame}{Why Kotlin}
     \begin{itemize}
-        \item multi platform support
+        \item Multi-platform support:
+        %
+        \begin{itemize}
+            \item JVM (Win + Linux + Mac)
+            \item JS (Web, both browser and server side)
+            \item Android
+            \item Native?
+            \item iOS?
+        \end{itemize}
+
+        \vfill
+
+        \item Good platform-specific interoperability
+        %
+        \begin{itemize}
+            \item Kotlin libraries can easily be exploited in bare Java projects
+            \item Kotlin libraries can be exploited in bare JavaScript projects
+        \end{itemize}
+
+        \vfill 
+
+        \item Clean and practical framework and tool-kit available
     \end{itemize}
 \end{frame}
 
-
 \section{Overview of the Project}
 
-\begin{frame}{Project Map}
+\begin{frame}[allowframebreaks]{Project Map}
     \begin{itemize}
-        \item project map image
-        \item modules explanations
-        \item dependencies among modules
+        \item \twopkt{} is an ecosystem of \alert{modules}
+        %
+        \begin{itemize}
+            \item denoted by Gradle's notation: \module{moduleName}
+        \end{itemize}
+
+        \medskip
+
+        \item Modules are \alert{loosely-coupled}, yet incrementally inter-dependent
+        %
+        \begin{itemize}
+            \item[$\rightarrow$] \alert{onion-like} architectural design
+        \end{itemize} 
+
+        \medskip
+
+        \item Modules are compilation and \alert{deployment units}
+        %
+        \begin{itemize}
+            \item 1 module $\leftrightarrow$ 1 jar, on the JVM
+        \end{itemize} 
+
+        \medskip
+
+        \item Using a module as a dependecy $\implies$ importing \alert{all} its dependencies
     \end{itemize}
+
+    \framebreak
+
+    \begin{center}
+        \includegraphics[width=\linewidth]{img/project-map.pdf}
+    \end{center}
+
+    \framebreak
+
+    \begin{description}
+        \item[\module{core}] provides \alert{knowledge representations} facilities \& common features
+        %
+        \begin{itemize}\small
+            \item[eg] terms, clauses, substitutions, operators, term formatting, basic exceptions, etc.
+        \end{itemize}
+
+        \medskip
+
+        \item[\module{unify}] provides support for \alert{logic unification}
+        %
+        \begin{itemize}\small
+            \item[eg] customisable notion of unificator based on \cite{MartelliMontanari1982}
+        \end{itemize}
+
+        \medskip
+
+        \item[\module{theory}] provides support in-memory \alert{storage \& indexing} of clauses
+        %
+        \begin{itemize}\small
+            \item[eg] mutable/immutable and ordered/unordered \alert{collections of clauses} + \alert{logic theories}
+        \end{itemize}
+    
+        \medskip
+    
+        \item[\module{solve}] provides generic support for \alert{resolution-related} stuff
+        %
+        \begin{itemize}\small
+            \item[!] agnostic w.r.t. inference procedures \& resolution strategy 
+            \item[eg] solvers, solutions, libraries, errors, flags, channels, etc.
+        \end{itemize}
+
+        \framebreak
+    
+        \item[\module{solve-*}] provide specific implementation for inference procedures \& \alert{resolution} strategy 
+        %
+        \begin{description}\small
+            \item[\module{solve-classic}] SLD NF (Prolog-like) resolution \cite{Robinson65SLD,Clark77} based on Piancastelli's state machine \cite{tuprolog-sac08} (\alert{Prolog ISO \cite{prologISO-pt1} Compliant})
+            \item[\module{solve-streams}] SLD NF (Prolog-like) resolution \cite{Robinson65SLD,Clark77} based on Enrico Siboni's master thesis and on \cite{Carlsson84}
+        \end{description}
+
+        \medskip
+
+        \item[\module{parser-*}] supports \alert{parsing} of terms and clauses in Prolog syntax
+        %
+        \begin{description}\small
+            \item[\module{parser-core}] supports parsing terms
+            \item[\module{parser-theory}] supports parsing knowledge bases and streams of clauses 
+            \item[\module{parser-jvm/js}] platform-specific implementations, based on ANTLR \cite{Parr2013} \hint{(not to be used directly!)}
+        \end{description}
+
+        \framebreak
+
+        \item[\module{serialization-*}] support \alert{(de)serialization} of terms, clauses, knowledge bases in \alert{YAML/JSON}
+        %
+        \begin{description}\small
+            \item[\module{serialization-core}] (de)serialization of terms and clauses
+            \item[\module{serialization-theory}] (de)serialization of knowledge bases and theories
+        \end{description}      
+        
+        \medskip
+
+        \item[\module{dsl-*}] incrementally support the Kotlin-based DSL for LP described in~\cite{kotlinDSl4PrologWoa2020}, aimed at blending LP, FP, and OOP
+        %
+        \begin{description}\small
+            \item[\module{dsl-core}] basic DSL for building terms/clauses in Kotlin
+            \item[\module{dsl-unify}] extension of the DSL incuding \module{unify} facilities
+            \item[\module{dsl-theory}] extension of the DSL incuding \module{theory} facilities
+            \item[\module{dsl-solve}] extension of the DSL incuding \module{solve} facilities
+        \end{description}   
+
+        \framebreak
+
+        \item[\module{repl}] command-line interface for Prolog
+        
+        \medskip
+
+        \item[\module{ide}] JavaFX-based GUI for Prolog (customisable)
+        
+        \medskip
+
+        \item[\module{io-lib}] Prolog ISO compliant Prolog library for I/O
+        
+        \medskip
+
+        \item[\module{oop-lib}] Prolog library for OOP interoperability
+        %
+        \begin{itemize}\small
+            \item essentially, lets Kotlin's and Java's OOP facilities be exploited from LP
+            \item only JVM is currently supported, due to limitations in Kotlin's reflection API
+        \end{itemize} 
+
+    \end{description}
 \end{frame}
 
 \section{Knowledge Representation: the \module{core} Module}
 
+\begin{frame}[allowframebreaks]{Main Abstractions from the \module{core} Module}
+    \begin{block}{Terms and Clauses}\center\itshape\small
+        Immutable data structures for terms and clauses in-memory representation \& manipulation
+    \end{block}
+
+    \begin{block}{Substitutions}\center\itshape\small
+        Immutable data structures representing variables assignments, applicable to terms/clauses
+    \end{block}
+
+    \begin{block}{Operators and Operators Sets}\center\itshape\small
+        Immutable data strucuters for representing logic operators and their esembles
+    \end{block}
+
+    \framebreak
+
+    \begin{block}{Formatters}\center\itshape\small
+        Functional objects aimed at converting terms/clauses into strings of customisable format
+    \end{block}
+
+    \begin{block}{Visitors}\center\itshape\small
+        Functional objects aimed at easing type-dependent algorithms writing
+    \end{block}   
+    
+    \begin{block}{Exceptions}\center\itshape\small
+        Base exception types extensively exploited in all whole \twopkt{} project
+    \end{block} 
+\end{frame}
+
 \subsection{The \kt{Term} Hierarchy}
 
 \subsubsection{Main Sorts of \kt{Term}s and \kt{Clause}s}
+
+\begin{frame}[allowframebreaks]{Term Hierarchy}
+    \begin{center}
+        \includegraphics[width=\linewidth]{img/TermHierachy.pdf}
+    \end{center}
+
+    \begin{block}{Common Conventions}
+        \begin{itemize}
+            \item Only intefaces are publicly available, no classes
+            \item Immutable design: all terms are immutable data structures
+            \item The hierarchy is a DAG, not a tree
+            \item Terms are totally ordered, as the are \kt{Comparable} among each others
+            \item We call ``term'' any object which (indirectly) implements \kt{Term}
+            %
+            \begin{itemize}
+                \item[!] there including clauses, i.e. instances of \kt{Clause}
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Sorts of Terms}
+    \begin{block}{The \kt{Term} type}\centering\itshape
+        Base type for all terms
+    \end{block}
+    %
+    Main methods and properties:
+        %
+       \begin{description}
+           \item[\kt{is\meta{SubType}: Boolean}] 
+           \item[\kt{as\meta{SubType}(): \meta{SubType}}]  
+           \item[\kt{castTo\meta{SubType}(): \meta{SubType}}]
+           \item[\kt{freshCopy(): Term}]
+           \item[\kt{equals(Any?): Boolean}]
+           \item[\kt{equals(Term, Boolean): Boolean}]
+           \item[\kt{structurallyEquals(Any?): Boolean}]
+           \item[\kt{accept<T>(TermVisitor<T>): T}]
+           \item[\kt{compareTo(Term): Int}]
+           \item[\kt{toString(): String}]
+       \end{description}
+\end{frame}
 
 \subsubsection{Creating \kt{Term}s}
 
@@ -190,6 +426,20 @@
 
 \section{(De)Serialising Logic Knowledge: the \module{serialize-*} Modules}
 
+\section{Using \twopkt}
+
+\subsection{As a library, for developers}
+
+\subsubsection{For Java Developers}
+
+\subsubsection{For JavaScript Developers}
+
+\subsection{As an application, for end users}
+
+\subsubsection{Graphical User Interface: the \module{ide} Module}
+
+\subsubsection{Command Line Interface: the \module{cli} Module}
+
 \section*{}
 \frame{\titlepage}
 
@@ -199,10 +449,10 @@
 
 \begin{frame}[t,allowframebreaks,noframenumbering]\frametitle{\refname}
 % \begin{frame}[c]\frametitle{\refname}
-	\footnotesize
-%	\scriptsize
+    \footnotesize
+%    \scriptsize
     \bibliographystyle{plain}
-	\bibliography{2p-kt-talk}
+    \bibliography{2p-kt-talk}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
