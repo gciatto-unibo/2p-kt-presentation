@@ -364,12 +364,64 @@
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Main Sorts of \kt{Term}s}
-    \begin{block}{The \kt{Constant} type}\centering\itshape
-        Base type for all terms
+    \begin{block}{The \kt{Constant} type is a sub-type of \kt{Term}}\centering\itshape
+        Base type for all constant terms (namely, strings and numbers)
     \end{block}
     %
     \begin{description}
-        \item
+        \item[\kt{value: Any}] returns the value of this \kt{Constant}
+    \end{description}
+
+    \framebreak
+
+    \begin{block}{The \kt{Numeric} type is a sub-type of \kt{Constant}}\centering\itshape
+        Base type for all numeric terms (namely, reals and integers)
+    \end{block}
+    %
+    \begin{description}
+        \item[\kt{intValue: BigInteger}] returns the integer value of the current number
+        %
+        \begin{itemize}
+            \item \kt{BigInteger}s can then be converted into \kt{Int}, \kt{Short}, etc.
+            \item unlimited amount of digits $\rightarrow$ no overflow, no max value
+        \end{itemize} 
+
+        \item[\kt{decimalValue: BigDecimal}] returns the decimal value of the current number
+        %
+        \begin{itemize}
+            \item \kt{BigDecimal}s can then be converted into \kt{Double} or \kt{Float}
+            \item i.e. a real number with arbitrary precision
+        \end{itemize} 
+    \end{description}
+
+    \framebreak
+
+    \begin{block}{The \kt{Integer} type is a sub-type of \kt{Numeric}}\centering\itshape
+        Type for all terms representing an integer number
+    \end{block}
+    %
+    \begin{description}
+        \item[\kt{value: BigInteger}] returns \kt{this.intValue}
+        %
+        \begin{itemize}
+            \item \kt{BigInteger}s can then be converted into \kt{Int}, \kt{Short}, etc.
+            \item unlimited amount of digits $\rightarrow$ no overflow, no max value
+        \end{itemize} 
+    \end{description}
+
+    \framebreak
+
+    \begin{block}{The \kt{Real} type is a sub-type of \kt{Numeric}}\centering\itshape
+        Type for all terms representing a real number
+    \end{block}
+    %
+    \begin{description}
+        \item[\kt{value: BigDecimal}] returns \kt{this.decimalValue}
+        %
+        \begin{itemize}
+            \item \kt{BigDecimal}s can then be converted into \kt{Double} or \kt{Float}
+            \item i.e. a real number with arbitrary precision
+        \end{itemize} 
     \end{description}
 \end{frame}
 
