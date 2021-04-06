@@ -423,6 +423,103 @@
             \item i.e. a real number with arbitrary precision
         \end{itemize} 
     \end{description}
+
+    \framebreak
+
+    \begin{block}{The \kt{Struct} type is a sub-type of \kt{Term}}\centering\itshape
+        Type for all terms of the form $f(t_1, \ldots, t_N)$, i.e. composed by a \alert{funtor} string $f$ and $N$ terms $t_1, \ldots, t_N$ called \alert{arguments}, where $N \geq 0$ is called \alert{arity}
+    \end{block}
+    %
+    \begin{description}
+        \item[\kt{functor: String}] returns the functor of the current \kt{Struct}
+        \item[\kt{arity: Int}] returns the arity of the current \kt{Struct} 
+        \item[\kt{args: Array<Term>}] returns the array of arguments of the current \kt{Struct}
+        \item[\kt{argsList: List<Term>}] returns the list of arguments of the current \kt{Struct}
+        \item[\kt{argsSequence: Sequence<Term>}] returns the sequence of arguments of the current \kt{Struct}
+        \item[\kt{isFunctorWellFormed: Boolean}] returns true if the following condition hold for \kt{functor} 
+        %
+        \begin{enumerate}\small
+            \item it begins with a lower case letter
+            \item it only contains letters (either lower or upper case), digits, or underscores 
+        \end{enumerate} 
+        \item[\kt{toString(): String}] returns \kt{functor} if \kt{arity} is 0, otherwise a string of the form 
+        %
+        \begin{center}\scriptsize
+            \kt{\meta{functor}(\meta{args[0].toString()}, \ldots, \meta{args[arity - 1].toString()})}
+        \end{center} 
+        %
+        \begin{itemize}\small
+            \item in both cases, \kt{functor} is wrapped within single quotes if \kt{isFunctorWellFormed} is false
+        \end{itemize}
+        \item[\kt{equals(Any?): Boolean}] compares this \kt{Struct}ure with the provided object, returning true if the latter is a \kt{Struct}ure having the same functor, arity, and arguments (which are recursively compared via \kt{equals(Any?)}) 
+        \item[\kt{hashCode(): Int}] computes an hash code value for this \kt{Struct}ure which is coherent w.r.t. \kt{equals(Any?)}
+        \item[\kt{equals(Term,Boolean): Boolean}] compares this \kt{Struct}ure with the provided object, returning true if the latter is a \kt{Struct}ure having the same functor, arity, and arguments (which are recursively compared via \kt{equals(Term,Boolean)})
+        \item[\kt{structurallyEquals(Term): Boolean}] compares this \kt{Struct}ure with the provided object, returning true if the latter is a \kt{Struct}ure having the same functor, arity, and arguments (which are recursively compared via \kt{structurallyEquals(Term)})
+        \item[\kt{indicator: Indicator}] returns the indicator corresponding to the current \kt{Struct}
+        %
+        \begin{itemize}\small
+            \item i.e. the \kt{Struct}ure of the form \pl{'/'(\meta{functor}, \meta{arity})}
+        \end{itemize} 
+        \item[\kt{get(Int): Term}] returns an argument of the current \kt{Struct} given its index
+        \item[\kt{getArgAt(Int): Term}] an alias for \kt{get(Int)}
+        \item[\kt{addFirst(Term): Term}] returns a novel \kt{Struct} of the form $f(t^*, t_1, \ldots, t_N)$, where $t^*$ is the \kt{Term} provided as argument
+        \item[\kt{addLast(Term): Term}] returns a novel \kt{Struct} of the form $f(t_1, \ldots, t_N, t^*)$, where $t^*$ is the \kt{Term} provided as argument
+        \item[\kt{append(Term): Term}] an alias for \kt{addLast(Term)}
+        \item[\kt{insertAt(Int,Term): Term}] returns a novel \kt{Struct} of the form $f(t_1, \ldots, t_{i-1}, t^*, t_{i+1}, \ldots, t_N)$, where $t^*$ is the \kt{Term} provided as argument
+        \item[\kt{setFunctor(String): Term}] returns a novel \kt{Struct} of the form $f^*(t_1, \ldots, t_N)$, where $f^*$ is the functor \kt{String} provided as argument
+    \end{description}
+
+    \framebreak
+
+    \begin{block}{The \kt{Atom} type is a sub-type of both \kt{Struct} and \kt{Constant}}\centering\itshape
+        Type for all constant structures 0-ary structures (i.e., with no arguments), representing strings
+    \end{block}
+    %
+    \begin{description}
+        \item[\kt{value: String}] returns \kt{this.functor}
+        \item[\kt{arity: Int}] must return 0
+        \item[\kt{args: Array<Term>}] must return the empty array
+        \item[\kt{argsList: List<Term>}] must return the empty list
+        \item[\kt{argsSequence: Sequence<Term>}] must return the empty sequence
+    \end{description}
+
+    \framebreak
+
+    \begin{block}{The \kt{Var} type is a sub-type of \kt{Term}}\centering\itshape
+        Type for all variable terms, representing \alert{named} placeholders for other terms
+    \end{block}
+    %
+    \begin{alertblock}{About \kt{Var}iable names}
+        \begin{itemize}
+            \item Variables are identified by \alert{comple name}
+            \item Variables' complete names are \kt{String}s of the form
+            %
+            \begin{center}
+                \kt{\meta{Name}\_\meta{Identifier}}
+            \end{center} 
+            where
+            %
+            \begin{description}
+                \item[\kt{\meta{Name}}] is the variable's \alert{simple} name
+                \item[\kt{\meta{Identifier}}] is the variable's \alert{identifier}, i.e. an im\-ple\-men\-ta\-tion-spe\-ci\-fic string aimed at distinguising \kt{Var}iables having the same simple name
+            \end{description}
+        \end{itemize}
+    \end{alertblock}
+    %
+    \begin{description}
+        \item[\kt{name: String}] returns this \kt{Var}iable's simple name
+        \item[\kt{completeName: String}] returns this \kt{Var}iable's complete name 
+        \item[\kt{id: String}] returns this \kt{Var}iable's identifier
+        \item[\kt{isAnonymous: Boolean}] checks whether \kt{name} is an underscore
+        \item[\kt{toString(): Boolean}] returns this \kt{Var}iable's complete name
+        \item[\kt{equals(Any?): Boolean}] compares this \kt{Var}iable with the provided object, returning true if the latter is a \kt{Var}iable having the same complete name
+        \item[\kt{equals(Term,Boolean): Boolean}] compares this \kt{Var}iable with the provided object, returning true if the latter is a \kt{Var}iable having the same complete (resp. simple) name, assuming that the provided \kt{Boolean} is true (resp. false) 
+        \item[\kt{structurallyEquals(Term): Boolean}] compares this \kt{Var}iable with the provided object, returning true if the latter is a \kt{Var}iable 
+    \end{description}
+
+    TODO: indicators
+
+    TODO: truth
 \end{frame}
 
 \subsubsection{Creating \kt{Term}s}
