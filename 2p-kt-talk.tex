@@ -343,25 +343,34 @@
     \end{block}
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Sorts of Terms}
+\begin{frame}[allowframebreaks]{The \kt{Term} type}
     \begin{block}{The \kt{Term} type}\centering\itshape
         Base type for all terms
     \end{block}
     %
-    Main methods and properties:
-        %
-       \begin{description}
-           \item[\kt{is\meta{SubType}: Boolean}] 
-           \item[\kt{as\meta{SubType}(): \meta{SubType}}]  
-           \item[\kt{castTo\meta{SubType}(): \meta{SubType}}]
-           \item[\kt{freshCopy(): Term}]
-           \item[\kt{equals(Any?): Boolean}]
-           \item[\kt{equals(Term, Boolean): Boolean}]
-           \item[\kt{structurallyEquals(Any?): Boolean}]
-           \item[\kt{accept<T>(TermVisitor<T>): T}]
-           \item[\kt{compareTo(Term): Int}]
-           \item[\kt{toString(): String}]
-       \end{description}
+    \begin{description}
+        \item[\kt{is\meta{SubType}: Boolean}] checks whether the current term is an instance of \kt{\meta{SubType}} or not
+        \item[\kt{as\meta{SubType}(): \meta{SubType}}] casts the current term to \kt{\meta{SubType}} or returns null if not possible
+        \item[\kt{castTo\meta{SubType}(): \meta{SubType}}] casts the current term to \kt{\meta{SubType}} or throws an exception if not possible
+        \item[\kt{freshCopy(): Term}] returns a deep copy of the current term where all \kt{Var}iables have been refreshed
+        \item[\kt{apply(Substitution): Term}] applies the provided \kt{Substitution} to the current \kt{Term} or throws a \kt{SubstitutionApplicationException} in case a failed \kt{Substitution} has been provided 
+        \item[\kt{equals(Term, Boolean): Boolean}] checks whether the provided \kt{Term} is deeply equal to the current one, letting the caller choose whether to compare variables by simple or by complete name
+        \item[\kt{equals(Any?): Boolean}] checks whether the provides object is a \kt{Term} is deeply equal to the current one, comparing variables by complete names
+        \item[\kt{structurallyEquals(Term): Boolean}] checks whether the provided \kt{Term} is deeply equal to the current one, in such a way that all variables are considered equal
+        \item[\kt{accept<T>(TermVisitor<T>): T}] returns the object produced by letting the provided \kt{TermVisitor} visit the current \kt{Term} 
+        \item[\kt{compareTo(Term): Int}] compares the current \kt{Term} with the provided one, according to the total ordering on \kt{Term}s
+        \item[\kt{toString(): String}] returns a representation of the current \kt{Term} for debugging purposes
+    \end{description}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Main Sorts of \kt{Term}s}
+    \begin{block}{The \kt{Constant} type}\centering\itshape
+        Base type for all terms
+    \end{block}
+    %
+    \begin{description}
+        \item
+    \end{description}
 \end{frame}
 
 \subsubsection{Creating \kt{Term}s}
