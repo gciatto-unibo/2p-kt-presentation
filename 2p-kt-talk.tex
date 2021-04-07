@@ -522,67 +522,654 @@
     TODO: truth
 \end{frame}
 
+\begin{frame}[allowframebreaks]{Collections}
+
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Clauses}
+
+\end{frame}
+
 \subsubsection{Creating \kt{Term}s}
 
-\subsubsection{About \kt{Term}s' Immutable Design}
+\begin{frame}[allowframebreaks]{Creating \kt{Term}s via Static Factories}
+    methods + examples
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Creating \kt{Collections}s via Static Factories}
+    methods + examples
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Creating \kt{Clauses}s via Static Factories}
+    methods + examples
+\end{frame}
+
+\subsubsection{About \kt{Term}s' Design}
+
+\begin{frame}[allowframebreaks]{Identity vs. Equalities}
+    methods + examples
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Total Ordering of Terms}
+    term comparers
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Terms' Immutability}
+    consequences of terms immutability
+
+    efficient cloning of lists
+\end{frame}
 
 \subsection{\kt{Var}iables and \kt{Scope}s}
 
+\begin{frame}[allowframebreaks]{Conventions for \kt{Var}iables}
+    impossibility to create 2 equal variables
+\end{frame}
+
+\begin{frame}[allowframebreaks]{The need for \kt{Scope}s}
+    impossibility to create 2 equal variables
+\end{frame}
+
 \subsection{\kt{Subtitution}s as First Class Entities}
 
-\subsubsection{Refreshing \kt{Term}s}
+\begin{frame}[allowframebreaks]{The \kt{Substitution} Type Hierarchy}
+    impossibility to create 2 equal variables
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Creating \kt{Substitution}s}
+    impossibility to create 2 equal variables
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Applying Substitutions to Terms}
+    normal case + exceptions + examples
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Refreshing Terms}
+    how it works + examples
+\end{frame}
 
 \subsection{\kt{Operator}s and \kt{OperatorSet}s}
 
+\begin{frame}[allowframebreaks]{Prolog-like Operators}
+    functor vs specifier vs priority
+
+    default operators
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Sets of Operators}
+    definition + notable sets
+\end{frame}
+
 \subsection{Pattern Matching over \kt{Term}s Types}
+
+\begin{frame}[allowframebreaks]{Term Visitors and their Use Cases}
+    type definition + example
+\end{frame}
+
+\subsection{Formatting \kt{Term}s}
+
+\begin{frame}[allowframebreaks]{The \kt{TermFormatter} Type}
+    definition + api + extension methods
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Main sorts of \kt{TermFormatter}s}
+    enumerate types
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Usage Example}
+    one example for each term formatter
+\end{frame}
 
 \subsection{Exceptions}
 
+\begin{frame}[allowframebreaks]{The \kt{TuprologException} Type Hierarchy}
+    convention
+\end{frame}
+
 \section{Logic Unification: the \module{unify} Module}
+
+\begin{frame}[allowframebreaks]{The \kt{Unificator} type}
+    interface + purpose + default functioning
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Creating \kt{Unificator}s}
+    available static factories
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Using \kt{Unificator}s}
+    examples of custom unificators
+
+    examples with default unificators + infix operators
+\end{frame}
 
 \section{Storing and Indexing Clauses: the \module{theory} Module}
 
+\subsection{Clause Collections}
+
+\begin{frame}[allowframebreaks]{Collections Design}
+    bi-dimensional design: mutable/immutable vs. ordered/unordered
+\end{frame}
+
+\begin{frame}[allowframebreaks]{The \kt{ClauseCollection} Type Hierarchy}
+    ClauseCollections (both mutable and immutable)
+
+    ClauseQueues (both mutable and immutable)
+
+    ClauseMultiSets (both mutable and immutable)
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Creating \kt{ClauseCollection}s}
+    available static factories
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Using \kt{ClauseCollection}s}
+    usage examples
+\end{frame}
+
+\subsection{Theories}
+
+\begin{frame}[allowframebreaks]{Theories Design and Implementations}
+    design: mutable/immutable
+    
+    implementation: indexed vs. listed
+\end{frame}
+
+\begin{frame}[allowframebreaks]{The \kt{Theory} Type Hierarchy}
+    Theory
+
+    MutableTheory
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Creating a \kt{ClauseCollection}}
+    available static factories
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Using a \kt{Theory}}
+    usage examples
+\end{frame}
+
 \section{Generic Logic Resolution: the \module{solve} Module}
+
+\begin{frame}[allowframebreaks]{Overview}
+    re-use as much as possible of the Prolog standard without committing to a particular resolution strategy
+
+    purpose:
+      - constrain the Solver and Solution interfaces
+      - constrain the notions of library, channel, flag, primitive, error
+\end{frame}
 
 \subsection{\kt{Solver}s and the \kt{Solution}s}
 
+\begin{frame}[allowframebreaks]{The \kt{Solver}, \kt{Solution}, and \kt{SolveOpts} Types}
+    Solver
+
+    MutableSolver
+
+    Solution.*
+
+    SolveOpts
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Creating a \kt{Solver}}
+    the notion of SolverFactory
+
+    implementors of \module{solve} must provide a public SolverFactory singleton
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Using a \kt{Solver}}
+    usage examples covering all possible cases where yes/no/halt/timeout solutions are depicted
+\end{frame}
+
 \subsection{The \kt{ExecutionContext}}
+
+\begin{frame}[allowframebreaks]{Overview on the general purpose \kt{ExecutionContext}}
+    mutable aspects of a solver
+\end{frame}
 
 \subsubsection{About \kt{Solver}s' Knowledge Bases}
 
+\begin{frame}[allowframebreaks]{Static vs. Dynamic Knowledge bases}
+    analogies and differences
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Example: Using \kt{Solver}s with Custom KB}
+    initialising a solver with custom knowledge bases
+    
+    loading a custom kb into a mutable solver
+\end{frame}
+
 \subsubsection{Extending \kt{Solver}s via \kt{Librarie}s}
+
+\begin{frame}[allowframebreaks]{Overview on Libraries}
+    purpose: extending the solver
+
+    composition: rules + operators + primitives + functions
+        purpose of each
+\end{frame}
+
+\begin{frame}[allowframebreaks]{The \kt{Primitive} Type}
+    client server metaphor
+    
+    definition 
+
+    request \& response
+
+    purpose
+
+    example
+\end{frame}
+
+\begin{frame}[allowframebreaks]{The \kt{Function} Type}
+    definition 
+
+    request \& response
+
+    purpose
+
+    example
+\end{frame}
+
+\begin{frame}[allowframebreaks]{The \kt{Library} Type Hierarchy}
+    definition 
+
+    purpose
+
+    example
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Example: The \kt{CommonBuiltins} Type}
+    which items does it include and what's their type, and why
+
+    example of rule
+
+    example of primitive
+
+    example of function
+\end{frame}
 
 \subsubsection{Communicating with the extenal world via \kt{Channel}s}
 
+\begin{frame}[allowframebreaks]{Overview on Channels}
+    channels as the basic IO facilities for solvers
+
+    channel stores as key-value pair letting a solver keep track of the open channels and their names
+
+    input channels let solvers consume inputs
+        + listeners can be added to intercept consumtion
+
+    output channels let solvers produce outputs
+        + listeners can be added to intercept production
+
+    similar to Java Input/Output Streams, but non-blocking
+\end{frame}
+
+\begin{frame}[allowframebreaks]{The \kt{Channel} Type Hierarchy}
+    input channels 
+
+    output channels
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Creating \kt{Channel}s}
+    creating input channels from callbacks
+
+    creating input channels from strings
+
+    creating output channels towards the console
+
+    creating output channels from callbacks
+\end{frame}
+
+\begin{frame}[allowframebreaks]{The \kt{ChannelStore} Type Hierarchy}
+    input stores 
+
+    output stores
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Using \kt{Channel}s}
+    creating solvers with custom channels
+    
+    attaching callbacks to a solver's channels
+\end{frame}
+
 \subsubsection{Configuring \kt{Solver}s via \kt{Flag}s}
+
+\begin{frame}[allowframebreaks]{Overview on flags}
+    key/value pairs where keys are atoms and values are terms
+
+    they configure the operation of a solver
+
+    some are mutable some are not
+\end{frame}
+
+\begin{frame}[allowframebreaks]{The \kt{FlagStore} Type}
+    API
+
+    purpose
+\end{frame}
+
+\begin{frame}[allowframebreaks]{The \kt{NotableFlag} Type}
+    API
+
+    purpose
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Example: Default Flags and their Purpose}
+    unknown
+
+    max arity
+
+    last call optimization
+\end{frame}
 
 \subsubsection{Other sorts of custom fields}
 
+\begin{frame}[allowframebreaks]{Overview on \kt{CustomDataStore}s}
+    containers of custom fields with arbitrary names
+
+    persistent -> never automatically erased
+
+    durable -> erased after each solution is provided
+
+    emphemeral -> erased upon backtracking
+\end{frame}
+
+\subsection{Prolog Errors and Warnings}
+
+\begin{frame}[allowframebreaks]{Overview on Prolog errors}
+    errors and errors terms
+
+    types of errors, their meaning and structure
+\end{frame}
+
+\begin{frame}[allowframebreaks]{The \kt{PrologError} Type Hierachy}
+    general structure of \kt{PrologError}
+
+    main subtypes
+\end{frame}
+
 \section{Custom \kt{Primitives}s, \kt{Function}s, and \kt{Libraries}s}
+
+\begin{frame}[allowframebreaks]{Overview on Custom Libraries}
+    containers of operators + rules + primitives + functions
+
+    aliased by a string
+
+    they take priority over solvers KB
+
+    primitives as the main way to implement backtrackable predicates in Kotlin
+
+    primitives as the main way to implement loigc functions in Kotlin
+\end{frame}
 
 \subsection{About \kt{PrimitiveWrappers} and \kt{SideEffect}s}
 
+\begin{frame}[allowframebreaks]{Overview on \kt{PrimitiveWrappers}}
+    enumerate the sorts of primitive wrappers
+
+    description of the general Pattern
+
+    list of ensurer methods
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Overview on \kt{SideEffect}s and \kt{SideEffectBuilder}s}
+    enumerate the sorts of side effects which can be created
+
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Overview Requests and Responses}
+    enumerate the sorts of responses which can be created out of requests (in Solve)
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Example of \kt{PrimitiveWrappers} of all sorts}
+   one example for each sort of primitive wrapper from the CommonBuiltins
+\end{frame}
+
 \subsection{Logic \kt{Function}s and Evaluators}
+
+\begin{frame}[allowframebreaks]{Overview on \kt{FunctionWrappers}}
+    enumerate the sorts of function wrappers
+
+    description of the general Pattern
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Overview on Evaluators}
+    definition of evaluator
+
+    main sorts of evaluators
+
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Overview Requests and Responses}
+    enumerate the sorts of responses which can be created out of requests (in Compute)
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Example of \kt{FunctionWrappers} of all sorts}
+   a few example of functions of different sorts from the CommonBuiltins
+
+   invocation of an evalutator from within a primitive
+\end{frame}
 
 \subsection{Writing \kt{Library}}
 
+\begin{frame}[allowframebreaks]{\kt{Library} end-to-end}
+    full example of a library containing at least 1 operator, 1 rule, 1 primitive and 1 function
+
+    loading the library into a solver
+ \end{frame}
+
 \section{Prolog as a State Machine: the \module{solve-classic} Module}
+
+\begin{frame}[allowframebreaks]{Overview on the \module{:solve-classic} Module}
+    state machine based design
+
+    AbstractClassicSolver
+
+    SolutionIterator
+
+    ClassicSolver
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Formal State Machine}
+    whole formalization here
+\end{frame}
+
+\begin{frame}[allowframebreaks]{State Machine in Practice}
+    design of state
+
+    responsabilities of each state
+
+    iterating over states
+\end{frame}
 
 \section{Reading and Writing Data: the \module{io-lib} Module}
 
+\begin{frame}[allowframebreaks]{Overview on IO in LP}
+    urls for locating resources
+    
+    sinks and sources
+
+    main predicates
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Platform-specific Issues}
+    
+\end{frame}
+
 \section{OOP and Prolog: the \module{oop-lib} Module}
+
+\begin{frame}[allowframebreaks]{Overview on the OOP Lib Design}
+    references to types and objects
+
+    term to object conversions
+        + smart cast and overloading selection
+
+    object to term conversions
+
+    ad-hoc predicates
+
+    ad-hoc operators
+
+    aliases
+\end{frame}
 
 \subsection{\kt{Ref}erences: \kt{TypeRef}erences and \kt{ObjectRef}}
 
-\subsection{OOP to/frm LP Conversions}
+\begin{frame}[allowframebreaks]{The \kt{Ref} Type Hierarchy}
+    definition and api of ref
+
+    definition and api of object ref
+
+    definition and api of null ref
+
+    definition and api of type ref
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Creation of \kt{Ref}erences}
+    static factories for refs
+
+    type factories
+\end{frame}
+
+\subsection{OOP to/from LP Conversions}
+
+\begin{frame}[allowframebreaks]{The \kt{TermToObjectConverter} Type}
+    definition 
+    
+    api 
+
+    implemented strategy
+
+    example
+\end{frame}
+
+\begin{frame}[allowframebreaks]{The \kt{ObjectToTermConverter} Type}
+    definition 
+    
+    api 
+
+    implemented strategy
+
+    example
+\end{frame}
+
+\subsection{Overload Selection}
+
+\begin{frame}[allowframebreaks]{The \kt{OverloadSelector} Type}
+    definition 
+    
+    api 
+
+    implemented strategy
+
+    example
+\end{frame}
 
 \subsection{Logic Predicates and Operators for OOP}
 
+\begin{frame}[allowframebreaks]{Main Predicates from the OOP Lib}
+    (for each: definition, semantics)
+
+    \ttfamily
+    invoke\_method/3
+    invoke\_strict/3
+    assign/3
+    cast/3
+    new\_object/3
+    new\_object/2 (rule)
+    register/2
+    unregister/1
+    alias/2 (rule)
+    :=/2 (rule)
+    ./2 (rule)
+    fluent\_reduce/3
+    property\_reduce/3
+\end{frame}
+
 \section{LP + OOP + FP in Kotlin: the \module{dsl-*} Modules}
+
+\begin{frame}[allowframebreaks]{Overview on the DSL}
+    purpose
+
+    principles (from \cite{kotlinDSl4PrologWoa2020})
+
+    organization
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Architecture}
+    class diagram
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Usage Example}
+    reuse examples from \cite{kotlinDSl4PrologWoa2020}
+\end{frame}
 
 \section{Parsing Logic Knowledge: the \module{parser-*} Modules}
 
+\begin{frame}[allowframebreaks]{The \kt{TermParser} Type}
+    definition 
+    
+    creation 
+
+    usage examples
+\end{frame}
+
+\begin{frame}[allowframebreaks]{The \kt{TermReader} Type (JVM-only)}
+    definition 
+    
+    creation 
+
+    usage examples
+\end{frame}
+
+\begin{frame}[allowframebreaks]{The \kt{ClausesParser} Type}
+    definition 
+    
+    creation 
+
+    usage examples
+\end{frame}
+
 \section{(De)Serialising Logic Knowledge: the \module{serialize-*} Modules}
+
+\begin{frame}[allowframebreaks]{(De)Serialisation Overview}
+    onion design: (de)objectifiers <-> (de)serializers
+
+    single/multiple design: core vs. theory
+
+    supported mime types: json and yaml
+\end{frame}
+
+\begin{frame}[allowframebreaks]{The \kt{TermSerializer} Type}
+    definition 
+    
+    creation 
+\end{frame}
+
+\begin{frame}[allowframebreaks]{The \kt{TermDeserializer} Type}
+    definition 
+    
+    creation 
+\end{frame}
+
+\begin{frame}[allowframebreaks]{The \kt{TheorySerializer} Type}
+    definition 
+    
+    creation 
+\end{frame}
+
+\begin{frame}[allowframebreaks]{The \kt{TheoryDeserializer} Type}
+    definition 
+    
+    creation 
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Terms/Thoery to JSON Mapping}
+    mapping definition
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Complete Usage Example}
+    serialize-and-then-deserialize example
+\end{frame}
 
 \section{Using \twopkt}
 
@@ -590,13 +1177,34 @@
 
 \subsubsection{For Java Developers}
 
+\begin{frame}[allowframebreaks]{How to call Kotlin from Java}
+    notable aspects
+\end{frame}
+
 \subsubsection{For JavaScript Developers}
+
+\begin{frame}[allowframebreaks]{How to call Kotlin from JavaScript}
+    notable aspects
+\end{frame}
 
 \subsection{As an application, for end users}
 
 \subsubsection{Graphical User Interface: the \module{ide} Module}
 
+\begin{frame}[allowframebreaks]{Usage of the IDE}
+    how to launch the gui
+
+    how to use the gui
+\end{frame}
+
 \subsubsection{Command Line Interface: the \module{cli} Module}
+
+\begin{frame}[allowframebreaks]{Usage of the CLI}
+    how to launch the cli
+        + cli arguments
+
+    how to use the cli
+\end{frame}
 
 \section*{}
 \frame{\titlepage}
