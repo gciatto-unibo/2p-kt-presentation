@@ -472,7 +472,7 @@
     \framebreak
 
     \begin{block}{The \kt{Atom} type is a sub-type of both \kt{Struct} and \kt{Constant}}\centering\itshape
-        Type for all constant structures 0-ary structures (i.e., with no arguments), representing strings
+        Type for all constant 0-ary structures (i.e., with no arguments), representing strings
     \end{block}
     %
     \begin{description}
@@ -517,13 +517,78 @@
         \item[\kt{structurallyEquals(Term): Boolean}] compares this \kt{Var}iable with the provided object, returning true if the latter is a \kt{Var}iable 
     \end{description}
 
-    TODO: indicators
+    \framebreak
 
-    TODO: truth
+    \begin{block}{The \kt{Indicator} type is a sub-type of \kt{Struct}}
+        \begin{center}\itshape
+            Type for all binary structures whose functor is $/$, i.e. structures of the form $\mathtt{/}(f, n)$, there $f,n$ are terms. If $f$ is an atom and $n$ is a non-negative integer, the indicator is considered \emph{well formed}
+        \end{center}
+    \end{block}
+    %
+    \begin{description}
+        \item[\kt{nameTerm: Term}] returns $f$, shortcut for \kt{get(0)}
+        \item[\kt{indicatedName: String?}] if $f$ is an atom, returns \kt{$f$.value}, otherwise \kt{null} 
+        \item[\kt{arityTerm: Term}] returns $n$, shortcut for \kt{get(1)}
+        \item[\kt{indicatedArity: Int?}] if $a$ is a non-negative integer, returns \kt{$n$.intValue.toInt()}, otherwise \kt{null}  
+        \item[\kt{isWellFormed: Boolean}] returns \kt{true} if the indicator is well formed
+        \item[\kt{functor: String}] must return \kt{'/'}
+        \item[\kt{arity: String}] must return 2
+    \end{description}
+
+    \framebreak
+
+    \begin{block}{The \kt{Truth} type is a sub-type of \kt{Atom}}
+        \begin{center}\itshape
+            Type for special atoms representing either tautology or contradiction.
+            It has only three admissible values: \pl{true} (tautology), \pl{false}, and \pl{fail} (contradictions). 
+        \end{center}
+    \end{block}
+    %
+    \begin{description}
+        \item[\kt{isTrue: Boolean}] returns \kt{true} if the atom is a tautology
+        \item[\kt{isFail: Boolean}] returns \kt{true} if the atom is a contradiction
+    \end{description}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Collections}
+    \begin{exampleblock}{How to fold items with structures}
+        \begin{itemize}
+            \item Suppose you want to collect terms $t_1, \ldots, t_N$\ldots
+            \item \ldots using binary strucutures whose functor is $f$
+            \item Two folding strategies: with or without a termination term $T$
+            %
+            \begin{itemize}
+                \item explicit termination: $ f(t_1, f(t_2, \ldots f(t_N, T) \ldots )) $
+                \item implicit termination: $ f(t_1, f(t_2, \ldots f(t_{N-1}, t_N) \ldots )) $
+            \end{itemize}
+            \item A particular collection is therefore determined by:
+            %
+            \begin{itemize}
+                \item the particular choice of $f$
+                \item the particular folding strategy adopted
+                \item the particular termination term $T$, if any
+            \end{itemize}
+        \end{itemize}
+    \end{exampleblock}
+    %
+    \begin{block}{The \kt{Cpllection} type is a sub-type of \kt{Struct}}\centering\itshape
+        Base type for all right-recursive structures aimed at containing an unlimited amount of terms.
+    \end{block}
+    %
+    \begin{description}
+        \item[\kt{unfoldedSequence: Sequence<Term>}] in general, returns a sequence containing the terms $t_1, \ldots, t_N$, plus $T$ in case of explicit folding strategy  
+        \item[\kt{unfoldedList: List<Term>}] in general, returns a list containing the terms $t_1, \ldots, t_N$, plus $T$ in case of explicit folding strategy
+        \item[\kt{unfoldedArray: Array<Term>}] in general, returns an array containing the terms $t_1, \ldots, t_N$, plus $T$ in case of explicit folding strategy
+        \item[\kt{size: Int}] in general, returns $N$
+        \item[\kt{toSequence(): Sequence<Term>}] in general, returns a sequence containing the terms $t_1, \ldots, t_N$
+        \item[\kt{toList(): List<Term>}] in general, returns a list containing the terms $t_1, \ldots, t_N$
+        \item[\kt{toArray(): Array<Term>}] in general, returns an array containing the terms $t_1, \ldots, t_N$ 
+        \item[\kt{unfold(): Sequence<Term>}] in general, returns a sequence containing the terms $f(t1, f(t_2, \ldots)), f(t_2, \ldots), \ldots$, plus $T$ in case of explicit folding strategy, or $f(t_{N-1}, t_N)$ otherwise
+    \end{description}
 
+    \framebreak 
+
+    
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Clauses}
