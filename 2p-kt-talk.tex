@@ -629,15 +629,41 @@
 \section{Logic Unification: the \module{unify} Module}
 
 \begin{frame}[allowframebreaks]{The \kt{Unificator} type}
-    interface + purpose + default functioning
+    \begin{block}{The \kt{Unificator} type}\centering\itshape
+        Matches two terms by finding a suitable substitution to their variables, i.e. the \textbf{most general unifier}
+    \end{block}
+    %
+    \begin{description}
+        \item[\kt{mgu(Term, Term): Substitution}] returns the MGU between two \kt{Terms} if a substitution is found, or a \kt{Fail} object otherwise
+        \item[\kt{match(Term, Term): Boolean}] checks if two \kt{Terms} can be unified
+        \item[\kt{unify(Term, Term): Term?}] tries to unify two \kt{Terms}, possibly returning the unified Term as a result
+        \item[\kt{merge(Substitution, Substitution): Substitution}] merges two \kt{Substitution}s with occurs check enabled 
+    \end{description}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Creating \kt{Unificator}s}
-    available static factories
+    Main \kt{Unificator} static factories:
+    \begin{description}
+        \item[\kt{naive(): Unificator}] unifies terms based on their \kt{Term.equals} method, while numbers are compared by value
+        \item[\kt{strict(): Unificator}] unifies terms based uniquely on their \kt{Term.equals} methods
+        \item[\kt{cached(Unificator, Int): Unificator}] makes another \kt{Unificator} cached, memorizing the most recent \kt{Term}s unified through it (according to the given cache size)
+        \item[\kt{default: Unificator}] returns a \kt{cached}, \kt{strict} unificator
+    \end{description}
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Using \kt{Unificator}s}
-    examples of custom unificators
+\begin{frame}[allowframebreaks, fragile]{Using \kt{Unificator}s}
+    \begin{block}{Writing custom \kt{Unificator}s}\centering\itshape
+        \begin{itemize}
+            \item create an instance of the \kt{AbstractUnificator} type
+            \item override \kt{checkTermsEquality} method
+            %
+            \begin{itemize}
+                \item[!] checking whether the two provided \kt{Term}s are matching
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+    
+    \framebreak
 
     examples with default unificators + infix operators
 \end{frame}
