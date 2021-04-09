@@ -78,6 +78,48 @@
 
 \subsection{\tuprolog{} History}
 
+\begin{frame}[allowframebreaks]{\tuprolog{} History}
+\begin{block}{Foundational features and ideas}
+	\begin{itemize}
+		\item light-weight Prolog system for \alert{distributed} applications and infrastructures \ccite{tuprolog-padl01}
+		\item intentionally designed around a \alert{minimal core}
+		\item to be either statically or dynamically \emph{configured} by loading/unloading \alert{libraries} of predicates
+		\item \tuprolog{} natively supports \alert{multi-paradigm programming} \ccite{tuprolog-scp57}, providing a clean, seamless integration model between Prolog and mainstream object-oriented languages
+	\end{itemize}
+\end{block}
+
+\framebreak
+
+\begin{itemize}
+	\item first release lightweight Prolog solver written in Java \ccite{tuprolog-padl01}
+	\begin{itemize}
+		\item state of the art advancements: OOP-interoperable, and SM-based \ccite{weblp-ia5}
+	\end{itemize}
+	\item extended along many research directions
+	\begin{description}
+		\item[LPaaS] micro-intelligence vision (lightweight logic solvers running on most devices) for IoT and Cloud/Edge computing \ccite{lpaas-tplp18}
+		\item[TuSoW] bringing tuple-based coordination at the edge \ccite{tusow-icccn2019}
+	\end{description}
+	\item foundation of many research projects
+	\begin{description}
+		\item[TuCSoN / ReSpecT] coordination model for Internet applications based on network-aware and mobile agents \ccite{tucson-jaamas2} by means of reactions to communication events \ccite{respect-scp41}
+		\item[MoK] self-organising knowledge-oriented model based on biochemical tuple space \ccite{mok-idc2012}
+		\item[Arg2P] defeasible reasoning and argumentation tool \ccite{arg2p-cilc2020}
+	\end{description}
+\end{itemize}
+
+\framebreak
+
+\begin{itemize}
+	\item[$\rightarrow$] legacy code: making it Prolog-constrained and hard to maintain
+	\item[$\rightarrow$] complete re-design and re-write as Kotlin MPP 
+	\begin{itemize}
+		\item[$\Rightarrow$]  widening the scope to whole LP rather than Prolog alone
+	\end{itemize}
+\end{itemize}
+
+\end{frame}
+
 \section{Motivation}
 
 \begin{frame}{Why \twopkt{}}
