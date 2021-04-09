@@ -975,23 +975,165 @@
 \subsubsection{About \kt{Term}s' Design}
 
 \begin{frame}[allowframebreaks]{Identity vs. Equalities}
-    methods + examples
+    \begin{block}{Terms Identity}
+        Two terms are \alert{identical} iff:
+        %
+        \begin{itemize}
+            \item both are \kt{Integer}s having the same value
+            \item both are \kt{Real}s having the same value
+            \item both are \kt{Atom}s having the same value
+            \item both are \kt{Var}iables having the same \alert{complete} name
+            \item both are \kt{Struct}ures having the same
+            %
+            \begin{itemize}
+                \item functor, and arity
+                \item their arguments are pair-wise \alert{identical}
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+    %
+    \begin{itemize}
+        \item Terms' \alert{identity} is tested via \kt{Term.equals(Any?)}
+        \item or via \kt{Term.equals(Term, \alert{true})}
+    \end{itemize}
+    
+    \framebreak
+    
+    \begin{block}{Terms Equality}
+        Two terms are \alert{equal} iff:
+        %
+        \begin{itemize}
+            \item both are \kt{Integer}s having the same value
+            \item both are \kt{Real}s having the same value
+            \item both are \kt{Atom}s having the same value
+            \item both are \kt{Var}iables having the same \alert{simple} name
+            \item both are \kt{Struct}ures having the same
+            %
+            \begin{itemize}
+                \item functor, and arity
+                \item their arguments are pair-wise \alert{equal}
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+    %
+    \begin{itemize}
+        \item Terms' \alert{equality} is tested via \kt{Term.equals(Term, \alert{false})}
+    \end{itemize}
+    
+    \framebreak
+    
+    \begin{block}{Terms Structural Equality}
+        Two terms are \alert{structurally equal} iff:
+        %
+        \begin{itemize}
+            \item both are \kt{Numbers}s having the same value
+            \item both are \kt{Atom}s having the same value
+            \item both are \kt{Var}iables
+            \item both are \kt{Struct}ures having the same
+            %
+            \begin{itemize}
+                \item functor, and arity
+                \item their arguments are pair-wise \alert{structurally equal}
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+    %
+    \begin{itemize}
+        \item Terms' \alert{structural equality} is tested via \kt{Term.structurallyEquals(Term)}
+    \end{itemize}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Total Ordering of Terms}
-    term comparers
+    \begin{block}{Overview}
+        \begin{itemize}
+            \item Terms are totally ordered
+            \item Terms are comparable according to the default ordering
+            \item Interface \kt{TermComparator} aims to compare terms according to some custom ordering
+            \item \kt{TermComparator.DefaultComparator} implements the default ordering of terms
+            \item \kt{Term.compareTo} exploits \kt{DefaultComparator} by default
+        \end{itemize}
+    \end{block}
+    
+    \begin{exampleblock}{Default ordering of terms}
+        \[ \kt{Var} < \kt{Real} < \kt{Integer} < \kt{Atom} < \kt{Struct} \]
+        %
+        \begin{itemize}
+            \item variables are lexicographically ordered by complete name
+            \item numbers are ascendantly ordered by value
+            \item atoms are lexicographically ordered by value
+            \item structures are ordered by 
+            %
+            \begin{enumerate}
+                \item by arity, ascendantly
+                \item then by functor, lexicographically
+                \item then by $1^{st}$ argument
+                \item then by $2^{nd}$ argument
+                \item[\vdots]
+            \end{enumerate}
+        \end{itemize}
+    \end{exampleblock}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Terms' Immutability}
-    consequences of terms immutability
-
-    efficient cloning of lists
+    
+    \begin{alertblock}{Takeaway}\centering
+        All terms are \alert{immutable}
+    \end{alertblock}
+    
+    \begin{block}{Consequences}
+        \begin{itemize}
+            \item Terms cannot be modified
+            %
+            \begin{itemize}
+                \item[$\rightarrow$] terms are \alert{side-effect free}
+            \end{itemize}
+            \item They must always be re-created from scratch, upon edit
+            \item Editing a term implies creating a copy of that term
+            \item Thus, many operations imply term copying:
+            %
+            \begin{itemize}
+                \item assigning a value to a variable
+                \item applying a substitution to a term
+                \item altering some structure's arguments/functor
+                \item refreshing some term's variables
+                \item[\ldots]
+            \end{itemize}
+            
+            \smallskip
+            
+            \item[!] Cloning a \alert{deep} term may be time consuming
+        \end{itemize}
+    \end{block}
+    
+    \begin{exampleblock}{About Cloning Lists}
+        \begin{itemize}
+            \item Lists are very likely to become very deep
+            \item[$\rightarrow$] List cloning is made lazy to save computational resources
+        \end{itemize}
+    \end{exampleblock}
 \end{frame}
 
 \subsection{\kt{Var}iables and \kt{Scope}s}
 
 \begin{frame}[allowframebreaks]{Conventions for \kt{Var}iables}
-    impossibility to create 2 equal variables
+    \begin{block}{About Variables Creation}
+        \begin{itemize}
+            \item Variables are always created \alert{different}
+            \item There is no way to create two equals variables
+            %
+            \begin{itemize}
+                \item[!] this is deliberate
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+    
+    \begin{itemize}
+        \item[$\rightarrow$] To create a term where the same variable occurs more than once\ldots
+        %
+        \begin{itemize}
+            \item \ldots a reference to the variable should be locally saved somehow
+        \end{itemize}
+    \end{itemize}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The need for \kt{Scope}s}
