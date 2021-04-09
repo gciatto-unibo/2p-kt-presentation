@@ -602,7 +602,7 @@
     \begin{exampleblock}{How to fold items with structures}
         \begin{itemize}
             \item Suppose you want to collect terms $t_1, \ldots, t_N$\ldots
-            \item \ldots using binary strucutures whose functor is $f$
+            \item \ldots using binary structures whose functor is $f$
             \item Two folding strategies: with or without a termination term $T$
             %
             \begin{itemize}
@@ -761,7 +761,42 @@
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Clauses}
+    \begin{block}{The \kt{Clause} type is a sub-type of \kt{Struct}}\centering
+        Base type for all structures aimed at representing Horn clauses.
+        They all use \pl{':-'} as functor and carry either 1 or 2 arguments, named \emph{head} and \emph{body}.
+    \end{block}
+    %
+    \begin{alertblock}{About clauses}
+        \item There are three sub-types of \kt{Clause}:
+        %
+        \begin{itemize}
+            \item \alert{\kt{Rule}}, capturing all structures of the form \pl{':-'($h$, $b$)} where $h$ is a \kt{Struct}ure and $b$ is a term of any sort
+            %
+            \begin{itemize}
+                \item \alert{\kt{Fact}}, capturing all rules of the form \pl{':-'($h$, true)}, where $b$ $\equiv$ \pl{true}
+            \end{itemize}
+            \item \alert{\kt{Directives}}, capturing all structures of the form \pl{':-'($b$)} where $b$ is a term of any sort
+        \end{itemize}
 
+        \item Logic clauses are represented as strings using the following notations:
+        %
+        \begin{itemize}
+            \item \pl{$h$ :- $b_1$, \ldots, $b_N$.} in case of rules where $b$ $\equiv$ \pl{($b_1$, \ldots, $b_N$)}
+            \item \pl{$h$ :- $b$.} in case of rules
+            \item \pl{$h$.} in case of facts
+            \item \pl{:- $b_1$, \ldots, $b_N$.} in case of directives where $b$ $\equiv$ \pl{($b_1$, \ldots, $b_N$)}
+            \item \pl{:- $b$.} in case of directives
+        \end{itemize}
+    \end{alertblock}
+    %
+    \begin{description}
+        \item[\kt{head: Struct?}] returns $h$ for rules, or \kt{null} for directives
+        \item[\kt{body: Term}] returns $b$
+        \item[\kt{isRule: Boolean}] returns \kt{true} if the clause is not a directive
+        \item[\kt{isDirective: Boolean}] returns \kt{true} if the clause is a directive
+        \item[\kt{isFact: Boolean}] returns \kt{true} if the clause is a fact
+        \item[\kt{isWellFormed: Boolean}] returns \kt{true} iff no sub-term in $b$ which is interpretable as a logic goal is a \kt{Var}iable
+    \end{description}
 \end{frame}
 
 \subsubsection{Creating \kt{Term}s}
