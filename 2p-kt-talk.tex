@@ -14,18 +14,22 @@
 % \subtitle{Extended Abstract}
 %
 % same authors order of the presented paper
-\author[Ciatto G.]{
-    \emph{Giovanni Ciatto}$^{*}$ % empth the presenting author
+\author[Ciatto, Rizzato]{
+    \emph{Giovanni Ciatto}$^{1}$ % empth the presenting author
+    \and
+    Lorenzo Rizzato$^{2}$
 }
 %
 \institute[UniBo]{
-    $^{*}$Dipartimento di Informatica -- Scienza e Ingegneria (DISI)
+    $^{1}$ Dipartimento di Informatica -- Scienza e Ingegneria (DISI)
     \\
     \textsc{Alma Mater Studiorum} -- Università di Bologna
     \\
     \texttt{
         giovanni.ciatto@unibo.it % emph the presenting author's email
     }
+    \and
+    $^{2}$\texttt{lorenzo.rizzato@studio.unibo.it}
 }
 %
 \date[A.Y. 20-21]{
@@ -529,7 +533,7 @@
     \framebreak
 
     \begin{block}{The \kt{Var} type is a sub-type of \kt{Term}}\centering
-        Type for all variable terms, representing \alert{named} placeholders for other terms
+        Type for all variable terms, representing \alert{named} placeholders for other terms.
     \end{block}
     %
     \begin{alertblock}{About \kt{Var}iable names}
@@ -546,6 +550,7 @@
                 \item[$Name$] is the variable's \alert{simple} name
                 \item[$Identifier$] is the variable's \alert{identifier}, i.e. an im\-ple\-men\-ta\-tion-spe\-ci\-fic string aimed at distinguising \kt{Var}iables having the same simple name
             \end{description}
+            \item Variables whose simple name is \pl{'\_'} are called \alert{anonymous}
         \end{itemize}
     \end{alertblock}
     %
@@ -767,25 +772,27 @@
     \end{block}
     %
     \begin{alertblock}{About clauses}
-        \item There are three sub-types of \kt{Clause}:
-        %
         \begin{itemize}
-            \item \alert{\kt{Rule}}, capturing all structures of the form \pl{':-'($h$, $b$)} where $h$ is a \kt{Struct}ure and $b$ is a term of any sort
+            \item There are three sub-types of \kt{Clause}:
             %
             \begin{itemize}
-                \item \alert{\kt{Fact}}, capturing all rules of the form \pl{':-'($h$, true)}, where $b$ $\equiv$ \pl{true}
+                \item \alert{\kt{Rule}}, capturing all structures of the form \pl{':-'($h$, $b$)} where $h$ is a \kt{Struct}ure and $b$ is a term of any sort
+                %
+                \begin{itemize}
+                    \item \alert{\kt{Fact}}, capturing all rules of the form \pl{':-'($h$, true)}, where $b$ $\equiv$ \pl{true}
+                \end{itemize}
+                \item \alert{\kt{Directives}}, capturing all structures of the form \pl{':-'($b$)} where $b$ is a term of any sort
             \end{itemize}
-            \item \alert{\kt{Directives}}, capturing all structures of the form \pl{':-'($b$)} where $b$ is a term of any sort
-        \end{itemize}
 
-        \item Logic clauses are represented as strings using the following notations:
-        %
-        \begin{itemize}
-            \item \pl{$h$ :- $b_1$, \ldots, $b_N$.} in case of rules where $b$ $\equiv$ \pl{($b_1$, \ldots, $b_N$)}
-            \item \pl{$h$ :- $b$.} in case of rules
-            \item \pl{$h$.} in case of facts
-            \item \pl{:- $b_1$, \ldots, $b_N$.} in case of directives where $b$ $\equiv$ \pl{($b_1$, \ldots, $b_N$)}
-            \item \pl{:- $b$.} in case of directives
+            \item Logic clauses are represented as strings using the following notations:
+            %
+            \begin{itemize}
+                \item \pl{$h$ :- $b_1$, \ldots, $b_N$.} in case of rules where $b$ $\equiv$ \pl{($b_1$, \ldots, $b_N$)}
+                \item \pl{$h$ :- $b$.} in case of rules
+                \item \pl{$h$.} in case of facts
+                \item \pl{:- $b_1$, \ldots, $b_N$.} in case of directives where $b$ $\equiv$ \pl{($b_1$, \ldots, $b_N$)}
+                \item \pl{:- $b$.} in case of directives
+            \end{itemize}
         \end{itemize}
     \end{alertblock}
     %
@@ -802,17 +809,167 @@
 \subsubsection{Creating \kt{Term}s}
 
 \begin{frame}[allowframebreaks]{Creating \kt{Term}s via Static Factories}
-    \ktSnippet{./snippets/TermsCreation.kt}
-    \ktSnippet[\footnotesize]{./snippets/TermsCreation.kt}
-    \ktSnippet[\tiny]{./snippets/TermsCreation.kt}
+
+    Conventions on terms/clause creation in \twopkt:
+    %
+    \bigskip
+    %
+    \begin{itemize}
+        \item Terms and clauses can be created via \alert{static factory methods} on interfaces
+        %
+        \ktSnippet{./snippets/TermsCreation.kt}
+
+        \framebreak
+
+        \item Factory methods always instantiate the most specific type possible:
+        %
+        \ktSnippet{./snippets/SpecificTermsCreation.kt}
+    \end{itemize}
+
+    \framebreak
+
+    \begin{block}{Creating \kt{Integer}s}
+        \begin{description}
+            \item[\kt{Integer.of(\meta{Kotlin Integer Type})}] creates an \kt{Integer} out of a Kotlin integer
+            \item[\kt{Integer.of(BigInteger)}] creates an \kt{Integer} out of a \kt{BigInteger}
+            \item[\kt{Integer.of(String,Int)}] parses the string as an \kt{Integer} with the provided base
+            \item[\kt{Integer.ZERO}] constant for the \kt{Integer} equal to 0
+            \item[\kt{Integer.ONE}] constant for the \kt{Integer} equal to 1
+            \item[\kt{Integer.MINUS\_ONE}] constant for the \kt{Integer} equal to -1
+        \end{description}
+    \end{block}
+
+    \framebreak
+
+    \begin{block}{Creating \kt{Real}s}
+        \begin{description}
+            \item[\kt{Real.of(\meta{Kotlin Floating Type})}] creates a \kt{Real} out of a Kotlin float
+            \item[\kt{Real.of(BigInteger)}] creates a \kt{Real} out of a \kt{BigDecimal}
+            \item[\kt{Real.of(String)}] parses the string as a \kt{Real}
+            \item[\kt{Real.ZERO}] constant for the \kt{Real} equal to 0.0
+            \item[\kt{Real.ONE}] constant for the \kt{Real} equal to 1.0
+            \item[\kt{Real.MINUS\_ONE}] constant for the \kt{Real} equal to -1.0
+            \item[\kt{Real.ONE\_HALF}] constant for the \kt{Real} equal to 0.5
+            \item[\kt{Real.ONE\_TENTH}] constant for the \kt{Real} equal to 0.1
+        \end{description}
+    \end{block}
+
+    \framebreak
+
+    \begin{block}{Creating \kt{Atom}s}
+        \begin{description}
+            \item[\kt{Atom.of(String)}] creates an \kt{Atom} out of a string
+            %
+            \begin{itemize}\small
+                \item returns a \kt{Truth} if \kt{"true"}, \kt{"false"}, or \kt{"fail"} is passed
+                \item returns an \kt{EmptyList} if \kt{"[]"} is passed
+                \item returns an \kt{EmptySet} if \kt{"{}"} is passed
+            \end{itemize}
+        \end{description}
+    \end{block}
+
+    \framebreak
+
+    \begin{block}{Creating \kt{Var}iables}
+        \begin{description}
+            \item[\kt{Var.of(String)}] creates an \kt{Var}iable out of a string
+            %
+            \begin{itemize}\small
+                \item the string is considered as the \kt{Var}iable's \alert{simple} name
+                \item[!] there is \alert{no way} to create a \kt{Var}iable with a particular \alert{complete} name
+            \end{itemize}
+
+            \item[\kt{Var.anonymous()}] creates an anonymous \kt{Var}iable
+        \end{description}
+    \end{block}
+
+    \framebreak
+
+    \begin{block}{Creating \kt{Struct}ures}
+        \begin{description}
+            \item[\kt{Struct.of(String,\meta{Container})}] creates an \kt{Struct}ure with the given functor and arguments
+            %
+            \begin{itemize}\small
+                \item where \kt{\meta{Container}} may be an iterable, a sequence, or a varargs of \kt{Term}s
+            \end{itemize}
+
+            \item[\kt{Struct.template(String,Int)}] creates an \kt{Struct}ure with the given functor and arity, whose arguments are all anonymous variables
+
+            \item[\kt{Struct.fold(String,\meta{Container},Term?)}] folds the terms in \kt{\meta{Container}} using the provided functor recursively, adopting either an explicit or implicit folding strategy depending on whether the last argument is null or not
+        \end{description}
+    \end{block}
+
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Creating \kt{Collections}s via Static Factories}
-    methods + examples
+\begin{frame}[allowframebreaks]{Creating \kt{Collection}s via Static Factories}
+    \begin{block}{Creating \kt{List}s}
+        \begin{description}
+            \item[\kt{List.empty()}] creates an \kt{EmptyList}
+
+            \item[\kt{Empty.list()}] creates an \kt{EmptyList}
+
+            \item[\kt{List.of(\meta{Container})}] creates a \kt{[]}-terminated \kt{List} containing all the terms in \kt{\meta{Container}}
+            %
+            \begin{itemize}\small
+                \item where \kt{\meta{Container}} may be an iterable, a sequence, or a varargs of \kt{Term}s
+            \end{itemize}
+
+            \item[\kt{List.from(\meta{Container},Term?)}] creates a \kt{List} containing all the terms in \kt{\meta{Container}} and terminated by either the last argument, if it is non-null, or be the last term in \kt{\meta{Container}}, otherwise
+
+            \item[\kt{Cons.singleton(Term)}] creates \kt{List} containing just one item
+
+            \item[\kt{Cons.of(Term,Term)}] creates a term of the form \kt{'.'($t_1$, $t_2$)} where $t_1,t_2$ are the first and second arguments, respectively
+        \end{description}
+    \end{block}
+
+    \framebreak
+
+    \begin{block}{Creating \kt{Tuple}s}
+        \begin{description}
+            \item[\kt{Tuple.of(Term,Term,\meta{Container})}] creates a \kt{Tuple} containing at least 2 terms, other than the ones in \kt{\meta{Container}}
+            %
+            \begin{itemize}\small
+                \item where \kt{\meta{Container}} may be a (possibly empty) iterable, a sequence, or a varargs of \kt{Term}s
+            \end{itemize}
+        \end{description}
+    \end{block}
+
+    \framebreak
+
+    \begin{block}{Creating \kt{Set}s}
+        \begin{description}
+            \item[\kt{Set.empty()}] creates an \kt{EmptySet}
+
+            \item[\kt{Empty.set()}] creates an \kt{EmptySet}
+
+            \item[\kt{Set.of(\meta{Container})}] creates a \kt{Set} containing all the terms in \kt{\meta{Container}}
+            %
+            \begin{itemize}\small
+                \item where \kt{\meta{Container}} may be an iterable, a sequence, or a varargs of \kt{Term}s
+            \end{itemize}
+        \end{description}
+    \end{block}
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Creating \kt{Clauses}s via Static Factories}
-    methods + examples
+\begin{frame}[allowframebreaks]{Creating \kt{Clause}s via Static Factories}
+    \begin{block}{Creating \kt{Clause}s}
+        \begin{description}
+            \item[\kt{Clause.empty(Struct?,\meta{Container})}] creates either a \kt{Directive} or a \kt{Rule} depending on whether the provide \kt{Struct} is \kt{null} or not. In both cases items in \kt{\meta{Container}} compose the body of the clause, whereas the \kt{Struct} is an optional head
+            %
+            \begin{itemize}\small
+                \item where \kt{\meta{Container}} may be an iterable, a sequence, or a varargs of \kt{Term}s
+                \item[!] in any case, if \kt{\meta{Container}} contains at least 2 terms, a \kt{Tuple} is created behind the scenes
+            \end{itemize}
+
+            \item[\kt{Rule.of(Struct,\meta{Container})}] creates a \kt{Rule} using provided \kt{Struct} as head and the \emph{conjunction} of terms in \kt{\meta{Container}} as body
+            %
+            \begin{itemize}\small
+                \item[!] returns a \kt{Fact} is \kt{\meta{Container}} is empty
+            \end{itemize}
+
+            \item[\kt{Fact.of(Struct)}] creates a \kt{Fact} given the \kt{Struct} acting as head
+        \end{description}
+    \end{block}
 \end{frame}
 
 \subsubsection{About \kt{Term}s' Design}
