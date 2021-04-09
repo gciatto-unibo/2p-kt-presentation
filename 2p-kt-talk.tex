@@ -760,7 +760,23 @@
     \end{description}
 \end{frame}
 
-\begin{frame}[allowframebreaks, fragile]{Using \kt{Unificator}s}
+\begin{frame}[allowframebreaks, fragile]{Using \kt{Unificator}s}    
+    Successful unification with \kt{default}:
+    %
+    \ktSnippet[\tiny]{./snippets/DefaultUnificator.kt}
+    %
+    Successful unification with \kt{default} (no bindings):
+    %
+    \ktSnippet[\tiny]{./snippets/DefaultUnificatorEmpty.kt}
+    
+    \framebreak
+
+    Unification with \kt{cached}:
+    %
+    \ktSnippet{./snippets/CachedUnificator.kt}
+
+    \framebreak
+
     \begin{block}{Writing custom \kt{Unificator}s}\centering\itshape
         \begin{itemize}
             \item create an instance of the \kt{AbstractUnificator} type
@@ -773,14 +789,24 @@
     \end{block}
 
     \framebreak
-    %
-    e.g. unifying numbers by their absolute value
+    
+    E.g. unifying numbers by their absolute value:
     %
     \ktSnippet[\tiny]{./snippets/CustomUnificator.kt}
-    %
+    
     \framebreak
 
-    examples with default unificators + infix operators
+    \begin{block}{Infix operators: \kt{unifyWith}, \kt{matches}, \kt{mguWith}}\centering\itshape
+        \begin{itemize}
+            \item defined in \kt{Unificator}'s companion object
+            \item built as functions with receivers
+            \item enable streamlined, DSL-like unification
+        \end{itemize}
+    \end{block}
+    %
+    \ktSnippet[\tiny]{./snippets/UnificatorInfix.kt}
+
+    % examples with default unificators + infix operators
 \end{frame}
 
 \section{Storing and Indexing Clauses: the \module{theory} Module}
