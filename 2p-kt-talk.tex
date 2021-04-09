@@ -1198,18 +1198,86 @@
 
 \section{Logic Unification: the \module{unify} Module}
 
+\subsection{The \kt{Unificator} type}
+
 \begin{frame}[allowframebreaks]{The \kt{Unificator} type}
-    interface + purpose + default functioning
+    \begin{block}{The \kt{Unificator} type}\centering\itshape
+        Matches two terms by finding a suitable substitution to their variables, i.e. the \textbf{most general unifier}
+    \end{block}
+    %
+    \begin{description}
+        \item[\kt{mgu(Term, Term): Substitution}] returns the MGU between two \kt{Terms} if a substitution is found, or a \kt{Fail} object otherwise
+        \item[\kt{match(Term, Term): Boolean}] checks if two \kt{Terms} can be unified
+        \item[\kt{unify(Term, Term): Term?}] tries to unify two \kt{Terms}, possibly returning the unified Term as a result
+        \item[\kt{merge(Substitution, Substitution): Substitution}] merges two \kt{Substitution}s with occurs check enabled 
+    \end{description}
 \end{frame}
+
+\subsection{Default \kt{Unificator}s}
 
 \begin{frame}[allowframebreaks]{Creating \kt{Unificator}s}
-    available static factories
+    Main \kt{Unificator} static factories:
+    \begin{description}
+        \item[\kt{naive(): Unificator}] unifies terms based on their \kt{Term.equals} method, while numbers are compared by value
+        \item[\kt{strict(): Unificator}] unifies terms based uniquely on their \kt{Term.equals} methods
+        \item[\kt{cached(Unificator, Int): Unificator}] makes another \kt{Unificator} cached, memorizing the most recent \kt{Term}s unified through it (according to the given cache size)
+        \item[\kt{default: Unificator}] returns a \kt{cached}, \kt{strict} unificator
+    \end{description}
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Using \kt{Unificator}s}
-    examples of custom unificators
+\begin{frame}[allowframebreaks, fragile]{Using \kt{Unificator}s}    
+    Successful unification with \kt{default}:
+    %
+    \ktSnippet[\tiny]{./snippets/DefaultUnificator.kt}
+    %
+    Successful unification with \kt{default} (no bindings):
+    %
+    \ktSnippet[\tiny]{./snippets/DefaultUnificatorEmpty.kt}
+    
+    \framebreak
 
-    examples with default unificators + infix operators
+    Unification with \kt{cached}:
+    %
+    \ktSnippet{./snippets/CachedUnificator.kt}
+
+
+    % examples with default unificators + infix operators
+\end{frame}
+
+\subsection{Custom \kt{Unificator}s}
+
+\begin{frame}[allowframebreaks, fragile]{Custom \kt{Unificator}s}
+    \begin{block}{Writing custom \kt{Unificator}s}\centering\itshape
+        \begin{itemize}
+            \item create an instance of the \kt{AbstractUnificator} type
+            \item override \kt{checkTermsEquality} method
+            %
+            \begin{itemize}
+                \item[!] checking whether the two provided \kt{Term}s are matching
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+
+    \framebreak
+    
+    E.g. unifying numbers by their absolute value:
+    %
+    \ktSnippet[\tiny]{./snippets/CustomUnificator.kt}
+    
+\end{frame}
+
+\subsection{Infix operators}
+
+\begin{frame}[allowframebreaks, fragile]{Infix operators}
+    \begin{block}{Infix operators: \kt{unifyWith}, \kt{matches}, \kt{mguWith}}\centering\itshape
+        \begin{itemize}
+            \item defined in \kt{Unificator}'s companion object
+            \item built as functions with receivers
+            \item enable streamlined, DSL-like unification
+        \end{itemize}
+    \end{block}
+    %
+    \ktSnippet[\tiny]{./snippets/UnificatorInfix.kt}
 \end{frame}
 
 \section{Storing and Indexing Clauses: the \module{theory} Module}
