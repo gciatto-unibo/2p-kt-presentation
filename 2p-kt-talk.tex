@@ -344,7 +344,7 @@
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{Term} type}
-    \begin{block}{The \kt{Term} type}\centering\itshape
+    \begin{block}{The \kt{Term} type}\centering
         Base type for all terms
     \end{block}
     %
@@ -364,7 +364,7 @@
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Main Sorts of \kt{Term}s}
-    \begin{block}{The \kt{Constant} type is a sub-type of \kt{Term}}\centering\itshape
+    \begin{block}{The \kt{Constant} type is a sub-type of \kt{Term}}\centering
         Base type for all constant terms (namely, strings and numbers)
     \end{block}
     %
@@ -374,7 +374,7 @@
 
     \framebreak
 
-    \begin{block}{The \kt{Numeric} type is a sub-type of \kt{Constant}}\centering\itshape
+    \begin{block}{The \kt{Numeric} type is a sub-type of \kt{Constant}}\centering
         Base type for all numeric terms (namely, reals and integers)
     \end{block}
     %
@@ -396,7 +396,7 @@
 
     \framebreak
 
-    \begin{block}{The \kt{Integer} type is a sub-type of \kt{Numeric}}\centering\itshape
+    \begin{block}{The \kt{Integer} type is a sub-type of \kt{Numeric}}\centering
         Type for all terms representing an integer number
     \end{block}
     %
@@ -411,7 +411,7 @@
 
     \framebreak
 
-    \begin{block}{The \kt{Real} type is a sub-type of \kt{Numeric}}\centering\itshape
+    \begin{block}{The \kt{Real} type is a sub-type of \kt{Numeric}}\centering
         Type for all terms representing a real number
     \end{block}
     %
@@ -426,7 +426,7 @@
 
     \framebreak
 
-    \begin{block}{The \kt{Struct} type is a sub-type of \kt{Term}}\centering\itshape
+    \begin{block}{The \kt{Struct} type is a sub-type of \kt{Term}}\centering
         Type for all terms of the form $f(t_1, \ldots, t_N)$, i.e. composed by a \alert{funtor} string $f$ and $N$ terms $t_1, \ldots, t_N$ called \alert{arguments}, where $N \geq 0$ is called \alert{arity}
     \end{block}
     %
@@ -471,7 +471,7 @@
 
     \framebreak
 
-    \begin{block}{The \kt{Atom} type is a sub-type of both \kt{Struct} and \kt{Constant}}\centering\itshape
+    \begin{block}{The \kt{Atom} type is a sub-type of both \kt{Struct} and \kt{Constant}}\centering
         Type for all constant 0-ary structures (i.e., with no arguments), representing strings
     \end{block}
     %
@@ -485,7 +485,7 @@
 
     \framebreak
 
-    \begin{block}{The \kt{Var} type is a sub-type of \kt{Term}}\centering\itshape
+    \begin{block}{The \kt{Var} type is a sub-type of \kt{Term}}\centering
         Type for all variable terms, representing \alert{named} placeholders for other terms
     \end{block}
     %
@@ -529,9 +529,9 @@
         \item[\kt{nameTerm: Term}] returns $f$, shortcut for \kt{get(0)}
         \item[\kt{indicatedName: String?}] if $f$ is an atom, returns \kt{$f$.value}, otherwise \kt{null} 
         \item[\kt{arityTerm: Term}] returns $n$, shortcut for \kt{get(1)}
-        \item[\kt{indicatedArity: Int?}] if $a$ is a non-negative integer, returns \kt{$n$.intValue.toInt()}, otherwise \kt{null}  
+        \item[\kt{indicatedArity: Int?}] if $n$ is a non-negative integer, returns \kt{$n$.intValue.toInt()}, otherwise \kt{null}  
         \item[\kt{isWellFormed: Boolean}] returns \kt{true} if the indicator is well formed
-        \item[\kt{functor: String}] must return \kt{'/'}
+        \item[\kt{functor: String}] must return \kt{"a"}
         \item[\kt{arity: String}] must return 2
     \end{description}
 
@@ -571,7 +571,7 @@
         \end{itemize}
     \end{exampleblock}
     %
-    \begin{block}{The \kt{Cpllection} type is a sub-type of \kt{Struct}}\centering\itshape
+    \begin{block}{The \kt{Cpllection} type is a sub-type of \kt{Struct}}\centering
         Base type for all right-recursive structures aimed at containing an unlimited amount of terms.
     \end{block}
     %
@@ -598,7 +598,9 @@
 \subsubsection{Creating \kt{Term}s}
 
 \begin{frame}[allowframebreaks]{Creating \kt{Term}s via Static Factories}
-    methods + examples
+    \ktSnippet{./snippets/TermsCreation.kt}
+    \ktSnippet[\footnotesize]{./snippets/TermsCreation.kt}
+    \ktSnippet[\tiny]{./snippets/TermsCreation.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Creating \kt{Collections}s via Static Factories}
