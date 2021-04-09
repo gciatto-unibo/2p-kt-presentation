@@ -8,7 +8,7 @@
 \usepackage{2p-kt-talk}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title[\twopkt]{
-    \twopkt{}: A Kotlin Multi-Platform ecosystem for Symbolic AI 
+    \twopkt{}: A Kotlin Multi-Platform ecosystem for Symbolic AI
 }
 %
 % \subtitle{Extended Abstract}
@@ -112,7 +112,7 @@
 
 \begin{itemize}
 	\item[$\rightarrow$] legacy code: making it Prolog-constrained and hard to maintain
-	\item[$\rightarrow$] complete re-design and re-write as Kotlin MPP 
+	\item[$\rightarrow$] complete re-design and re-write as Kotlin MPP
 	\begin{itemize}
 		\item[$\Rightarrow$]  widening the scope to whole LP rather than Prolog alone
 	\end{itemize}
@@ -138,7 +138,7 @@
         \vfill
         \item Making each aspect of LP individually usable \emph{per se}
         \vfill
-        \item Reaching widest possible platform support 
+        \item Reaching widest possible platform support
         \vfill
         \item Blending LP with OOP and FP
         \vfill
@@ -191,7 +191,7 @@
             \item Kotlin libraries can be exploited in bare JavaScript projects
         \end{itemize}
 
-        \vfill 
+        \vfill
 
         \item Clean and practical framework and tool-kit available
     \end{itemize}
@@ -213,7 +213,7 @@
         %
         \begin{itemize}
             \item[$\rightarrow$] \alert{onion-like} architectural design
-        \end{itemize} 
+        \end{itemize}
 
         \medskip
 
@@ -221,7 +221,7 @@
         %
         \begin{itemize}
             \item 1 module $\leftrightarrow$ 1 jar, on the JVM
-        \end{itemize} 
+        \end{itemize}
 
         \medskip
 
@@ -258,19 +258,19 @@
         \begin{itemize}\small
             \item[eg] mutable/immutable and ordered/unordered \alert{collections of clauses} + \alert{logic theories}
         \end{itemize}
-    
+
         \medskip
-    
+
         \item[\module{solve}] provides generic support for \alert{resolution-related} stuff
         %
         \begin{itemize}\small
-            \item[!] agnostic w.r.t. inference procedures \& resolution strategy 
+            \item[!] agnostic w.r.t. inference procedures \& resolution strategy
             \item[eg] solvers, solutions, libraries, errors, flags, channels, etc.
         \end{itemize}
 
         \framebreak
-    
-        \item[\module{solve-*}] provide specific implementation for inference procedures \& \alert{resolution} strategy 
+
+        \item[\module{solve-*}] provide specific implementation for inference procedures \& \alert{resolution} strategy
         %
         \begin{description}\small
             \item[\module{solve-classic}] SLD NF (Prolog-like) resolution \cite{Robinson65SLD,Clark77} based on Piancastelli's state machine \cite{tuprolog-sac08} (\alert{Prolog ISO \cite{prologISO-pt1} Compliant})
@@ -283,7 +283,7 @@
         %
         \begin{description}\small
             \item[\module{parser-core}] supports parsing terms
-            \item[\module{parser-theory}] supports parsing knowledge bases and streams of clauses 
+            \item[\module{parser-theory}] supports parsing knowledge bases and streams of clauses
             \item[\module{parser-jvm/js}] platform-specific implementations, based on ANTLR \cite{Parr2013} \hint{(not to be used directly!)}
         \end{description}
 
@@ -294,8 +294,8 @@
         \begin{description}\small
             \item[\module{serialization-core}] (de)serialization of terms and clauses
             \item[\module{serialization-theory}] (de)serialization of knowledge bases and theories
-        \end{description}      
-        
+        \end{description}
+
         \medskip
 
         \item[\module{dsl-*}] incrementally support the Kotlin-based DSL for LP described in~\cite{kotlinDSl4PrologWoa2020}, aimed at blending LP, FP, and OOP
@@ -305,20 +305,20 @@
             \item[\module{dsl-unify}] extension of the DSL incuding \module{unify} facilities
             \item[\module{dsl-theory}] extension of the DSL incuding \module{theory} facilities
             \item[\module{dsl-solve}] extension of the DSL incuding \module{solve} facilities
-        \end{description}   
+        \end{description}
 
         \framebreak
 
         \item[\module{repl}] command-line interface for Prolog
-        
+
         \medskip
 
         \item[\module{ide}] JavaFX-based GUI for Prolog (customisable)
-        
+
         \medskip
 
         \item[\module{io-lib}] Prolog ISO compliant Prolog library for I/O
-        
+
         \medskip
 
         \item[\module{oop-lib}] Prolog library for OOP interoperability
@@ -326,7 +326,7 @@
         \begin{itemize}\small
             \item essentially, lets Kotlin's and Java's OOP facilities be exploited from LP
             \item only JVM is currently supported, due to limitations in Kotlin's reflection API
-        \end{itemize} 
+        \end{itemize}
 
     \end{description}
 \end{frame}
@@ -354,11 +354,11 @@
 
     \begin{block}{Visitors}\center\itshape\small
         Functional objects aimed at easing type-dependent algorithms writing
-    \end{block}   
-    
+    \end{block}
+
     \begin{block}{Exceptions}\center\itshape\small
         Base exception types extensively exploited in all whole \twopkt{} project
-    \end{block} 
+    \end{block}
 \end{frame}
 
 \subsection{The \kt{Term} Hierarchy}
@@ -395,11 +395,11 @@
         \item[\kt{as\meta{SubType}(): \meta{SubType}}] casts the current term to \kt{\meta{SubType}} or returns null if not possible
         \item[\kt{castTo\meta{SubType}(): \meta{SubType}}] casts the current term to \kt{\meta{SubType}} or throws an exception if not possible
         \item[\kt{freshCopy(): Term}] returns a deep copy of the current term where all \kt{Var}iables have been refreshed
-        \item[\kt{apply(Substitution): Term}] applies the provided \kt{Substitution} to the current \kt{Term} or throws a \kt{SubstitutionApplicationException} in case a failed \kt{Substitution} has been provided 
+        \item[\kt{apply(Substitution): Term}] applies the provided \kt{Substitution} to the current \kt{Term} or throws a \kt{SubstitutionApplicationException} in case a failed \kt{Substitution} has been provided
         \item[\kt{equals(Term, Boolean): Boolean}] checks whether the provided \kt{Term} is deeply equal to the current one, letting the caller choose whether to compare variables by simple or by complete name
         \item[\kt{equals(Any?): Boolean}] checks whether the provides object is a \kt{Term} is deeply equal to the current one, comparing variables by complete names
         \item[\kt{structurallyEquals(Term): Boolean}] checks whether the provided \kt{Term} is deeply equal to the current one, in such a way that all variables are considered equal
-        \item[\kt{accept<T>(TermVisitor<T>): T}] returns the object produced by letting the provided \kt{TermVisitor} visit the current \kt{Term} 
+        \item[\kt{accept<T>(TermVisitor<T>): T}] returns the object produced by letting the provided \kt{TermVisitor} visit the current \kt{Term}
         \item[\kt{compareTo(Term): Int}] compares the current \kt{Term} with the provided one, according to the total ordering on \kt{Term}s
         \item[\kt{toString(): String}] returns a representation of the current \kt{Term} for debugging purposes
     \end{description}
@@ -426,14 +426,14 @@
         \begin{itemize}
             \item \kt{BigInteger}s can then be converted into \kt{Int}, \kt{Short}, etc.
             \item unlimited amount of digits $\rightarrow$ no overflow, no max value
-        \end{itemize} 
+        \end{itemize}
 
         \item[\kt{decimalValue: BigDecimal}] returns the decimal value of the current number
         %
         \begin{itemize}
             \item \kt{BigDecimal}s can then be converted into \kt{Double} or \kt{Float}
             \item i.e. a real number with arbitrary precision
-        \end{itemize} 
+        \end{itemize}
     \end{description}
 
     \framebreak
@@ -448,7 +448,7 @@
         \begin{itemize}
             \item \kt{BigInteger}s can then be converted into \kt{Int}, \kt{Short}, etc.
             \item unlimited amount of digits $\rightarrow$ no overflow, no max value
-        \end{itemize} 
+        \end{itemize}
     \end{description}
 
     \framebreak
@@ -463,52 +463,53 @@
         \begin{itemize}
             \item \kt{BigDecimal}s can then be converted into \kt{Double} or \kt{Float}
             \item i.e. a real number with arbitrary precision
-        \end{itemize} 
+        \end{itemize}
     \end{description}
 
     \framebreak
 
     \begin{block}{The \kt{Struct} type is a sub-type of \kt{Term}}\centering
-        Type for all terms of the form $f(t_1, \ldots, t_N)$, i.e. composed by a \alert{funtor} string $f$ and $N$ terms $t_1, \ldots, t_N$ called \alert{arguments}, where $N \geq 0$ is called \alert{arity}
+        Type for all terms of the form \kt{$f$($t_1$, \ldots, $t_N$)}, i.e. composed by a \alert{funtor} string $f$ and $N$ terms $t_1, \ldots, t_N$ called \alert{arguments}, where $N \geq 0$ is called \alert{arity}
     \end{block}
     %
     \begin{description}
-        \item[\kt{functor: String}] returns the functor of the current \kt{Struct}
-        \item[\kt{arity: Int}] returns the arity of the current \kt{Struct} 
-        \item[\kt{args: Array<Term>}] returns the array of arguments of the current \kt{Struct}
-        \item[\kt{argsList: List<Term>}] returns the list of arguments of the current \kt{Struct}
-        \item[\kt{argsSequence: Sequence<Term>}] returns the sequence of arguments of the current \kt{Struct}
-        \item[\kt{isFunctorWellFormed: Boolean}] returns true if the following condition hold for \kt{functor} 
+        \item[\kt{functor: String}] returns $f$
+        \item[\kt{arity: Int}] returns $N$
+        \item[\kt{args: Array<Term>}] returns an array containing $t_1, \ldots, t_N$
+        \item[\kt{argsList: List<Term>}] returns a list containing $t_1, \ldots, t_N$
+        \item[\kt{argsSequence: Sequence<Term>}] returns a sequence containing $t_1, \ldots, t_N$
+
+        \item[\kt{isFunctorWellFormed: Boolean}] returns true if the following condition hold for $f$
         %
         \begin{enumerate}\small
             \item it begins with a lower case letter
-            \item it only contains letters (either lower or upper case), digits, or underscores 
-        \end{enumerate} 
-        \item[\kt{toString(): String}] returns \kt{functor} if \kt{arity} is 0, otherwise a string of the form 
+            \item it only contains letters (either lower or upper case), digits, or underscores
+        \end{enumerate}
+        \item[\kt{toString(): String}] returns $f$ iff $N = 0$, otherwise a string of the form
         %
-        \begin{center}\scriptsize
-            \kt{\meta{functor}(\meta{args[0].toString()}, \ldots, \meta{args[arity - 1].toString()})}
-        \end{center} 
+        \begin{center}
+            \kt{$f$($t_1$.toString(), \ldots, $t_N$.toString())}
+        \end{center}
         %
         \begin{itemize}\small
-            \item in both cases, \kt{functor} is wrapped within single quotes if \kt{isFunctorWellFormed} is false
+            \item in both cases, $f$ is wrapped within single quotes iff \kt{isFunctorWellFormed} is false
         \end{itemize}
-        \item[\kt{equals(Any?): Boolean}] compares this \kt{Struct}ure with the provided object, returning true if the latter is a \kt{Struct}ure having the same functor, arity, and arguments (which are recursively compared via \kt{equals(Any?)}) 
+        \item[\kt{equals(Any?): Boolean}] compares this \kt{Struct}ure with the provided object, returning true if the latter is a \kt{Struct}ure having the same functor, arity, and arguments (which are recursively compared via \kt{equals(Any?)})
         \item[\kt{hashCode(): Int}] computes an hash code value for this \kt{Struct}ure which is coherent w.r.t. \kt{equals(Any?)}
         \item[\kt{equals(Term,Boolean): Boolean}] compares this \kt{Struct}ure with the provided object, returning true if the latter is a \kt{Struct}ure having the same functor, arity, and arguments (which are recursively compared via \kt{equals(Term,Boolean)})
         \item[\kt{structurallyEquals(Term): Boolean}] compares this \kt{Struct}ure with the provided object, returning true if the latter is a \kt{Struct}ure having the same functor, arity, and arguments (which are recursively compared via \kt{structurallyEquals(Term)})
         \item[\kt{indicator: Indicator}] returns the indicator corresponding to the current \kt{Struct}
         %
         \begin{itemize}\small
-            \item i.e. the \kt{Struct}ure of the form \pl{'/'(\meta{functor}, \meta{arity})}
-        \end{itemize} 
+            \item i.e. the \kt{Struct}ure of the form \pl{'/'($f$, $N$)}
+        \end{itemize}
         \item[\kt{get(Int): Term}] returns an argument of the current \kt{Struct} given its index
         \item[\kt{getArgAt(Int): Term}] an alias for \kt{get(Int)}
-        \item[\kt{addFirst(Term): Term}] returns a novel \kt{Struct} of the form $f(t^*, t_1, \ldots, t_N)$, where $t^*$ is the \kt{Term} provided as argument
-        \item[\kt{addLast(Term): Term}] returns a novel \kt{Struct} of the form $f(t_1, \ldots, t_N, t^*)$, where $t^*$ is the \kt{Term} provided as argument
+        \item[\kt{addFirst(Term): Term}] returns a novel \kt{Struct} of the form \pl{$f$($t^*$, $t_1$, \ldots, $t_N$)}, where $t^*$ is the \kt{Term} provided as argument
+        \item[\kt{addLast(Term): Term}] returns a novel \kt{Struct} of the form \pl{$f$($t_1$, \ldots, $t_N$, $t^*$)}, where $t^*$ is the \kt{Term} provided as argument
         \item[\kt{append(Term): Term}] an alias for \kt{addLast(Term)}
-        \item[\kt{insertAt(Int,Term): Term}] returns a novel \kt{Struct} of the form $f(t_1, \ldots, t_{i-1}, t^*, t_{i+1}, \ldots, t_N)$, where $t^*$ is the \kt{Term} provided as argument
-        \item[\kt{setFunctor(String): Term}] returns a novel \kt{Struct} of the form $f^*(t_1, \ldots, t_N)$, where $f^*$ is the functor \kt{String} provided as argument
+        \item[\kt{insertAt(Int,Term): Term}] returns a novel \kt{Struct} of the form \pl{$f$($t_1$, \ldots, $t_{i-1}$, $t^*$, $t_{i+1}$, \ldots, $t_N$)}, where $t^*$ is the \kt{Term} provided as argument
+        \item[\kt{setFunctor(String): Term}] returns a novel \kt{Struct} of the form \pl{$f^*$($t_1$, \ldots, $t_N$)}, where $f^*$ is the functor \kt{String} provided as argument
     \end{description}
 
     \framebreak
@@ -537,52 +538,57 @@
             \item Variables' complete names are \kt{String}s of the form
             %
             \begin{center}
-                \kt{\meta{Name}\_\meta{Identifier}}
-            \end{center} 
+                \pl{$Name$\_$Identifier$}
+            \end{center}
             where
             %
             \begin{description}
-                \item[\kt{\meta{Name}}] is the variable's \alert{simple} name
-                \item[\kt{\meta{Identifier}}] is the variable's \alert{identifier}, i.e. an im\-ple\-men\-ta\-tion-spe\-ci\-fic string aimed at distinguising \kt{Var}iables having the same simple name
+                \item[$Name$] is the variable's \alert{simple} name
+                \item[$Identifier$] is the variable's \alert{identifier}, i.e. an im\-ple\-men\-ta\-tion-spe\-ci\-fic string aimed at distinguising \kt{Var}iables having the same simple name
             \end{description}
         \end{itemize}
     \end{alertblock}
     %
     \begin{description}
-        \item[\kt{name: String}] returns this \kt{Var}iable's simple name
-        \item[\kt{completeName: String}] returns this \kt{Var}iable's complete name 
-        \item[\kt{id: String}] returns this \kt{Var}iable's identifier
-        \item[\kt{isAnonymous: Boolean}] checks whether \kt{name} is an underscore
-        \item[\kt{toString(): Boolean}] returns this \kt{Var}iable's complete name
+        \item[\kt{name: String}] returns $Name$
+        \item[\kt{completeName: String}] returns \pl{$Name$\_$Identifier$}
+        \item[\kt{id: String}] returns $Identifier$
+        \item[\kt{isAnonymous: Boolean}] returns true iff \pl{$Name$ = '\_'}
+        \item[\kt{toString(): Boolean}] returns this \kt{this.completeName}
         \item[\kt{equals(Any?): Boolean}] compares this \kt{Var}iable with the provided object, returning true if the latter is a \kt{Var}iable having the same complete name
-        \item[\kt{equals(Term,Boolean): Boolean}] compares this \kt{Var}iable with the provided object, returning true if the latter is a \kt{Var}iable having the same complete (resp. simple) name, assuming that the provided \kt{Boolean} is true (resp. false) 
-        \item[\kt{structurallyEquals(Term): Boolean}] compares this \kt{Var}iable with the provided object, returning true if the latter is a \kt{Var}iable 
+        \item[\kt{equals(Term,Boolean): Boolean}] compares this \kt{Var}iable with the provided object, returning true if the latter is a \kt{Var}iable having the same complete (resp. simple) name, assuming that the provided \kt{Boolean} is true (resp. false)
+        \item[\kt{structurallyEquals(Term): Boolean}] compares this \kt{Var}iable with the provided object, returning true if the latter is a \kt{Var}iable
     \end{description}
 
     \framebreak
 
     \begin{block}{The \kt{Indicator} type is a sub-type of \kt{Struct}}
-        \begin{center}\itshape
-            Type for all binary structures whose functor is $/$, i.e. structures of the form $\mathtt{/}(f, n)$, there $f,n$ are terms. If $f$ is an atom and $n$ is a non-negative integer, the indicator is considered \emph{well formed}
+        \begin{center}
+            Type for all binary structures of the form
+            %
+            \begin{center}
+                \pl{'/'($f$, $n$)}
+            \end{center}
+            where $f,n$ are arbitrary terms. If $f$ is an atom and $n$ is a non-negative integer, then the indicator is considered \emph{well formed}
         \end{center}
     \end{block}
     %
     \begin{description}
         \item[\kt{nameTerm: Term}] returns $f$, shortcut for \kt{get(0)}
-        \item[\kt{indicatedName: String?}] if $f$ is an atom, returns \kt{$f$.value}, otherwise \kt{null} 
+        \item[\kt{indicatedName: String?}] if $f$ is an atom, returns \kt{$f$.value}, otherwise \kt{null}
         \item[\kt{arityTerm: Term}] returns $n$, shortcut for \kt{get(1)}
-        \item[\kt{indicatedArity: Int?}] if $n$ is a non-negative integer, returns \kt{$n$.intValue.toInt()}, otherwise \kt{null}  
+        \item[\kt{indicatedArity: Int?}] if $n$ is a non-negative integer, returns \kt{$n$.intValue.toInt()}, otherwise \kt{null}
         \item[\kt{isWellFormed: Boolean}] returns \kt{true} if the indicator is well formed
-        \item[\kt{functor: String}] must return \kt{"a"}
+        \item[\kt{functor: String}] must return \kt{"/"}
         \item[\kt{arity: String}] must return 2
     \end{description}
 
     \framebreak
 
     \begin{block}{The \kt{Truth} type is a sub-type of \kt{Atom}}
-        \begin{center}\itshape
+        \begin{center}
             Type for special atoms representing either tautology or contradiction.
-            It has only three admissible values: \pl{true} (tautology), \pl{false}, and \pl{fail} (contradictions). 
+            It has only three admissible values: \pl{true} (tautology), \pl{false}, and \pl{fail} (contradictions).
         \end{center}
     \end{block}
     %
@@ -600,8 +606,8 @@
             \item Two folding strategies: with or without a termination term $T$
             %
             \begin{itemize}
-                \item explicit termination: $ f(t_1, f(t_2, \ldots f(t_N, T) \ldots )) $
-                \item implicit termination: $ f(t_1, f(t_2, \ldots f(t_{N-1}, t_N) \ldots )) $
+                \item explicit termination: \pl{$f$($t_1$, $f$($t_2$, \ldots $f$($t_N$, $T$) \ldots ))}
+                \item implicit termination: \pl{$f$($t_1$, $f$($t_2$, \ldots $f$($t_{N-1}$, $t_N$) \ldots ))}
             \end{itemize}
             \item A particular collection is therefore determined by:
             %
@@ -613,23 +619,144 @@
         \end{itemize}
     \end{exampleblock}
     %
-    \begin{block}{The \kt{Cpllection} type is a sub-type of \kt{Struct}}\centering
+    \begin{block}{The \kt{Collection} type is a sub-type of \kt{Struct}}\centering
         Base type for all right-recursive structures aimed at containing an unlimited amount of terms.
     \end{block}
     %
     \begin{description}
-        \item[\kt{unfoldedSequence: Sequence<Term>}] in general, returns a sequence containing the terms $t_1, \ldots, t_N$, plus $T$ in case of explicit folding strategy  
+        \item[\kt{unfoldedSequence: Sequence<Term>}] in general, returns a sequence containing the terms $t_1, \ldots, t_N$, plus $T$ in case of explicit folding strategy
         \item[\kt{unfoldedList: List<Term>}] in general, returns a list containing the terms $t_1, \ldots, t_N$, plus $T$ in case of explicit folding strategy
         \item[\kt{unfoldedArray: Array<Term>}] in general, returns an array containing the terms $t_1, \ldots, t_N$, plus $T$ in case of explicit folding strategy
         \item[\kt{size: Int}] in general, returns $N$
         \item[\kt{toSequence(): Sequence<Term>}] in general, returns a sequence containing the terms $t_1, \ldots, t_N$
         \item[\kt{toList(): List<Term>}] in general, returns a list containing the terms $t_1, \ldots, t_N$
-        \item[\kt{toArray(): Array<Term>}] in general, returns an array containing the terms $t_1, \ldots, t_N$ 
-        \item[\kt{unfold(): Sequence<Term>}] in general, returns a sequence containing the terms $f(t1, f(t_2, \ldots)), f(t_2, \ldots), \ldots$, plus $T$ in case of explicit folding strategy, or $f(t_{N-1}, t_N)$ otherwise
+        \item[\kt{toArray(): Array<Term>}] in general, returns an array containing the terms $t_1, \ldots, t_N$
+        \item[\kt{unfold(): Sequence<Term>}] in general, returns a sequence containing the terms \pl{$f$($t1$, $f$($t_2$, \ldots))}, \pl{$f$($t_2$, \ldots)}, \pl{\ldots}, plus $T$ in case of explicit folding strategy, or \pl{$f$($t_{N-1}$, $t_N$)} otherwise
     \end{description}
 
-    \framebreak 
+    \framebreak
 
+    \begin{block}{The \kt{List} type is a sub-type of \kt{Collection}}
+        \begin{center}
+            Base type for logic lists, i.e. collections using \pl{'.'} as functor and \pl{'[]'} as the termination term.
+            %
+            So all lists are terms of the form
+            \begin{center}
+                \pl{'.'($t_1$, '.'($t_2$, \ldots '.'($t_N$, $T$)\ldots))}.
+            \end{center}
+            %
+            A list is considered well formed iff $T \equiv \pl{[]}$.
+        \end{center}
+    \end{block}
+    %
+    \begin{alertblock}{About logic lists}
+        \begin{itemize}
+            \item There are two sub-types of \kt{List}:
+            %
+            \begin{itemize}
+                \item \alert{\kt{Cons}}, capturing all terms of the form \pl{'.'($h$, $t$)} where both $h$ and $t$ are terms of any sort
+                \item \alert{\kt{EmptyList}}, which has only one value, namely the atom \pl{'[]'}
+            \end{itemize}
+
+            \item Logic lists are represented as strings using the following notation:
+            %
+            \begin{center}
+                \pl{[$t_1$, $t_2$, \ldots $t_n$ | $T$]}
+            \end{center}
+            %
+            \begin{itemize}
+                \item where `\pl{| $T$}' may be omitted in case $T \equiv \pl{[]}$
+            \end{itemize}
+        \end{itemize}
+    \end{alertblock}
+    %
+    \begin{description}
+        \item[\kt{isWellFormed: Boolean}] returns \kt{true} if the list is well formed
+        \item[\kt{last: Term}] returns $T$
+        \item[\kt{isCons: Boolean}] returns \kt{true} if the list is not empty
+        \item[\kt{isEmptyList: Boolean}] returns \kt{true} if the list is empty
+        \item[\kt{unfoldedSequence: Sequence<Term>}] returns a sequence containing the terms $t_1, \ldots, t_N, \pl{[]}$
+        \item[\kt{unfoldedList: List<Term>}] returns a list containing the terms $t_1, \ldots, t_N, \pl{[]}$
+        \item[\kt{unfoldedArray: Array<Term>}] returns an array containing the terms $t_1, \ldots, t_N, \pl{[]}$
+        \item[\kt{size: Int}] returns $N$ if the list is well formed, or $N+1$ otherwise
+        \item[\kt{toSequence(): Sequence<Term>}] returns a sequence containing the terms $t_1, \ldots, t_N$, plus $T$ iff $T \not\equiv \pl{[]}$
+        \item[\kt{toList(): List<Term>}] returns a list containing the terms $t_1, \ldots, t_N$, plus $T$ iff $T \not\equiv \pl{[]}$
+        \item[\kt{toArray(): Array<Term>}] returns an array containing the terms $t_1, \ldots, t_N$, plus $T$ iff $T \not\equiv \pl{[]}$
+        \item[\kt{unfold(): Sequence<Term>}] returns a sequence containing the terms \pl{'.'($t1$, '.'($t_2$, \ldots))}, \pl{'.'($t_2$, \ldots)}, \pl{\ldots}, $T$
+    \end{description}
+
+    \framebreak
+
+    \begin{block}{The \kt{Tuple} type is a sub-type of \kt{Collection}}
+        \begin{center}
+            Base type for logic conjunctions, i.e. collections using \pl{','} as functor and an implicit termination strategy.
+            %
+            So all tuples are terms of the form
+            \begin{center}
+                \pl{','($t_1$, ','($t_2$, \ldots ','($t_{N-1}$, $t_N$)\ldots))}.
+            \end{center}
+            %
+            Notice that tuples always contain at least 2 terms.
+        \end{center}
+    \end{block}
+    %
+    \begin{alertblock}{About logic tuples}
+        \begin{itemize}
+            \item Logic tuples are represented as strings using the following notation:
+            %
+            \begin{center}
+                \pl{($t_1$, $t_2$, \ldots $t_n$)}
+            \end{center}
+        \end{itemize}
+    \end{alertblock}
+    %
+    \begin{description}
+        \item[\kt{unfoldedSequence: Sequence<Term>}] returns a sequence containing the terms $t_1, \ldots, t_N$
+        \item[\kt{unfoldedList: List<Term>}] returns a list containing the terms $t_1, \ldots, t_N$
+        \item[\kt{unfoldedArray: Array<Term>}] returns an array containing the terms $t_1, \ldots, t_N$
+        \item[\kt{size: Int}] returns $N$
+        \item[\kt{toSequence(): Sequence<Term>}] returns \kt{this.unfoldedSequence}
+        \item[\kt{toList(): List<Term>}] returns \kt{this.unfoldedList}
+        \item[\kt{toArray(): Array<Term>}] returns \kt{this.unfoldedArray}
+        \item[\kt{unfold(): Sequence<Term>}] returns a sequence containing the terms \pl{','($t1$, ','($t_2$, \ldots))}, \pl{','($t_2$, \ldots)}, \pl{\ldots}, \pl{','($t_{N-1}$, $t_N$)}
+    \end{description}
+
+    \framebreak
+
+    \begin{block}{The \kt{Set} type is a sub-type of \kt{Collection}}
+        \begin{center}
+            Base type for logic sets, i.e. a particular sort of collection using \pl{\{\}} as functor, which may either be empty or contain a single term---which may possibly be a tuple.
+        \end{center}
+    \end{block}
+    %
+    \begin{alertblock}{About logic sets}
+        \begin{itemize}
+            \item There are two sub-types of \kt{Set}:
+            %
+            \begin{itemize}
+                \item \alert{\kt{Set}}, capturing all terms of the form \pl{'\{\}'($x$)} where $x$ is a term of any sort
+                \item \alert{\kt{EmptySet}}, which has only one value, namely the atom \pl{'\{\}'}
+            \end{itemize}
+
+            \item Logic sets are represented as strings using the following notations:
+            %
+            \begin{itemize}
+                \item \pl{\{\}} in case of empty set
+                \item \pl{\{$t_1$, \ldots $t_N$\}} in case $x$ $\equiv$ \pl{($t_1$, \ldots, $t_N$)}, i.e. if $x$ is a tuple
+                \item \pl{\{$x$\}} otherwise
+            \end{itemize}
+        \end{itemize}
+    \end{alertblock}
+    %
+    \begin{description}
+        \item[\kt{unfoldedSequence: Sequence<Term>}] returns a sequence containing the terms $t_1, \ldots, t_N$ if $x$ is a tuple, just $x$ otherwise, or nothing if the set is empty
+        \item[\kt{unfoldedList: List<Term>}] returns a list containing the terms $t_1, \ldots, t_N$ if $x$ is a tuple, just $x$ otherwise, or nothing if the set is empty
+        \item[\kt{unfoldedArray: Array<Term>}] returns an array containing the terms $t_1, \ldots, t_N$ if $x$ is a tuple, just $x$ otherwise, or nothing if the set is empty
+        \item[\kt{size: Int}] returns $N$ if $x$ is a tuple, 1 otherwise, or 0 if the set is empty
+        \item[\kt{toSequence(): Sequence<Term>}] returns \kt{this.unfoldedSequence}
+        \item[\kt{toList(): List<Term>}] returns \kt{this.unfoldedList}
+        \item[\kt{toArray(): Array<Term>}] returns \kt{this.unfoldedArray}
+    \end{description}
 
 \end{frame}
 
@@ -779,7 +906,7 @@
 
 \begin{frame}[allowframebreaks]{Theories Design and Implementations}
     design: mutable/immutable
-    
+
     implementation: indexed vs. listed
 \end{frame}
 
@@ -843,7 +970,7 @@
 
 \begin{frame}[allowframebreaks]{Example: Using \kt{Solver}s with Custom KB}
     initialising a solver with custom knowledge bases
-    
+
     loading a custom kb into a mutable solver
 \end{frame}
 
@@ -858,8 +985,8 @@
 
 \begin{frame}[allowframebreaks]{The \kt{Primitive} Type}
     client server metaphor
-    
-    definition 
+
+    definition
 
     request \& response
 
@@ -869,7 +996,7 @@
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{Function} Type}
-    definition 
+    definition
 
     request \& response
 
@@ -879,7 +1006,7 @@
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{Library} Type Hierarchy}
-    definition 
+    definition
 
     purpose
 
@@ -913,7 +1040,7 @@
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{Channel} Type Hierarchy}
-    input channels 
+    input channels
 
     output channels
 \end{frame}
@@ -929,14 +1056,14 @@
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{ChannelStore} Type Hierarchy}
-    input stores 
+    input stores
 
     output stores
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Using \kt{Channel}s}
     creating solvers with custom channels
-    
+
     attaching callbacks to a solver's channels
 \end{frame}
 
@@ -1094,14 +1221,14 @@
 
 \begin{frame}[allowframebreaks]{Overview on IO in LP}
     urls for locating resources
-    
+
     sinks and sources
 
     main predicates
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Platform-specific Issues}
-    
+
 \end{frame}
 
 \section{OOP and Prolog: the \module{oop-lib} Module}
@@ -1142,9 +1269,9 @@
 \subsection{OOP to/from LP Conversions}
 
 \begin{frame}[allowframebreaks]{The \kt{TermToObjectConverter} Type}
-    definition 
-    
-    api 
+    definition
+
+    api
 
     implemented strategy
 
@@ -1152,9 +1279,9 @@
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{ObjectToTermConverter} Type}
-    definition 
-    
-    api 
+    definition
+
+    api
 
     implemented strategy
 
@@ -1164,9 +1291,9 @@
 \subsection{Overload Selection}
 
 \begin{frame}[allowframebreaks]{The \kt{OverloadSelector} Type}
-    definition 
-    
-    api 
+    definition
+
+    api
 
     implemented strategy
 
@@ -1215,25 +1342,25 @@
 \section{Parsing Logic Knowledge: the \module{parser-*} Modules}
 
 \begin{frame}[allowframebreaks]{The \kt{TermParser} Type}
-    definition 
-    
-    creation 
+    definition
+
+    creation
 
     usage examples
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{TermReader} Type (JVM-only)}
-    definition 
-    
-    creation 
+    definition
+
+    creation
 
     usage examples
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{ClausesParser} Type}
-    definition 
-    
-    creation 
+    definition
+
+    creation
 
     usage examples
 \end{frame}
@@ -1249,27 +1376,27 @@
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{TermSerializer} Type}
-    definition 
-    
-    creation 
+    definition
+
+    creation
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{TermDeserializer} Type}
-    definition 
-    
-    creation 
+    definition
+
+    creation
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{TheorySerializer} Type}
-    definition 
-    
-    creation 
+    definition
+
+    creation
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{TheoryDeserializer} Type}
-    definition 
-    
-    creation 
+    definition
+
+    creation
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Terms/Thoery to JSON Mapping}
