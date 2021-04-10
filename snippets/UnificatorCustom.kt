@@ -1,4 +1,4 @@
-prolog {
+Scope.empty {
     val unificator = object : AbstractUnificator() {
         override fun checkTermsEquality(first: Term, second: Term): Boolean = when {
             first is Integer && second is Integer ->
@@ -9,8 +9,8 @@ prolog {
         }
     }
 
-    val term1 = "f"(1)
-    val term2 = "f"(-1)
+    val term1 = structOf("f", numOf("1"))
+    val term2 = structOf("f", numOf("-1"))
 
     val match = unificator.match(term1, term2) // true
     val result = unificator.unify(term1, term2) // f(1)
