@@ -1206,8 +1206,8 @@
 \subsection{The \kt{Unificator} type}
 
 \begin{frame}[allowframebreaks]{The \kt{Unificator} type}
-    \begin{block}{The \kt{Unificator} type}\centering\itshape
-        Matches two terms by finding a suitable substitution to their variables, i.e. the \textbf{most general unifier}
+    \begin{block}{The \kt{Unificator} type}\centering
+        Matches two terms by finding a suitable substitution to their variables, i.e. the \emph{most general unifier} (MGU)
     \end{block}
     %
     \begin{description}
@@ -1234,17 +1234,18 @@
     Successful unification with \kt{default}:
     %
     \ktSnippet[\tiny]{./snippets/UnificatorDefault.kt}
-    %
+
+    \framebreak
+    
     Successful unification with \kt{default} (no bindings):
     %
     \ktSnippet[\tiny]{./snippets/UnificatorDefaultEmpty.kt}
     
     \framebreak
 
-    Unification with \kt{cached}:
+    Unification with \kt{cached} unificators:
     %
-    \ktSnippet{./snippets/UnificatorCached.kt}
-
+    \ktSnippet[\tiny]{./snippets/UnificatorCached.kt}
 
     % examples with default unificators + infix operators
 \end{frame}
@@ -1252,7 +1253,7 @@
 \subsection{Custom \kt{Unificator}s}
 
 \begin{frame}[allowframebreaks, fragile]{Custom \kt{Unificator}s}
-    \begin{block}{Writing custom \kt{Unificator}s}\centering\itshape
+    \begin{block}{Writing custom \kt{Unificator}s}
         \begin{itemize}
             \item create an instance of the \kt{AbstractUnificator} type
             \item override \kt{checkTermsEquality} method
@@ -1274,7 +1275,7 @@
 \subsection{Infix operators}
 
 \begin{frame}[allowframebreaks, fragile]{Infix operators}
-    \begin{block}{Infix operators: \kt{unifyWith}, \kt{matches}, \kt{mguWith}}\centering\itshape
+    \begin{block}{Infix operators: \kt{unifyWith}, \kt{matches}, \kt{mguWith}}
         \begin{itemize}
             \item defined in \kt{Unificator}'s companion object
             \item built as functions with receivers

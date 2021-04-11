@@ -1,8 +1,10 @@
-Scope.empty {
-    val term = Struct.of("father", Atom.of("abraham"), Atom.of("isaac"))
-    val goal = Struct.of("father", Var.of("X"), Atom.of("isaac"))
+import it.unibo.tuprolog.unify.Unificator.Companion.matches
+import it.unibo.tuprolog.unify.Unificator.Companion.mguWith
+import it.unibo.tuprolog.unify.Unificator.Companion.unifyWith
 
-    val substitution: Substitution = term mguWith goal // {X_0=abraham}
-    val match: Boolean = term matches goal // true
-    val result: Term? = term unifyWith goal // father(abraham, isaac)
-}
+val t1 = Struct.of("father", Atom.of("abraham"), Atom.of("isaac"))
+val t2 = Struct.of("father", Var.of("X"), Atom.of("isaac"))
+
+val substitution: Substitution = t1 mguWith t2 // {X_0=abraham}
+val match: Boolean = t1 matches t2 // true
+val result: Term? = t1 unifyWith t2 // father(abraham, isaac)
