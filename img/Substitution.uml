@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>it.unibo.tuprolog.core.Substitution</OriginalElement>
+  <nodes>
+    <node x="0.0" y="158.0">it.unibo.tuprolog.core.Substitution.Unifier</node>
+    <node x="51.25" y="0.0">java.util.Map</node>
+    <node x="27.75" y="79.0">it.unibo.tuprolog.core.Substitution</node>
+    <node x="101.0" y="158.0">it.unibo.tuprolog.core.Substitution.Fail</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="it.unibo.tuprolog.core.Substitution.Fail" target="it.unibo.tuprolog.core.Substitution">
+      <point x="0.0" y="-14.5" />
+      <point x="131.0" y="133.0" />
+      <point x="114.75" y="133.0" />
+      <point x="29.0" y="14.5" />
+    </edge>
+    <edge source="it.unibo.tuprolog.core.Substitution.Unifier" target="it.unibo.tuprolog.core.Substitution">
+      <point x="0.0" y="-14.5" />
+      <point x="40.5" y="133.0" />
+      <point x="56.75" y="133.0" />
+      <point x="-29.0" y="14.5" />
+    </edge>
+    <edge source="it.unibo.tuprolog.core.Substitution" target="java.util.Map">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="214.0" y="133.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

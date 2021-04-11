@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="622px" preserveAspectRatio="none" style="width:571px;height:622px;" version="1.1" viewBox="0 0 571 622" width="571px" zoomAndPan="magnify"><defs/><g><!--MD5=[0d482ad21d5c7c11aa976e45da5ecfe6]
+entity core--><polygon fill="#FFFF00" points="168.5,8,214.5,8,221.5,29,244.5,29,244.5,79.8906,168.5,79.8906,168.5,8" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="168.5" x2="221.5" y1="29" y2="29"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="46" x="178.5" y="48.9951">«root»</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="31" x="186" y="65.292">core</text><!--MD5=[8609333456958ddd09a7a43cad87d6b2]
+entity unify--><polygon fill="#FEFECE" points="173.5,180,219.5,180,226.5,201,235.5,201,235.5,235.5938,173.5,235.5938,173.5,180" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="173.5" x2="226.5" y1="201" y2="201"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="32" x="183.5" y="220.9951">unify</text><!--MD5=[c5c1c69d6c66b309c7a2e76833c76928]
+entity theory--><polygon fill="#FEFECE" points="167.5,305,213.5,305,220.5,326,241.5,326,241.5,360.5938,167.5,360.5938,167.5,305" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="167.5" x2="220.5" y1="326" y2="326"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="44" x="177.5" y="345.9951">theory</text><!--MD5=[7d8306a0c155a810952424160e397dcb]
+entity DC--><polygon fill="#FEFECE" points="47.5,16,93.5,16,100.5,37,133.5,37,133.5,71.5938,47.5,71.5938,47.5,16" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="47.5" x2="100.5" y1="37" y2="37"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="56" x="57.5" y="56.9951">dsl-core</text><!--MD5=[0a7e534d89b51261a949871c96ba5fec]
+entity DU--><polygon fill="#FEFECE" points="47,180,93,180,100,201,134,201,134,235.5938,47,235.5938,47,180" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="47" x2="100" y1="201" y2="201"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="57" x="57" y="220.9951">dsl-unify</text><!--MD5=[91a68d2497aecc16baa3d80f14772d7e]
+entity DT--><polygon fill="#FEFECE" points="33,305,79,305,86,326,132,326,132,360.5938,33,360.5938,33,305" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="33" x2="86" y1="326" y2="326"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="69" x="43" y="345.9951">dsl-theory</text><!--MD5=[51865354722c2ebdf9f50fb1208494af]
+entity solve--><polygon fill="#808000" points="92,422,138,422,145,443,193,443,193,493.8906,92,493.8906,92,422" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="92" x2="145" y1="443" y2="443"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="71" x="102" y="462.9951">«api only»</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="36" x="119.5" y="479.292">solve</text><!--MD5=[8b944653c655024075d894af29a33c78]
+entity SC--><polygon fill="#FEFECE" points="6,555,52,555,59,576,123,576,123,610.5938,6,610.5938,6,555" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="6" x2="59" y1="576" y2="576"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="87" x="16" y="595.9951">solve-classic</text><!--MD5=[a7c3909965e2f086fbae253f41eb8181]
+entity SS--><polygon fill="#FEFECE" points="158,555,204,555,211,576,285,576,285,610.5938,158,610.5938,158,555" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="158" x2="211" y1="576" y2="576"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="97" x="168" y="595.9951">solve-streams</text><!--MD5=[7b283ce894c5928581d5380ce71c9d62]
+entity PC--><polygon fill="#FEFECE" points="282.5,16,328.5,16,335.5,37,392.5,37,392.5,71.5938,282.5,71.5938,282.5,16" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="282.5" x2="335.5" y1="37" y2="37"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="80" x="292.5" y="56.9951">parser-core</text><!--MD5=[059fb33002c326aee15d54b48b7f0357]
+entity PJVM--><polygon fill="#FFFFFF" points="391,172,437,172,444,193,512,193,512,243.8906,391,243.8906,391,172" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="391" x2="444" y1="193" y2="193"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="91" x="401" y="212.9951">«impl. detail»</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="72" x="410.5" y="229.292">parser-jvm</text><!--MD5=[3c2d8c583c91ad114cfccb918cb1adc5]
+entity PJS--><polygon fill="#FFFFFF" points="428,8,474,8,481,29,549,29,549,79.8906,428,79.8906,428,8" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="428" x2="481" y1="29" y2="29"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="91" x="438" y="48.9951">«impl. detail»</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="60" x="453.5" y="65.292">parser-js</text><!--MD5=[28b617f45f8b852b803088f4fea1b95e]
+entity PT--><polygon fill="#FEFECE" points="277,305,323,305,330,326,400,326,400,360.5938,277,360.5938,277,305" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="277" x2="330" y1="326" y2="326"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="93" x="287" y="345.9951">parser-theory</text><!--MD5=[654aef16edce88f9509b3ca7f81dbac0]
+reverse link core to unify--><path d="M205.81,100.52 C205.48,127.35 205.1,158.34 204.83,179.94 " fill="none" id="core&lt;-unify" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="198.82,100.06,206.07,80.15,212.82,100.24,198.82,100.06" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="55" x="207.5" y="123.0669">depends</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="16" x="227" y="138.1997">on</text><!--MD5=[5b6551af08b86dbfb12d808635608cc1]
+reverse link unify to theory--><path d="M204.5,256.56 C204.5,272.9 204.5,290.62 204.5,304.78 " fill="none" id="unify&lt;-theory" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="197.5,256.3,204.5,236.3,211.5,256.3,197.5,256.3" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[8f58684a2674c57e934b2824b86bad2c]
+reverse link theory to solve--><path d="M181.63,379.37 C174.57,393.38 166.89,408.6 160.23,421.83 " fill="none" id="theory&lt;-solve" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="175.49,376.01,190.74,361.3,187.99,382.31,175.49,376.01" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[ee527a253e3e2bfa5e39607edb2bf7cc]
+reverse link solve to SC--><path d="M109.32,511.33 C99.79,526.36 89.78,542.13 81.65,554.96 " fill="none" id="solve&lt;-SC" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="103.53,507.39,120.15,494.25,115.35,514.89,103.53,507.39" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[6cb6ea8013bf197054130beefb33d055]
+reverse link solve to SS--><path d="M176.11,511.33 C185.76,526.36 195.89,542.13 204.13,554.96 " fill="none" id="solve&lt;-SS" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="170.06,514.86,165.14,494.25,181.84,507.29,170.06,514.86" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[67e9725f158032d16034e09aba369a47]
+link DC to core--><path d="M133.55,44 C138.44,44 143.33,44 148.21,44 " fill="none" id="DC-&gt;core" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="148.31,37,168.31,44,148.31,51,148.31,37" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[308b7784007637030c98a7a5bc9dec67]
+link DU to unify--><path d="M134.14,208 C140.49,208 146.83,208 153.18,208 " fill="none" id="DU-&gt;unify" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="153.44,201,173.44,208,153.44,215,153.44,201" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[69aa42d2ac21c360780ee9f8f87b6628]
+reverse link DC to DU--><path d="M90.5,92.26 C90.5,120.71 90.5,155.94 90.5,179.8 " fill="none" id="DC&lt;-DU" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="83.5,92.12,90.5,72.12,97.5,92.12,83.5,92.12" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[1c86495c1207c3a5e9d8a7b62282abbd]
+link DT to theory--><path d="M132.06,333 C137.13,333 142.19,333 147.26,333 " fill="none" id="DT-&gt;theory" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="147.43,326,167.43,333,147.43,340,147.43,326" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[70c964b4c9a0606929de2f93a79fe2ff]
+reverse link DU to DT--><path d="M87.42,256.28 C86.36,272.7 85.2,290.54 84.27,304.78 " fill="none" id="DU&lt;-DT" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="80.44,255.8,88.72,236.3,94.41,256.71,80.44,255.8" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[93da8c2176c2812e492e2fa4e8294d89]
+reverse link DT to solve--><path d="M98.12,366.01 C106.47,383.13 116.77,404.25 125.34,421.83 " fill="none" id="DT&lt;-solve" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="95.82,361.3,96.1917,371.1418,98.0217,365.7892,103.3744,367.6191,95.82,361.3" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[bc916a6e8042033106d32a6630dfbaa8]
+reverse link core to PC--><path d="M264.67,44 C270.56,44 276.46,44 282.35,44 " fill="none" id="core&lt;-PC" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="264.62,51,244.62,44,264.62,37,264.62,51" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[dab2122e9b95dd916a8adf247f4394ef]
+reverse link theory to PT--><path d="M261.73,333 C266.77,333 271.8,333 276.84,333 " fill="none" id="theory&lt;-PT" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="261.66,340,241.66,333,261.66,326,261.66,340" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[865eea57d4b8505c98b28067cc718663]
+reverse link PC to PT--><path d="M337.66,92.23 C337.88,152.86 338.24,256.04 338.41,304.86 " fill="none" id="PC&lt;-PT" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="330.66,92.02,337.59,72,344.66,91.98,330.66,92.02" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[028a3b3aa784d65078c2c50980465a8e]
+link PC to PJVM--><path d="M356.58,72.12 C374.95,98.21 402.92,137.97 423.75,167.57 " fill="none" id="PC-&gt;PJVM" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="426.77,171.86,424.861,162.1979,423.8922,167.7712,418.3189,166.8024,426.77,171.86" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="30" x="405.5" y="130.5669">uses</text><!--MD5=[926e60611fbd64b6a972dafa5f1a2cc5]
+link PC to PJS--><path d="M392.65,44 C402.64,44 412.63,44 422.62,44 " fill="none" id="PC-&gt;PJS" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="427.85,44,418.85,40,422.85,44,418.85,48,427.85,44" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[e8bccc217281107dc0eb1aefc19715a3]
+@startuml
+top to bottom direction
+skinparam shadowing false
+
+skinparam folder {
+  BackgroundColor<<api only>> olive
+  BackgroundColor<<root>> yellow
+  BackgroundColor<<impl. detail>> white
+}
+
+folder "core" <<root>>
+folder "unify"
+folder "theory"
+folder "dsl-core" as DC
+folder "dsl-unify" as DU
+folder "dsl-theory" as DT
+folder "solve" <<api only>>
+folder "solve-classic" as SC
+folder "solve-streams" as SS
+folder "parser-core" as PC
+folder "parser-jvm" <<impl. detail>> as PJVM
+folder "parser-js" <<impl. detail>> as PJS
+folder "parser-theory" as PT
+
+core <|-down- unify : depends\non
+unify <|-down- theory
+theory <|-down- solve
+solve <|- - SC
+solve <|- - SS
+
+DC -right-|> core
+DU -right-|> unify
+DU -up-|> DC
+DT -right-|> theory
+DT -up-|> DU
+DT <- - solve
+
+PC -left-|> core
+PT -left-|> theory
+PT -up-|> PC
+
+PC - -> PJVM : uses
+PC -right-> PJS
+@enduml
+
+PlantUML version 1.2020.02(Sun Mar 01 11:22:07 CET 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 11.0.10+9
+Operating System: Linux
+Default Encoding: UTF-8
+Language: it
+Country: IT
+--></g></svg>

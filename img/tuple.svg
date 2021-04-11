@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="131px" preserveAspectRatio="none" style="width:362px;height:131px;" version="1.1" viewBox="0 0 362 131" width="362px" zoomAndPan="magnify"><defs/><g><!--MD5=[eb0f4986160aea42d9ece72995cb24c7]
+class Struct--><rect fill="#FEFECE" height="48" id="Struct" style="stroke: #A80036; stroke-width: 1.5;" width="70" x="6" y="40"/><ellipse cx="21" cy="56" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M16.9219,51.7656 L16.9219,49.6094 L24.3125,49.6094 L24.3125,51.7656 L21.8438,51.7656 L21.8438,59.8438 L24.3125,59.8438 L24.3125,62 L16.9219,62 L16.9219,59.8438 L19.3906,59.8438 L19.3906,51.7656 L16.9219,51.7656 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="38" x="35" y="60.1543">Struct</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="75" y1="72" y2="72"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="75" y1="80" y2="80"/><!--MD5=[064889823136230ed73fb5238d2f9216]
+class Tuple--><rect fill="#FEFECE" height="112.0234" id="Tuple" style="stroke: #A80036; stroke-width: 1.5;" width="215" x="136" y="8"/><ellipse cx="222.25" cy="24" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M218.1719,19.7656 L218.1719,17.6094 L225.5625,17.6094 L225.5625,19.7656 L223.0938,19.7656 L223.0938,27.8438 L225.5625,27.8438 L225.5625,30 L218.1719,30 L218.1719,27.8438 L220.6406,27.8438 L220.6406,19.7656 L218.1719,19.7656 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="34" x="242.75" y="28.1543">Tuple</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="137" x2="350" y1="40" y2="40"/><ellipse cx="147" cy="51" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="56" x="156" y="54.2104">left: Term</text><ellipse cx="147" cy="63.8047" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="64" x="156" y="67.0151">right: Term</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="137" x2="350" y1="73.6094" y2="73.6094"/><ellipse cx="147" cy="84.6094" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="186" x="156" y="87.8198">of(left: Term, right: Term): Tuple</text><ellipse cx="147" cy="97.4141" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="15" x="156" y="100.6245">of(</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="48" x="171" y="100.6245">varargs</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="113" x="223" y="100.6245">items: Term): Tuple</text><ellipse cx="147" cy="110.2188" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="189" x="156" y="113.4292">of(items: Iterable&lt;Term&gt;): Tuple</text><!--MD5=[7121e3ba3beb08d71469fa7d80898bfa]
+reverse link Struct to Tuple--><path d="M96.08,64 C108.42,64 121.95,64 135.64,64 " fill="none" id="Struct&lt;-Tuple" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="96.01,71,76.01,64,96.01,57,96.01,71" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[16493990cdda42e831fdc9cf0567e3f5]
+@startuml
+left to right direction
+skinparam shadowing false
+
+interface Struct
+
+interface Tuple {
+  + left: Term
+  + right: Term
+  + {static} of(left: Term, right: Term): Tuple
+  + {static} of(**varargs** items: Term): Tuple
+  + {static} of(items: Iterable<Term>): Tuple
+}
+
+Struct <|- - Tuple
+@enduml
+
+PlantUML version 1.2020.02(Sun Mar 01 11:22:07 CET 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 11.0.10+9
+Operating System: Linux
+Default Encoding: UTF-8
+Language: it
+Country: IT
+--></g></svg>

@@ -1137,16 +1137,84 @@
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The need for \kt{Scope}s}
-    \begin{block}{Why \kt{Scope}s}
-        \begin{itemize}
-            \item Scopes are \alert{factories} of terms
-            \item They expose several methods
-        \end{itemize}
+    \begin{block}{\kt{Scope}s}\centering
+        Scopes are \alert{factories} of terms allowing re-use of variables
     \end{block}
+
+    \begin{alertblock}{Why \kt{Scope}s}
+        \begin{itemize}
+            \item Instances of \kt{Scope} expose methods to create \kt{Terms}
+            \item Alternative to create \kt{Term}s via \alert{static factories}
+            \item Instances of variables are cached \alert{by simple name}
+            \item[$\rightarrow$] Purpose: reusing \kt{Var}iables while creating \kt{Term}s
+        \end{itemize}
+    \end{alertblock}
+
+    \begin{description}
+        \item[\kt{variables: Map<String, Var>}] returns all the \kt{Var}iables created so far in this \kt{Scope}, indexed by \emph{simple} name
+        \item[\kt{varOf(String}: Var] returns a \kt{Var} having the provided simple, name possibly re-using some entry of \kt{variables}, if possible, or creating a new one, otherwise 
+        \item[\kt{anonymous(): Var}] alias for \kt{Var.anonymous}
+        \item[\kt{atomOf(String): Atom}] alias for \kt{Atom.of}
+        \item[\kt{structOf(String, \meta{Container}): Struct}] alias for \kt{Struct.of}
+        %
+        \begin{itemize}\small
+            \item where \kt{\meta{Container}} may be an iterable, a sequence, or a varargs of \kt{Term}s
+        \end{itemize} 
+        \item[\vdots] 
+    \end{description}
+    %
+    \begin{itemize}
+        \item (one method exists in \kt{Scope} for each static factory described before)
+    \end{itemize}
 \end{frame}
 
 \subsection{\kt{Subtitution}s as First Class Entities}
 
+\begin{frame}[allowframebreaks]{The \kt{Substitution} Type Hierarchy}
+    \begin{center}
+        \includegraphics[width=.4\linewidth]{img/Substitution.pdf}
+    \end{center}
+
+    \begin{block}{The \kt{Substitution} type}\centering
+        \begin{center}
+            Base type for all \alert{substitutions} i.e. assignments of \kt{Var}iables to \kt{Term}s
+        \end{center}
+        %
+        \begin{itemize}
+            \item \kt{Substitution} is a sub-type of \kt{Map<Var, Term>}
+            
+            \item There are two sub-types of \kt{Substitution}:
+            %
+            \begin{itemize}
+                \item \alert{\kt{Unifier}s}, actually mapping a (possibly empty) set of \kt{Var}s to their corresponding \kt{Term}
+                %
+                \begin{itemize}
+                    \item[ie] an object of the form \kt{\{$v_1$=$t_1$, \ldots, $v_n$=$t_n$\}} where $t \geq 0$, all $v_i$ are \kt{Var}iables, and all $t_i$ are \kt{Term}s
+                    \item[!] the empty mapping is an admissible unifier
+                \end{itemize}
+                \item \alert{\kt{Fail}}, representing the \alert{failed} substitution
+            \end{itemize}
+
+            \item Both \kt{Unifier} and \kt{Fail} are nested types of \kt{Substitution}
+        \end{itemize}
+    \end{block}
+
+    \begin{description}
+        \item[\kt{isSuccess: Boolean}]
+        \item[\kt{isFail: Boolean}]
+        \item[\kt{getByName(String): Term?}] 
+        \item[\kt{plus(Substitution): Substitution}] 
+        \item[\kt{minus(\meta{Container}): Substitution}]
+        \item[\kt{minus(Substitution): Substitution}]
+        \item[\kt{filter(\meta{Container}): Substitution}] 
+        \item[\kt{filter(\meta{Predicate}): Substitution}]  
+    \end{description}
+    %
+    \begin{itemize}
+        \item[+] methods \& properties of \kt{Map} such as \kt{get}, \kt{size}, etc.
+    \end{itemize}
+\end{frame}
+        
 \begin{frame}[allowframebreaks]{The \kt{Substitution} Type Hierarchy}
     impossibility to create 2 equal variables
 \end{frame}

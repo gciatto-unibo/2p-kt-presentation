@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="105px" preserveAspectRatio="none" style="width:669px;height:105px;" version="1.1" viewBox="0 0 669 105" width="669px" zoomAndPan="magnify"><defs/><g><!--MD5=[9d35236b92952560f647498cf8a29acb]
+class Term--><rect fill="#FEFECE" height="48" id="Term" style="stroke: #A80036; stroke-width: 1.5;" width="63" x="6" y="27"/><ellipse cx="21" cy="43" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M16.9219,38.7656 L16.9219,36.6094 L24.3125,36.6094 L24.3125,38.7656 L21.8438,38.7656 L21.8438,46.8438 L24.3125,46.8438 L24.3125,49 L16.9219,49 L16.9219,46.8438 L19.3906,46.8438 L19.3906,38.7656 L16.9219,38.7656 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="31" x="35" y="47.1543">Term</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="68" y1="59" y2="59"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="68" y1="67" y2="67"/><!--MD5=[54b85b6d1a687c59d530998eb343c279]
+class Constant--><rect fill="#FEFECE" height="48" id="Constant" style="stroke: #A80036; stroke-width: 1.5;" width="88" x="129" y="27"/><ellipse cx="144" cy="43" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M139.9219,38.7656 L139.9219,36.6094 L147.3125,36.6094 L147.3125,38.7656 L144.8438,38.7656 L144.8438,46.8438 L147.3125,46.8438 L147.3125,49 L139.9219,49 L139.9219,46.8438 L142.3906,46.8438 L142.3906,38.7656 L139.9219,38.7656 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="56" x="158" y="47.1543">Constant</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="130" x2="216" y1="59" y2="59"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="130" x2="216" y1="67" y2="67"/><!--MD5=[f18b0f967872e82ff276115ca1b4c569]
+class Atom--><rect fill="#FEFECE" height="73.6094" id="Atom" style="stroke: #A80036; stroke-width: 1.5;" width="154" x="277" y="14"/><ellipse cx="333.75" cy="30" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M329.6719,25.7656 L329.6719,23.6094 L337.0625,23.6094 L337.0625,25.7656 L334.5938,25.7656 L334.5938,33.8438 L337.0625,33.8438 L337.0625,36 L329.6719,36 L329.6719,33.8438 L332.1406,33.8438 L332.1406,25.7656 L329.6719,25.7656 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="32" x="354.25" y="34.1543">Atom</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="278" x2="430" y1="46" y2="46"/><ellipse cx="288" cy="57" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="72" x="297" y="60.2104">value: String</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="278" x2="430" y1="66.8047" y2="66.8047"/><ellipse cx="288" cy="77.8047" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="128" x="297" y="81.0151">of(value: String): Atom</text><!--MD5=[de147283bee8035b23b97cb1a9ddf59d]
+class Truth--><rect fill="#FEFECE" height="86.4141" id="Truth" style="stroke: #A80036; stroke-width: 1.5;" width="167" x="491" y="8"/><ellipse cx="553.75" cy="24" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M549.6719,19.7656 L549.6719,17.6094 L557.0625,17.6094 L557.0625,19.7656 L554.5938,19.7656 L554.5938,27.8438 L557.0625,27.8438 L557.0625,30 L549.6719,30 L549.6719,27.8438 L552.1406,27.8438 L552.1406,19.7656 L549.6719,19.7656 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="33" x="574.25" y="28.1543">Truth</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="492" x2="657" y1="40" y2="40"/><ellipse cx="502" cy="51" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="90" x="511" y="54.2104">isTrue: Boolean</text><ellipse cx="502" cy="63.8047" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="83" x="511" y="67.0151">isFail: Boolean</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="492" x2="657" y1="73.6094" y2="73.6094"/><ellipse cx="502" cy="84.6094" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="141" x="511" y="87.8198">of(value: Boolean): Truth</text><!--MD5=[22dcc2a6458fba43153ab5c044b6d0f2]
+reverse link Term to Constant--><path d="M89.26,51 C102.31,51 116.24,51 128.87,51 " fill="none" id="Term&lt;-Constant" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="89.13,58,69.13,51,89.13,44,89.13,58" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[904172204236467fd977e5a86c11fa2e]
+reverse link Constant to Atom--><path d="M237.74,51 C250.41,51 263.84,51 276.87,51 " fill="none" id="Constant&lt;-Atom" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="237.33,58,217.33,51,237.33,44,237.33,58" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[5635cc4b99654f3c5c549950d77dd0db]
+reverse link Atom to Truth--><path d="M451.48,51 C464.65,51 478.07,51 490.96,51 " fill="none" id="Atom&lt;-Truth" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="451.11,58,431.11,51,451.11,44,451.11,58" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[79cd8f5d19807371f39e54d07cc09b1d]
+@startuml
+left to right direction
+skinparam shadowing false
+
+interface Term
+interface Constant
+interface Atom {
+  + value: String
+  + {static} of(value: String): Atom
+}
+interface Truth {
+  + isTrue: Boolean
+  + isFail: Boolean
+  + {static} of(value: Boolean): Truth
+}
+
+Term <|-down- Constant
+
+Constant <|-down- Atom
+
+Atom <|-down- Truth
+
+@enduml
+
+PlantUML version 1.2020.02(Sun Mar 01 11:22:07 CET 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 11.0.10+9
+Operating System: Linux
+Default Encoding: UTF-8
+Language: it
+Country: IT
+--></g></svg>

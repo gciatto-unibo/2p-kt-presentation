@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="105px" preserveAspectRatio="none" style="width:671px;height:105px;" version="1.1" viewBox="0 0 671 105" width="671px" zoomAndPan="magnify"><defs/><g><!--MD5=[eb0f4986160aea42d9ece72995cb24c7]
+class Struct--><rect fill="#FEFECE" height="48" id="Struct" style="stroke: #A80036; stroke-width: 1.5;" width="70" x="6" y="27"/><ellipse cx="21" cy="43" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M16.9219,38.7656 L16.9219,36.6094 L24.3125,36.6094 L24.3125,38.7656 L21.8438,38.7656 L21.8438,46.8438 L24.3125,46.8438 L24.3125,49 L16.9219,49 L16.9219,46.8438 L19.3906,46.8438 L19.3906,38.7656 L16.9219,38.7656 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="38" x="35" y="47.1543">Struct</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="75" y1="59" y2="59"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="75" y1="67" y2="67"/><!--MD5=[3d9a9201f4e3c24a3b32edb25b35db95]
+class Clause--><rect fill="#FEFECE" height="48" id="Clause" style="stroke: #A80036; stroke-width: 1.5;" width="73" x="136" y="27"/><ellipse cx="151" cy="43" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M146.9219,38.7656 L146.9219,36.6094 L154.3125,36.6094 L154.3125,38.7656 L151.8438,38.7656 L151.8438,46.8438 L154.3125,46.8438 L154.3125,49 L146.9219,49 L146.9219,46.8438 L149.3906,46.8438 L149.3906,38.7656 L146.9219,38.7656 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="41" x="165" y="47.1543">Clause</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="137" x2="208" y1="59" y2="59"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="137" x2="208" y1="67" y2="67"/><!--MD5=[4cf87534c235239d37db4adfd136fff4]
+class Rule--><rect fill="#FEFECE" height="86.4141" id="Rule" style="stroke: #A80036; stroke-width: 1.5;" width="272" x="269" y="8"/><ellipse cx="387.25" cy="24" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M383.1719,19.7656 L383.1719,17.6094 L390.5625,17.6094 L390.5625,19.7656 L388.0938,19.7656 L388.0938,27.8438 L390.5625,27.8438 L390.5625,30 L383.1719,30 L383.1719,27.8438 L385.6406,27.8438 L385.6406,19.7656 L383.1719,19.7656 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="27" x="407.75" y="28.1543">Rule</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="270" x2="540" y1="40" y2="40"/><ellipse cx="280" cy="51" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="70" x="289" y="54.2104">head: Struct</text><ellipse cx="280" cy="63.8047" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="65" x="289" y="67.0151">body: Term</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="270" x2="540" y1="73.6094" y2="73.6094"/><ellipse cx="280" cy="84.6094" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="89" x="289" y="87.8198">of(head: Struct,</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="48" x="382" y="87.8198">varargs</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="101" x="434" y="87.8198">body: Term): Rule</text><!--MD5=[8b7b02036613c263e1d0ae582a50c9f5]
+class Fact--><rect fill="#FEFECE" height="48" id="Fact" style="stroke: #A80036; stroke-width: 1.5;" width="59" x="601" y="27"/><ellipse cx="616" cy="43" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M611.9219,38.7656 L611.9219,36.6094 L619.3125,36.6094 L619.3125,38.7656 L616.8438,38.7656 L616.8438,46.8438 L619.3125,46.8438 L619.3125,49 L611.9219,49 L611.9219,46.8438 L614.3906,46.8438 L614.3906,38.7656 L611.9219,38.7656 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="27" x="630" y="47.1543">Fact</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="602" x2="659" y1="59" y2="59"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="602" x2="659" y1="67" y2="67"/><!--MD5=[b7702a11f4d6cfaf0543be0d76476975]
+reverse link Struct to Clause--><path d="M96.23,51 C109.62,51 123.64,51 135.89,51 " fill="none" id="Struct&lt;-Clause" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="96.02,58,76.02,51,96.02,44,96.02,58" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[f3bf6ee72f5e1a12bb542db493abdab0]
+reverse link Clause to Rule--><path d="M229.43,51 C241.6,51 254.98,51 268.76,51 " fill="none" id="Clause&lt;-Rule" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="229.01,58,209.01,51,229.01,44,229.01,58" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[20e1b802e026257bc052a955cce88ea7]
+reverse link Rule to Fact--><path d="M561.19,51 C575.98,51 589.57,51 600.67,51 " fill="none" id="Rule&lt;-Fact" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="561.17,58,541.17,51,561.17,44,561.17,58" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[2170cac6fdfc9bd6ade6a8fbc6b13c6f]
+@startuml
+left to right direction
+skinparam shadowing false
+
+interface Struct
+
+interface Clause
+
+interface Rule {
+  + head: Struct
+  + body: Term
+  + {static} of(head: Struct, **varargs** body: Term): Rule
+}
+
+interface Fact
+
+Struct <|- - Clause
+Clause <|- - Rule
+Rule <|- - Fact
+@enduml
+
+PlantUML version 1.2020.02(Sun Mar 01 11:22:07 CET 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 11.0.10+9
+Operating System: Linux
+Default Encoding: UTF-8
+Language: it
+Country: IT
+--></g></svg>
