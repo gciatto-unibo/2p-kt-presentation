@@ -1299,6 +1299,21 @@
 \end{frame}
 
 \begin{frame}[allowframebreaks, fragile]{Using \kt{Unificator}s}    
+
+    General unification strategy:
+    %
+    \bigskip
+    %
+    \input{tab-unification}
+    %
+    \bigskip
+    %
+    \begin{itemize}
+        \item[!] implementations may alter the way terms are compared
+    \end{itemize}
+    
+    \framebreak
+
     Successful unification with \kt{default}:
     %
     \ktSnippet[\tiny]{./snippets/UnificatorDefault.kt}
@@ -1311,7 +1326,7 @@
     
     \framebreak
 
-    Unification with \kt{cached} unificators:
+    Unification with \kt{cached} unificator:
     %
     \ktSnippet[\tiny]{./snippets/UnificatorCached.kt}
 
