@@ -2,7 +2,7 @@ name: compile
 on:
   push:
     branches:
-      - main
+      - master
 env:
   LATEX_ROOT: 2p-kt-talk
 jobs:
