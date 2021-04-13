@@ -406,6 +406,12 @@
         \item[\kt{accept<T>(TermVisitor<T>): T}] returns the object produced by letting the provided \kt{TermVisitor} visit the current \kt{Term}
         \item[\kt{compareTo(Term): Int}] compares the current \kt{Term} with the provided one, according to the total ordering on \kt{Term}s
         \item[\kt{toString(): String}] returns a representation of the current \kt{Term} for debugging purposes
+        \item[\kt{variables: Sequence<Var>}] returns the (possibly empty) sequence of variables contained in the current \kt{Term}
+        %
+        \begin{itemize}\small
+            \item[!] duplicates are \emph{removed}
+        \end{itemize}
+        \item[\kt{isGround: Boolean}] returns \kt{true} if the current \kt{Term} contains no \kt{Var}iable
     \end{description}
 \end{frame}
 
@@ -417,6 +423,14 @@
     \begin{description}
         \item[\kt{value: Any}] returns the value of this \kt{Constant}
     \end{description}
+    
+    \begin{alertblock}{About \kt{Constant}s}
+        \begin{itemize}
+            \item \kt{Constant}s are inherently \alert{ground}
+            \item Their \kt{isGround} property always return \kt{true}
+            \item Their \kt{variables} property always return an empty sequence
+        \end{itemize}
+    \end{alertblock}
 
     \framebreak
 
@@ -1086,6 +1100,8 @@
             %
             \begin{itemize}
                 \item[$\rightarrow$] terms are \alert{side-effect free}
+                \item[$\rightarrow$] caching \& instance re-use can be exploited pervasively
+                \item[$\rightarrow$] no concurrency issue
             \end{itemize}
             \item They must always be re-created from scratch, upon edit
             \item Editing a term implies creating a copy of that term
@@ -1200,27 +1216,69 @@
     \end{block}
 
     \begin{description}
-        \item[\kt{isSuccess: Boolean}]
-        \item[\kt{isFail: Boolean}]
-        \item[\kt{getByName(String): Term?}] 
-        \item[\kt{plus(Substitution): Substitution}] 
-        \item[\kt{minus(\meta{Container}): Substitution}]
-        \item[\kt{minus(Substitution): Substitution}]
-        \item[\kt{filter(\meta{Container}): Substitution}] 
-        \item[\kt{filter(\meta{Predicate}): Substitution}]  
+        \item[\kt{isSuccess: Boolean}] checks whether the current \kt{Substitution} is a \kt{Unifier}
+        \item[\kt{isFail: Boolean}] checks whether the current \kt{Substitution} is \kt{Fail}ed 
+        \item[\kt{getByName(String): Term?}] gets the value of a \kt{Var}iable by its \emph{simple} name
+        \item[\kt{plus(Substitution): Substitution}] merges the current \kt{Substitution} with the provided one (a third one is created)
+        \item[\kt{minus(\meta{Container}): Substitution}] returns a knew \kt{Substitution} \alert{not} containing any \kt{Var} contained in \kt{\meta{Container}}
+        %
+        \begin{itemize}\small
+            \item where \kt{\meta{Container}} is an iterable, sequence, or vararg of \kt{Var}iables
+        \end{itemize}
+        \item[\kt{minus(Substitution): Substitution}]  returns a knew \kt{Substitution} \alert{not} containing any \kt{Var} contained in the provided \kt{Substitution}
+        \item[\kt{filter(\meta{Container}): Substitution}] returns a knew \kt{Substitution} containing \alert{only} the \kt{Var}iables contained in the provided \kt{\meta{Container}}
+        \item[\kt{filter(\meta{Predicate}): Substitution}] returns a knew \kt{Substitution} containing \alert{only} the \kt{Var}iables contained for which \kt{\meta{Predicate}} is \kt{true}
     \end{description}
     %
     \begin{itemize}
         \item[+] methods \& properties of \kt{Map} such as \kt{get}, \kt{size}, etc.
     \end{itemize}
-\end{frame}
-        
-\begin{frame}[allowframebreaks]{The \kt{Substitution} Type Hierarchy}
-    impossibility to create 2 equal variables
+    
+    \framebreak
+    
+    \begin{alertblock}{\kt{Substitution}s can be merged}
+        Assuming that:
+        %
+        \begin{itemize}
+            \item $U_1 = $ \kt{\{$X_1$=$t_1$, \ldots, $X_n$=$t_n$\}} is a unifier 
+            \item $U_2 = $ \kt{\{$Y_1$=$t'_1$, \ldots, $Y_m$=$t'_m$\}} is another unifier 
+            \item $\emptyset$ denotes the failed substitution
+        \end{itemize}
+        %
+        \[U_1 + U_2 = \begin{cases} 
+            \text{\kt{\{$X_1$=$t_1$, \ldots, $X_n$=$t_n$, $Y_1$=$t'_1$, \ldots, $Y_m$=$t'_m$\}}} \\
+            \qquad\text{ if } \nexists i,j : X_i = Y_j \\
+            \text{\kt{\{$X_1$=$t_1$, \ldots, $Y_i$=$t'_j$, \ldots, $Y_m$=$t'_m$\}}} \\
+            \qquad\text{ if } \forall i,j : X_i = Y_j \implies t_i = t'_j\\
+            \emptyset \text{ otherwise }
+        \end{cases}\]
+        %
+        \[ U_1 + \emptyset = \emptyset + U_2 = \emptyset \]
+    \end{alertblock}
+    
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Creating \kt{Substitution}s}
-    impossibility to create 2 equal variables
+    \begin{block}{Static factories for \kt{Substitution}s}
+        \begin{description}
+            \item[\kt{Substitution.failed()}] return an instance of \kt{Fail}
+            %
+            \item[\kt{Substitution.of(\meta{KeyValuePairs})}] creates a new \kt{Substition} using the provided key-value pairs, where
+            %
+            \begin{itemize}\small
+                \item keys can be either strings or \kt{Var}s
+                \item values can be arbitrary \kt{Term}s
+                \item multiple pairs can be provided
+                \item if the same \kt{Var} is assigned to different \kt{Term}s, an instance of \kt{Fail} is returned
+            \end{itemize}
+            
+            \item[\kt{Substitution.unifier(\meta{KeyValuePairs})}] creates a new \kt{Unifier} using the provided key-value pairs, where
+            %
+            \begin{itemize}\small
+                \item if the same \kt{Var} is assigned to different \kt{Term}s, a \alert{\kt{SubstitutionException}} is thrown
+            \end{itemize}
+        \end{description}
+    \end{block}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Applying Substitutions to Terms}
