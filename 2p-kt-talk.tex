@@ -1380,7 +1380,21 @@
 \subsection{Clause Collections}
 
 \begin{frame}[allowframebreaks]{Collections Design}
-    bi-dimensional design: mutable/immutable vs. ordered/unordered
+    \begin{block}{Clause Collections}
+        \begin{itemize}
+            \item manage the storage of \kt{Clause}s
+            \item provide methods for addition, removal, and retrieval of clauses
+            \item designed as \kt{Iterable} subtypes
+        \end{itemize}
+    \end{block}
+    %
+    \begin{block}{Two dimensions: \textit{mutability} and \textit{ordering}}
+        \begin{itemize}
+            \item our design tackles both issues
+            \item \textit{mutable} collections can be modified in-place
+            \item \textit{ordered} collections keep track of the order of insertion
+        \end{itemize}
+    \end{block}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{ClauseCollection} Type Hierarchy}
