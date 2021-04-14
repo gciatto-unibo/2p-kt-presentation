@@ -1,6 +1,7 @@
 % !TeX spellcheck = en_GB
 %
-\documentclass[presentation]{beamer}
+\documentclass[handout]{beamer}
+% \documentclass[presentation]{beamer}
 \mode<presentation>{\usetheme{AMSCesenaPurpleAndGold}}
 \setbeamertemplate{bibliography item}{\insertbiblabel}
 \setbeamersize{description width=0.57cm}
@@ -413,6 +414,8 @@
         \end{itemize}
         \item[\kt{isGround: Boolean}] returns \kt{true} if the current \kt{Term} contains no \kt{Var}iable
     \end{description}
+    
+    \ktSnippet{snippets/MissingExample.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Main Sorts of \kt{Term}s}
@@ -468,6 +471,8 @@
             \item unlimited amount of digits $\rightarrow$ no overflow, no max value
         \end{itemize}
     \end{description}
+    
+    \ktSnippet{snippets/MissingExample.kt}
 
     \framebreak
 
@@ -483,6 +488,8 @@
             \item i.e. a real number with arbitrary precision
         \end{itemize}
     \end{description}
+    
+    \ktSnippet{snippets/MissingExample.kt}
 
     \framebreak
 
@@ -529,6 +536,8 @@
         \item[\kt{insertAt(Int,Term): Term}] returns a novel \kt{Struct} of the form \pl{$f$($t_1$, \ldots, $t_{i-1}$, $t^*$, $t_{i+1}$, \ldots, $t_N$)}, where $t^*$ is the \kt{Term} provided as argument
         \item[\kt{setFunctor(String): Term}] returns a novel \kt{Struct} of the form \pl{$f^*$($t_1$, \ldots, $t_N$)}, where $f^*$ is the functor \kt{String} provided as argument
     \end{description}
+    
+    \ktSnippet{snippets/MissingExample.kt}
 
     \framebreak
 
@@ -543,6 +552,8 @@
         \item[\kt{argsList: List<Term>}] must return the empty list
         \item[\kt{argsSequence: Sequence<Term>}] must return the empty sequence
     \end{description}
+    
+    \ktSnippet{snippets/MissingExample.kt}
 
     \framebreak
 
@@ -578,6 +589,8 @@
         \item[\kt{equals(Term,Boolean): Boolean}] compares this \kt{Var}iable with the provided object, returning true if the latter is a \kt{Var}iable having the same complete (resp. simple) name, assuming that the provided \kt{Boolean} is true (resp. false)
         \item[\kt{structurallyEquals(Term): Boolean}] compares this \kt{Var}iable with the provided object, returning true if the latter is a \kt{Var}iable
     \end{description}
+    
+    \ktSnippet{snippets/MissingExample.kt}
 
     \framebreak
 
@@ -601,6 +614,8 @@
         \item[\kt{functor: String}] must return \kt{"/"}
         \item[\kt{arity: String}] must return 2
     \end{description}
+    
+    \ktSnippet{snippets/MissingExample.kt}
 
     \framebreak
 
@@ -615,6 +630,8 @@
         \item[\kt{isTrue: Boolean}] returns \kt{true} if the atom is a tautology
         \item[\kt{isFail: Boolean}] returns \kt{true} if the atom is a contradiction
     \end{description}
+    
+    \ktSnippet{snippets/MissingExample.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Collections}
@@ -703,6 +720,8 @@
         \item[\kt{toArray(): Array<Term>}] returns an array containing the terms $t_1, \ldots, t_N$, plus $T$ iff $T \not\equiv \pl{[]}$
         \item[\kt{unfold(): Sequence<Term>}] returns a sequence containing the terms \pl{'.'($t1$, '.'($t_2$, \ldots))}, \pl{'.'($t_2$, \ldots)}, \pl{\ldots}, $T$
     \end{description}
+    
+    \ktSnippet{snippets/MissingExample.kt}
 
     \framebreak
 
@@ -739,6 +758,8 @@
         \item[\kt{toArray(): Array<Term>}] returns \kt{this.unfoldedArray}
         \item[\kt{unfold(): Sequence<Term>}] returns a sequence containing the terms \pl{','($t1$, ','($t_2$, \ldots))}, \pl{','($t_2$, \ldots)}, \pl{\ldots}, \pl{','($t_{N-1}$, $t_N$)}
     \end{description}
+    
+    \ktSnippet{snippets/MissingExample.kt}
 
     \framebreak
 
@@ -776,6 +797,8 @@
         \item[\kt{toList(): List<Term>}] returns \kt{this.unfoldedList}
         \item[\kt{toArray(): Array<Term>}] returns \kt{this.unfoldedArray}
     \end{description}
+    
+    \ktSnippet{snippets/MissingExample.kt}
 
 \end{frame}
 
@@ -818,6 +841,8 @@
         \item[\kt{isFact: Boolean}] returns \kt{true} if the clause is a fact
         \item[\kt{isWellFormed: Boolean}] returns \kt{true} iff no sub-term in $b$ which is interpretable as a logic goal is a \kt{Var}iable
     \end{description}
+    
+    \ktSnippet{snippets/MissingExample.kt}
 \end{frame}
 
 \subsubsection{Creating \kt{Term}s}
@@ -896,6 +921,8 @@
             \item[\kt{Var.anonymous()}] creates an anonymous \kt{Var}iable
         \end{description}
     \end{block}
+    
+    \ktSnippet{snippets/MissingExample.kt}
 
     \framebreak
 
@@ -912,6 +939,8 @@
             \item[\kt{Struct.fold(String,\meta{Container},Term?)}] folds the terms in \kt{\meta{Container}} using the provided functor recursively, adopting either an explicit or implicit folding strategy depending on whether the last argument is null or not
         \end{description}
     \end{block}
+    
+    \ktSnippet{snippets/MissingExample.kt}
 
 \end{frame}
 
@@ -934,6 +963,9 @@
 
             \item[\kt{Cons.of(Term,Term)}] creates a term of the form \kt{'.'($t_1$, $t_2$)} where $t_1,t_2$ are the first and second arguments, respectively
         \end{description}
+        
+        \ktSnippet{snippets/MissingExample.kt}
+        
     \end{block}
 
     \framebreak
@@ -947,6 +979,8 @@
             \end{itemize}
         \end{description}
     \end{block}
+    
+    \ktSnippet{snippets/MissingExample.kt}
 
     \framebreak
 
@@ -963,6 +997,8 @@
             \end{itemize}
         \end{description}
     \end{block}
+    
+    \ktSnippet{snippets/MissingExample.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Creating \kt{Clause}s via Static Factories}
@@ -984,6 +1020,8 @@
             \item[\kt{Fact.of(Struct)}] creates a \kt{Fact} given the \kt{Struct} acting as head
         \end{description}
     \end{block}
+    
+    \ktSnippet{snippets/MissingExample.kt}
 \end{frame}
 
 \subsubsection{About \kt{Term}s' Design}
@@ -1011,6 +1049,8 @@
         \item or via \kt{Term.equals(Term, \alert{true})}
     \end{itemize}
     
+    \ktSnippet{snippets/MissingExample.kt}
+    
     \framebreak
     
     \begin{block}{Terms Equality}
@@ -1034,6 +1074,8 @@
         \item Terms' \alert{equality} is tested via \kt{Term.equals(Term, \alert{false})}
     \end{itemize}
     
+    \ktSnippet{snippets/MissingExample.kt}
+    
     \framebreak
     
     \begin{block}{Terms Structural Equality}
@@ -1055,6 +1097,8 @@
     \begin{itemize}
         \item Terms' \alert{structural equality} is tested via \kt{Term.structurallyEquals(Term)}
     \end{itemize}
+    
+    \ktSnippet{snippets/MissingExample.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Total Ordering of Terms}
@@ -1086,6 +1130,8 @@
             \end{enumerate}
         \end{itemize}
     \end{exampleblock}
+    
+    \ktSnippet{snippets/MissingExample.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Terms' Immutability}
@@ -1150,6 +1196,9 @@
             \item \ldots a reference to the variable should be locally saved somehow
         \end{itemize}
     \end{itemize}
+    
+    \ktSnippet{snippets/MissingExample.kt}
+    
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The need for \kt{Scope}s}
@@ -1182,6 +1231,20 @@
     \begin{itemize}
         \item (one method exists in \kt{Scope} for each static factory described before)
     \end{itemize}
+    
+    \begin{block}{How to create \kt{Scope}s}
+        \begin{description}
+            \item[\kt{Scope.empty()}] creates a new empty \kt{Scope}
+            
+            \item[\kt{Scope.empty(Scope.()->R): R}] creates a new empty \kt{Scope} and accepts a lambda with receiver aimed at creating an object of type \kt{R} using that \kt{Scope}
+            %
+            \begin{itemize}
+                \item can be used via the syntax \kt{Scope.empty \{ \meta{Code} \}} in Kotlin
+            \end{itemize}
+        \end{description}
+    \end{block}
+    
+    \ktSnippet{snippets/MissingExample.kt}
 \end{frame}
 
 \subsection{\kt{Subtitution}s as First Class Entities}
@@ -1256,6 +1319,8 @@
         \[ U_1 + \emptyset = \emptyset + U_2 = \emptyset \]
     \end{alertblock}
     
+    \ktSnippet{snippets/MissingExample.kt}
+    
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Creating \kt{Substitution}s}
@@ -1279,10 +1344,58 @@
             \end{itemize}
         \end{description}
     \end{block}
+    
+    \ktSnippet{snippets/MissingExample.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Applying Substitutions to Terms}
-    normal case + exceptions + examples
+    \begin{block}{Definition and Notation}
+        Let
+        \begin{itemize}
+            \item $t$ be a term
+            \item $U = $ \kt{\{$X_1$=$t_1$, \ldots, $X_n$=$t_n$\}} be a unifier 
+        \end{itemize}
+        then we denote by
+        \[t' = t[U]\]
+        the term attained by \alert{applying} $U$ to $t$.
+        %
+        \begin{itemize}
+            \item $t'$ has the same structure of $t$\ldots
+            \item \ldots except each occurrence of $X_i$ is replaced by $t_i$
+        \end{itemize}
+    \end{block}
+    
+    \begin{alertblock}{Notable Cases}
+        \begin{itemize}
+            \item Applying the failed substitution $\emptyset$ to any term $t$ makes no sense
+            \item If $x$ is \alert{ground} then $x[U] = x$, $\forall U$
+        \end{itemize}
+    \end{alertblock}
+    
+    \begin{block}{In practice}
+        Let $t$ denote a \kt{Term} and $s$ denote a \kt{Substitution}:
+        \begin{description}
+            \item[\kt{$t$.apply(Substitution): Term}] returns a new \kt{Term} attained by applying the provided \kt{Substitution} to $t$
+            %
+            \begin{itemize}\small
+                \item may throw a \alert{\kt{SubstitutionApplicationException}} if the \kt{Substitution} is an instance of \kt{Fail} at run time
+            \end{itemize}
+            
+            \item[\kt{$t$.get(Substitution): Term}] is an alias for \kt{$t$.apply}
+            %
+            \begin{itemize}
+                \item this can be invoked via the syntax \alert{\kt{$t$[$s$]}} in Kotlin
+            \end{itemize}
+            
+            \item[\kt{$s$.applyTo(Term)}: Term] returns a new \kt{Term} attained by applying $s$ to the provided \kt{Term}
+            %
+            \begin{itemize}\small
+                \item may throw a \alert{\kt{SubstitutionApplicationException}} if the $s$ is an instance of \kt{Fail} at run time
+            \end{itemize}
+        \end{description}
+    \end{block}
+    
+    \ktSnippet{snippets/MissingExample.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Refreshing Terms}
