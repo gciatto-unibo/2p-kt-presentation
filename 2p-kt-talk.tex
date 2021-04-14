@@ -1452,13 +1452,13 @@
         A Prolog-like \kt{Operator} is an algebraic object composed by 3 fields:
         %
         \begin{description}
-            \item[functor: String] i.e. the operator's symbol
-            \item[priority: Int] where lower integers correspong to higher priorities
+            \item[\kt{functor: String}] i.e. the operator's symbol
+            \item[\kt{priority: Int}] where lower integers correspong to higher priorities
             %
             \begin{itemize}\small
                 \item conventionally, 0 is \alert{max} priority, 1200 is \alert{min} priority
             \end{itemize}
-            \item[specifier: Specifier] is a descriptor of the operator's
+            \item[\kt{specifier: Specifier}] is a descriptor of the operator's
             %
             \begin{description}\small
                 \item[arity] i.e. the amount of arguments it takes (either binary or unary) 
@@ -1467,10 +1467,210 @@
             \end{description}
         \end{description}
     \end{block}
+
+    \begin{block}{About \kt{Specifier}s}
+        \begin{itemize}
+            \item \kt{Specifier} is an \emph{enum} with 7 constants
+
+            \item Each one is a combination of 3 letters:
+            %
+            \begin{description}\small
+                \item[F] denoting the operator
+                \item[X] denoting an expression having \alert{strictly higher} priority
+                \item[Y] denoting an expression having \alert{higher or equal} priority
+            \end{description}
+
+            \item Each one describes an operator's arity, position, and associativity:
+            %
+            \medskip
+            %
+            \input{tab-specifiers.tex}
+        \end{itemize}
+    \end{block}
+
+    \begin{exampleblock}{How two interpret \textbf{prefix} specifiers \kt{FX} and \kt{FY}}
+        \begin{itemize}
+            \item If \pl{f} and \pl{g} are operators of type \kt{FY}, and \pl{T} is a term:
+            %
+            \begin{itemize}
+                \item espressions of the form \alert{\pl{f(g(T))}} 
+                %
+                \begin{itemize}
+                    \item can be written as \alert{\pl{f g T}} only if $priority(\pl{g}) \leq priority(\pl{f})$ 
+                    \item can be written as \alert{\pl{f(g T)}} otherwise
+                \end{itemize}
+
+                \item espressions of the form \alert{\pl{f(f(T))}} or \alert{\pl{g(g(T))}} 
+                %
+                \begin{itemize}
+                    \item can be written as \alert{\pl{f f T}} or \alert{\pl{g g T}}
+                \end{itemize} 
+            \end{itemize}
+
+            \item Otherwise, if \pl{f} and \pl{g} are operators of type \kt{FX}:
+            %
+            \begin{itemize}
+                \item espressions of the form \alert{\pl{f(g(T))}} 
+                %
+                \begin{itemize}
+                    \item can be written as \alert{\pl{f g T}} only if $priority(\pl{g}) < priority(\pl{f})$ 
+                    \item can be written as \alert{\pl{f(g T)}} otherwise
+                \end{itemize}
+
+                \item espressions of the form \alert{\pl{f(f(T))}}, or \alert{\pl{g(g(T))}} 
+                %
+                \begin{itemize}
+                    \item can \alert{never} be written as \alert{\pl{f f T}} or \alert{\pl{g g T}}
+                    \item but can be written as \alert{\pl{f(f T)}} or \alert{\pl{g(g T)}}
+                \end{itemize} 
+            \end{itemize}
+        \end{itemize}
+    \end{exampleblock}
+
+    \begin{exampleblock}{How two interpret \textbf{postfix} specifiers \kt{XF} and \kt{YF}}
+        \begin{itemize}
+            \item If \pl{f} and \pl{g} are operators of type \kt{YF}, and \pl{T} is a term:
+            %
+            \begin{itemize}
+                \item espressions of the form \alert{\pl{f(g(T))}} 
+                %
+                \begin{itemize}
+                    \item can be written as \alert{\pl{T g f}} only if $priority(\pl{g}) \leq priority(\pl{f})$ 
+                    \item can be written as \alert{\pl{(T g) f}} otherwise
+                \end{itemize}
+
+                \item espressions of the form \alert{\pl{f(f(T))}} or \alert{\pl{g(g(T))}} 
+                %
+                \begin{itemize}
+                    \item can be written as \alert{\pl{T f f}} or \alert{\pl{T g g}}
+                \end{itemize} 
+            \end{itemize}
+
+            \item Otherwise, if \pl{f} and \pl{g} are operators of type \kt{XF}:
+            %
+            \begin{itemize}
+                \item espressions of the form \alert{\pl{f(g(T))}} 
+                %
+                \begin{itemize}
+                    \item can be written as \alert{\pl{T g f}} only if $priority(\pl{g}) < priority(\pl{f})$ 
+                    \item can be written as \alert{\pl{(T g) f}} otherwise
+                \end{itemize}
+
+                \item espressions of the form \alert{\pl{f(f(T))}}, or \alert{\pl{g(g(T))}} 
+                %
+                \begin{itemize}
+                    \item can \alert{never} be written as \alert{\pl{T f f}} or \alert{\pl{T g g}}
+                    \item but can be written as \alert{\pl{(T f)f}} or \alert{\pl{(T g)g}}
+                \end{itemize} 
+            \end{itemize}
+        \end{itemize}
+    \end{exampleblock}
+
+    \begin{exampleblock}{How two interpret \textbf{infix} specifiers \kt{YFX} and \kt{XFY}}
+        \begin{itemize}
+            \item If \pl{f} and \pl{g} are operators of type \kt{YFX}, and \pl{A}, \pl{B}, and \pl{C} are terms:
+            %
+            \begin{itemize}
+                \item espressions of the form \alert{\pl{f(g(A, B), C)}} 
+                %
+                \begin{itemize}
+                    \item can be written as \alert{\pl{A f B g C}} only if $priority(\pl{g}) \leq priority(\pl{f})$ 
+                    \item can be written as \alert{\pl{(A f B) g C}} otherwise
+                \end{itemize}
+
+                \item espressions of the form \alert{\pl{f(f(A, B), C)}} or \alert{\pl{g(g(A, B), C)}} 
+                %
+                \begin{itemize}
+                    \item can be written as \alert{\pl{A f B f C}} or \alert{\pl{A g B g C}}
+                \end{itemize} 
+            \end{itemize}
+
+            \item Conversely, if \pl{f} and \pl{g} are operators of type \kt{XFY}:
+            %
+            \begin{itemize}
+                \item espressions of the form \alert{\pl{f(A, g(B, C))}}  
+                %
+                \begin{itemize}
+                    \item can be written as \alert{\pl{A f B g C}} only if $priority(\pl{g}) \leq priority(\pl{f})$ 
+                    \item can be written as \alert{\pl{A f (B g C)}} otherwise
+                \end{itemize}
+
+                \item espressions of the form \alert{\pl{f(A, f(B, C))}} or \alert{\pl{g(A, g(B, C))}} 
+                %
+                \begin{itemize}
+                    \item can be written as \alert{\pl{A f B f C}} or \alert{\pl{A g B g C}}
+                \end{itemize}  
+            \end{itemize}
+        \end{itemize}
+    \end{exampleblock}
+
+    \begin{exampleblock}{How two interpret the \textbf{infix} specifier \kt{XFX}}
+        \begin{itemize}
+            \item If \pl{f} and \pl{g} are operators of type \kt{XFX}, and \pl{A}, \pl{B}, and \pl{C} are terms:
+            %
+            \begin{itemize}
+                \item espressions of the form \alert{\pl{f(g(A, B), C)}} 
+                %
+                \begin{itemize}
+                    \item can be written as \alert{\pl{A f B g C}} only if $priority(\pl{g}) < priority(\pl{f})$ 
+                    \item can be written as \alert{\pl{(A f B) g C}} otherwise
+                \end{itemize}
+
+                \item espressions of the form \alert{\pl{f(f(A, B), C)}} or \alert{\pl{g(g(A, B), C)}} 
+                %
+                \begin{itemize}
+                    \item can \alert{never} be written as \alert{\pl{A f B f C}} or \alert{\pl{A g B g C}}
+                    \item but can be written as \alert{\pl{(A f B) f C}} or \alert{\pl{(A g B) g C}}
+                \end{itemize}  
+
+                \item espressions of the form \alert{\pl{f(A, g(B, C))}}  
+                %
+                \begin{itemize}
+                    \item can be written as \alert{\pl{A f B g C}} only if $priority(\pl{g}) < priority(\pl{f})$ 
+                    \item can be written as \alert{\pl{A f (B g C)}} otherwise
+                \end{itemize}
+
+                \item espressions of the form \alert{\pl{f(A, f(B, C))}} or \alert{\pl{g(A, g(B, C))}} 
+                %
+                \begin{itemize}
+                    \item can \alert{never} be written as \alert{\pl{A f B f C}} or \alert{\pl{A g B g C}}
+                    \item but can be written as \alert{\pl{A f (B f C)}} or \alert{\pl{A g (B g C)}}
+                \end{itemize}  
+            \end{itemize}
+        \end{itemize}
+    \end{exampleblock}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Sets of Operators}
-    definition + notable sets
+    \begin{block}{The \kt{OperatorSet} typ is a subtype of \kt{Set<Operator>}}
+        An \kt{OperatorSet} is simply a set of \kt{Operator}s (no duplicates admitted)
+        %
+        \begin{itemize}
+            \item the \kt{OperatorSet} is \alert{immutable}
+            \item operations exist to add/remove/check \kt{Operator}s within \kt{OperatorSet}s
+            \item operations exists to \alert{merge} \kt{OperatorSet}s
+            \item adding/removing operators implies \alert{creating a copy} of the whole set
+        \end{itemize}
+    \end{block}
+
+    \framebreak
+
+    Several notable \kt{OperatorSet} exists:
+    %
+    \begin{itemize}
+        \item[eg] for arithmetic operators:
+            \\\medskip\input{tab-operators-arithmetic.tex} 
+
+        \framebreak
+
+        \item[eg] for arithmetic comparison operators:
+            \\\medskip\input{tab-operators-arithmetic-comparison.tex} 
+
+        \framebreak
+
+        \item[eg] for term comparison operators:
+            \\\medskip\input{tab-operators-term-comparison.tex} 
+    \end{itemize}
 \end{frame}
 
 \subsection{Pattern Matching over \kt{Term}s Types}
