@@ -1,6 +1,7 @@
 % !TeX spellcheck = en_GB
 %
-\documentclass[presentation]{beamer}
+\documentclass[handout]{beamer}
+% \documentclass[presentation]{beamer}
 \mode<presentation>{\usetheme{AMSCesenaPurpleAndGold}}
 \setbeamertemplate{bibliography item}{\insertbiblabel}
 \setbeamersize{description width=0.57cm}
@@ -406,7 +407,15 @@
         \item[\kt{accept<T>(TermVisitor<T>): T}] returns the object produced by letting the provided \kt{TermVisitor} visit the current \kt{Term}
         \item[\kt{compareTo(Term): Int}] compares the current \kt{Term} with the provided one, according to the total ordering on \kt{Term}s
         \item[\kt{toString(): String}] returns a representation of the current \kt{Term} for debugging purposes
+        \item[\kt{variables: Sequence<Var>}] returns the (possibly empty) sequence of variables contained in the current \kt{Term}
+        %
+        \begin{itemize}\small
+            \item[!] duplicates are \emph{removed}
+        \end{itemize}
+        \item[\kt{isGround: Boolean}] returns \kt{true} if the current \kt{Term} contains no \kt{Var}iable
     \end{description}
+
+    \ktSnippet{snippets/MissingExample.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Main Sorts of \kt{Term}s}
@@ -417,6 +426,14 @@
     \begin{description}
         \item[\kt{value: Any}] returns the value of this \kt{Constant}
     \end{description}
+
+    \begin{alertblock}{About \kt{Constant}s}
+        \begin{itemize}
+            \item \kt{Constant}s are inherently \alert{ground}
+            \item Their \kt{isGround} property always return \kt{true}
+            \item Their \kt{variables} property always return an empty sequence
+        \end{itemize}
+    \end{alertblock}
 
     \framebreak
 
@@ -455,6 +472,8 @@
         \end{itemize}
     \end{description}
 
+    \ktSnippet{snippets/MissingExample.kt}
+
     \framebreak
 
     \begin{block}{The \kt{Real} type is a sub-type of \kt{Numeric}}\centering
@@ -469,6 +488,8 @@
             \item i.e. a real number with arbitrary precision
         \end{itemize}
     \end{description}
+
+    \ktSnippet{snippets/MissingExample.kt}
 
     \framebreak
 
@@ -516,6 +537,8 @@
         \item[\kt{setFunctor(String): Term}] returns a novel \kt{Struct} of the form \pl{$f^*$($t_1$, \ldots, $t_N$)}, where $f^*$ is the functor \kt{String} provided as argument
     \end{description}
 
+    \ktSnippet{snippets/MissingExample.kt}
+
     \framebreak
 
     \begin{block}{The \kt{Atom} type is a sub-type of both \kt{Struct} and \kt{Constant}}\centering
@@ -529,6 +552,8 @@
         \item[\kt{argsList: List<Term>}] must return the empty list
         \item[\kt{argsSequence: Sequence<Term>}] must return the empty sequence
     \end{description}
+
+    \ktSnippet{snippets/MissingExample.kt}
 
     \framebreak
 
@@ -565,6 +590,8 @@
         \item[\kt{structurallyEquals(Term): Boolean}] compares this \kt{Var}iable with the provided object, returning true if the latter is a \kt{Var}iable
     \end{description}
 
+    \ktSnippet{snippets/MissingExample.kt}
+
     \framebreak
 
     \begin{block}{The \kt{Indicator} type is a sub-type of \kt{Struct}}
@@ -588,6 +615,8 @@
         \item[\kt{arity: String}] must return 2
     \end{description}
 
+    \ktSnippet{snippets/MissingExample.kt}
+
     \framebreak
 
     \begin{block}{The \kt{Truth} type is a sub-type of \kt{Atom}}
@@ -601,6 +630,8 @@
         \item[\kt{isTrue: Boolean}] returns \kt{true} if the atom is a tautology
         \item[\kt{isFail: Boolean}] returns \kt{true} if the atom is a contradiction
     \end{description}
+
+    \ktSnippet{snippets/MissingExample.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Collections}
@@ -690,6 +721,8 @@
         \item[\kt{unfold(): Sequence<Term>}] returns a sequence containing the terms \pl{'.'($t1$, '.'($t_2$, \ldots))}, \pl{'.'($t_2$, \ldots)}, \pl{\ldots}, $T$
     \end{description}
 
+    \ktSnippet{snippets/MissingExample.kt}
+
     \framebreak
 
     \begin{block}{The \kt{Tuple} type is a sub-type of \kt{Collection}}
@@ -725,6 +758,8 @@
         \item[\kt{toArray(): Array<Term>}] returns \kt{this.unfoldedArray}
         \item[\kt{unfold(): Sequence<Term>}] returns a sequence containing the terms \pl{','($t1$, ','($t_2$, \ldots))}, \pl{','($t_2$, \ldots)}, \pl{\ldots}, \pl{','($t_{N-1}$, $t_N$)}
     \end{description}
+
+    \ktSnippet{snippets/MissingExample.kt}
 
     \framebreak
 
@@ -762,6 +797,8 @@
         \item[\kt{toList(): List<Term>}] returns \kt{this.unfoldedList}
         \item[\kt{toArray(): Array<Term>}] returns \kt{this.unfoldedArray}
     \end{description}
+
+    \ktSnippet{snippets/MissingExample.kt}
 
 \end{frame}
 
@@ -804,6 +841,8 @@
         \item[\kt{isFact: Boolean}] returns \kt{true} if the clause is a fact
         \item[\kt{isWellFormed: Boolean}] returns \kt{true} iff no sub-term in $b$ which is interpretable as a logic goal is a \kt{Var}iable
     \end{description}
+
+    \ktSnippet{snippets/MissingExample.kt}
 \end{frame}
 
 \subsubsection{Creating \kt{Term}s}
@@ -883,6 +922,8 @@
         \end{description}
     \end{block}
 
+    \ktSnippet{snippets/MissingExample.kt}
+
     \framebreak
 
     \begin{block}{Creating \kt{Struct}ures}
@@ -898,6 +939,8 @@
             \item[\kt{Struct.fold(String,\meta{Container},Term?)}] folds the terms in \kt{\meta{Container}} using the provided functor recursively, adopting either an explicit or implicit folding strategy depending on whether the last argument is null or not
         \end{description}
     \end{block}
+
+    \ktSnippet{snippets/MissingExample.kt}
 
 \end{frame}
 
@@ -922,6 +965,8 @@
         \end{description}
     \end{block}
 
+    \ktSnippet{snippets/MissingExample.kt}
+
     \framebreak
 
     \begin{block}{Creating \kt{Tuple}s}
@@ -933,6 +978,8 @@
             \end{itemize}
         \end{description}
     \end{block}
+
+    \ktSnippet{snippets/MissingExample.kt}
 
     \framebreak
 
@@ -949,6 +996,8 @@
             \end{itemize}
         \end{description}
     \end{block}
+
+    \ktSnippet{snippets/MissingExample.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Creating \kt{Clause}s via Static Factories}
@@ -970,6 +1019,8 @@
             \item[\kt{Fact.of(Struct)}] creates a \kt{Fact} given the \kt{Struct} acting as head
         \end{description}
     \end{block}
+
+    \ktSnippet{snippets/MissingExample.kt}
 \end{frame}
 
 \subsubsection{About \kt{Term}s' Design}
@@ -996,9 +1047,11 @@
         \item Terms' \alert{identity} is tested via \kt{Term.equals(Any?)}
         \item or via \kt{Term.equals(Term, \alert{true})}
     \end{itemize}
-    
+
+    \ktSnippet{snippets/MissingExample.kt}
+
     \framebreak
-    
+
     \begin{block}{Terms Equality}
         Two terms are \alert{equal} iff:
         %
@@ -1019,9 +1072,11 @@
     \begin{itemize}
         \item Terms' \alert{equality} is tested via \kt{Term.equals(Term, \alert{false})}
     \end{itemize}
-    
+
+    \ktSnippet{snippets/MissingExample.kt}
+
     \framebreak
-    
+
     \begin{block}{Terms Structural Equality}
         Two terms are \alert{structurally equal} iff:
         %
@@ -1041,6 +1096,8 @@
     \begin{itemize}
         \item Terms' \alert{structural equality} is tested via \kt{Term.structurallyEquals(Term)}
     \end{itemize}
+
+    \ktSnippet{snippets/MissingExample.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Total Ordering of Terms}
@@ -1053,7 +1110,7 @@
             \item \kt{Term.compareTo} exploits \kt{DefaultComparator} by default
         \end{itemize}
     \end{block}
-    
+
     \begin{exampleblock}{Default ordering of terms}
         \[ \kt{Var} < \kt{Real} < \kt{Integer} < \kt{Atom} < \kt{Struct} \]
         %
@@ -1061,7 +1118,7 @@
             \item variables are lexicographically ordered by complete name
             \item numbers are ascendantly ordered by value
             \item atoms are lexicographically ordered by value
-            \item structures are ordered by 
+            \item structures are ordered by
             %
             \begin{enumerate}
                 \item by arity, ascendantly
@@ -1072,20 +1129,24 @@
             \end{enumerate}
         \end{itemize}
     \end{exampleblock}
+
+    \ktSnippet{snippets/MissingExample.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Terms' Immutability}
-    
+
     \begin{alertblock}{Takeaway}\centering
         All terms are \alert{immutable}
     \end{alertblock}
-    
+
     \begin{block}{Consequences}
         \begin{itemize}
             \item Terms cannot be modified
             %
             \begin{itemize}
                 \item[$\rightarrow$] terms are \alert{side-effect free}
+                \item[$\rightarrow$] caching \& instance re-use can be exploited pervasively
+                \item[$\rightarrow$] no concurrency issue
             \end{itemize}
             \item They must always be re-created from scratch, upon edit
             \item Editing a term implies creating a copy of that term
@@ -1098,13 +1159,13 @@
                 \item refreshing some term's variables
                 \item[\ldots]
             \end{itemize}
-            
+
             \smallskip
-            
+
             \item[!] Cloning a \alert{deep} term may be time consuming
         \end{itemize}
     \end{block}
-    
+
     \begin{exampleblock}{About Cloning Lists}
         \begin{itemize}
             \item Lists are very likely to become very deep
@@ -1126,7 +1187,7 @@
             \end{itemize}
         \end{itemize}
     \end{block}
-    
+
     \begin{itemize}
         \item[$\rightarrow$] To create a term where the same variable occurs more than once\ldots
         %
@@ -1134,6 +1195,9 @@
             \item \ldots a reference to the variable should be locally saved somehow
         \end{itemize}
     \end{itemize}
+
+    \ktSnippet{snippets/MissingExample.kt}
+
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The need for \kt{Scope}s}
@@ -1152,20 +1216,34 @@
 
     \begin{description}
         \item[\kt{variables: Map<String, Var>}] returns all the \kt{Var}iables created so far in this \kt{Scope}, indexed by \emph{simple} name
-        \item[\kt{varOf(String}: Var] returns a \kt{Var} having the provided simple, name possibly re-using some entry of \kt{variables}, if possible, or creating a new one, otherwise 
+        \item[\kt{varOf(String}: Var] returns a \kt{Var} having the provided simple, name possibly re-using some entry of \kt{variables}, if possible, or creating a new one, otherwise
         \item[\kt{anonymous(): Var}] alias for \kt{Var.anonymous}
         \item[\kt{atomOf(String): Atom}] alias for \kt{Atom.of}
         \item[\kt{structOf(String, \meta{Container}): Struct}] alias for \kt{Struct.of}
         %
         \begin{itemize}\small
             \item where \kt{\meta{Container}} may be an iterable, a sequence, or a varargs of \kt{Term}s
-        \end{itemize} 
-        \item[\vdots] 
+        \end{itemize}
+        \item[\vdots]
     \end{description}
     %
     \begin{itemize}
         \item (one method exists in \kt{Scope} for each static factory described before)
     \end{itemize}
+
+    \begin{block}{How to create \kt{Scope}s}
+        \begin{description}
+            \item[\kt{Scope.empty()}] creates a new empty \kt{Scope}
+
+            \item[\kt{Scope.empty(Scope.()->R): R}] creates a new empty \kt{Scope} and accepts a lambda with receiver aimed at creating an object of type \kt{R} using that \kt{Scope}
+            %
+            \begin{itemize}
+                \item can be used via the syntax \kt{Scope.empty \{ \meta{Code} \}} in Kotlin
+            \end{itemize}
+        \end{description}
+    \end{block}
+
+    \ktSnippet{snippets/MissingExample.kt}
 \end{frame}
 
 \subsection{\kt{Subtitution}s as First Class Entities}
@@ -1182,7 +1260,7 @@
         %
         \begin{itemize}
             \item \kt{Substitution} is a sub-type of \kt{Map<Var, Term>}
-            
+
             \item There are two sub-types of \kt{Substitution}:
             %
             \begin{itemize}
@@ -1200,31 +1278,123 @@
     \end{block}
 
     \begin{description}
-        \item[\kt{isSuccess: Boolean}]
-        \item[\kt{isFail: Boolean}]
-        \item[\kt{getByName(String): Term?}] 
-        \item[\kt{plus(Substitution): Substitution}] 
-        \item[\kt{minus(\meta{Container}): Substitution}]
-        \item[\kt{minus(Substitution): Substitution}]
-        \item[\kt{filter(\meta{Container}): Substitution}] 
-        \item[\kt{filter(\meta{Predicate}): Substitution}]  
+        \item[\kt{isSuccess: Boolean}] checks whether the current \kt{Substitution} is a \kt{Unifier}
+        \item[\kt{isFail: Boolean}] checks whether the current \kt{Substitution} is \kt{Fail}ed
+        \item[\kt{getByName(String): Term?}] gets the value of a \kt{Var}iable by its \emph{simple} name
+        \item[\kt{plus(Substitution): Substitution}] merges the current \kt{Substitution} with the provided one (a third one is created)
+        \item[\kt{minus(\meta{Container}): Substitution}] returns a knew \kt{Substitution} \alert{not} containing any \kt{Var} contained in \kt{\meta{Container}}
+        %
+        \begin{itemize}\small
+            \item where \kt{\meta{Container}} is an iterable, sequence, or vararg of \kt{Var}iables
+        \end{itemize}
+        \item[\kt{minus(Substitution): Substitution}]  returns a knew \kt{Substitution} \alert{not} containing any \kt{Var} contained in the provided \kt{Substitution}
+        \item[\kt{filter(\meta{Container}): Substitution}] returns a knew \kt{Substitution} containing \alert{only} the \kt{Var}iables contained in the provided \kt{\meta{Container}}
+        \item[\kt{filter(\meta{Predicate}): Substitution}] returns a knew \kt{Substitution} containing \alert{only} the \kt{Var}iables contained for which \kt{\meta{Predicate}} is \kt{true}
     \end{description}
     %
     \begin{itemize}
         \item[+] methods \& properties of \kt{Map} such as \kt{get}, \kt{size}, etc.
     \end{itemize}
-\end{frame}
-        
-\begin{frame}[allowframebreaks]{The \kt{Substitution} Type Hierarchy}
-    impossibility to create 2 equal variables
+
+    \framebreak
+
+    \begin{alertblock}{\kt{Substitution}s can be merged}
+        Assuming that:
+        %
+        \begin{itemize}
+            \item $U_1 = $ \kt{\{$X_1$=$t_1$, \ldots, $X_n$=$t_n$\}} is a unifier
+            \item $U_2 = $ \kt{\{$Y_1$=$t'_1$, \ldots, $Y_m$=$t'_m$\}} is another unifier
+            \item $\emptyset$ denotes the failed substitution
+        \end{itemize}
+        %
+        \[U_1 + U_2 = \begin{cases}
+            \text{\kt{\{$X_1$=$t_1$, \ldots, $X_n$=$t_n$, $Y_1$=$t'_1$, \ldots, $Y_m$=$t'_m$\}}} \\
+            \qquad\text{ if } \nexists i,j : X_i = Y_j \\
+            \text{\kt{\{$X_1$=$t_1$, \ldots, $Y_i$=$t'_j$, \ldots, $Y_m$=$t'_m$\}}} \\
+            \qquad\text{ if } \forall i,j : X_i = Y_j \implies t_i = t'_j\\
+            \emptyset \text{ otherwise }
+        \end{cases}\]
+        %
+        \[ U_1 + \emptyset = \emptyset + U_2 = \emptyset \]
+    \end{alertblock}
+
+    \ktSnippet{snippets/MissingExample.kt}
+
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Creating \kt{Substitution}s}
-    impossibility to create 2 equal variables
+    \begin{block}{Static factories for \kt{Substitution}s}
+        \begin{description}
+            \item[\kt{Substitution.failed()}] return an instance of \kt{Fail}
+            %
+            \item[\kt{Substitution.of(\meta{KeyValuePairs})}] creates a new \kt{Substition} using the provided key-value pairs, where
+            %
+            \begin{itemize}\small
+                \item keys can be either strings or \kt{Var}s
+                \item values can be arbitrary \kt{Term}s
+                \item multiple pairs can be provided
+                \item if the same \kt{Var} is assigned to different \kt{Term}s, an instance of \kt{Fail} is returned
+            \end{itemize}
+
+            \item[\kt{Substitution.unifier(\meta{KeyValuePairs})}] creates a new \kt{Unifier} using the provided key-value pairs, where
+            %
+            \begin{itemize}\small
+                \item if the same \kt{Var} is assigned to different \kt{Term}s, a \alert{\kt{SubstitutionException}} is thrown
+            \end{itemize}
+        \end{description}
+    \end{block}
+
+    \ktSnippet{snippets/MissingExample.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Applying Substitutions to Terms}
-    normal case + exceptions + examples
+    \begin{block}{Definition and Notation}
+        Let
+        \begin{itemize}
+            \item $t$ be a term
+            \item $U = $ \kt{\{$X_1$=$t_1$, \ldots, $X_n$=$t_n$\}} be a unifier
+        \end{itemize}
+        then we denote by
+        \[t' = t[U]\]
+        the term attained by \alert{applying} $U$ to $t$.
+        %
+        \begin{itemize}
+            \item $t'$ has the same structure of $t$\ldots
+            \item \ldots except each occurrence of $X_i$ is replaced by $t_i$
+        \end{itemize}
+    \end{block}
+
+    \begin{alertblock}{Notable Cases}
+        \begin{itemize}
+            \item Applying the failed substitution $\emptyset$ to any term $t$ makes no sense
+            \item If $x$ is \alert{ground} then $x[U] = x$, $\forall U$
+        \end{itemize}
+    \end{alertblock}
+
+    \begin{block}{In practice}
+        Let $t$ denote a \kt{Term} and $s$ denote a \kt{Substitution}:
+        \begin{description}
+            \item[\kt{$t$.apply(Substitution): Term}] returns a new \kt{Term} attained by applying the provided \kt{Substitution} to $t$
+            %
+            \begin{itemize}\small
+                \item may throw a \alert{\kt{SubstitutionApplicationException}} if the \kt{Substitution} is an instance of \kt{Fail} at run time
+            \end{itemize}
+
+            \item[\kt{$t$.get(Substitution): Term}] is an alias for \kt{$t$.apply}
+            %
+            \begin{itemize}
+                \item this can be invoked via the syntax \alert{\kt{$t$[$s$]}} in Kotlin
+            \end{itemize}
+
+            \item[\kt{$s$.applyTo(Term)}: Term] returns a new \kt{Term} attained by applying $s$ to the provided \kt{Term}
+            %
+            \begin{itemize}\small
+                \item may throw a \alert{\kt{SubstitutionApplicationException}} if the $s$ is an instance of \kt{Fail} at run time
+            \end{itemize}
+        \end{description}
+    \end{block}
+
+    \ktSnippet{snippets/MissingExample.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Refreshing Terms}
@@ -1282,7 +1452,7 @@
         \item[\kt{mgu(Term, Term): Substitution}] returns the MGU between two \kt{Terms} if a substitution is found, or a \kt{Fail} object otherwise
         \item[\kt{match(Term, Term): Boolean}] checks if two \kt{Terms} can be unified
         \item[\kt{unify(Term, Term): Term?}] tries to unify two \kt{Terms}, possibly returning the unified Term as a result
-        \item[\kt{merge(Substitution, Substitution): Substitution}] merges two \kt{Substitution}s with occurs check enabled 
+        \item[\kt{merge(Substitution, Substitution): Substitution}] merges two \kt{Substitution}s with occurs check enabled
     \end{description}
 \end{frame}
 
@@ -1298,7 +1468,7 @@
     \end{description}
 \end{frame}
 
-\begin{frame}[allowframebreaks, fragile]{Using \kt{Unificator}s}    
+\begin{frame}[allowframebreaks, fragile]{Using \kt{Unificator}s}
 
     General unification strategy:
     %
@@ -1311,7 +1481,7 @@
     \begin{itemize}
         \item[!] implementations may alter the way terms are compared
     \end{itemize}
-    
+
     \framebreak
 
     Successful unification with \kt{default}:
@@ -1319,17 +1489,17 @@
     \ktSnippet[\tiny]{./snippets/UnificatorDefault.kt}
 
     \framebreak
-    
+
     Successful unification with \kt{default} (no bindings):
     %
     \ktSnippet[\tiny]{./snippets/UnificatorDefaultEmpty.kt}
-    
+
     \framebreak
 
     Failed unification with \kt{default}:
     %
     \ktSnippet[\tiny]{./snippets/UnificatorFailure.kt}
-    
+
     \framebreak
 
     Unification with \kt{cached} unificator:
@@ -1354,11 +1524,11 @@
     \end{block}
 
     \framebreak
-    
+
     E.g. unifying numbers by their absolute value:
     %
     \ktSnippet[\tiny]{./snippets/UnificatorCustom.kt}
-    
+
 \end{frame}
 
 \subsection{Infix operators}

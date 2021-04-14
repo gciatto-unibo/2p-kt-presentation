@@ -1,85 +1,303 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="622px" preserveAspectRatio="none" style="width:571px;height:622px;" version="1.1" viewBox="0 0 571 622" width="571px" zoomAndPan="magnify"><defs/><g><!--MD5=[0d482ad21d5c7c11aa976e45da5ecfe6]
-entity core--><polygon fill="#FFFF00" points="168.5,8,214.5,8,221.5,29,244.5,29,244.5,79.8906,168.5,79.8906,168.5,8" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="168.5" x2="221.5" y1="29" y2="29"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="46" x="178.5" y="48.9951">«root»</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="31" x="186" y="65.292">core</text><!--MD5=[8609333456958ddd09a7a43cad87d6b2]
-entity unify--><polygon fill="#FEFECE" points="173.5,180,219.5,180,226.5,201,235.5,201,235.5,235.5938,173.5,235.5938,173.5,180" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="173.5" x2="226.5" y1="201" y2="201"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="32" x="183.5" y="220.9951">unify</text><!--MD5=[c5c1c69d6c66b309c7a2e76833c76928]
-entity theory--><polygon fill="#FEFECE" points="167.5,305,213.5,305,220.5,326,241.5,326,241.5,360.5938,167.5,360.5938,167.5,305" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="167.5" x2="220.5" y1="326" y2="326"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="44" x="177.5" y="345.9951">theory</text><!--MD5=[7d8306a0c155a810952424160e397dcb]
-entity DC--><polygon fill="#FEFECE" points="47.5,16,93.5,16,100.5,37,133.5,37,133.5,71.5938,47.5,71.5938,47.5,16" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="47.5" x2="100.5" y1="37" y2="37"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="56" x="57.5" y="56.9951">dsl-core</text><!--MD5=[0a7e534d89b51261a949871c96ba5fec]
-entity DU--><polygon fill="#FEFECE" points="47,180,93,180,100,201,134,201,134,235.5938,47,235.5938,47,180" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="47" x2="100" y1="201" y2="201"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="57" x="57" y="220.9951">dsl-unify</text><!--MD5=[91a68d2497aecc16baa3d80f14772d7e]
-entity DT--><polygon fill="#FEFECE" points="33,305,79,305,86,326,132,326,132,360.5938,33,360.5938,33,305" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="33" x2="86" y1="326" y2="326"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="69" x="43" y="345.9951">dsl-theory</text><!--MD5=[51865354722c2ebdf9f50fb1208494af]
-entity solve--><polygon fill="#808000" points="92,422,138,422,145,443,193,443,193,493.8906,92,493.8906,92,422" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="92" x2="145" y1="443" y2="443"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="71" x="102" y="462.9951">«api only»</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="36" x="119.5" y="479.292">solve</text><!--MD5=[8b944653c655024075d894af29a33c78]
-entity SC--><polygon fill="#FEFECE" points="6,555,52,555,59,576,123,576,123,610.5938,6,610.5938,6,555" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="6" x2="59" y1="576" y2="576"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="87" x="16" y="595.9951">solve-classic</text><!--MD5=[a7c3909965e2f086fbae253f41eb8181]
-entity SS--><polygon fill="#FEFECE" points="158,555,204,555,211,576,285,576,285,610.5938,158,610.5938,158,555" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="158" x2="211" y1="576" y2="576"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="97" x="168" y="595.9951">solve-streams</text><!--MD5=[7b283ce894c5928581d5380ce71c9d62]
-entity PC--><polygon fill="#FEFECE" points="282.5,16,328.5,16,335.5,37,392.5,37,392.5,71.5938,282.5,71.5938,282.5,16" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="282.5" x2="335.5" y1="37" y2="37"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="80" x="292.5" y="56.9951">parser-core</text><!--MD5=[059fb33002c326aee15d54b48b7f0357]
-entity PJVM--><polygon fill="#FFFFFF" points="391,172,437,172,444,193,512,193,512,243.8906,391,243.8906,391,172" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="391" x2="444" y1="193" y2="193"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="91" x="401" y="212.9951">«impl. detail»</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="72" x="410.5" y="229.292">parser-jvm</text><!--MD5=[3c2d8c583c91ad114cfccb918cb1adc5]
-entity PJS--><polygon fill="#FFFFFF" points="428,8,474,8,481,29,549,29,549,79.8906,428,79.8906,428,8" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="428" x2="481" y1="29" y2="29"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="91" x="438" y="48.9951">«impl. detail»</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="60" x="453.5" y="65.292">parser-js</text><!--MD5=[28b617f45f8b852b803088f4fea1b95e]
-entity PT--><polygon fill="#FEFECE" points="277,305,323,305,330,326,400,326,400,360.5938,277,360.5938,277,305" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="277" x2="330" y1="326" y2="326"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="93" x="287" y="345.9951">parser-theory</text><!--MD5=[654aef16edce88f9509b3ca7f81dbac0]
-reverse link core to unify--><path d="M205.81,100.52 C205.48,127.35 205.1,158.34 204.83,179.94 " fill="none" id="core&lt;-unify" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="198.82,100.06,206.07,80.15,212.82,100.24,198.82,100.06" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="55" x="207.5" y="123.0669">depends</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="16" x="227" y="138.1997">on</text><!--MD5=[5b6551af08b86dbfb12d808635608cc1]
-reverse link unify to theory--><path d="M204.5,256.56 C204.5,272.9 204.5,290.62 204.5,304.78 " fill="none" id="unify&lt;-theory" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="197.5,256.3,204.5,236.3,211.5,256.3,197.5,256.3" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[8f58684a2674c57e934b2824b86bad2c]
-reverse link theory to solve--><path d="M181.63,379.37 C174.57,393.38 166.89,408.6 160.23,421.83 " fill="none" id="theory&lt;-solve" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="175.49,376.01,190.74,361.3,187.99,382.31,175.49,376.01" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[ee527a253e3e2bfa5e39607edb2bf7cc]
-reverse link solve to SC--><path d="M109.32,511.33 C99.79,526.36 89.78,542.13 81.65,554.96 " fill="none" id="solve&lt;-SC" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="103.53,507.39,120.15,494.25,115.35,514.89,103.53,507.39" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[6cb6ea8013bf197054130beefb33d055]
-reverse link solve to SS--><path d="M176.11,511.33 C185.76,526.36 195.89,542.13 204.13,554.96 " fill="none" id="solve&lt;-SS" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="170.06,514.86,165.14,494.25,181.84,507.29,170.06,514.86" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[67e9725f158032d16034e09aba369a47]
-link DC to core--><path d="M133.55,44 C138.44,44 143.33,44 148.21,44 " fill="none" id="DC-&gt;core" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="148.31,37,168.31,44,148.31,51,148.31,37" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[308b7784007637030c98a7a5bc9dec67]
-link DU to unify--><path d="M134.14,208 C140.49,208 146.83,208 153.18,208 " fill="none" id="DU-&gt;unify" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="153.44,201,173.44,208,153.44,215,153.44,201" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[69aa42d2ac21c360780ee9f8f87b6628]
-reverse link DC to DU--><path d="M90.5,92.26 C90.5,120.71 90.5,155.94 90.5,179.8 " fill="none" id="DC&lt;-DU" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="83.5,92.12,90.5,72.12,97.5,92.12,83.5,92.12" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[1c86495c1207c3a5e9d8a7b62282abbd]
-link DT to theory--><path d="M132.06,333 C137.13,333 142.19,333 147.26,333 " fill="none" id="DT-&gt;theory" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="147.43,326,167.43,333,147.43,340,147.43,326" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[70c964b4c9a0606929de2f93a79fe2ff]
-reverse link DU to DT--><path d="M87.42,256.28 C86.36,272.7 85.2,290.54 84.27,304.78 " fill="none" id="DU&lt;-DT" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="80.44,255.8,88.72,236.3,94.41,256.71,80.44,255.8" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[93da8c2176c2812e492e2fa4e8294d89]
-reverse link DT to solve--><path d="M98.12,366.01 C106.47,383.13 116.77,404.25 125.34,421.83 " fill="none" id="DT&lt;-solve" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="95.82,361.3,96.1917,371.1418,98.0217,365.7892,103.3744,367.6191,95.82,361.3" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[bc916a6e8042033106d32a6630dfbaa8]
-reverse link core to PC--><path d="M264.67,44 C270.56,44 276.46,44 282.35,44 " fill="none" id="core&lt;-PC" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="264.62,51,244.62,44,264.62,37,264.62,51" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[dab2122e9b95dd916a8adf247f4394ef]
-reverse link theory to PT--><path d="M261.73,333 C266.77,333 271.8,333 276.84,333 " fill="none" id="theory&lt;-PT" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="261.66,340,241.66,333,261.66,326,261.66,340" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[865eea57d4b8505c98b28067cc718663]
-reverse link PC to PT--><path d="M337.66,92.23 C337.88,152.86 338.24,256.04 338.41,304.86 " fill="none" id="PC&lt;-PT" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="330.66,92.02,337.59,72,344.66,91.98,330.66,92.02" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[028a3b3aa784d65078c2c50980465a8e]
-link PC to PJVM--><path d="M356.58,72.12 C374.95,98.21 402.92,137.97 423.75,167.57 " fill="none" id="PC-&gt;PJVM" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="426.77,171.86,424.861,162.1979,423.8922,167.7712,418.3189,166.8024,426.77,171.86" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="30" x="405.5" y="130.5669">uses</text><!--MD5=[926e60611fbd64b6a972dafa5f1a2cc5]
-link PC to PJS--><path d="M392.65,44 C402.64,44 412.63,44 422.62,44 " fill="none" id="PC-&gt;PJS" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="427.85,44,418.85,40,422.85,44,418.85,48,427.85,44" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[e8bccc217281107dc0eb1aefc19715a3]
-@startuml
-top to bottom direction
-skinparam shadowing false
-
-skinparam folder {
-  BackgroundColor<<api only>> olive
-  BackgroundColor<<root>> yellow
-  BackgroundColor<<impl. detail>> white
-}
-
-folder "core" <<root>>
-folder "unify"
-folder "theory"
-folder "dsl-core" as DC
-folder "dsl-unify" as DU
-folder "dsl-theory" as DT
-folder "solve" <<api only>>
-folder "solve-classic" as SC
-folder "solve-streams" as SS
-folder "parser-core" as PC
-folder "parser-jvm" <<impl. detail>> as PJVM
-folder "parser-js" <<impl. detail>> as PJS
-folder "parser-theory" as PT
-
-core <|-down- unify : depends\non
-unify <|-down- theory
-theory <|-down- solve
-solve <|- - SC
-solve <|- - SS
-
-DC -right-|> core
-DU -right-|> unify
-DU -up-|> DC
-DT -right-|> theory
-DT -up-|> DU
-DT <- - solve
-
-PC -left-|> core
-PT -left-|> theory
-PT -up-|> PC
-
-PC - -> PJVM : uses
-PC -right-> PJS
-@enduml
-
-PlantUML version 1.2020.02(Sun Mar 01 11:22:07 CET 2020)
-(GPL source distribution)
-Java Runtime: OpenJDK Runtime Environment
-JVM: OpenJDK 64-Bit Server VM
-Java Version: 11.0.10+9
-Operating System: Linux
-Default Encoding: UTF-8
-Language: it
-Country: IT
---></g></svg>
+<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill-opacity="1" color-rendering="auto" color-interpolation="auto" text-rendering="auto" stroke="black" stroke-linecap="square" width="836" stroke-miterlimit="10" shape-rendering="auto" stroke-opacity="1" fill="black" stroke-dasharray="none" font-weight="normal" stroke-width="1" height="389" font-family="'Dialog'" font-style="normal" stroke-linejoin="miter" font-size="12px" stroke-dashoffset="0" image-rendering="auto">
+  <!--Generated by ySVG 2.5-->
+  <defs id="genericDefs"/>
+  <g>
+    <defs id="defs1">
+      <clipPath clipPathUnits="userSpaceOnUse" id="clipPath1">
+        <path d="M0 0 L836 0 L836 389 L0 389 L0 0 Z"/>
+      </clipPath>
+      <clipPath clipPathUnits="userSpaceOnUse" id="clipPath2">
+        <path d="M424 198 L1260 198 L1260 587 L424 587 L424 198 Z"/>
+      </clipPath>
+      <clipPath clipPathUnits="userSpaceOnUse" id="clipPath3">
+        <path d="M420 194 L1256 194 L1256 583 L420 583 L420 194 Z"/>
+      </clipPath>
+    </defs>
+    <g fill="rgb(153,204,0)" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke="rgb(153,204,0)">
+      <path d="M629.8721 230 L711.1279 230 L711.1279 245 L726.1279 245 L726.1279 258 L629.8721 258 Z" stroke="none" clip-path="url(#clipPath2)"/>
+    </g>
+    <g fill="white" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke="white">
+      <path d="M711.1279 230 L711.1279 245 L726.1279 245 Z" fill-rule="evenodd" clip-path="url(#clipPath2)" stroke="none"/>
+    </g>
+    <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke-linecap="butt">
+      <path fill="none" d="M629.8721 230 L711.1279 230 L711.1279 245 L726.1279 245 L726.1279 258 L629.8721 258 Z" clip-path="url(#clipPath2)"/>
+      <path fill="none" d="M711.1279 230 L711.1279 245 L726.1279 245 Z" clip-path="url(#clipPath2)" fill-rule="evenodd"/>
+      <text x="658" font-size="20px" y="250.6" clip-path="url(#clipPath2)" font-family="'Ubuntu Mono'" stroke="none" xml:space="preserve">core</text>
+    </g>
+    <g fill="rgb(255,204,0)" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke="rgb(255,204,0)">
+      <path d="M629.8721 295 L711.1279 295 L711.1279 310 L726.1279 310 L726.1279 323 L629.8721 323 Z" stroke="none" clip-path="url(#clipPath2)"/>
+      <path fill="white" d="M711.1279 295 L711.1279 310 L726.1279 310 Z" clip-path="url(#clipPath2)" fill-rule="evenodd" stroke="none"/>
+    </g>
+    <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke-linecap="butt">
+      <path fill="none" d="M629.8721 295 L711.1279 295 L711.1279 310 L726.1279 310 L726.1279 323 L629.8721 323 Z" clip-path="url(#clipPath2)"/>
+      <path fill="none" d="M711.1279 295 L711.1279 310 L726.1279 310 Z" clip-path="url(#clipPath2)" fill-rule="evenodd"/>
+      <text x="653.0001" font-size="20px" y="315.6" clip-path="url(#clipPath2)" font-family="'Ubuntu Mono'" stroke="none" xml:space="preserve">unify</text>
+    </g>
+    <g fill="rgb(255,204,0)" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke="rgb(255,204,0)">
+      <path d="M629.8721 360 L711.1279 360 L711.1279 375 L726.1279 375 L726.1279 388 L629.8721 388 Z" stroke="none" clip-path="url(#clipPath2)"/>
+      <path fill="white" d="M711.1279 360 L711.1279 375 L726.1279 375 Z" clip-path="url(#clipPath2)" fill-rule="evenodd" stroke="none"/>
+    </g>
+    <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke-linecap="butt">
+      <path fill="none" d="M629.8721 360 L711.1279 360 L711.1279 375 L726.1279 375 L726.1279 388 L629.8721 388 Z" clip-path="url(#clipPath2)"/>
+      <path fill="none" d="M711.1279 360 L711.1279 375 L726.1279 375 Z" clip-path="url(#clipPath2)" fill-rule="evenodd"/>
+      <text x="648.0001" font-size="20px" y="380.6" clip-path="url(#clipPath2)" font-family="'Ubuntu Mono'" stroke="none" xml:space="preserve">theory</text>
+    </g>
+    <g fill="yellow" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke="yellow">
+      <path d="M629.8721 425 L711.1279 425 L711.1279 440 L726.1279 440 L726.1279 453 L629.8721 453 Z" stroke="none" clip-path="url(#clipPath2)"/>
+      <path fill="white" d="M711.1279 425 L711.1279 440 L726.1279 440 Z" clip-path="url(#clipPath2)" fill-rule="evenodd" stroke="none"/>
+    </g>
+    <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke-linecap="butt">
+      <path fill="none" d="M629.8721 425 L711.1279 425 L711.1279 440 L726.1279 440 L726.1279 453 L629.8721 453 Z" clip-path="url(#clipPath2)"/>
+      <path fill="none" d="M711.1279 425 L711.1279 440 L726.1279 440 Z" clip-path="url(#clipPath2)" fill-rule="evenodd"/>
+      <text x="653.0001" font-size="20px" y="445.6" clip-path="url(#clipPath2)" font-family="'Ubuntu Mono'" stroke="none" xml:space="preserve">solve</text>
+    </g>
+    <g fill="rgb(255,204,0)" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke="rgb(255,204,0)">
+      <path d="M453.3721 490 L617.6279 490 L617.6279 505 L632.6279 505 L632.6279 518 L453.3721 518 Z" stroke="none" clip-path="url(#clipPath2)"/>
+      <path fill="white" d="M617.6279 490 L617.6279 505 L632.6279 505 Z" clip-path="url(#clipPath2)" fill-rule="evenodd" stroke="none"/>
+    </g>
+    <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke-linecap="butt">
+      <path fill="none" d="M453.3721 490 L617.6279 490 L617.6279 505 L632.6279 505 L632.6279 518 L453.3721 518 Z" clip-path="url(#clipPath2)"/>
+      <path fill="none" d="M617.6279 490 L617.6279 505 L632.6279 505 Z" clip-path="url(#clipPath2)" fill-rule="evenodd"/>
+      <text x="478.0001" font-size="20px" y="510.6" clip-path="url(#clipPath2)" font-family="'Ubuntu Mono'" stroke="none" xml:space="preserve">solve-classic</text>
+    </g>
+    <g fill="rgb(255,204,0)" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke="rgb(255,204,0)">
+      <path d="M662.6279 527 L826.8838 527 L826.8838 542 L841.8838 542 L841.8838 555 L662.6279 555 Z" stroke="none" clip-path="url(#clipPath2)"/>
+      <path fill="white" d="M826.8838 527 L826.8838 542 L841.8838 542 Z" clip-path="url(#clipPath2)" fill-rule="evenodd" stroke="none"/>
+    </g>
+    <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke-linecap="butt">
+      <path fill="none" d="M662.6279 527 L826.8838 527 L826.8838 542 L841.8838 542 L841.8838 555 L662.6279 555 Z" clip-path="url(#clipPath2)"/>
+      <path fill="none" d="M826.8838 527 L826.8838 542 L841.8838 542 Z" clip-path="url(#clipPath2)" fill-rule="evenodd"/>
+      <text x="687.256" font-size="20px" y="547.6" clip-path="url(#clipPath2)" font-family="'Ubuntu Mono'" stroke="none" xml:space="preserve">solve-streams</text>
+    </g>
+    <g fill="rgb(255,204,0)" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke="rgb(255,204,0)">
+      <path d="M453.3721 555 L523.6279 555 L523.6279 570 L538.6279 570 L538.6279 583 L453.3721 583 Z" stroke="none" clip-path="url(#clipPath2)"/>
+      <path fill="white" d="M523.6279 555 L523.6279 570 L538.6279 570 Z" clip-path="url(#clipPath2)" fill-rule="evenodd" stroke="none"/>
+    </g>
+    <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke-linecap="butt">
+      <path fill="none" d="M453.3721 555 L523.6279 555 L523.6279 570 L538.6279 570 L538.6279 583 L453.3721 583 Z" clip-path="url(#clipPath2)"/>
+      <path fill="none" d="M523.6279 555 L523.6279 570 L538.6279 570 Z" clip-path="url(#clipPath2)" fill-rule="evenodd"/>
+      <text x="476" font-size="20px" y="575.6" clip-path="url(#clipPath2)" font-family="'Ubuntu Mono'" stroke="none" xml:space="preserve">repl</text>
+    </g>
+    <g fill="rgb(255,204,0)" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke="rgb(255,204,0)">
+      <path d="M785.7441 230 L969 230 L969 245 L984 245 L984 258 L785.7441 258 Z" stroke="none" clip-path="url(#clipPath2)"/>
+      <path fill="white" d="M969 230 L969 245 L984 245 Z" clip-path="url(#clipPath2)" fill-rule="evenodd" stroke="none"/>
+    </g>
+    <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke-linecap="butt">
+      <path fill="none" d="M785.7441 230 L969 230 L969 245 L984 245 L984 258 L785.7441 258 Z" clip-path="url(#clipPath2)"/>
+      <path fill="none" d="M969 230 L969 245 L984 245 Z" clip-path="url(#clipPath2)" fill-rule="evenodd"/>
+      <text x="814.8722" font-size="20px" y="250.6" clip-path="url(#clipPath2)" font-family="'Ubuntu Mono'" stroke="none" xml:space="preserve">serialize-core</text>
+    </g>
+    <g fill="rgb(255,204,0)" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke="rgb(255,204,0)">
+      <path d="M785.7441 360 L969 360 L969 375 L984 375 L984 388 L785.7441 388 Z" stroke="none" clip-path="url(#clipPath2)"/>
+      <path fill="white" d="M969 360 L969 375 L984 375 Z" clip-path="url(#clipPath2)" fill-rule="evenodd" stroke="none"/>
+    </g>
+    <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke-linecap="butt">
+      <path fill="none" d="M785.7441 360 L969 360 L969 375 L984 375 L984 388 L785.7441 388 Z" clip-path="url(#clipPath2)"/>
+      <path fill="none" d="M969 360 L969 375 L984 375 Z" clip-path="url(#clipPath2)" fill-rule="evenodd"/>
+      <text x="804.8722" font-size="20px" y="380.6" clip-path="url(#clipPath2)" font-family="'Ubuntu Mono'" stroke="none" xml:space="preserve">serialize-theory</text>
+    </g>
+    <g fill="rgb(255,204,0)" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke="rgb(255,204,0)">
+      <path d="M424 230 L555.2559 230 L555.2559 245 L570.2559 245 L570.2559 258 L424 258 Z" stroke="none" clip-path="url(#clipPath2)"/>
+      <path fill="white" d="M555.2559 230 L555.2559 245 L570.2559 245 Z" clip-path="url(#clipPath2)" fill-rule="evenodd" stroke="none"/>
+    </g>
+    <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke-linecap="butt">
+      <path fill="none" d="M424 230 L555.2559 230 L555.2559 245 L570.2559 245 L570.2559 258 L424 258 Z" clip-path="url(#clipPath2)"/>
+      <path fill="none" d="M555.2559 230 L555.2559 245 L570.2559 245 Z" clip-path="url(#clipPath2)" fill-rule="evenodd"/>
+      <text x="457.128" font-size="20px" y="250.6" clip-path="url(#clipPath2)" font-family="'Ubuntu Mono'" stroke="none" xml:space="preserve">dsl-core</text>
+    </g>
+    <g fill="rgb(255,204,0)" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke="rgb(255,204,0)">
+      <path d="M424 295 L555.2559 295 L555.2559 310 L570.2559 310 L570.2559 323 L424 323 Z" stroke="none" clip-path="url(#clipPath2)"/>
+      <path fill="white" d="M555.2559 295 L555.2559 310 L570.2559 310 Z" clip-path="url(#clipPath2)" fill-rule="evenodd" stroke="none"/>
+    </g>
+    <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke-linecap="butt">
+      <path fill="none" d="M424 295 L555.2559 295 L555.2559 310 L570.2559 310 L570.2559 323 L424 323 Z" clip-path="url(#clipPath2)"/>
+      <path fill="none" d="M555.2559 295 L555.2559 310 L570.2559 310 Z" clip-path="url(#clipPath2)" fill-rule="evenodd"/>
+      <text x="452.128" font-size="20px" y="315.6" clip-path="url(#clipPath2)" font-family="'Ubuntu Mono'" stroke="none" xml:space="preserve">dsl-unify</text>
+    </g>
+    <g fill="rgb(255,204,0)" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke="rgb(255,204,0)">
+      <path d="M424 360 L555.2559 360 L555.2559 375 L570.2559 375 L570.2559 388 L424 388 Z" stroke="none" clip-path="url(#clipPath2)"/>
+      <path fill="white" d="M555.2559 360 L555.2559 375 L570.2559 375 Z" clip-path="url(#clipPath2)" fill-rule="evenodd" stroke="none"/>
+    </g>
+    <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke-linecap="butt">
+      <path fill="none" d="M424 360 L555.2559 360 L555.2559 375 L570.2559 375 L570.2559 388 L424 388 Z" clip-path="url(#clipPath2)"/>
+      <path fill="none" d="M555.2559 360 L555.2559 375 L570.2559 375 Z" clip-path="url(#clipPath2)" fill-rule="evenodd"/>
+      <text x="447.128" font-size="20px" y="380.6" clip-path="url(#clipPath2)" font-family="'Ubuntu Mono'" stroke="none" xml:space="preserve">dsl-theory</text>
+    </g>
+    <g fill="rgb(255,204,0)" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke="rgb(255,204,0)">
+      <path d="M1002.6162 230 L1158.8721 230 L1158.8721 245 L1173.8721 245 L1173.8721 258 L1002.6162 258 Z" stroke="none" clip-path="url(#clipPath2)"/>
+      <path fill="white" d="M1158.8721 230 L1158.8721 245 L1173.8721 245 Z" clip-path="url(#clipPath2)" fill-rule="evenodd" stroke="none"/>
+    </g>
+    <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke-linecap="butt">
+      <path fill="none" d="M1002.6162 230 L1158.8721 230 L1158.8721 245 L1173.8721 245 L1173.8721 258 L1002.6162 258 Z" clip-path="url(#clipPath2)"/>
+      <path fill="none" d="M1158.8721 230 L1158.8721 245 L1173.8721 245 Z" clip-path="url(#clipPath2)" fill-rule="evenodd"/>
+      <text x="1033.2443" font-size="20px" y="250.6" clip-path="url(#clipPath2)" font-family="'Ubuntu Mono'" stroke="none" xml:space="preserve">parser-core</text>
+    </g>
+    <g fill="rgb(255,204,0)" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke="rgb(255,204,0)">
+      <path d="M1002.6162 360 L1158.8721 360 L1158.8721 375 L1173.8721 375 L1173.8721 388 L1002.6162 388 Z" stroke="none" clip-path="url(#clipPath2)"/>
+      <path fill="white" d="M1158.8721 360 L1158.8721 375 L1173.8721 375 Z" clip-path="url(#clipPath2)" fill-rule="evenodd" stroke="none"/>
+    </g>
+    <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke-linecap="butt">
+      <path fill="none" d="M1002.6162 360 L1158.8721 360 L1158.8721 375 L1173.8721 375 L1173.8721 388 L1002.6162 388 Z" clip-path="url(#clipPath2)"/>
+      <path fill="none" d="M1158.8721 360 L1158.8721 375 L1173.8721 375 Z" clip-path="url(#clipPath2)" fill-rule="evenodd"/>
+      <text x="1023.2443" font-size="20px" y="380.6" clip-path="url(#clipPath2)" font-family="'Ubuntu Mono'" stroke="none" xml:space="preserve">parser-theory</text>
+    </g>
+    <g fill="white" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke="white">
+      <path d="M933.2651 295 L1056.521 295 L1056.521 310 L1071.521 310 L1071.521 323 L933.2651 323 Z" stroke="none" clip-path="url(#clipPath2)"/>
+      <path d="M1056.521 295 L1056.521 310 L1071.521 310 Z" clip-path="url(#clipPath2)" fill-rule="evenodd" stroke="none"/>
+    </g>
+    <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke-linecap="butt">
+      <path fill="none" d="M933.2651 295 L1056.521 295 L1056.521 310 L1071.521 310 L1071.521 323 L933.2651 323 Z" clip-path="url(#clipPath2)"/>
+      <path fill="none" d="M1056.521 295 L1056.521 310 L1071.521 310 Z" clip-path="url(#clipPath2)" fill-rule="evenodd"/>
+      <text x="952.3931" font-size="20px" y="315.6" clip-path="url(#clipPath2)" font-family="'Ubuntu Mono'" stroke="none" xml:space="preserve">parser-jvm</text>
+    </g>
+    <g fill="white" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke="white">
+      <path d="M1117.6489 295 L1240.9048 295 L1240.9048 310 L1255.9048 310 L1255.9048 323 L1117.6489 323 Z" stroke="none" clip-path="url(#clipPath2)"/>
+      <path d="M1240.9048 295 L1240.9048 310 L1255.9048 310 Z" clip-path="url(#clipPath2)" fill-rule="evenodd" stroke="none"/>
+    </g>
+    <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke-linecap="butt">
+      <path fill="none" d="M1117.6489 295 L1240.9048 295 L1240.9048 310 L1255.9048 310 L1255.9048 323 L1117.6489 323 Z" clip-path="url(#clipPath2)"/>
+      <path fill="none" d="M1240.9048 295 L1240.9048 310 L1255.9048 310 Z" clip-path="url(#clipPath2)" fill-rule="evenodd"/>
+      <text x="1141.777" font-size="20px" y="315.6" clip-path="url(#clipPath2)" font-family="'Ubuntu Mono'" stroke="none" xml:space="preserve">parser-js</text>
+      <path fill="none" d="M678 295.0034 L678 268.9961" clip-path="url(#clipPath2)"/>
+      <path d="M678 257.9961 L672 269.9961 L684 269.9961 Z" clip-path="url(#clipPath2)" stroke="none"/>
+      <path fill="none" d="M678 360.0034 L678 333.9961" clip-path="url(#clipPath2)"/>
+      <path d="M678 322.9961 L672 334.9961 L684 334.9961 Z" clip-path="url(#clipPath2)" stroke="none"/>
+      <path fill="none" d="M678 425.0034 L678 398.9961" clip-path="url(#clipPath2)"/>
+      <path d="M678 387.9961 L672 399.9961 L684 399.9961 Z" clip-path="url(#clipPath2)" stroke="none"/>
+      <path fill="none" d="M572.1028 489.9875 L639.0034 457.7761" clip-path="url(#clipPath2)"/>
+      <path d="M648.9144 453.0042 L635.4995 452.8039 L640.7053 463.616 Z" clip-path="url(#clipPath2)" stroke="none"/>
+      <path fill="none" d="M742.0493 526.98 L694.6538 461.8762" clip-path="url(#clipPath2)"/>
+      <path d="M688.1797 452.9832 L690.3917 466.216 L700.0931 459.1533 Z" clip-path="url(#clipPath2)" stroke="none"/>
+      <path fill="none" d="M506.1206 555.0034 L526.4164 526.9348" clip-path="url(#clipPath2)"/>
+      <path d="M532.8618 518.0209 L520.9683 524.2295 L530.6926 531.2608 Z" clip-path="url(#clipPath2)" stroke="none"/>
+      <path fill="none" d="M785.7543 244 L737.1158 244" clip-path="url(#clipPath2)"/>
+      <path d="M726.1158 244 L738.1158 250 L738.1158 238 Z" clip-path="url(#clipPath2)" stroke="none"/>
+      <path fill="none" d="M785.7543 374 L737.1158 374" clip-path="url(#clipPath2)"/>
+      <path d="M726.1158 374 L738.1158 380 L738.1158 368 Z" clip-path="url(#clipPath2)" stroke="none"/>
+      <path fill="none" d="M884.8721 360.0034 L884.8721 269.019" clip-path="url(#clipPath2)"/>
+      <path d="M884.8721 258.019 L878.8721 270.019 L890.8721 270.019 Z" clip-path="url(#clipPath2)" stroke="none"/>
+      <path fill="none" d="M570.2981 244 L618.8549 244" clip-path="url(#clipPath2)"/>
+      <path d="M629.8549 244 L617.8549 238 L617.8549 250 Z" clip-path="url(#clipPath2)" stroke="none"/>
+      <path fill="none" d="M570.2981 309 L618.8549 309" clip-path="url(#clipPath2)"/>
+      <path d="M629.8549 309 L617.8549 303 L617.8549 315 Z" clip-path="url(#clipPath2)" stroke="none"/>
+      <path fill="none" d="M497.1279 295.0034 L497.1279 268.9961" clip-path="url(#clipPath2)"/>
+      <path d="M497.1279 257.9961 L491.1279 269.9961 L503.1279 269.9961 Z" clip-path="url(#clipPath2)" stroke="none"/>
+      <path fill="none" d="M570.2981 374 L618.8549 374" clip-path="url(#clipPath2)"/>
+      <path d="M629.8549 374 L617.8549 368 L617.8549 380 Z" clip-path="url(#clipPath2)" stroke="none"/>
+      <path fill="none" d="M497.1279 360.0034 L497.1279 333.9961" clip-path="url(#clipPath2)"/>
+      <path d="M497.1279 322.9961 L491.1279 334.9961 L503.1279 334.9961 Z" clip-path="url(#clipPath2)" stroke="none"/>
+      <path fill="none" d="M1053.2141 229.9995 L1036.9636 224.1619 L1011.3234 216.3684 L985.6831 209.9919 L960.0428 205.0324 L934.4026 201.4899 L908.7623 199.3644 L883.1221 198.6559 L857.4818 199.3644 L831.8416 201.4899 L806.2013 205.0324 L780.561 209.9919 L754.9208 216.3684 L729.2805 224.1619 L723.3824 226.2807" clip-path="url(#clipPath2)"/>
+      <path d="M713.03 229.9995 L726.3519 231.5893 L722.295 220.2959 Z" clip-path="url(#clipPath2)" stroke="none"/>
+      <path fill="none" d="M1088.2441 360.0034 L1088.2441 269.019" clip-path="url(#clipPath2)"/>
+      <path d="M1088.2441 258.019 L1082.2441 270.019 L1094.2441 270.019 Z" clip-path="url(#clipPath2)" stroke="none"/>
+      <path fill="none" d="M1050.7102 387.9956 L1036.9636 392.634 L1011.3234 399.9545 L985.6831 405.944 L960.0428 410.6025 L934.4026 413.93 L908.7623 415.9265 L883.1221 416.592 L857.4818 415.9265 L831.8416 413.93 L806.2013 410.6025 L780.561 405.944 L754.9208 399.9545 L729.2805 392.634 L725.9566 391.5125" clip-path="url(#clipPath2)"/>
+      <path d="M715.5339 387.9956 L724.9858 397.5172 L728.8224 386.1471 Z" clip-path="url(#clipPath2)" stroke="none"/>
+      <path fill="none" stroke-dasharray="6,2" d="M1069.7367 258.0125 L1024.8922 291.9653" clip-path="url(#clipPath2)"/>
+      <path stroke-dasharray="6,2" d="M1021.7031 294.3798 L1034.8921 291.9198 L1021.7031 294.3798 L1027.6486 282.3526 Z" clip-path="url(#clipPath2)" stroke="none"/>
+      <path fill="none" stroke-miterlimit="10" d="M1021.7031 294.3798 L1034.8921 291.9198 L1021.7031 294.3798 L1027.6486 282.3526 Z" clip-path="url(#clipPath2)" stroke-linecap="square"/>
+      <path fill="none" stroke-dasharray="6,2" d="M1109.4855 258.0125 L1161.3556 292.2301" clip-path="url(#clipPath2)"/>
+      <path stroke-dasharray="6,2" d="M1164.6946 294.4327 L1157.9816 282.8165 L1164.6946 294.4327 L1151.3738 292.8333 Z" clip-path="url(#clipPath2)" stroke="none"/>
+      <path fill="none" stroke-miterlimit="10" d="M1164.6946 294.4327 L1157.9816 282.8165 L1164.6946 294.4327 L1151.3738 292.8333 Z" clip-path="url(#clipPath2)" stroke-linecap="square"/>
+    </g>
+    <g fill="rgb(210,210,210)" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198) translate(4,4)" stroke="rgb(210,210,210)">
+      <rect x="931.3839" width="324.5209" height="133.1153" y="449.8847" clip-path="url(#clipPath3)" stroke="none"/>
+    </g>
+    <g fill="rgb(242,240,216)" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke="rgb(242,240,216)">
+      <rect x="931.3839" width="324.5209" height="133.1153" y="449.8847" clip-path="url(#clipPath2)" stroke="none"/>
+      <rect x="931.3839" y="449.8847" clip-path="url(#clipPath2)" fill="rgb(183,182,158)" width="324.5209" height="21.4609" stroke="none"/>
+    </g>
+    <g font-size="15px" stroke-linecap="butt" transform="matrix(1,0,0,1,-424,-198)" text-rendering="geometricPrecision" font-family="sans-serif" shape-rendering="geometricPrecision" stroke-miterlimit="1.45">
+      <text x="1198.541" xml:space="preserve" y="465.808" clip-path="url(#clipPath2)" stroke="none">Legend</text>
+      <rect fill="none" x="931.3839" width="324.5209" height="133.1153" y="449.8847" clip-path="url(#clipPath2)"/>
+    </g>
+    <g fill="rgb(255,204,0)" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke="rgb(255,204,0)">
+      <path d="M936.3839 476.3456 L1039.3197 476.3456 L1039.3197 491.3456 L1054.3197 491.3456 L1054.3197 504.3456 L936.3839 504.3456 Z" stroke="none" clip-path="url(#clipPath2)"/>
+      <path fill="white" d="M1039.3197 476.3456 L1039.3197 491.3456 L1054.3197 491.3456 Z" clip-path="url(#clipPath2)" fill-rule="evenodd" stroke="none"/>
+    </g>
+    <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke-linecap="butt">
+      <path fill="none" d="M936.3839 476.3456 L1039.3197 476.3456 L1039.3197 491.3456 L1054.3197 491.3456 L1054.3197 504.3456 L936.3839 504.3456 Z" clip-path="url(#clipPath2)"/>
+      <path fill="none" d="M1039.3197 476.3456 L1039.3197 491.3456 L1054.3197 491.3456 Z" clip-path="url(#clipPath2)" fill-rule="evenodd"/>
+      <text x="965.3518" font-size="20px" y="496.9456" clip-path="url(#clipPath2)" font-family="'Ubuntu Mono'" stroke="none" xml:space="preserve">module</text>
+    </g>
+    <g fill="rgb(153,204,0)" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke="rgb(153,204,0)">
+      <path d="M936.3839 512.1728 L1039.3197 512.1728 L1039.3197 527.1728 L1054.3197 527.1728 L1054.3197 540.1728 L936.3839 540.1728 Z" stroke="none" clip-path="url(#clipPath2)"/>
+      <path fill="white" d="M1039.3197 512.1728 L1039.3197 527.1728 L1054.3197 527.1728 Z" clip-path="url(#clipPath2)" fill-rule="evenodd" stroke="none"/>
+    </g>
+    <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke-linecap="butt">
+      <path fill="none" d="M936.3839 512.1728 L1039.3197 512.1728 L1039.3197 527.1728 L1054.3197 527.1728 L1054.3197 540.1728 L936.3839 540.1728 Z" clip-path="url(#clipPath2)"/>
+      <path fill="none" d="M1039.3197 512.1728 L1039.3197 527.1728 L1054.3197 527.1728 Z" clip-path="url(#clipPath2)" fill-rule="evenodd"/>
+      <text x="975.3518" font-size="20px" y="532.7728" clip-path="url(#clipPath2)" font-family="'Ubuntu Mono'" stroke="none" xml:space="preserve">root</text>
+    </g>
+    <g fill="yellow" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke="yellow">
+      <path d="M937.5118 548 L1039.3197 548 L1039.3197 563 L1054.3197 563 L1054.3197 576 L937.5118 576 Z" stroke="none" clip-path="url(#clipPath2)"/>
+      <path fill="white" d="M1039.3197 548 L1039.3197 563 L1054.3197 563 Z" clip-path="url(#clipPath2)" fill-rule="evenodd" stroke="none"/>
+    </g>
+    <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke-linecap="butt">
+      <path fill="none" d="M937.5118 548 L1039.3197 548 L1039.3197 563 L1054.3197 563 L1054.3197 576 L937.5118 576 Z" clip-path="url(#clipPath2)"/>
+      <path fill="none" d="M1039.3197 548 L1039.3197 563 L1054.3197 563 Z" clip-path="url(#clipPath2)" fill-rule="evenodd"/>
+      <text x="955.9158" font-size="20px" y="568.6" clip-path="url(#clipPath2)" font-family="'Ubuntu Mono'" stroke="none" xml:space="preserve">api only</text>
+    </g>
+    <g fill="white" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke="white">
+      <path d="M1068.6489 476.3456 L1232.9048 476.3456 L1232.9048 491.3456 L1247.9048 491.3456 L1247.9048 504.3456 L1068.6489 504.3456 Z" stroke="none" clip-path="url(#clipPath2)"/>
+      <path d="M1232.9048 476.3456 L1232.9048 491.3456 L1247.9048 491.3456 Z" clip-path="url(#clipPath2)" fill-rule="evenodd" stroke="none"/>
+    </g>
+    <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke-linecap="butt">
+      <path fill="none" d="M1068.6489 476.3456 L1232.9048 476.3456 L1232.9048 491.3456 L1247.9048 491.3456 L1247.9048 504.3456 L1068.6489 504.3456 Z" clip-path="url(#clipPath2)"/>
+      <path fill="none" d="M1232.9048 476.3456 L1232.9048 491.3456 L1247.9048 491.3456 Z" clip-path="url(#clipPath2)" fill-rule="evenodd"/>
+      <text x="1088.277" font-size="20px" y="496.9456" clip-path="url(#clipPath2)" font-family="'Ubuntu Mono'" stroke="none" xml:space="preserve">implementation</text>
+    </g>
+    <g fill="rgb(255,204,0)" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke="rgb(255,204,0)">
+      <path d="M424 425 L553 425 L553 440 L568 440 L568 453 L424 453 Z" stroke="none" clip-path="url(#clipPath2)"/>
+      <path fill="white" d="M553 425 L553 440 L568 440 Z" clip-path="url(#clipPath2)" fill-rule="evenodd" stroke="none"/>
+    </g>
+    <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke-linecap="butt">
+      <path fill="none" d="M424 425 L553 425 L553 440 L568 440 L568 453 L424 453 Z" clip-path="url(#clipPath2)"/>
+      <path fill="none" d="M553 425 L553 440 L568 440 Z" clip-path="url(#clipPath2)" fill-rule="evenodd"/>
+      <text x="451.0001" font-size="20px" y="445.6" clip-path="url(#clipPath2)" font-family="'Ubuntu Mono'" stroke="none" xml:space="preserve">dsl-solve</text>
+    </g>
+    <g fill="rgb(255,204,0)" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke="rgb(255,204,0)">
+      <path d="M560 555 L617.6279 555 L617.6279 570 L632.6279 570 L632.6279 583 L560 583 Z" stroke="none" clip-path="url(#clipPath2)"/>
+      <path fill="white" d="M617.6279 555 L617.6279 570 L632.6279 570 Z" clip-path="url(#clipPath2)" fill-rule="evenodd" stroke="none"/>
+    </g>
+    <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke-linecap="butt">
+      <path fill="none" d="M560 555 L617.6279 555 L617.6279 570 L632.6279 570 L632.6279 583 L560 583 Z" clip-path="url(#clipPath2)"/>
+      <path fill="none" d="M617.6279 555 L617.6279 570 L632.6279 570 Z" clip-path="url(#clipPath2)" fill-rule="evenodd"/>
+      <text x="581.314" font-size="20px" y="575.6" clip-path="url(#clipPath2)" font-family="'Ubuntu Mono'" stroke="none" xml:space="preserve">ide</text>
+    </g>
+    <g fill="rgb(255,204,0)" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke="rgb(255,204,0)">
+      <path d="M785.7441 425 L878.744 425 L878.744 440 L893.744 440 L893.744 453 L785.7441 453 Z" stroke="none" clip-path="url(#clipPath2)"/>
+      <path fill="white" d="M878.744 425 L878.744 440 L893.744 440 Z" clip-path="url(#clipPath2)" fill-rule="evenodd" stroke="none"/>
+    </g>
+    <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke-linecap="butt">
+      <path fill="none" d="M785.7441 425 L878.744 425 L878.744 440 L893.744 440 L893.744 453 L785.7441 453 Z" clip-path="url(#clipPath2)"/>
+      <path fill="none" d="M878.744 425 L878.744 440 L893.744 440 Z" clip-path="url(#clipPath2)" fill-rule="evenodd"/>
+      <text x="804.7441" font-size="20px" y="445.6" clip-path="url(#clipPath2)" font-family="'Ubuntu Mono'" stroke="none" xml:space="preserve">oop-lib</text>
+    </g>
+    <g fill="rgb(255,204,0)" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke="rgb(255,204,0)">
+      <path d="M785.7441 476 L878.744 476 L878.744 491 L893.744 491 L893.744 504 L785.7441 504 Z" stroke="none" clip-path="url(#clipPath2)"/>
+      <path fill="white" d="M878.744 476 L878.744 491 L893.744 491 Z" clip-path="url(#clipPath2)" fill-rule="evenodd" stroke="none"/>
+    </g>
+    <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-424,-198)" stroke-linecap="butt">
+      <path fill="none" d="M785.7441 476 L878.744 476 L878.744 491 L893.744 491 L893.744 504 L785.7441 504 Z" clip-path="url(#clipPath2)"/>
+      <path fill="none" d="M878.744 476 L878.744 491 L893.744 491 Z" clip-path="url(#clipPath2)" fill-rule="evenodd"/>
+      <text x="809.7441" font-size="20px" y="496.6" clip-path="url(#clipPath2)" font-family="'Ubuntu Mono'" stroke="none" xml:space="preserve">io-lib</text>
+      <path fill="none" d="M1084.3197 533 L1206.9048 533" clip-path="url(#clipPath2)"/>
+      <path d="M1217.9048 533 L1205.9048 527 L1205.9048 539 Z" clip-path="url(#clipPath2)" stroke="none"/>
+      <text x="1105.6501" xml:space="preserve" y="524.5607" clip-path="url(#clipPath2)" font-family="sans-serif" stroke="none">depends on</text>
+      <path fill="none" stroke-dasharray="6,2" d="M1084.3197 563 L1212.9048 563" clip-path="url(#clipPath2)"/>
+      <path stroke-dasharray="6,2" d="M1216.9048 563 L1204.9048 557 L1216.9048 563 L1204.9048 569 Z" clip-path="url(#clipPath2)" stroke="none"/>
+      <path fill="none" stroke-miterlimit="10" d="M1216.9048 563 L1204.9048 557 L1216.9048 563 L1204.9048 569 Z" clip-path="url(#clipPath2)" stroke-linecap="square"/>
+      <text x="1137.3662" xml:space="preserve" y="554.5607" clip-path="url(#clipPath2)" font-family="sans-serif" stroke="none">uses</text>
+      <path fill="none" d="M568.0269 439 L618.8599 439" clip-path="url(#clipPath2)"/>
+      <path d="M629.8599 439 L617.8599 433 L617.8599 445 Z" clip-path="url(#clipPath2)" stroke="none"/>
+      <path fill="none" d="M496.2429 425.0034 L496.6942 398.9944" clip-path="url(#clipPath2)"/>
+      <path d="M496.8851 387.996 L490.6778 399.8901 L502.676 400.0983 Z" clip-path="url(#clipPath2)" stroke="none"/>
+      <path fill="none" d="M584.8337 555.0034 L561.4762 526.526" clip-path="url(#clipPath2)"/>
+      <path d="M554.5002 518.021 L557.4713 531.1043 L566.7495 523.4941 Z" clip-path="url(#clipPath2)" stroke="none"/>
+      <path fill="none" d="M785.7635 439 L737.12 439" clip-path="url(#clipPath2)"/>
+      <path d="M726.12 439 L738.12 445 L738.12 433 Z" clip-path="url(#clipPath2)" stroke="none"/>
+      <path fill="none" d="M795.3198 475.9924 L732.9154 456.3155" clip-path="url(#clipPath2)"/>
+      <path d="M722.4246 453.0076 L732.0648 462.3385 L735.6734 450.894 Z" clip-path="url(#clipPath2)" stroke="none"/>
+    </g>
+  </g>
+</svg>
