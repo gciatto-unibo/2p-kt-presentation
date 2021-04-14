@@ -1553,7 +1553,7 @@
     \begin{block}{Clause Collections}
         \begin{itemize}
             \item manage the storage of \kt{Clause}s
-            \item provide methods for addition, removal, and retrieval of clauses
+            \item provide methods for addition and removal of clauses
             \item designed as \kt{Iterable} subtypes
         \end{itemize}
     \end{block}
@@ -1568,6 +1568,51 @@
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{ClauseCollection} Type Hierarchy}
+
+    \begin{center}
+        \includegraphics[width=\linewidth]{img/clause-collections.pdf}
+    \end{center}
+
+    \framebreak
+
+    \begin{block}{The \kt{ClauseCollection} interface}
+        \begin{itemize}
+            \item defines typical insertion and removal operations
+            \item method names similar to Java Collections
+            \begin{itemize}
+                \item [!] following the \textit{least astonishment principle}
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+    %
+    \begin{description}
+        \item[\kt{add(Clause): ClauseCollection}] returns a new collection containing the given clause and the existing ones
+        \item[\kt{retrieve(Clause): RetrieveResult<ClauseCollection>}] tries to remove the given clause from the collection
+        \item[\kt{contains(Clause): Boolean}] checks if the collection contains the given clause
+        \item[\kt{size: Int}] computes the size of the collection
+        \item[\kt{isEmpty(): Boolean}] checks if the collection contains any clauses 
+        \item[\kt{iterator(): Iterator<Clause>}] returns the collection's iterator
+    \end{description}
+
+    \framebreak
+
+    \begin{block}{The \kt{RetrieveResult} type}
+        \begin{itemize}
+            \item represents the output of a \kt{retrieve(Clause)} call
+            \item can be a \kt{Success} or \kt{Failure}
+        \end{itemize}
+    \end{block}
+    %
+    \begin{center}
+        \includegraphics[width=0.8\linewidth]{img/retrieve-result.pdf}
+    \end{center}
+
+
+    \framebreak
+
+    \begin{block}{The \kt{MutableClauseCollection} interface}
+    \end{block}
+
     ClauseCollections (both mutable and immutable)
 
     ClauseQueues (both mutable and immutable)
