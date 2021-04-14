@@ -1398,15 +1398,75 @@
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Refreshing Terms}
-    how it works + examples
+    \begin{block}{Definition and Notation}
+        Let $t$ be a \kt{Term} and suppose that $t$:
+        %
+        \begin{itemize}
+            \item is \alert{compound} (i.e. it is a \kt{Struct})
+            \item it contains some \kt{Var}iables $X_1$, \ldots, $X_n$
+        \end{itemize}
+        %
+        then \alert{refreshing} $t$ means creating another term $t'$ such that:
+        %
+        \begin{itemize}
+            \item $t'$ has the same structure of $t$
+            \item each occurrence of $X_i$ is replaced by $X'_i$, where
+            %
+            \begin{itemize}
+                \item $X'_i$ is a fresh variable s.t. $X'_i \neq X_i$
+                \item $X'_i$ has the same name of $X_i$
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+
+    \begin{alertblock}{Notable Cases}
+        \begin{itemize}
+            \item If $t$ is \alert{ground} then refreshing $t$ leaves it unaffected
+        \end{itemize}
+    \end{alertblock}
+    
+    \begin{block}{In practice}
+        Let $t$ denote a \kt{Term}:
+        %
+        \begin{description}
+            \item[\kt{$t$.freshCopy(): Term}] returns a new \kt{Term} attained by refreshing $t$
+            %
+            \begin{itemize}\small
+                \item the new \kt{Term} is guaranteed to only contain \kt{Var}iables which have \alert{never} been used before
+            \end{itemize}
+            \item[\kt{$t$.freshCopy(Scope): Term}] returns a new \kt{Term} attained by refreshing $t$ using the provided \kt{Scope}
+            %
+            \begin{itemize}\small
+                \item if the provided \kt{Scope} already contains some \kt{Var}iable whose simple name is exploited within $t$, then is that \kt{Var}iable is reused 
+            \end{itemize}
+        \end{description}
+    \end{block}
+    
+    \ktSnippet{snippets/MissingExample.kt}
 \end{frame}
 
 \subsection{\kt{Operator}s and \kt{OperatorSet}s}
 
 \begin{frame}[allowframebreaks]{Prolog-like Operators}
-    functor vs specifier vs priority
-
-    default operators
+    \begin{block}{Definition}
+        A Prolog-like \kt{Operator} is an algebraic object composed by 3 fields:
+        %
+        \begin{description}
+            \item[functor: String] i.e. the operator's symbol
+            \item[priority: Int] where lower integers correspong to higher priorities
+            %
+            \begin{itemize}\small
+                \item conventionally, 0 is \alert{max} priority, 1200 is \alert{min} priority
+            \end{itemize}
+            \item[specifier: Specifier] is a descriptor of the operator's
+            %
+            \begin{description}\small
+                \item[arity] i.e. the amount of arguments it takes (either binary or unary) 
+                \item[position] w.r.t. arguments (prefix, postfix, or infix)
+                \item[associativity] e.g. either right- or left-associative, or non-associative 
+            \end{description}
+        \end{description}
+    \end{block}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Sets of Operators}
