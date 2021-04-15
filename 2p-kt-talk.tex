@@ -1849,12 +1849,46 @@
     \end{block}
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Main sorts of \kt{TermFormatter}s}
-    enumerate types
+\begin{frame}[allowframebreaks]{Creating \kt{TermFormatter}s}
+    Static factories for \kt{TermFormatter}s:
+    %
+    \begin{description}
+        \item[\kt{TermFormatter.of(VarFormat, OpFormat, FuncFormat, Boolean, OperatorSet)}] returns a new formatter using the provided options and operators 
+        \item[\kt{TermFormatter.default(OperatorSet)}] creates a new formatter using the provided operators and the following settings:
+        %
+        \begin{itemize}\small
+            \item \kt{VarFormat.UNDERSCORE}, \kt{OpFormat.EXPRESSIONS}, \kt{FuncFormat.LITERAL}
+            \item \kt{numberVars = true}
+        \end{itemize}  
+        \item[\kt{TermFormatter.canonical()}] creates a new formatter using the following settings:
+        %
+        \begin{itemize}\small
+            \item \kt{VarFormat.UNDERSCORE}, \kt{OpFormat.IGNORE\_OPERATORS}, \kt{FuncFormat.QUOTED\_IF\_NECESSARY}
+            \item \kt{numberVars = false}
+        \end{itemize}  
+        \item[\kt{TermFormatter.readable(OperatorSet)}] creates a new formatter using the provided operators and the following settings:
+        %
+        \begin{itemize}\small
+            \item \kt{VarFormat.PRETTY}, \kt{OpFormat.EXPRESSIONS}, \kt{FuncFormat.QUOTED\_IF\_NECESSARY}
+            \item \kt{numberVars = false}
+        \end{itemize}    
+        \item[\kt{TermFormatter.prettyVariables()}] like \kt{canonical}, but with:
+        %
+        \begin{itemize}\small
+            \item \kt{VarFormat.PRETTY}, \kt{OpFormat.COLLECTIONS}
+        \end{itemize}   
+        \item[\kt{TermFormatter.prettyExpressions(Boolean, OperatorSet)}] creates a new formatter using the provided operators and the following settings:
+        %
+        \begin{itemize}\small
+            \item \kt{VarFormat.PRETTY} if the $1^{st}$ argument is \kt{true}, \kt{COMPLETE\_NAMES} otherwise
+            \item \kt{OpFormat.EXPRESSIONS}, \kt{FuncFormat.QUOTED\_IF\_NECESSARY}
+            \item \kt{numberVars = false}
+        \end{itemize}  
+    \end{description}
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Usage Example}
-    one example for each term formatter
+\begin{frame}[allowframebreaks]{Formatting \kt{Term}s}
+    \ktSnippet{snippets/MissingExample.kt}
 \end{frame}
 
 \subsection{Exceptions}
