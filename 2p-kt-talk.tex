@@ -1801,6 +1801,52 @@
             \end{itemize} 
         \end{description}
     \end{block}
+
+    \begin{block}{\kt{OpFormat} dictates how \kt{Operator}s are treated}
+        \begin{description}
+            \item[\kt{IGNORE\_OPERATORS}] all \kt{Struct}ures are represented in canonical form:
+            \begin{center}
+                \pl{\meta{Functor}(\meta{Args})}
+            \end{center} 
+            no matter what, including \kt{Collection}s
+            \item[\kt{COLLECTIONS}] like the above, except 
+            %
+            \begin{itemize}
+                \item lists are represented in square-brackets form
+                \item tuples are represented in round-parentheses form
+                \item sets are represented in curly-brackets form
+            \end{itemize} 
+            \item[\kt{EXPRESSIONS}] like the above except that \kt{Struct}ures matching some operator definition are represented in infix, prefix, or infix form, using parentheses only if required 
+            %
+            \begin{itemize}\small
+                \item this requires an \kt{OperatorSet} to be specified
+            \end{itemize} 
+        \end{description}
+    \end{block}
+
+    \begin{block}{\kt{FuncFormat} dictates how \kt{Struct}ures' functors are represented}
+        \begin{description}
+            \item[\kt{QUOTED\_IF\_NECESSARY}] equotes functors if they are not well formed, escaping non-readable characters
+            \item[\kt{LITERAL}] represents functors literally, without any enquoting or escaping
+        \end{description}
+    \end{block}
+
+    \begin{block}{The \kt{numberVars: Boolean} flag}
+        Some \kt{TermFormatter} initialisers come with a \kt{numberVars} argument:
+        \begin{description}
+            \item[when \kt{true}] structures of the form
+            %
+            \begin{center}
+                \pl{'\$VAR'($i$)}
+            \end{center} 
+            where $i$ is a non-negative \kt{Integer} are represented as the \kt{Var}iable named after the $i^{th}$ letter of the alphabet
+            %
+            \begin{itemize}\small
+                \item \pl{'\$VAR'(0)} $\rightarrow$ \pl{A}, \pl{'\$VAR'(1)} $\rightarrow$ \pl{B}, etc.
+            \end{itemize}
+            \item[when \kt{false}] they are represented as ordinary \kt{Struct}ures
+        \end{description}
+    \end{block}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Main sorts of \kt{TermFormatter}s}
