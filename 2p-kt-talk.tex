@@ -1488,6 +1488,28 @@
         \end{itemize}
     \end{block}
 
+    \begin{block}{Creating \kt{Operator}s}
+        \begin{description}
+            \item[\kt{Operator(String, Specifier, Int)}] creates a new \kt{Operator} having the provided functor, specifier, and priority
+            \item[\kt{Operator.fromTerm(Integer, Atom, Atom): Operator?}] creates a new \kt{Operator} having the provided priority, specifier, and functor---provided as \kt{Term}s
+            %
+            \begin{itemize}\small
+                \item the $2^{nd}$ argument must be one \kt{Atom} among \pl{fx}, \pl{fy}, \pl{xf}, \pl{yf}, \pl{xfx}, \pl{yfx}, or \pl{xfy}
+                \item returns \kt{null} otherwise
+            \end{itemize} 
+            \item[\kt{Operator.fromTerm(Struct): Operator}] creates a new \kt{Operator} out of a \kt{Struct} of the form \pl{op($p$, $s$, $f$)}
+             %
+            \begin{itemize}\small
+                \item where $p$ must be an \kt{Integer}
+                \item and $s$ be one \kt{Atom} among \pl{fx}, \pl{fy}, \pl{xf}, \pl{yf}, \pl{xfx}, \pl{yfx}, or \pl{xfy}
+                \item returns \kt{null} otherwise
+            \end{itemize} 
+        \end{description}
+    \end{block}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{The meaning of \kt{Specifier}s}
+
     \begin{exampleblock}{How two interpret \textbf{prefix} specifiers \kt{FX} and \kt{FY}}
         \begin{itemize}
             \item If \pl{f} and \pl{g} are operators of type \kt{FY}, and \pl{T} is a term:
@@ -1658,19 +1680,51 @@
     Several notable \kt{OperatorSet} exists:
     %
     \begin{itemize}
-        \item[eg] for arithmetic operators:
+        \item[eg] one for arithmetic operators:
             \\\medskip\input{tab-operators-arithmetic.tex} 
 
         \framebreak
 
-        \item[eg] for arithmetic comparison operators:
+        \item[eg] one for arithmetic comparison operators:
             \\\medskip\input{tab-operators-arithmetic-comparison.tex} 
 
         \framebreak
 
-        \item[eg] for term comparison operators:
+        \item[eg] one for term comparison operators:
             \\\medskip\input{tab-operators-term-comparison.tex} 
+
+        \framebreak
+
+        \item[eg] one for logic connectors:
+            \\\medskip\input{tab-operators-logic.tex} 
+
+        \framebreak
+
+        \item[eg] one for clause-related operators:
+            \\\medskip\input{tab-operators-clauses.tex} 
+
+        \framebreak
+
+        \item[eg] one containing all the aforementioned (ISO Prolog Standard compliant) operators:
+            \\\medskip\input{tab-operators-standard.tex} 
     \end{itemize}
+
+    \begin{block}{Creating an \kt{OperatorSet}}
+        \begin{description}\small
+            \item[\kt{OperatorSet(\meta{Container})}] creates a novel set out of some operators
+            %
+            \begin{itemize}\scriptsize
+                \item where \kt{\meta{Container}} may be an iterable, sequence, or vararg of \kt{Operator}s
+            \end{itemize} 
+            \item[\kt{OperatorSet.EMPTY}] references an empty set
+            \item[\kt{OperatorSet.ARITHMETIC}] references a set containing arithmetic operators
+            \item[\kt{OperatorSet.ARITHMETIC\_COMPARISON}] references a set containing arithmetic comparison operators 
+            \item[\kt{OperatorSet.TERM\_COMPARISON}] references a set containing term comparison operators  
+            \item[\kt{OperatorSet.CONTROL\_FLOW}] references a set containing logic connectors
+            \item[\kt{OperatorSet.CLAUSES}] references a set containing clause-related operators 
+            \item[\kt{OperatorSet.STANDARD}] references a set containing all the aforementioned operators
+        \end{description}
+    \end{block}
 \end{frame}
 
 \subsection{Pattern Matching over \kt{Term}s Types}
