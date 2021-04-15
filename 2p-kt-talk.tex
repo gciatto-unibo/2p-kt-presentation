@@ -1729,14 +1729,78 @@
 
 \subsection{Pattern Matching over \kt{Term}s Types}
 
-\begin{frame}[allowframebreaks]{Term Visitors and their Use Cases}
-    type definition + example
+\begin{frame}[allowframebreaks]{\kt{TermVisitor}s and their Use Cases}
+    \begin{block}{About \kt{TermVisitor}s}
+        \begin{itemize}
+            \item Visitor pattern\footnote{\url{https://en.wikipedia.org/wiki/Visitor_pattern}} applied to \kt{Term}
+            \item Supports use cases where a particular operation must be performed depenting on the actual type of a \kt{Term}
+            \item Essentially, a form of \alert{dynamic dispatch}\footnote{\url{https://en.wikipedia.org/wiki/Dynamic_dispatch}}
+        \end{itemize}
+    \end{block}
+
+    \ktSnippet[\tiny]{./snippets/TermVisitor.kt}
+
+    \begin{block}{\kt{TermVisitor}s' contract}
+        \begin{itemize}
+            \item An instance of \kt{TermVisitor<\textit{T}>} $v$ can be applied to a term $t$ via
+            %
+            \begin{center}
+                \kt{$t$.accept($v$)}
+            \end{center}
+
+            \item This returns an object of type \kt{\textit{T}} \ldots
+            
+            \item \ldots attaived via the most adequate method \kt{visit\meta{Type}} of $v$
+            %
+            \begin{itemize}
+                \item where \kt{\meta{Type}} is the most specific type matching the run-time type of $t$
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Implementors of \kt{TermVisitor}s}
+        \begin{itemize}
+            \item May override \kt{defaultValue} to handle the general case
+            \item Then override some \kt{visit\meta{Type}} method to handle the particular case of \kt{\meta{Type}}
+        \end{itemize}
+    \end{block}
+
+    \ktSnippet{./snippets/MissingExample.kt}
 \end{frame}
 
 \subsection{Formatting \kt{Term}s}
 
-\begin{frame}[allowframebreaks]{The \kt{TermFormatter} Type}
-    definition + api + extension methods
+\begin{frame}{The \kt{TermFormatter} Type}
+    \begin{block}{About \kt{TermFormatter}s}
+        \begin{itemize}
+            \item \kt{TermFormatter}s aim at \alert{presenting} terms and clauses as \kt{string}s
+            \item Many predefined formatters exist, serving disparate use cases
+        \end{itemize}
+    \end{block}
+
+    \ktSnippet{./snippets/TermFormatter.kt}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{\kt{TermFormatter} enums}
+    Three \kt{enum}s exist to support many possible way to present \kt{Term}s:
+    %
+    \ktSnippet{./snippets/TermFormatterEnums.kt}
+
+    \begin{block}{\kt{VarFormat} dictates how \kt{Var}iables are represented}
+        \begin{description}
+            \item[\kt{COMPLETE\_NAME}] represent variables by \alert{complete} name
+            \item[\kt{UNDERSCORE}] represent all variables in the form \kt{\_\meta{Integer}}
+            \item[\kt{PRETTY}] represent all variables by \alert{simple} name
+            %
+            \begin{itemize}\small
+                \item progressively renames homonymous variables
+                %
+                \begin{itemize}\scriptsize
+                    \item[eg] \pl{X}, \pl{X1}, \pl{X2}, etc
+                \end{itemize}
+            \end{itemize} 
+        \end{description}
+    \end{block}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Main sorts of \kt{TermFormatter}s}

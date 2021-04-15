@@ -1,0 +1,5 @@
+enum class VarFormat { COMPLETE_NAME, UNDERSCORE, PRETTY }
+
+enum class OpFormat { IGNORE_OPERATORS, COLLECTIONS, EXPRESSIONS }
+
+enum class FuncFormat { QUOTED_IF_NECESSARY, LITERAL }
