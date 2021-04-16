@@ -1424,7 +1424,7 @@
             \item If $t$ is \alert{ground} then refreshing $t$ leaves it unaffected
         \end{itemize}
     \end{alertblock}
-    
+
     \begin{block}{In practice}
         Let $t$ denote a \kt{Term}:
         %
@@ -1437,11 +1437,11 @@
             \item[\kt{$t$.freshCopy(Scope): Term}] returns a new \kt{Term} attained by refreshing $t$ using the provided \kt{Scope}
             %
             \begin{itemize}\small
-                \item if the provided \kt{Scope} already contains some \kt{Var}iable whose simple name is exploited within $t$, then is that \kt{Var}iable is reused 
+                \item if the provided \kt{Scope} already contains some \kt{Var}iable whose simple name is exploited within $t$, then is that \kt{Var}iable is reused
             \end{itemize}
         \end{description}
     \end{block}
-    
+
     \ktSnippet{snippets/MissingExample.kt}
 \end{frame}
 
@@ -1461,9 +1461,9 @@
             \item[\kt{specifier: Specifier}] is a descriptor of the operator's
             %
             \begin{description}\small
-                \item[arity] i.e. the amount of arguments it takes (either binary or unary) 
+                \item[arity] i.e. the amount of arguments it takes (either binary or unary)
                 \item[position] w.r.t. arguments (prefix, postfix, or infix)
-                \item[associativity] e.g. either right- or left-associative, or non-associative 
+                \item[associativity] e.g. either right- or left-associative, or non-associative
             \end{description}
         \end{description}
     \end{block}
@@ -1496,14 +1496,14 @@
             \begin{itemize}\small
                 \item the $2^{nd}$ argument must be one \kt{Atom} among \pl{fx}, \pl{fy}, \pl{xf}, \pl{yf}, \pl{xfx}, \pl{yfx}, or \pl{xfy}
                 \item returns \kt{null} otherwise
-            \end{itemize} 
+            \end{itemize}
             \item[\kt{Operator.fromTerm(Struct): Operator}] creates a new \kt{Operator} out of a \kt{Struct} of the form \pl{op($p$, $s$, $f$)}
              %
             \begin{itemize}\small
                 \item where $p$ must be an \kt{Integer}
                 \item and $s$ be one \kt{Atom} among \pl{fx}, \pl{fy}, \pl{xf}, \pl{yf}, \pl{xfx}, \pl{yfx}, or \pl{xfy}
                 \item returns \kt{null} otherwise
-            \end{itemize} 
+            \end{itemize}
         \end{description}
     \end{block}
 \end{frame}
@@ -1515,36 +1515,36 @@
             \item If \pl{f} and \pl{g} are operators of type \kt{FY}, and \pl{T} is a term:
             %
             \begin{itemize}
-                \item espressions of the form \alert{\pl{f(g(T))}} 
+                \item espressions of the form \alert{\pl{f(g(T))}}
                 %
                 \begin{itemize}
-                    \item can be written as \alert{\pl{f g T}} only if $priority(\pl{g}) \leq priority(\pl{f})$ 
+                    \item can be written as \alert{\pl{f g T}} only if $priority(\pl{g}) \leq priority(\pl{f})$
                     \item can be written as \alert{\pl{f(g T)}} otherwise
                 \end{itemize}
 
-                \item espressions of the form \alert{\pl{f(f(T))}} or \alert{\pl{g(g(T))}} 
+                \item espressions of the form \alert{\pl{f(f(T))}} or \alert{\pl{g(g(T))}}
                 %
                 \begin{itemize}
                     \item can be written as \alert{\pl{f f T}} or \alert{\pl{g g T}}
-                \end{itemize} 
+                \end{itemize}
             \end{itemize}
 
             \item Otherwise, if \pl{f} and \pl{g} are operators of type \kt{FX}:
             %
             \begin{itemize}
-                \item espressions of the form \alert{\pl{f(g(T))}} 
+                \item espressions of the form \alert{\pl{f(g(T))}}
                 %
                 \begin{itemize}
-                    \item can be written as \alert{\pl{f g T}} only if $priority(\pl{g}) < priority(\pl{f})$ 
+                    \item can be written as \alert{\pl{f g T}} only if $priority(\pl{g}) < priority(\pl{f})$
                     \item can be written as \alert{\pl{f(g T)}} otherwise
                 \end{itemize}
 
-                \item espressions of the form \alert{\pl{f(f(T))}}, or \alert{\pl{g(g(T))}} 
+                \item espressions of the form \alert{\pl{f(f(T))}}, or \alert{\pl{g(g(T))}}
                 %
                 \begin{itemize}
                     \item can \alert{never} be written as \alert{\pl{f f T}} or \alert{\pl{g g T}}
                     \item but can be written as \alert{\pl{f(f T)}} or \alert{\pl{g(g T)}}
-                \end{itemize} 
+                \end{itemize}
             \end{itemize}
         \end{itemize}
     \end{exampleblock}
@@ -1554,36 +1554,36 @@
             \item If \pl{f} and \pl{g} are operators of type \kt{YF}, and \pl{T} is a term:
             %
             \begin{itemize}
-                \item espressions of the form \alert{\pl{f(g(T))}} 
+                \item espressions of the form \alert{\pl{f(g(T))}}
                 %
                 \begin{itemize}
-                    \item can be written as \alert{\pl{T g f}} only if $priority(\pl{g}) \leq priority(\pl{f})$ 
+                    \item can be written as \alert{\pl{T g f}} only if $priority(\pl{g}) \leq priority(\pl{f})$
                     \item can be written as \alert{\pl{(T g) f}} otherwise
                 \end{itemize}
 
-                \item espressions of the form \alert{\pl{f(f(T))}} or \alert{\pl{g(g(T))}} 
+                \item espressions of the form \alert{\pl{f(f(T))}} or \alert{\pl{g(g(T))}}
                 %
                 \begin{itemize}
                     \item can be written as \alert{\pl{T f f}} or \alert{\pl{T g g}}
-                \end{itemize} 
+                \end{itemize}
             \end{itemize}
 
             \item Otherwise, if \pl{f} and \pl{g} are operators of type \kt{XF}:
             %
             \begin{itemize}
-                \item espressions of the form \alert{\pl{f(g(T))}} 
+                \item espressions of the form \alert{\pl{f(g(T))}}
                 %
                 \begin{itemize}
-                    \item can be written as \alert{\pl{T g f}} only if $priority(\pl{g}) < priority(\pl{f})$ 
+                    \item can be written as \alert{\pl{T g f}} only if $priority(\pl{g}) < priority(\pl{f})$
                     \item can be written as \alert{\pl{(T g) f}} otherwise
                 \end{itemize}
 
-                \item espressions of the form \alert{\pl{f(f(T))}}, or \alert{\pl{g(g(T))}} 
+                \item espressions of the form \alert{\pl{f(f(T))}}, or \alert{\pl{g(g(T))}}
                 %
                 \begin{itemize}
                     \item can \alert{never} be written as \alert{\pl{T f f}} or \alert{\pl{T g g}}
                     \item but can be written as \alert{\pl{(T f)f}} or \alert{\pl{(T g)g}}
-                \end{itemize} 
+                \end{itemize}
             \end{itemize}
         \end{itemize}
     \end{exampleblock}
@@ -1593,35 +1593,35 @@
             \item If \pl{f} and \pl{g} are operators of type \kt{YFX}, and \pl{A}, \pl{B}, and \pl{C} are terms:
             %
             \begin{itemize}
-                \item espressions of the form \alert{\pl{f(g(A, B), C)}} 
+                \item espressions of the form \alert{\pl{f(g(A, B), C)}}
                 %
                 \begin{itemize}
-                    \item can be written as \alert{\pl{A f B g C}} only if $priority(\pl{g}) \leq priority(\pl{f})$ 
+                    \item can be written as \alert{\pl{A f B g C}} only if $priority(\pl{g}) \leq priority(\pl{f})$
                     \item can be written as \alert{\pl{(A f B) g C}} otherwise
                 \end{itemize}
 
-                \item espressions of the form \alert{\pl{f(f(A, B), C)}} or \alert{\pl{g(g(A, B), C)}} 
+                \item espressions of the form \alert{\pl{f(f(A, B), C)}} or \alert{\pl{g(g(A, B), C)}}
                 %
                 \begin{itemize}
                     \item can be written as \alert{\pl{A f B f C}} or \alert{\pl{A g B g C}}
-                \end{itemize} 
+                \end{itemize}
             \end{itemize}
 
             \item Conversely, if \pl{f} and \pl{g} are operators of type \kt{XFY}:
             %
             \begin{itemize}
-                \item espressions of the form \alert{\pl{f(A, g(B, C))}}  
+                \item espressions of the form \alert{\pl{f(A, g(B, C))}}
                 %
                 \begin{itemize}
-                    \item can be written as \alert{\pl{A f B g C}} only if $priority(\pl{g}) \leq priority(\pl{f})$ 
+                    \item can be written as \alert{\pl{A f B g C}} only if $priority(\pl{g}) \leq priority(\pl{f})$
                     \item can be written as \alert{\pl{A f (B g C)}} otherwise
                 \end{itemize}
 
-                \item espressions of the form \alert{\pl{f(A, f(B, C))}} or \alert{\pl{g(A, g(B, C))}} 
+                \item espressions of the form \alert{\pl{f(A, f(B, C))}} or \alert{\pl{g(A, g(B, C))}}
                 %
                 \begin{itemize}
                     \item can be written as \alert{\pl{A f B f C}} or \alert{\pl{A g B g C}}
-                \end{itemize}  
+                \end{itemize}
             \end{itemize}
         \end{itemize}
     \end{exampleblock}
@@ -1631,33 +1631,33 @@
             \item If \pl{f} and \pl{g} are operators of type \kt{XFX}, and \pl{A}, \pl{B}, and \pl{C} are terms:
             %
             \begin{itemize}
-                \item espressions of the form \alert{\pl{f(g(A, B), C)}} 
+                \item espressions of the form \alert{\pl{f(g(A, B), C)}}
                 %
                 \begin{itemize}
-                    \item can be written as \alert{\pl{A f B g C}} only if $priority(\pl{g}) < priority(\pl{f})$ 
+                    \item can be written as \alert{\pl{A f B g C}} only if $priority(\pl{g}) < priority(\pl{f})$
                     \item can be written as \alert{\pl{(A f B) g C}} otherwise
                 \end{itemize}
 
-                \item espressions of the form \alert{\pl{f(f(A, B), C)}} or \alert{\pl{g(g(A, B), C)}} 
+                \item espressions of the form \alert{\pl{f(f(A, B), C)}} or \alert{\pl{g(g(A, B), C)}}
                 %
                 \begin{itemize}
                     \item can \alert{never} be written as \alert{\pl{A f B f C}} or \alert{\pl{A g B g C}}
                     \item but can be written as \alert{\pl{(A f B) f C}} or \alert{\pl{(A g B) g C}}
-                \end{itemize}  
+                \end{itemize}
 
-                \item espressions of the form \alert{\pl{f(A, g(B, C))}}  
+                \item espressions of the form \alert{\pl{f(A, g(B, C))}}
                 %
                 \begin{itemize}
-                    \item can be written as \alert{\pl{A f B g C}} only if $priority(\pl{g}) < priority(\pl{f})$ 
+                    \item can be written as \alert{\pl{A f B g C}} only if $priority(\pl{g}) < priority(\pl{f})$
                     \item can be written as \alert{\pl{A f (B g C)}} otherwise
                 \end{itemize}
 
-                \item espressions of the form \alert{\pl{f(A, f(B, C))}} or \alert{\pl{g(A, g(B, C))}} 
+                \item espressions of the form \alert{\pl{f(A, f(B, C))}} or \alert{\pl{g(A, g(B, C))}}
                 %
                 \begin{itemize}
                     \item can \alert{never} be written as \alert{\pl{A f B f C}} or \alert{\pl{A g B g C}}
                     \item but can be written as \alert{\pl{A f (B f C)}} or \alert{\pl{A g (B g C)}}
-                \end{itemize}  
+                \end{itemize}
             \end{itemize}
         \end{itemize}
     \end{exampleblock}
@@ -1681,32 +1681,32 @@
     %
     \begin{itemize}
         \item[eg] one for arithmetic operators:
-            \\\medskip\input{tab-operators-arithmetic.tex} 
+            \\\medskip\input{tab-operators-arithmetic.tex}
 
         \framebreak
 
         \item[eg] one for arithmetic comparison operators:
-            \\\medskip\input{tab-operators-arithmetic-comparison.tex} 
+            \\\medskip\input{tab-operators-arithmetic-comparison.tex}
 
         \framebreak
 
         \item[eg] one for term comparison operators:
-            \\\medskip\input{tab-operators-term-comparison.tex} 
+            \\\medskip\input{tab-operators-term-comparison.tex}
 
         \framebreak
 
         \item[eg] one for logic connectors:
-            \\\medskip\input{tab-operators-logic.tex} 
+            \\\medskip\input{tab-operators-logic.tex}
 
         \framebreak
 
         \item[eg] one for clause-related operators:
-            \\\medskip\input{tab-operators-clauses.tex} 
+            \\\medskip\input{tab-operators-clauses.tex}
 
         \framebreak
 
         \item[eg] one containing all the aforementioned (ISO Prolog Standard compliant) operators:
-            \\\medskip\input{tab-operators-standard.tex} 
+            \\\medskip\input{tab-operators-standard.tex}
     \end{itemize}
 
     \begin{block}{Creating an \kt{OperatorSet}}
@@ -1715,13 +1715,13 @@
             %
             \begin{itemize}\scriptsize
                 \item where \kt{\meta{Container}} may be an iterable, sequence, or vararg of \kt{Operator}s
-            \end{itemize} 
+            \end{itemize}
             \item[\kt{OperatorSet.EMPTY}] references an empty set
             \item[\kt{OperatorSet.ARITHMETIC}] references a set containing arithmetic operators
-            \item[\kt{OperatorSet.ARITHMETIC\_COMPARISON}] references a set containing arithmetic comparison operators 
-            \item[\kt{OperatorSet.TERM\_COMPARISON}] references a set containing term comparison operators  
+            \item[\kt{OperatorSet.ARITHMETIC\_COMPARISON}] references a set containing arithmetic comparison operators
+            \item[\kt{OperatorSet.TERM\_COMPARISON}] references a set containing term comparison operators
             \item[\kt{OperatorSet.CONTROL\_FLOW}] references a set containing logic connectors
-            \item[\kt{OperatorSet.CLAUSES}] references a set containing clause-related operators 
+            \item[\kt{OperatorSet.CLAUSES}] references a set containing clause-related operators
             \item[\kt{OperatorSet.STANDARD}] references a set containing all the aforementioned operators
         \end{description}
     \end{block}
@@ -1749,7 +1749,7 @@
             \end{center}
 
             \item This returns an object of type \kt{\textit{T}} \ldots
-            
+
             \item \ldots attaived via the most adequate method \kt{visit\meta{Type}} of $v$
             %
             \begin{itemize}
@@ -1798,7 +1798,7 @@
                 \begin{itemize}\scriptsize
                     \item[eg] \pl{X}, \pl{X1}, \pl{X2}, etc
                 \end{itemize}
-            \end{itemize} 
+            \end{itemize}
         \end{description}
     \end{block}
 
@@ -1807,20 +1807,20 @@
             \item[\kt{IGNORE\_OPERATORS}] all \kt{Struct}ures are represented in canonical form:
             \begin{center}
                 \pl{\meta{Functor}(\meta{Args})}
-            \end{center} 
+            \end{center}
             no matter what, including \kt{Collection}s
-            \item[\kt{COLLECTIONS}] like the above, except 
+            \item[\kt{COLLECTIONS}] like the above, except
             %
             \begin{itemize}
                 \item lists are represented in square-brackets form
                 \item tuples are represented in round-parentheses form
                 \item sets are represented in curly-brackets form
-            \end{itemize} 
-            \item[\kt{EXPRESSIONS}] like the above except that \kt{Struct}ures matching some operator definition are represented in infix, prefix, or infix form, using parentheses only if required 
+            \end{itemize}
+            \item[\kt{EXPRESSIONS}] like the above except that \kt{Struct}ures matching some operator definition are represented in infix, prefix, or infix form, using parentheses only if required
             %
             \begin{itemize}\small
                 \item this requires an \kt{OperatorSet} to be specified
-            \end{itemize} 
+            \end{itemize}
         \end{description}
     \end{block}
 
@@ -1838,7 +1838,7 @@
             %
             \begin{center}
                 \pl{'\$VAR'($i$)}
-            \end{center} 
+            \end{center}
             where $i$ is a non-negative \kt{Integer} are represented as the \kt{Var}iable named after the $i^{th}$ letter of the alphabet
             %
             \begin{itemize}\small
@@ -1847,43 +1847,46 @@
             \item[when \kt{false}] they are represented as ordinary \kt{Struct}ures
         \end{description}
     \end{block}
+
+    \ktSnippet{./snippets/TermFormatter.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Creating \kt{TermFormatter}s}
     Static factories for \kt{TermFormatter}s:
     %
+    \small
     \begin{description}
-        \item[\kt{TermFormatter.of(VarFormat, OpFormat, FuncFormat, Boolean, OperatorSet)}] returns a new formatter using the provided options and operators 
+        \item[\kt{TermFormatter.of(VarFormat,OpFormat,FuncFormat,Boolean,OperatorSet)}] returns a new formatter using the provided options and operators
         \item[\kt{TermFormatter.default(OperatorSet)}] creates a new formatter using the provided operators and the following settings:
         %
-        \begin{itemize}\small
+        \begin{itemize}\scriptsize
             \item \kt{VarFormat.UNDERSCORE}, \kt{OpFormat.EXPRESSIONS}, \kt{FuncFormat.LITERAL}
             \item \kt{numberVars = true}
-        \end{itemize}  
+        \end{itemize}
         \item[\kt{TermFormatter.canonical()}] creates a new formatter using the following settings:
         %
-        \begin{itemize}\small
-            \item \kt{VarFormat.UNDERSCORE}, \kt{OpFormat.IGNORE\_OPERATORS}, \kt{FuncFormat.QUOTED\_IF\_NECESSARY}
+        \begin{itemize}\scriptsize
+            \item \kt{UNDERSCORE}, \kt{IGNORE\_OPERATORS}, \kt{QUOTED\_IF\_NECESSARY}
             \item \kt{numberVars = false}
-        \end{itemize}  
+        \end{itemize}
         \item[\kt{TermFormatter.readable(OperatorSet)}] creates a new formatter using the provided operators and the following settings:
         %
-        \begin{itemize}\small
-            \item \kt{VarFormat.PRETTY}, \kt{OpFormat.EXPRESSIONS}, \kt{FuncFormat.QUOTED\_IF\_NECESSARY}
+        \begin{itemize}\scriptsize
+            \item \kt{PRETTY}, \kt{EXPRESSIONS}, \kt{QUOTED\_IF\_NECESSARY}
             \item \kt{numberVars = false}
-        \end{itemize}    
+        \end{itemize}
         \item[\kt{TermFormatter.prettyVariables()}] like \kt{canonical}, but with:
         %
-        \begin{itemize}\small
+        \begin{itemize}\scriptsize
             \item \kt{VarFormat.PRETTY}, \kt{OpFormat.COLLECTIONS}
-        \end{itemize}   
+        \end{itemize}
         \item[\kt{TermFormatter.prettyExpressions(Boolean, OperatorSet)}] creates a new formatter using the provided operators and the following settings:
         %
-        \begin{itemize}\small
+        \begin{itemize}\scriptsize
             \item \kt{VarFormat.PRETTY} if the $1^{st}$ argument is \kt{true}, \kt{COMPLETE\_NAMES} otherwise
             \item \kt{OpFormat.EXPRESSIONS}, \kt{FuncFormat.QUOTED\_IF\_NECESSARY}
             \item \kt{numberVars = false}
-        \end{itemize}  
+        \end{itemize}
     \end{description}
 \end{frame}
 
@@ -1893,8 +1896,28 @@
 
 \subsection{Exceptions}
 
-\begin{frame}[allowframebreaks]{The \kt{TuprologException} Type Hierarchy}
-    convention
+\begin{frame}[allowframebreaks]{Exceptions in \twopkt{}}
+    \begin{block}{The \kt{TuPrologException} type is a sub-type of \kt{RuntimeException}}\centering
+        Base type for all custom exceptions possibly occurring in \twopkt{}
+    \end{block}
+
+    \begin{alertblock}{Important convention}\centering
+        Custom exceptions possibly defined into any \twopkt{} module must directly or indirectly be sub-types of \kt{TuPrologException}
+    \end{alertblock}
+
+    \framebreak
+
+    \begin{block}{Sub-types of \kt{TuPrologException} in \module{core}}
+        \begin{description}
+            \item[\kt{SubstitutionException}] thrown when attempting to create a \kt{Unifier} out of contradictory assignments
+            %
+            \begin{itemize}\small
+                \item e.g. the same \kt{Var} is assigned to different \kt{Term}s
+            \end{itemize}
+
+            \item[\kt{SubstitutionApplicationException}] thrown when attempting to apply a \kt{Fail}ed substitution to a \kt{Term}
+        \end{description}
+    \end{block}
 \end{frame}
 
 \section{Logic Unification: the \module{unify} Module}
@@ -2074,7 +2097,7 @@
 \begin{frame}[allowframebreaks]{Creating a \kt{Solver}}
     the notion of SolverFactory
 
-    implementors of \module{solve} must provide a public SolverFactory singleton
+    implementers of \module{solve} must provide a public SolverFactory singleton
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Using a \kt{Solver}}
@@ -2148,7 +2171,7 @@
     example of function
 \end{frame}
 
-\subsubsection{Communicating with the extenal world via \kt{Channel}s}
+\subsubsection{Communicating with the external world via \kt{Channel}s}
 
 \begin{frame}[allowframebreaks]{Overview on Channels}
     channels as the basic IO facilities for solvers
@@ -2156,7 +2179,7 @@
     channel stores as key-value pair letting a solver keep track of the open channels and their names
 
     input channels let solvers consume inputs
-        + listeners can be added to intercept consumtion
+        + listeners can be added to intercept consumption
 
     output channels let solvers produce outputs
         + listeners can be added to intercept production
@@ -2217,7 +2240,7 @@
 \begin{frame}[allowframebreaks]{Example: Default Flags and their Purpose}
     unknown
 
-    max arity
+    max arty
 
     last call optimization
 \end{frame}
@@ -2231,7 +2254,7 @@
 
     durable -> erased after each solution is provided
 
-    emphemeral -> erased upon backtracking
+    ephemeral -> erased upon backtracking
 \end{frame}
 
 \subsection{Prolog Errors and Warnings}
@@ -2242,7 +2265,7 @@
     types of errors, their meaning and structure
 \end{frame}
 
-\begin{frame}[allowframebreaks]{The \kt{PrologError} Type Hierachy}
+\begin{frame}[allowframebreaks]{The \kt{PrologError} Type Hierarchy}
     general structure of \kt{PrologError}
 
     main subtypes
@@ -2257,9 +2280,9 @@
 
     they take priority over solvers KB
 
-    primitives as the main way to implement backtrackable predicates in Kotlin
+    primitives as the main way to implement back-trackable predicates in Kotlin
 
-    primitives as the main way to implement loigc functions in Kotlin
+    primitives as the main way to implement logic functions in Kotlin
 \end{frame}
 
 \subsection{About \kt{PrimitiveWrappers} and \kt{SideEffect}s}
@@ -2307,7 +2330,7 @@
 \begin{frame}[allowframebreaks]{Example of \kt{FunctionWrappers} of all sorts}
    a few example of functions of different sorts from the CommonBuiltins
 
-   invocation of an evalutator from within a primitive
+   invocation of an evaluator from within a primitive
 \end{frame}
 
 \subsection{Writing \kt{Library}}
@@ -2337,7 +2360,7 @@
 \begin{frame}[allowframebreaks]{State Machine in Practice}
     design of state
 
-    responsabilities of each state
+    responsibilities of each state
 
     iterating over states
 \end{frame}
@@ -2376,13 +2399,13 @@
 \subsection{\kt{Ref}erences: \kt{TypeRef}erences and \kt{ObjectRef}}
 
 \begin{frame}[allowframebreaks]{The \kt{Ref} Type Hierarchy}
-    definition and api of ref
+    definition and API of ref
 
-    definition and api of object ref
+    definition and API of object ref
 
-    definition and api of null ref
+    definition and API of null ref
 
-    definition and api of type ref
+    definition and API of type ref
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Creation of \kt{Ref}erences}
