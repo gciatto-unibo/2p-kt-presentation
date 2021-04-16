@@ -932,7 +932,7 @@
         \end{description}
     \end{block}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \ktSnippet{snippets/VarCreation.kt}
 
     \framebreak
 
@@ -950,7 +950,7 @@
         \end{description}
     \end{block}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \ktSnippet[\tiny]{snippets/StructCreation.kt}
 
 \end{frame}
 
@@ -975,7 +975,9 @@
         \end{description}
     \end{block}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \framebreak
+
+    \ktSnippet[\tiny]{snippets/ListCreation.kt}
 
     \framebreak
 
@@ -988,8 +990,6 @@
             \end{itemize}
         \end{description}
     \end{block}
-
-    \ktSnippet{snippets/MissingExample.kt}
 
     \framebreak
 
@@ -1006,14 +1006,12 @@
             \end{itemize}
         \end{description}
     \end{block}
-
-    \ktSnippet{snippets/MissingExample.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Creating \kt{Clause}s via Static Factories}
     \begin{block}{Creating \kt{Clause}s}
         \begin{description}
-            \item[\kt{Clause.empty(Struct?,\meta{Container})}] creates either a \kt{Directive} or a \kt{Rule} depending on whether the provide \kt{Struct} is \kt{null} or not. In both cases items in \kt{\meta{Container}} compose the body of the clause, whereas the \kt{Struct} is an optional head
+            \item[\kt{Clause.of(Struct?,\meta{Container})}] creates either a \kt{Directive} or a \kt{Rule} depending on whether the provide \kt{Struct} is \kt{null} or not. In both cases items in \kt{\meta{Container}} compose the body of the clause, whereas the \kt{Struct} is an optional head
             %
             \begin{itemize}\small
                 \item where \kt{\meta{Container}} may be an iterable, a sequence, or a varargs of \kt{Term}s
@@ -1029,8 +1027,6 @@
             \item[\kt{Fact.of(Struct)}] creates a \kt{Fact} given the \kt{Struct} acting as head
         \end{description}
     \end{block}
-
-    \ktSnippet{snippets/MissingExample.kt}
 \end{frame}
 
 \subsubsection{About \kt{Term}s' Design}
@@ -1056,9 +1052,12 @@
     \begin{itemize}
         \item Terms' \alert{identity} is tested via \kt{Term.equals(Any?)}
         \item or via \kt{Term.equals(Term, \alert{true})}
+        \item or via \kt{$t_1$ == $t_2$} (because of \alert{Kotlin's operator overloading})
+        %
+        \begin{itemize}
+            \item in Kotlin, objects' identity is tested via \kt{$t_1$ === $t_2$})
+        \end{itemize}
     \end{itemize}
-
-    \ktSnippet{snippets/MissingExample.kt}
 
     \framebreak
 
@@ -1083,8 +1082,6 @@
         \item Terms' \alert{equality} is tested via \kt{Term.equals(Term, \alert{false})}
     \end{itemize}
 
-    \ktSnippet{snippets/MissingExample.kt}
-
     \framebreak
 
     \begin{block}{Terms Structural Equality}
@@ -1107,7 +1104,9 @@
         \item Terms' \alert{structural equality} is tested via \kt{Term.structurallyEquals(Term)}
     \end{itemize}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \framebreak
+
+    \ktSnippet{snippets/TermEqualities.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Total Ordering of Terms}
@@ -1140,7 +1139,9 @@
         \end{itemize}
     \end{exampleblock}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \framebreak
+
+    \ktSnippet{snippets/TermOrdering.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Terms' Immutability}
@@ -1206,7 +1207,9 @@
         \end{itemize}
     \end{itemize}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \framebreak
+
+    \ktSnippet[\tiny]{snippets/VarReuse.kt}
 
 \end{frame}
 
@@ -1253,7 +1256,9 @@
         \end{description}
     \end{block}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \framebreak
+
+    \ktSnippet{snippets/ScopeUsage.kt}
 \end{frame}
 
 \subsection{\kt{Subtitution}s as First Class Entities}
