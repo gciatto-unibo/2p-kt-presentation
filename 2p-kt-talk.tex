@@ -727,7 +727,7 @@
         \item[\kt{unfold(): Sequence<Term>}] returns a sequence containing the terms \pl{'.'($t1$, '.'($t_2$, \ldots))}, \pl{'.'($t_2$, \ldots)}, \pl{\ldots}, $T$
     \end{description}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \ktSnippet[\tiny]{snippets/ListUsage.kt}
 
     \framebreak
 
@@ -765,7 +765,7 @@
         \item[\kt{unfold(): Sequence<Term>}] returns a sequence containing the terms \pl{','($t1$, ','($t_2$, \ldots))}, \pl{','($t_2$, \ldots)}, \pl{\ldots}, \pl{','($t_{N-1}$, $t_N$)}
     \end{description}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \ktSnippet{snippets/TupleUsage.kt}
 
     \framebreak
 
@@ -804,7 +804,7 @@
         \item[\kt{toArray(): Array<Term>}] returns \kt{this.unfoldedArray}
     \end{description}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \ktSnippet{snippets/SetUsage.kt}
 
 \end{frame}
 
@@ -839,6 +839,8 @@
         \end{itemize}
     \end{alertblock}
     %
+    \framebreak
+    %
     \begin{description}
         \item[\kt{head: Struct?}] returns $h$ for rules, or \kt{null} for directives
         \item[\kt{body: Term}] returns $b$
@@ -848,7 +850,9 @@
         \item[\kt{isWellFormed: Boolean}] returns \kt{true} iff no sub-term in $b$ which is interpretable as a logic goal is a \kt{Var}iable
     \end{description}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \framebreak
+
+    \ktSnippet[\tiny]{snippets/ClausesUsage.kt}
 \end{frame}
 
 \subsubsection{Creating \kt{Term}s}
@@ -908,7 +912,7 @@
             \begin{itemize}\small
                 \item returns a \kt{Truth} if \kt{"true"}, \kt{"false"}, or \kt{"fail"} is passed
                 \item returns an \kt{EmptyList} if \kt{"[]"} is passed
-                \item returns an \kt{EmptySet} if \kt{"{}"} is passed
+                \item returns an \kt{EmptySet} if \kt{"\{\}"} is passed
             \end{itemize}
         \end{description}
     \end{block}
