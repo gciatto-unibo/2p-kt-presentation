@@ -410,12 +410,14 @@
         \item[\kt{variables: Sequence<Var>}] returns the (possibly empty) sequence of variables contained in the current \kt{Term}
         %
         \begin{itemize}\small
-            \item[!] duplicates are \emph{removed}
+            \item[!] duplicates are \emph{not} removed
         \end{itemize}
         \item[\kt{isGround: Boolean}] returns \kt{true} if the current \kt{Term} contains no \kt{Var}iable
     \end{description}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \framebreak
+
+    \ktSnippet{snippets/TermUsage.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Main Sorts of \kt{Term}s}
@@ -472,7 +474,7 @@
         \end{itemize}
     \end{description}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \ktSnippet{snippets/IntUsage.kt}
 
     \framebreak
 
@@ -489,7 +491,7 @@
         \end{itemize}
     \end{description}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \ktSnippet{snippets/RealUsage.kt}
 
     \framebreak
 
@@ -537,7 +539,9 @@
         \item[\kt{setFunctor(String): Term}] returns a novel \kt{Struct} of the form \pl{$f^*$($t_1$, \ldots, $t_N$)}, where $f^*$ is the functor \kt{String} provided as argument
     \end{description}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \framebreak
+
+    \ktSnippet[\tiny]{snippets/StructUsage.kt}
 
     \framebreak
 
@@ -553,7 +557,9 @@
         \item[\kt{argsSequence: Sequence<Term>}] must return the empty sequence
     \end{description}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \framebreak
+
+    \ktSnippet{snippets/AtomUsage.kt}
 
     \framebreak
 
@@ -590,7 +596,7 @@
         \item[\kt{structurallyEquals(Term): Boolean}] compares this \kt{Var}iable with the provided object, returning true if the latter is a \kt{Var}iable
     \end{description}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \ktSnippet{snippets/VarUsage.kt}
 
     \framebreak
 
@@ -615,7 +621,7 @@
         \item[\kt{arity: String}] must return 2
     \end{description}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \ktSnippet{snippets/IndicatorUsage.kt}
 
     \framebreak
 
@@ -631,7 +637,7 @@
         \item[\kt{isFail: Boolean}] returns \kt{true} if the atom is a contradiction
     \end{description}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \ktSnippet[\tiny]{snippets/TruthUsage.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Collections}
