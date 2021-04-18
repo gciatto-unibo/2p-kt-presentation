@@ -1,0 +1,121 @@
+@startuml
+
+package solve {
+    interface ExecutionContextAware
+
+    interface Solver
+
+    interface ExecutionContext
+
+    ExecutionContext --|> ExecutionContextAware
+    Solver --|> ExecutionContextAware
+
+    Solver <.. ExecutionContext : "encapsulate\nstate"
+
+    interface SolverFactory
+
+    SolverFactory --> Solver : creates
+
+    note right of Solver: "this is what users use" as usage
+
+    interface SolveOptions
+
+    interface Solution
+
+    Solver "1" --> "N" Solution
+    Solver "1" <-- "1" SolveOptions
+}
+
+package solve.primitive {
+    interface Primitive
+}
+
+package solve.function {
+    interface PrologFunction
+}
+
+
+package solve.library {
+    interface Library
+
+    interface AliasedLibrary
+
+    interface LibraryGroup
+
+    class Libraries
+
+    AliasedLibrary --|> Library
+    LibraryGroup --|> Library
+
+    LibraryGroup "1" *-- "N" AliasedLibrary
+
+    Libraries --|> LibraryGroup
+}
+
+Library "1" *-down- "N" PrologFunction
+Library "1" *-- "N" Primitive
+
+ExecutionContextAware "1" *-- "1" Libraries
+
+package theory {
+    interface Theory
+    interface MutableTheory
+
+    MutableTheory --|> Theory
+}
+
+Library "1" *-right- "1" Theory
+
+ExecutionContextAware "1" *-- "1" Theory: static KB
+ExecutionContextAware "1" *-- "1" MutableTheory: dynamic KB
+
+package core {
+'    interface Term
+'    interface Struct
+    interface Clause
+
+'    Clause --|> Struct
+'    Struct --|> Term
+
+'    class Operator
+    class OperatorSet
+
+'    OperatorSet "1" *-- "N" Operator
+}
+
+Library "1" *-- "N" OperatorSet
+Theory "1" *-- "N" Clause
+
+ExecutionContextAware "1" *-- "1" OperatorSet
+
+package solve.flags {
+    interface NotableFlag
+    interface Map<String, Term>
+    interface FlagStore
+
+    FlagStore --|> Map
+    FlagStore "1" *-- "N" NotableFlag
+}
+
+ExecutionContextAware "1" *-up- "1" FlagStore
+
+package solve.channels {
+    interface Listener
+    interface Channel<T>
+    interface InputChannel<T>
+    interface OutputChannel<T>
+    interface InputStore
+    interface OutputStore
+
+    Channel "1" *-- "N" Listener
+    InputChannel --|> Channel
+    OutputChannel --|> Channel
+
+    InputStore "1" *-- "N" InputChannel
+    OutputStore "1" *-- "N" OutputChannel
+}
+
+ExecutionContextAware "1" *-left- "1" InputStore
+ExecutionContextAware "1" *-left- "1" OutputStore
+
+@enduml
