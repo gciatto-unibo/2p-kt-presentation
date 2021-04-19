@@ -1607,21 +1607,82 @@
         \includegraphics[width=0.8\linewidth]{img/retrieve-result.pdf}
     \end{center}
 
-
     \framebreak
 
     \begin{block}{The \kt{MutableClauseCollection} interface}
+        \begin{itemize}
+            \item subtype of \kt{ClauseCollection}
+            \item insertions and removals are performed \textbf{in-place}
+            \begin{description}
+                \item [!] same collection is returned after any operation
+            \end{description}    
+        \end{itemize}
     \end{block}
+    %
+    \begin{description}
+        \item [\kt{add(Clause): MutableClauseCollection}] adds a new clause to this collection
+        \item [\kt{retrieve(Clause): RetrieveResult<MutableClauseCollection>}] tries to remove the given clause from this collection
+    \end{description}
 
-    ClauseCollections (both mutable and immutable)
+    \framebreak
 
-    ClauseQueues (both mutable and immutable)
+    \begin{block}{Clause Queues}
+        \begin{itemize}
+            \item \textbf{preserve} the \textbf{ordering} of clauses
+            \begin{description}
+                \item [!] according to their \textit{insertion} order
+            \end{description}
+            \item store clauses in a \textit{queue}-like structure
+            \item defined by the \kt{ClauseQueue} and \kt{MutableClauseQueue} types
+        \end{itemize}
+    \end{block}
+    %
+    \begin{description}
+        \item[\kt{addFirst(Clause): ClauseQueue}] adds a clause in the \textit{first} position to the collection
+        \item[\kt{addLast(Clause): ClauseQueue}]  adds a clause in the \textit{last} position to the collection 
+        \item[\kt{getFifoOrdered(Clause): Sequence<Clause>}] produces a sequence of clauses unifying with the given one, searching \textit{from first to last}
+        \item[\kt{getLifoOrdered(Clause): Sequence<Clause>}] produces a sequence of clauses unifying with the given one, searching \textit{from last to first}
+    \end{description}
 
-    ClauseMultiSets (both mutable and immutable)
+    \framebreak
+
+    \begin{block}{Clause Multisets}
+        \begin{itemize}
+            \item ignore clause ordering
+            \item useful when many clauses may match the goal
+            \item defined by the \kt{ClauseMultiSet} and \kt{MutableClauseMultiSet} types
+        \end{itemize}
+    \end{block}
+    %
+    \begin{description}
+        \item[\kt{count(Clause): Long}] computes the number of clauses unifying with the given one
+        \item[\kt{get(Clause): Sequence<Clause>}] produces a sequence of clauses that unify with the given one 
+    \end{description}
+
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Creating \kt{ClauseCollection}s}
-    available static factories
+    Main \kt{ClauseCollection} static factories:
+    %
+    \begin{description}
+        \item[\kt{emptyMultiSet(): ClauseMultiSet}] creates an empty \kt{ClauseMultiset}
+        \item[\kt{multiSetOf(Iterable<Clause>): ClauseMultiSet}] creates a \kt{ClauseMultiSet} from the given clauses
+        \item[\kt{emptyQueue(): ClauseQueue}] creates an empty \kt{ClauseQueue}
+        \item[\kt{queueOf(Iterable<Clause>): ClauseQueue}] creates a \kt{ClauseQueue} from the given clauses
+    \end{description}
+    %
+    These factories return \textit{immutable} collections by default
+
+    \framebreak
+
+    \kt{ClauseQueue} and \kt{ClauseMultiSet} provide two main static factories:
+    %
+    \begin{description}
+        \item[\kt{empty()}: C] creates an empty \kt{C}
+        \item[\kt{of(Iterable<Clause>)}: C] creates a \kt{C} from the given clauses
+    \end{description}
+    %
+    with \kt{C} being either \kt{ClauseQueue} or \kt{ClauseMultiSet}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Using \kt{ClauseCollection}s}
