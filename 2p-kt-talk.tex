@@ -1639,7 +1639,7 @@
     %
     \begin{description}
         \item[\kt{addFirst(Clause): ClauseQueue}] adds a clause in the \textit{first} position to the collection
-        \item[\kt{addLast(Clause): ClauseQueue}]  adds a clause in the \textit{last} position to the collection 
+        \item[\kt{add/addLast(Clause): ClauseQueue}]  adds a clause in the \textit{last} position to the collection 
         \item[\kt{getFifoOrdered(Clause): Sequence<Clause>}] produces a sequence of clauses unifying with the given one, searching \textit{from first to last}
         \item[\kt{getLifoOrdered(Clause): Sequence<Clause>}] produces a sequence of clauses unifying with the given one, searching \textit{from last to first}
     \end{description}
@@ -1656,7 +1656,10 @@
     %
     \begin{description}
         \item[\kt{count(Clause): Long}] computes the number of clauses unifying with the given one
-        \item[\kt{get(Clause): Sequence<Clause>}] produces a sequence of clauses that unify with the given one 
+        \item[\kt{get(Clause): Sequence<Clause>}] produces a sequence of clauses that unify with the given one
+        \begin{description}
+            \item[!] equivalent to the \kt{[]} operator
+        \end{description}
     \end{description}
 
 \end{frame}
@@ -1675,18 +1678,39 @@
 
     \framebreak
 
-    \kt{ClauseQueue} and \kt{ClauseMultiSet} provide two main static factories:
+    \kt{ClauseQueue} and \kt{ClauseMultiSet} provide three main static factories:
     %
     \begin{description}
         \item[\kt{empty()}: C] creates an empty \kt{C}
         \item[\kt{of(Iterable<Clause>)}: C] creates a \kt{C} from the given clauses
+        \item[\kt{of(vararg Clause)}: C] creates a \kt{C} from the given clauses
     \end{description}
     %
     with \kt{C} being either \kt{ClauseQueue} or \kt{ClauseMultiSet}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Using \kt{ClauseCollection}s}
-    usage examples
+    Ordering a \kt{ClauseQueue}:
+    %
+    \ktSnippet{./snippets/QueueOrdering.kt}
+
+    \framebreak
+
+    Populating a \kt{ClauseQueue}:
+    %
+    \ktSnippet{./snippets/QueuePopulate.kt}
+
+    \framebreak
+
+    Retrieving clauses from a \kt{ClauseQueue}:
+    %
+    \ktSnippet{./snippets/QueueRetrieve.kt}
+
+    \framebreak
+
+    Working with \kt{ClauseMultiSet}s:
+    %
+    \ktSnippet{./snippets/MultiSet.kt}
 \end{frame}
 
 \subsection{Theories}
