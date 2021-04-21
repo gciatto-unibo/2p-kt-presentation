@@ -1,0 +1,58 @@
+@startuml
+interface Solver {
+    + solve(goal: Struct, options: SolveOptions): Sequence<Solution>
+    + solveList(goal: Struct, options: SolveOptions): List<Solution>
+    + solveOnce(goal: Struct, options: SolveOptions): Solution
+    ..
+    + clone(): Solver
+}
+
+interface SolveOptions {
+    + isLazy: Boolean
+    + isEager: Boolean
+    + timeout: TimeDuration
+    + limit: Int
+    + customOptions: Map<String, Any>
+    --
+    + setLazy(value: Boolean): SolveOptions
+    + setTimeout(value: TimeDuration): SolveOptions
+    + setLimit(value: Int): SolveOptions
+    + setOption(key: String, value: Any): SolveOptions
+}
+
+interface Solution {
+    + query: Struct
+    + substitution: Substitution
+    + exception: TuPrologRuntimeException?
+    + solvedQuery: Struct?
+    --
+    + valueOf(variable: Var): Term?
+    + valueOf(variable: String): Term?
+}
+
+interface Yes {
+    + substitution: Substitution.Unifier
+    + solvedQuery: Struct
+}
+
+interface No {
+    + substitution: Substitution.Fail
+    + solvedQuery: Nothing
+}
+
+interface Halt {
+    + exception: TuPrologRuntimeException
+}
+
+Yes --|> Solution
+No --|> Solution
+Halt --|> Solution
+
+class TuPrologRuntimeException
+
+Halt "1" *-down- "1" TuPrologRuntimeException
+
+SolveOptions <-right- Solver : input of solve* methods
+Solution <-down- Solver : output of solve* methods
+
+@enduml

@@ -410,12 +410,14 @@
         \item[\kt{variables: Sequence<Var>}] returns the (possibly empty) sequence of variables contained in the current \kt{Term}
         %
         \begin{itemize}\small
-            \item[!] duplicates are \emph{removed}
+            \item[!] duplicates are \emph{not} removed
         \end{itemize}
         \item[\kt{isGround: Boolean}] returns \kt{true} if the current \kt{Term} contains no \kt{Var}iable
     \end{description}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \framebreak
+
+    \ktSnippet{snippets/TermUsage.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Main Sorts of \kt{Term}s}
@@ -472,7 +474,7 @@
         \end{itemize}
     \end{description}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \ktSnippet{snippets/IntUsage.kt}
 
     \framebreak
 
@@ -489,7 +491,7 @@
         \end{itemize}
     \end{description}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \ktSnippet{snippets/RealUsage.kt}
 
     \framebreak
 
@@ -537,7 +539,9 @@
         \item[\kt{setFunctor(String): Term}] returns a novel \kt{Struct} of the form \pl{$f^*$($t_1$, \ldots, $t_N$)}, where $f^*$ is the functor \kt{String} provided as argument
     \end{description}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \framebreak
+
+    \ktSnippet[\tiny]{snippets/StructUsage.kt}
 
     \framebreak
 
@@ -553,7 +557,9 @@
         \item[\kt{argsSequence: Sequence<Term>}] must return the empty sequence
     \end{description}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \framebreak
+
+    \ktSnippet{snippets/AtomUsage.kt}
 
     \framebreak
 
@@ -590,7 +596,7 @@
         \item[\kt{structurallyEquals(Term): Boolean}] compares this \kt{Var}iable with the provided object, returning true if the latter is a \kt{Var}iable
     \end{description}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \ktSnippet{snippets/VarUsage.kt}
 
     \framebreak
 
@@ -615,7 +621,7 @@
         \item[\kt{arity: String}] must return 2
     \end{description}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \ktSnippet{snippets/IndicatorUsage.kt}
 
     \framebreak
 
@@ -631,7 +637,7 @@
         \item[\kt{isFail: Boolean}] returns \kt{true} if the atom is a contradiction
     \end{description}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \ktSnippet[\tiny]{snippets/TruthUsage.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Collections}
@@ -721,7 +727,7 @@
         \item[\kt{unfold(): Sequence<Term>}] returns a sequence containing the terms \pl{'.'($t1$, '.'($t_2$, \ldots))}, \pl{'.'($t_2$, \ldots)}, \pl{\ldots}, $T$
     \end{description}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \ktSnippet[\tiny]{snippets/ListUsage.kt}
 
     \framebreak
 
@@ -759,7 +765,7 @@
         \item[\kt{unfold(): Sequence<Term>}] returns a sequence containing the terms \pl{','($t1$, ','($t_2$, \ldots))}, \pl{','($t_2$, \ldots)}, \pl{\ldots}, \pl{','($t_{N-1}$, $t_N$)}
     \end{description}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \ktSnippet{snippets/TupleUsage.kt}
 
     \framebreak
 
@@ -798,7 +804,7 @@
         \item[\kt{toArray(): Array<Term>}] returns \kt{this.unfoldedArray}
     \end{description}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \ktSnippet{snippets/SetUsage.kt}
 
 \end{frame}
 
@@ -833,6 +839,8 @@
         \end{itemize}
     \end{alertblock}
     %
+    \framebreak
+    %
     \begin{description}
         \item[\kt{head: Struct?}] returns $h$ for rules, or \kt{null} for directives
         \item[\kt{body: Term}] returns $b$
@@ -842,7 +850,9 @@
         \item[\kt{isWellFormed: Boolean}] returns \kt{true} iff no sub-term in $b$ which is interpretable as a logic goal is a \kt{Var}iable
     \end{description}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \framebreak
+
+    \ktSnippet[\tiny]{snippets/ClausesUsage.kt}
 \end{frame}
 
 \subsubsection{Creating \kt{Term}s}
@@ -902,7 +912,7 @@
             \begin{itemize}\small
                 \item returns a \kt{Truth} if \kt{"true"}, \kt{"false"}, or \kt{"fail"} is passed
                 \item returns an \kt{EmptyList} if \kt{"[]"} is passed
-                \item returns an \kt{EmptySet} if \kt{"{}"} is passed
+                \item returns an \kt{EmptySet} if \kt{"\{\}"} is passed
             \end{itemize}
         \end{description}
     \end{block}
@@ -922,7 +932,7 @@
         \end{description}
     \end{block}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \ktSnippet{snippets/VarCreation.kt}
 
     \framebreak
 
@@ -940,7 +950,7 @@
         \end{description}
     \end{block}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \ktSnippet[\tiny]{snippets/StructCreation.kt}
 
 \end{frame}
 
@@ -965,7 +975,9 @@
         \end{description}
     \end{block}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \framebreak
+
+    \ktSnippet[\tiny]{snippets/ListCreation.kt}
 
     \framebreak
 
@@ -978,8 +990,6 @@
             \end{itemize}
         \end{description}
     \end{block}
-
-    \ktSnippet{snippets/MissingExample.kt}
 
     \framebreak
 
@@ -996,14 +1006,12 @@
             \end{itemize}
         \end{description}
     \end{block}
-
-    \ktSnippet{snippets/MissingExample.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Creating \kt{Clause}s via Static Factories}
     \begin{block}{Creating \kt{Clause}s}
         \begin{description}
-            \item[\kt{Clause.empty(Struct?,\meta{Container})}] creates either a \kt{Directive} or a \kt{Rule} depending on whether the provide \kt{Struct} is \kt{null} or not. In both cases items in \kt{\meta{Container}} compose the body of the clause, whereas the \kt{Struct} is an optional head
+            \item[\kt{Clause.of(Struct?,\meta{Container})}] creates either a \kt{Directive} or a \kt{Rule} depending on whether the provide \kt{Struct} is \kt{null} or not. In both cases items in \kt{\meta{Container}} compose the body of the clause, whereas the \kt{Struct} is an optional head
             %
             \begin{itemize}\small
                 \item where \kt{\meta{Container}} may be an iterable, a sequence, or a varargs of \kt{Term}s
@@ -1019,8 +1027,6 @@
             \item[\kt{Fact.of(Struct)}] creates a \kt{Fact} given the \kt{Struct} acting as head
         \end{description}
     \end{block}
-
-    \ktSnippet{snippets/MissingExample.kt}
 \end{frame}
 
 \subsubsection{About \kt{Term}s' Design}
@@ -1046,9 +1052,12 @@
     \begin{itemize}
         \item Terms' \alert{identity} is tested via \kt{Term.equals(Any?)}
         \item or via \kt{Term.equals(Term, \alert{true})}
+        \item or via \kt{$t_1$ == $t_2$} (because of \alert{Kotlin's operator overloading})
+        %
+        \begin{itemize}
+            \item in Kotlin, objects' identity is tested via \kt{$t_1$ === $t_2$})
+        \end{itemize}
     \end{itemize}
-
-    \ktSnippet{snippets/MissingExample.kt}
 
     \framebreak
 
@@ -1073,8 +1082,6 @@
         \item Terms' \alert{equality} is tested via \kt{Term.equals(Term, \alert{false})}
     \end{itemize}
 
-    \ktSnippet{snippets/MissingExample.kt}
-
     \framebreak
 
     \begin{block}{Terms Structural Equality}
@@ -1097,7 +1104,9 @@
         \item Terms' \alert{structural equality} is tested via \kt{Term.structurallyEquals(Term)}
     \end{itemize}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \framebreak
+
+    \ktSnippet{snippets/TermEqualities.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Total Ordering of Terms}
@@ -1130,7 +1139,9 @@
         \end{itemize}
     \end{exampleblock}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \framebreak
+
+    \ktSnippet{snippets/TermOrdering.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Terms' Immutability}
@@ -1196,7 +1207,9 @@
         \end{itemize}
     \end{itemize}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \framebreak
+
+    \ktSnippet[\tiny]{snippets/VarReuse.kt}
 
 \end{frame}
 
@@ -1243,7 +1256,9 @@
         \end{description}
     \end{block}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \framebreak
+
+    \ktSnippet{snippets/ScopeUsage.kt}
 \end{frame}
 
 \subsection{\kt{Subtitution}s as First Class Entities}
@@ -1318,11 +1333,11 @@
         \[ U_1 + \emptyset = \emptyset + U_2 = \emptyset \]
     \end{alertblock}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \ktSnippet[\tiny]{snippets/SubstitutionUsage.kt}
 
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Creating \kt{Substitution}s}
+\begin{frame}{Creating \kt{Substitution}s}
     \begin{block}{Static factories for \kt{Substitution}s}
         \begin{description}
             \item[\kt{Substitution.failed()}] return an instance of \kt{Fail}
@@ -1343,8 +1358,6 @@
             \end{itemize}
         \end{description}
     \end{block}
-
-    \ktSnippet{snippets/MissingExample.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Applying Substitutions to Terms}
@@ -1394,49 +1407,530 @@
         \end{description}
     \end{block}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \ktSnippet[\tiny]{snippets/SubstitutionApplication.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Refreshing Terms}
-    how it works + examples
+    \begin{block}{Definition and Notation}
+        Let $t$ be a \kt{Term} and suppose that $t$:
+        %
+        \begin{itemize}
+            \item is \alert{compound} (i.e. it is a \kt{Struct})
+            \item it contains some \kt{Var}iables $X_1$, \ldots, $X_n$
+        \end{itemize}
+        %
+        then \alert{refreshing} $t$ means creating another term $t'$ such that:
+        %
+        \begin{itemize}
+            \item $t'$ has the same structure of $t$
+            \item each occurrence of $X_i$ is replaced by $X'_i$, where
+            %
+            \begin{itemize}
+                \item $X'_i$ is a fresh variable s.t. $X'_i \neq X_i$
+                \item $X'_i$ has the same name of $X_i$
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+
+    \begin{alertblock}{Notable Cases}
+        \begin{itemize}
+            \item If $t$ is \alert{ground} then refreshing $t$ leaves it unaffected
+        \end{itemize}
+    \end{alertblock}
+
+    \begin{block}{In practice}
+        Let $t$ denote a \kt{Term}:
+        %
+        \begin{description}
+            \item[\kt{$t$.freshCopy(): Term}] returns a new \kt{Term} attained by refreshing $t$
+            %
+            \begin{itemize}\small
+                \item the new \kt{Term} is guaranteed to only contain \kt{Var}iables which have \alert{never} been used before
+            \end{itemize}
+            \item[\kt{$t$.freshCopy(Scope): Term}] returns a new \kt{Term} attained by refreshing $t$ using the provided \kt{Scope}
+            %
+            \begin{itemize}\small
+                \item if the provided \kt{Scope} already contains some \kt{Var}iable whose simple name is exploited within $t$, then is that \kt{Var}iable is reused
+            \end{itemize}
+        \end{description}
+    \end{block}
+
+    \ktSnippet[\tiny]{snippets/TermRefreshing.kt}
 \end{frame}
 
 \subsection{\kt{Operator}s and \kt{OperatorSet}s}
 
 \begin{frame}[allowframebreaks]{Prolog-like Operators}
-    functor vs specifier vs priority
+    \begin{block}{Definition}
+        A Prolog-like \kt{Operator} is an algebraic object composed by 3 fields:
+        %
+        \begin{description}
+            \item[\kt{functor: String}] i.e. the operator's symbol
+            \item[\kt{priority: Int}] where lower integers correspong to higher priorities
+            %
+            \begin{itemize}\small
+                \item conventionally, 0 is \alert{max} priority, 1200 is \alert{min} priority
+            \end{itemize}
+            \item[\kt{specifier: Specifier}] is a descriptor of the operator's
+            %
+            \begin{description}\small
+                \item[arity] i.e. the amount of arguments it takes (either binary or unary)
+                \item[position] w.r.t. arguments (prefix, postfix, or infix)
+                \item[associativity] e.g. either right- or left-associative, or non-associative
+            \end{description}
+        \end{description}
+    \end{block}
 
-    default operators
+    \begin{block}{About \kt{Specifier}s}
+        \begin{itemize}
+            \item \kt{Specifier} is an \emph{enum} with 7 constants
+
+            \item Each one is a combination of 3 letters:
+            %
+            \begin{description}\small
+                \item[F] denoting the operator
+                \item[X] denoting an expression having \alert{strictly higher} priority
+                \item[Y] denoting an expression having \alert{higher or equal} priority
+            \end{description}
+
+            \item Each one describes an operator's arity, position, and associativity:
+            %
+            \medskip
+            %
+            \input{tab-specifiers.tex}
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Creating \kt{Operator}s}
+        \begin{description}
+            \item[\kt{Operator(String, Specifier, Int)}] creates a new \kt{Operator} having the provided functor, specifier, and priority
+            \item[\kt{Operator.fromTerm(Integer, Atom, Atom): Operator?}] creates a new \kt{Operator} having the provided priority, specifier, and functor---provided as \kt{Term}s
+            %
+            \begin{itemize}\small
+                \item the $2^{nd}$ argument must be one \kt{Atom} among \pl{fx}, \pl{fy}, \pl{xf}, \pl{yf}, \pl{xfx}, \pl{yfx}, or \pl{xfy}
+                \item returns \kt{null} otherwise
+            \end{itemize}
+            \item[\kt{Operator.fromTerm(Struct): Operator}] creates a new \kt{Operator} out of a \kt{Struct} of the form \pl{op($p$, $s$, $f$)}
+             %
+            \begin{itemize}\small
+                \item where $p$ must be an \kt{Integer}
+                \item and $s$ be one \kt{Atom} among \pl{fx}, \pl{fy}, \pl{xf}, \pl{yf}, \pl{xfx}, \pl{yfx}, or \pl{xfy}
+                \item returns \kt{null} otherwise
+            \end{itemize}
+        \end{description}
+    \end{block}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{The meaning of \kt{Specifier}s}
+
+    \begin{exampleblock}{How two interpret \textbf{prefix} specifiers \kt{FX} and \kt{FY}}
+        \begin{itemize}
+            \item If \pl{f} and \pl{g} are operators of type \kt{FY}, and \pl{T} is a term:
+            %
+            \begin{itemize}
+                \item espressions of the form \alert{\pl{f(g(T))}}
+                %
+                \begin{itemize}
+                    \item can be written as \alert{\pl{f g T}} only if $priority(\pl{g}) \leq priority(\pl{f})$
+                    \item can be written as \alert{\pl{f(g T)}} otherwise
+                \end{itemize}
+
+                \item espressions of the form \alert{\pl{f(f(T))}} or \alert{\pl{g(g(T))}}
+                %
+                \begin{itemize}
+                    \item can be written as \alert{\pl{f f T}} or \alert{\pl{g g T}}
+                \end{itemize}
+            \end{itemize}
+
+            \item Otherwise, if \pl{f} and \pl{g} are operators of type \kt{FX}:
+            %
+            \begin{itemize}
+                \item espressions of the form \alert{\pl{f(g(T))}}
+                %
+                \begin{itemize}
+                    \item can be written as \alert{\pl{f g T}} only if $priority(\pl{g}) < priority(\pl{f})$
+                    \item can be written as \alert{\pl{f(g T)}} otherwise
+                \end{itemize}
+
+                \item espressions of the form \alert{\pl{f(f(T))}}, or \alert{\pl{g(g(T))}}
+                %
+                \begin{itemize}
+                    \item can \alert{never} be written as \alert{\pl{f f T}} or \alert{\pl{g g T}}
+                    \item but can be written as \alert{\pl{f(f T)}} or \alert{\pl{g(g T)}}
+                \end{itemize}
+            \end{itemize}
+        \end{itemize}
+    \end{exampleblock}
+
+    \begin{exampleblock}{How two interpret \textbf{postfix} specifiers \kt{XF} and \kt{YF}}
+        \begin{itemize}
+            \item If \pl{f} and \pl{g} are operators of type \kt{YF}, and \pl{T} is a term:
+            %
+            \begin{itemize}
+                \item espressions of the form \alert{\pl{f(g(T))}}
+                %
+                \begin{itemize}
+                    \item can be written as \alert{\pl{T g f}} only if $priority(\pl{g}) \leq priority(\pl{f})$
+                    \item can be written as \alert{\pl{(T g) f}} otherwise
+                \end{itemize}
+
+                \item espressions of the form \alert{\pl{f(f(T))}} or \alert{\pl{g(g(T))}}
+                %
+                \begin{itemize}
+                    \item can be written as \alert{\pl{T f f}} or \alert{\pl{T g g}}
+                \end{itemize}
+            \end{itemize}
+
+            \item Otherwise, if \pl{f} and \pl{g} are operators of type \kt{XF}:
+            %
+            \begin{itemize}
+                \item espressions of the form \alert{\pl{f(g(T))}}
+                %
+                \begin{itemize}
+                    \item can be written as \alert{\pl{T g f}} only if $priority(\pl{g}) < priority(\pl{f})$
+                    \item can be written as \alert{\pl{(T g) f}} otherwise
+                \end{itemize}
+
+                \item espressions of the form \alert{\pl{f(f(T))}}, or \alert{\pl{g(g(T))}}
+                %
+                \begin{itemize}
+                    \item can \alert{never} be written as \alert{\pl{T f f}} or \alert{\pl{T g g}}
+                    \item but can be written as \alert{\pl{(T f)f}} or \alert{\pl{(T g)g}}
+                \end{itemize}
+            \end{itemize}
+        \end{itemize}
+    \end{exampleblock}
+
+    \begin{exampleblock}{How two interpret \textbf{infix} specifiers \kt{YFX} and \kt{XFY}}
+        \begin{itemize}
+            \item If \pl{f} and \pl{g} are operators of type \kt{YFX}, and \pl{A}, \pl{B}, and \pl{C} are terms:
+            %
+            \begin{itemize}
+                \item espressions of the form \alert{\pl{f(g(A, B), C)}}
+                %
+                \begin{itemize}
+                    \item can be written as \alert{\pl{A f B g C}} only if $priority(\pl{g}) \leq priority(\pl{f})$
+                    \item can be written as \alert{\pl{(A f B) g C}} otherwise
+                \end{itemize}
+
+                \item espressions of the form \alert{\pl{f(f(A, B), C)}} or \alert{\pl{g(g(A, B), C)}}
+                %
+                \begin{itemize}
+                    \item can be written as \alert{\pl{A f B f C}} or \alert{\pl{A g B g C}}
+                \end{itemize}
+            \end{itemize}
+
+            \item Conversely, if \pl{f} and \pl{g} are operators of type \kt{XFY}:
+            %
+            \begin{itemize}
+                \item espressions of the form \alert{\pl{f(A, g(B, C))}}
+                %
+                \begin{itemize}
+                    \item can be written as \alert{\pl{A f B g C}} only if $priority(\pl{g}) \leq priority(\pl{f})$
+                    \item can be written as \alert{\pl{A f (B g C)}} otherwise
+                \end{itemize}
+
+                \item espressions of the form \alert{\pl{f(A, f(B, C))}} or \alert{\pl{g(A, g(B, C))}}
+                %
+                \begin{itemize}
+                    \item can be written as \alert{\pl{A f B f C}} or \alert{\pl{A g B g C}}
+                \end{itemize}
+            \end{itemize}
+        \end{itemize}
+    \end{exampleblock}
+
+    \begin{exampleblock}{How two interpret the \textbf{infix} specifier \kt{XFX}}
+        \begin{itemize}
+            \item If \pl{f} and \pl{g} are operators of type \kt{XFX}, and \pl{A}, \pl{B}, and \pl{C} are terms:
+            %
+            \begin{itemize}
+                \item espressions of the form \alert{\pl{f(g(A, B), C)}}
+                %
+                \begin{itemize}
+                    \item can be written as \alert{\pl{A f B g C}} only if $priority(\pl{g}) < priority(\pl{f})$
+                    \item can be written as \alert{\pl{(A f B) g C}} otherwise
+                \end{itemize}
+
+                \item espressions of the form \alert{\pl{f(f(A, B), C)}} or \alert{\pl{g(g(A, B), C)}}
+                %
+                \begin{itemize}
+                    \item can \alert{never} be written as \alert{\pl{A f B f C}} or \alert{\pl{A g B g C}}
+                    \item but can be written as \alert{\pl{(A f B) f C}} or \alert{\pl{(A g B) g C}}
+                \end{itemize}
+
+                \item espressions of the form \alert{\pl{f(A, g(B, C))}}
+                %
+                \begin{itemize}
+                    \item can be written as \alert{\pl{A f B g C}} only if $priority(\pl{g}) < priority(\pl{f})$
+                    \item can be written as \alert{\pl{A f (B g C)}} otherwise
+                \end{itemize}
+
+                \item espressions of the form \alert{\pl{f(A, f(B, C))}} or \alert{\pl{g(A, g(B, C))}}
+                %
+                \begin{itemize}
+                    \item can \alert{never} be written as \alert{\pl{A f B f C}} or \alert{\pl{A g B g C}}
+                    \item but can be written as \alert{\pl{A f (B f C)}} or \alert{\pl{A g (B g C)}}
+                \end{itemize}
+            \end{itemize}
+        \end{itemize}
+    \end{exampleblock}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Sets of Operators}
-    definition + notable sets
+    \begin{block}{The \kt{OperatorSet} typ is a subtype of \kt{Set<Operator>}}
+        An \kt{OperatorSet} is simply a set of \kt{Operator}s (no duplicates admitted)
+        %
+        \begin{itemize}
+            \item the \kt{OperatorSet} is \alert{immutable}
+            \item operations exist to add/remove/check \kt{Operator}s within \kt{OperatorSet}s
+            \item operations exists to \alert{merge} \kt{OperatorSet}s
+            \item adding/removing operators implies \alert{creating a copy} of the whole set
+        \end{itemize}
+    \end{block}
+
+    \framebreak
+
+    Several notable \kt{OperatorSet} exists:
+    %
+    \begin{itemize}
+        \item[eg] one for arithmetic operators:
+            \\\medskip\input{tab-operators-arithmetic.tex}
+
+        \framebreak
+
+        \item[eg] one for arithmetic comparison operators:
+            \\\medskip\input{tab-operators-arithmetic-comparison.tex}
+
+        \framebreak
+
+        \item[eg] one for term comparison operators:
+            \\\medskip\input{tab-operators-term-comparison.tex}
+
+        \framebreak
+
+        \item[eg] one for logic connectors:
+            \\\medskip\input{tab-operators-logic.tex}
+
+        \framebreak
+
+        \item[eg] one for clause-related operators:
+            \\\medskip\input{tab-operators-clauses.tex}
+
+        \framebreak
+
+        \item[eg] one containing all the aforementioned (ISO Prolog Standard compliant) operators:
+            \\\medskip\input{tab-operators-standard.tex}
+    \end{itemize}
+
+    \begin{block}{Creating an \kt{OperatorSet}}
+        \begin{description}\small
+            \item[\kt{OperatorSet(\meta{Container})}] creates a novel set out of some operators
+            %
+            \begin{itemize}\scriptsize
+                \item where \kt{\meta{Container}} may be an iterable, sequence, or vararg of \kt{Operator}s
+            \end{itemize}
+            \item[\kt{OperatorSet.EMPTY}] references an empty set
+            \item[\kt{OperatorSet.ARITHMETIC}] references a set containing arithmetic operators
+            \item[\kt{OperatorSet.ARITHMETIC\_COMPARISON}] references a set containing arithmetic comparison operators
+            \item[\kt{OperatorSet.TERM\_COMPARISON}] references a set containing term comparison operators
+            \item[\kt{OperatorSet.CONTROL\_FLOW}] references a set containing logic connectors
+            \item[\kt{OperatorSet.CLAUSES}] references a set containing clause-related operators
+            \item[\kt{OperatorSet.STANDARD}] references a set containing all the aforementioned operators
+        \end{description}
+    \end{block}
 \end{frame}
 
 \subsection{Pattern Matching over \kt{Term}s Types}
 
-\begin{frame}[allowframebreaks]{Term Visitors and their Use Cases}
-    type definition + example
+\begin{frame}[allowframebreaks]{\kt{TermVisitor}s and their Use Cases}
+    \begin{block}{About \kt{TermVisitor}s}
+        \begin{itemize}
+            \item Visitor pattern\footnote{\url{https://en.wikipedia.org/wiki/Visitor_pattern}} applied to \kt{Term}
+            \item Supports use cases where a particular operation must be performed depenting on the actual type of a \kt{Term}
+            \item Essentially, a form of \alert{dynamic dispatch}\footnote{\url{https://en.wikipedia.org/wiki/Dynamic_dispatch}}
+        \end{itemize}
+    \end{block}
+
+    \ktSnippet[\tiny]{./snippets/TermVisitor.kt}
+
+    \begin{block}{\kt{TermVisitor}s' contract}
+        \begin{itemize}
+            \item An instance of \kt{TermVisitor<\textit{T}>} $v$ can be applied to a term $t$ via
+            %
+            \begin{center}
+                \kt{$t$.accept($v$)}
+            \end{center}
+
+            \item This returns an object of type \kt{\textit{T}} \ldots
+
+            \item \ldots attaived via the most adequate method \kt{visit\meta{Type}} of $v$
+            %
+            \begin{itemize}
+                \item where \kt{\meta{Type}} is the most specific type matching the run-time type of $t$
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Implementors of \kt{TermVisitor}s}
+        \begin{itemize}
+            \item May override \kt{defaultValue} to handle the general case
+            \item Then override some \kt{visit\meta{Type}} method to handle the particular case of \kt{\meta{Type}}
+        \end{itemize}
+    \end{block}
+
+    \ktSnippet{./snippets/TermVisitorUsage.kt}
 \end{frame}
 
 \subsection{Formatting \kt{Term}s}
 
-\begin{frame}[allowframebreaks]{The \kt{TermFormatter} Type}
-    definition + api + extension methods
+\begin{frame}{The \kt{TermFormatter} Type}
+    \begin{block}{About \kt{TermFormatter}s}
+        \begin{itemize}
+            \item \kt{TermFormatter}s aim at \alert{presenting} terms and clauses as \kt{string}s
+            \item Many predefined formatters exist, serving disparate use cases
+        \end{itemize}
+    \end{block}
+
+    \ktSnippet{./snippets/TermFormatter.kt}
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Main sorts of \kt{TermFormatter}s}
-    enumerate types
+\begin{frame}[allowframebreaks]{\kt{TermFormatter} enums}
+    Three \kt{enum}s exist to support many possible way to present \kt{Term}s:
+    %
+    \ktSnippet{./snippets/TermFormatterEnums.kt}
+
+    \begin{block}{\kt{VarFormat} dictates how \kt{Var}iables are represented}
+        \begin{description}
+            \item[\kt{COMPLETE\_NAME}] represent variables by \alert{complete} name
+            \item[\kt{UNDERSCORE}] represent all variables in the form \kt{\_\meta{Integer}}
+            \item[\kt{PRETTY}] represent all variables by \alert{simple} name
+            %
+            \begin{itemize}\small
+                \item progressively renames homonymous variables
+                %
+                \begin{itemize}\scriptsize
+                    \item[eg] \pl{X}, \pl{X1}, \pl{X2}, etc
+                \end{itemize}
+            \end{itemize}
+        \end{description}
+    \end{block}
+
+    \begin{block}{\kt{OpFormat} dictates how \kt{Operator}s are treated}
+        \begin{description}
+            \item[\kt{IGNORE\_OPERATORS}] all \kt{Struct}ures are represented in canonical form:
+            \begin{center}
+                \pl{\meta{Functor}(\meta{Args})}
+            \end{center}
+            no matter what, including \kt{Collection}s
+            \item[\kt{COLLECTIONS}] like the above, except
+            %
+            \begin{itemize}
+                \item lists are represented in square-brackets form
+                \item tuples are represented in round-parentheses form
+                \item sets are represented in curly-brackets form
+            \end{itemize}
+            \item[\kt{EXPRESSIONS}] like the above except that \kt{Struct}ures matching some operator definition are represented in infix, prefix, or infix form, using parentheses only if required
+            %
+            \begin{itemize}\small
+                \item this requires an \kt{OperatorSet} to be specified
+            \end{itemize}
+        \end{description}
+    \end{block}
+
+    \begin{block}{\kt{FuncFormat} dictates how \kt{Struct}ures' functors are represented}
+        \begin{description}
+            \item[\kt{QUOTED\_IF\_NECESSARY}] equotes functors if they are not well formed, escaping non-readable characters
+            \item[\kt{LITERAL}] represents functors literally, without any enquoting or escaping
+        \end{description}
+    \end{block}
+
+    \begin{block}{The \kt{numberVars: Boolean} flag}
+        Some \kt{TermFormatter} initialisers come with a \kt{numberVars} argument:
+        \begin{description}
+            \item[when \kt{true}] structures of the form
+            %
+            \begin{center}
+                \pl{'\$VAR'($i$)}
+            \end{center}
+            where $i$ is a non-negative \kt{Integer} are represented as the \kt{Var}iable named after the $i^{th}$ letter of the alphabet
+            %
+            \begin{itemize}\small
+                \item \pl{'\$VAR'(0)} $\rightarrow$ \pl{A}, \pl{'\$VAR'(1)} $\rightarrow$ \pl{B}, etc.
+            \end{itemize}
+            \item[when \kt{false}] they are represented as ordinary \kt{Struct}ures
+        \end{description}
+    \end{block}
+
+    \ktSnippet{./snippets/TermFormatter.kt}
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Usage Example}
-    one example for each term formatter
+\begin{frame}[allowframebreaks]{Creating \kt{TermFormatter}s}
+    Static factories for \kt{TermFormatter}s:
+    %
+    \small
+    \begin{description}
+        \item[\kt{TermFormatter.of(VarFormat,OpFormat,FuncFormat,Boolean,OperatorSet)}] returns a new formatter using the provided options and operators
+        \item[\kt{TermFormatter.default(OperatorSet)}] creates a new formatter using the provided operators and the following settings:
+        %
+        \begin{itemize}\scriptsize
+            \item \kt{VarFormat.UNDERSCORE}, \kt{OpFormat.EXPRESSIONS}, \kt{FuncFormat.LITERAL}
+            \item \kt{numberVars = true}
+        \end{itemize}
+        \item[\kt{TermFormatter.canonical()}] creates a new formatter using the following settings:
+        %
+        \begin{itemize}\scriptsize
+            \item \kt{UNDERSCORE}, \kt{IGNORE\_OPERATORS}, \kt{QUOTED\_IF\_NECESSARY}
+            \item \kt{numberVars = false}
+        \end{itemize}
+        \item[\kt{TermFormatter.readable(OperatorSet)}] creates a new formatter using the provided operators and the following settings:
+        %
+        \begin{itemize}\scriptsize
+            \item \kt{PRETTY}, \kt{EXPRESSIONS}, \kt{QUOTED\_IF\_NECESSARY}
+            \item \kt{numberVars = false}
+        \end{itemize}
+        \item[\kt{TermFormatter.prettyVariables()}] like \kt{canonical}, but with:
+        %
+        \begin{itemize}\scriptsize
+            \item \kt{VarFormat.PRETTY}, \kt{OpFormat.COLLECTIONS}
+        \end{itemize}
+        \item[\kt{TermFormatter.prettyExpressions(Boolean, OperatorSet)}] creates a new formatter using the provided operators and the following settings:
+        %
+        \begin{itemize}\scriptsize
+            \item \kt{VarFormat.PRETTY} if the $1^{st}$ argument is \kt{true}, \kt{COMPLETE\_NAMES} otherwise
+            \item \kt{OpFormat.EXPRESSIONS}, \kt{FuncFormat.QUOTED\_IF\_NECESSARY}
+            \item \kt{numberVars = false}
+        \end{itemize}
+    \end{description}
+\end{frame}
+
+\begin{frame}{Formatting \kt{Term}s}
+    \ktSnippet[\tiny]{snippets/TermFormatting.kt}
 \end{frame}
 
 \subsection{Exceptions}
 
-\begin{frame}[allowframebreaks]{The \kt{TuprologException} Type Hierarchy}
-    convention
+\begin{frame}[allowframebreaks]{Exceptions in \twopkt{}}
+    \begin{block}{The \kt{TuPrologException} type is a sub-type of \kt{RuntimeException}}\centering
+        Base type for all custom exceptions possibly occurring in \twopkt{}
+    \end{block}
+
+    \begin{alertblock}{Important convention}\centering
+        Custom exceptions possibly defined into any \twopkt{} module must directly or indirectly be sub-types of \kt{TuPrologException}
+    \end{alertblock}
+
+    \framebreak
+
+    \begin{block}{Sub-types of \kt{TuPrologException} in \module{core}}
+        \begin{description}
+            \item[\kt{SubstitutionException}] thrown when attempting to create a \kt{Unifier} out of contradictory assignments
+            %
+            \begin{itemize}\small
+                \item e.g. the same \kt{Var} is assigned to different \kt{Term}s
+            \end{itemize}
+
+            \item[\kt{SubstitutionApplicationException}] thrown when attempting to apply a \kt{Fail}ed substitution to a \kt{Term}
+        \end{description}
+    \end{block}
 \end{frame}
 
 \section{Logic Unification: the \module{unify} Module}
@@ -1760,7 +2254,7 @@
 \begin{frame}[allowframebreaks]{Creating a \kt{Solver}}
     the notion of SolverFactory
 
-    implementors of \module{solve} must provide a public SolverFactory singleton
+    implementers of \module{solve} must provide a public SolverFactory singleton
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Using a \kt{Solver}}
@@ -1834,7 +2328,7 @@
     example of function
 \end{frame}
 
-\subsubsection{Communicating with the extenal world via \kt{Channel}s}
+\subsubsection{Communicating with the external world via \kt{Channel}s}
 
 \begin{frame}[allowframebreaks]{Overview on Channels}
     channels as the basic IO facilities for solvers
@@ -1842,7 +2336,7 @@
     channel stores as key-value pair letting a solver keep track of the open channels and their names
 
     input channels let solvers consume inputs
-        + listeners can be added to intercept consumtion
+        + listeners can be added to intercept consumption
 
     output channels let solvers produce outputs
         + listeners can be added to intercept production
@@ -1903,7 +2397,7 @@
 \begin{frame}[allowframebreaks]{Example: Default Flags and their Purpose}
     unknown
 
-    max arity
+    max arty
 
     last call optimization
 \end{frame}
@@ -1917,7 +2411,7 @@
 
     durable -> erased after each solution is provided
 
-    emphemeral -> erased upon backtracking
+    ephemeral -> erased upon backtracking
 \end{frame}
 
 \subsection{Prolog Errors and Warnings}
@@ -1928,7 +2422,7 @@
     types of errors, their meaning and structure
 \end{frame}
 
-\begin{frame}[allowframebreaks]{The \kt{PrologError} Type Hierachy}
+\begin{frame}[allowframebreaks]{The \kt{PrologError} Type Hierarchy}
     general structure of \kt{PrologError}
 
     main subtypes
@@ -1943,9 +2437,9 @@
 
     they take priority over solvers KB
 
-    primitives as the main way to implement backtrackable predicates in Kotlin
+    primitives as the main way to implement back-trackable predicates in Kotlin
 
-    primitives as the main way to implement loigc functions in Kotlin
+    primitives as the main way to implement logic functions in Kotlin
 \end{frame}
 
 \subsection{About \kt{PrimitiveWrappers} and \kt{SideEffect}s}
@@ -1993,7 +2487,7 @@
 \begin{frame}[allowframebreaks]{Example of \kt{FunctionWrappers} of all sorts}
    a few example of functions of different sorts from the CommonBuiltins
 
-   invocation of an evalutator from within a primitive
+   invocation of an evaluator from within a primitive
 \end{frame}
 
 \subsection{Writing \kt{Library}}
@@ -2023,7 +2517,7 @@
 \begin{frame}[allowframebreaks]{State Machine in Practice}
     design of state
 
-    responsabilities of each state
+    responsibilities of each state
 
     iterating over states
 \end{frame}
@@ -2062,13 +2556,13 @@
 \subsection{\kt{Ref}erences: \kt{TypeRef}erences and \kt{ObjectRef}}
 
 \begin{frame}[allowframebreaks]{The \kt{Ref} Type Hierarchy}
-    definition and api of ref
+    definition and API of ref
 
-    definition and api of object ref
+    definition and API of object ref
 
-    definition and api of null ref
+    definition and API of null ref
 
-    definition and api of type ref
+    definition and API of type ref
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Creation of \kt{Ref}erences}

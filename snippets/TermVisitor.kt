@@ -1,0 +1,25 @@
+interface TermVisitor<T> {
+    fun defaultValue(term: Term): T
+
+    fun visitTerm(term: Term): T = defaultValue(term)
+    fun visitVar(term: Var): T = defaultValue(term)
+    fun visitConstant(term: Constant): T = defaultValue(term)
+    fun visitStruct(term: Struct): T = defaultValue(term)
+    fun visitCollection(term: Collection): T = defaultValue(term)
+    fun visitAtom(term: Atom): T = defaultValue(term)
+    fun visitTruth(term: Truth): T = defaultValue(term)
+    fun visitNumeric(term: Numeric): T = defaultValue(term)
+    fun visitInteger(term: Integer): T = defaultValue(term)
+    fun visitReal(term: Real): T = defaultValue(term)
+    fun visitSet(term: Set): T = defaultValue(term)
+    fun visitEmpty(term: Empty): T = defaultValue(term)
+    fun visitEmptySet(term: EmptySet): T = defaultValue(term)
+    fun visitList(term: List): T = defaultValue(term)
+    fun visitCons(term: Cons): T = defaultValue(term)
+    fun visitEmptyList(term: EmptyList): T = defaultValue(term)
+    fun visitTuple(term: Tuple): T = defaultValue(term)
+    fun visitIndicator(term: Indicator): T = defaultValue(term)
+    fun visitClause(term: Clause): T = defaultValue(term)
+    fun visitRule(term: Rule): T = defaultValue(term)
+    fun visitDirective(term: Directive): T = defaultValue(term)
+}
