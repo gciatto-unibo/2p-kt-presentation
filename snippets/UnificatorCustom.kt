@@ -12,4 +12,4 @@ val t1 = Struct.of("f", Integer.of(1)) // f(1)
 val t2 = Struct.of("f", Integer.of(-1)) // f(-1)
 
 val match = unificator.match(t1, t2) // true
-val result = unificator.unify(t1, t2) // f(1)}
+val result = unificator.unify(t1, t2) // f(1)

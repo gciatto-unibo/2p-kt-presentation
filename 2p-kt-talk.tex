@@ -2210,15 +2210,81 @@
 \subsection{Theories}
 
 \begin{frame}[allowframebreaks]{Theories Design and Implementations}
-    design: mutable/immutable
 
-    implementation: indexed vs. listed
+    \begin{block}{The \kt{Theory} type}
+        \begin{itemize}
+            \item provides high-level management of \kt{Clause}s
+            \item meant as a \textit{façade} through which client code can access a knowledge base
+            \item design and implementation mirror the ones devised for \kt{Clause} collections
+            \item designed as \kt{Iterable} sub-types
+        \end{itemize}
+    \end{block}
+    
+    \framebreak
+
+    \begin{block}{Mutable vs. immutable theories}
+        Just like \kt{ClauseCollection}s,
+        %
+        \begin{itemize}
+            \item \textit{mutable} theories can be modified in place
+            \item \textit{immutable} theories cannot be changed: their operations build new ones containing the modified clauses
+        \end{itemize}
+    \end{block}
+    %
+    \begin{block}{Indexed vs. listed Theories}
+        Theories come into two main implementations:
+        \begin{itemize}
+            \item \textit{indexed} theories are backed by an indexed data structure
+            \begin{description}
+                \item [!] providing faster look-up, but taking up more space
+            \end{description}
+            \item \textit{list-based} theories are backed by lists
+            \begin{description}
+                \item [!] slower but memory-efficient
+                \item [!] preserve order of \kt{Clause}s
+            \end{description}
+        \end{itemize}
+    \end{block}
+
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{Theory} Type Hierarchy}
-    Theory
 
-    MutableTheory
+    \begin{center}
+        \includegraphics[width=0.6\linewidth]{img/theory-base.pdf}
+    \end{center}
+
+    \framebreak
+
+    \begin{center}
+        \includegraphics[width=0.6\linewidth]{img/theory-immutable.pdf}
+    \end{center}
+
+    \framebreak
+
+    \begin{center}
+        \includegraphics[width=0.7\linewidth]{img/theory-mutable.pdf}
+    \end{center}
+
+    \framebreak
+
+    Main \kt{Theory} methods:
+    \begin{description}
+        \item[\kt{assertA(Clause): Theory}] adds the given clause \textit{before} all other clauses in this theory
+        \item[\kt{assertZ(Clause): Theory}] adds the given clause \textit{after} all other clauses in this theory
+        \item[\kt{abolish(Indicator): Theory}] removes all the clauses matching the given \kt{Indicator}
+    \end{description}
+
+    \framebreak
+
+    \begin{description}
+        \item[\kt{plus(Theory): Theory}] adds the given \kt{Theory} to this
+        \item[\kt{contains(Clause): Boolean}] checks if the given \kt{Clause} is contained in this \kt{Theory}
+        \item[\kt{get(Clause): Sequence<Clause>}] retrieves all matching clauses from this \kt{Theory}
+        \item[\kt{toMutableTheory(): MutableTheory}] converts this \kt{Theory} to a mutable one
+        \item[\kt{toImmutableTheory(): Theory}] converts this \kt{Theory} to an immutable one
+    \end{description}
+
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Creating a \kt{ClauseCollection}}
