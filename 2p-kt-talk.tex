@@ -2313,32 +2313,268 @@
 
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Creating a \kt{Solver}}
-    the notion of SolverFactory
+\begin{frame}[allowframebreaks]{\kt{Solver} vs. \kt{MutableSolver}}
+    Notice that there are 2 types for solvers:
+    %
+    \begin{center}
+        \includegraphics[width=.8\linewidth]{img/solve-mutable.pdf}
+    \end{center}
+    %
+    \begin{itemize}\small
+        \item \emph{solvers} expose properties supporting \alert{inspection} of their state
+        \item \alert{mutalbe} solvers expose methods to \alert{alter} their state
+        %
+        \begin{itemize}
+            \item[!] the state of \emph{non}-mutable solvers may change too, because of resolution
+            %
+            \begin{itemize}
+                \item[$\rightarrow$] they are \alert{not} immutable
+            \end{itemize} 
+        \end{itemize}
+    \end{itemize}
+\end{frame}
 
-    implementers of \module{solve} must provide a public SolverFactory singleton
+\begin{frame}[allowframebreaks]{Creating \kt{Solvers} via a \kt{SolverFactory}}
+    \begin{block}{About solver factories}\centering
+        Objects of \kt{SolverFactory} aim at instantiating \kt{Solver}s
+    \end{block}
+
+    \bigskip
+
+    Main sorts of methods:
+    %
+    \begin{description}
+        \item[\kt{solverOf(\ldots)}] | creates an empty \kt{Solver}
+        \item[\kt{solverWithDefaultBuiltins(\ldots)}] | creates a \kt{Solver} and endows it with some default built-in predicates
+        \item[\kt{mutableSolverOf(\ldots)}] | creates an empty \kt{MutableSolver}
+        \item[\kt{mutableSolverWithDefaultBuiltins(\ldots)}] | creates a \kt{MutableSolver} and endows it with some default built-in predicates
+    \end{description}
+
+    \framebreak
+    
+    \begin{itemize}
+        \item All such methods come with various overloads\ldots
+        \item \ldots letting the caller specify the new solver's:
+        %
+        \begin{enumerate}
+            \item libraries to be loaded upon construction (possibly, other than the default ones)
+            \item initial values of specific flags
+            \item content of the static KB
+            \item initial content of the dynamic KB
+            \item operators to be loaded upon construction
+            \item input/output channels to be used for the solver
+            \item or some sub-set of the above
+        \end{enumerate}
+    \end{itemize}
+
+    \framebreak
+
+    \begin{alertblock}{Important convention}\centering
+        All implementations of \kt{Solver} should be packed with a corresponding implementation of \kt{SolveFactory}, possibly as a \alert{singleton}
+    \end{alertblock}
+    %
+    \begin{itemize}
+        \item[eg] \module{solve-classic} exposes object \kt{ClassicSolverFactory}
+        %
+        \begin{itemize}
+            \item also accessbile via \kt{Solver.\alert{classic}}
+        \end{itemize} 
+
+        \item[eg] \module{solve-streams} exposes object \kt{StreamsSolverFactory}
+        %
+        \begin{itemize}
+            \item also accessbile via \kt{Solver.\alert{streams}}
+        \end{itemize} 
+    \end{itemize}
+
+    \framebreak
+
+    \ktSnippet{./snippets/MissingExample.kt}
+
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Using a \kt{Solver}}
-    usage examples covering all possible cases where yes/no/halt/timeout solutions are depicted
+
+    \begin{block}{Concept}
+        \centering
+        \includegraphics[width=.4\linewidth]{img/streamful-solver.pdf}
+    \end{block}
+
+    \framebreak
+
+    \ktSnippet{./snippets/MissingExample.kt}
 \end{frame}
 
 \subsection{The \kt{ExecutionContext}}
 
 \begin{frame}[allowframebreaks]{Overview on the general purpose \kt{ExecutionContext}}
-    mutable aspects of a solver
+    \begin{itemize}
+        \item Module \module{solve} exposes a general interface for \kt{ExecutionContext}s
+        \item This must be exploited \& customised by implementers of \kt{Solver}s
+    \end{itemize}
+    %
+    \begin{center}
+        \includegraphics[width=.6\linewidth]{img/solve-ec.pdf}
+    \end{center}
+
+    \framebreak
+
+    \begin{block}{An \kt{ExecutionContext} keeps track of (at least)}
+        \begin{itemize}
+            \item all inspectable aspects of a \kt{Solver}
+            %
+            \begin{itemize}
+                \item[ie] libraries, flags, KB, operators, and channels
+            \end{itemize}
+            \item[+] the \alert{\kt{procedure}} resolution is currently focussing upon
+            \item[+] the \alert{\kt{substitution}} resolution has constructed so far 
+            \item[+] other fields possibly specified/customised by implementers
+        \end{itemize}
+    \end{block}
+
+    \framebreak
+
+    \begin{alertblock}{Conventions}
+        \begin{itemize}
+            \item \kt{ExecutionContext}s are \alert{immutable}
+            
+            \item An \kt{ExecutionContext} can be attained from another one via:
+            %
+            \begin{description}\small
+                \item[\kt{update(\ldots)}] | creating a copy of the current context, only differing for the provided fields
+                \item[\kt{apply(\textit{SideEffect})}] | creating a copy of the current context by applying the provide \kt{SideEffect} to it
+            \end{description}
+        \end{itemize}
+    \end{alertblock}
+
+    \framebreak
+
+    \begin{exampleblock}{Notice that}
+        \begin{itemize}
+            \item It is always possible to create a novel \kt{(Mutable)Solver} via
+             %
+             \begin{description}\small
+                \item[\kt{createSolver(\ldots)}] 
+                \item[\kt{createMutableSolver(\ldots)}]
+            \end{description}
+
+            \item The new solver is initialised using the current context
+            %
+            \begin{itemize}
+                \item[!] this is fundamental to realise complex functionalities
+            \end{itemize}
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{\kt{ExecutionContext} is where everything is linked together}
+    \centering
+    \includegraphics[width=.75\linewidth]{img/solve.pdf}
 \end{frame}
 
 \subsubsection{About \kt{Solver}s' Knowledge Bases}
 
 \begin{frame}[allowframebreaks]{Static vs. Dynamic Knowledge bases}
-    analogies and differences
+    \begin{alertblock}{Conventions}
+        \begin{itemize}
+            \item The \kt{staticKb} is assumed to reference an \alert{immutable} \kt{Theory}
+            %
+            \begin{itemize}
+                \item[ie] read efficient
+            \end{itemize}
+
+            \item The \kt{dynamicKb} is assumed to reference a \kt{\alert{Mutable}Theory}
+            %
+            \begin{itemize}
+                \item[ie] write efficient
+            \end{itemize}
+
+            \item Resolution is generally only allowed to alter the \alert{dynamic} KB
+            %
+            \begin{itemize}
+                \item[eg] via \pl{assert/1}, or \pl{retract/1}
+            \end{itemize}
+
+            \item However, notable exceptions exist
+            %
+            \begin{itemize}
+                \item[eg] via \pl{consult/1}, or \pl{register/2} (from the \module{oop-lib} module)
+            \end{itemize}
+        \end{itemize}
+    \end{alertblock}
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Example: Using \kt{Solver}s with Custom KB}
-    initialising a solver with custom knowledge bases
+\begin{frame}[allowframebreaks]{Example: Using \kt{Solver}s with custom KB}
 
-    loading a custom kb into a mutable solver
+    \begin{block}{Endowing \kt{Solver}s with their KB}
+        \begin{itemize}
+            \item \kt{Solver}s can be provided with their KB upon construction
+            %
+            \begin{itemize}
+                \item cf. \kt{SolverFactory}'s methods
+            \end{itemize}
+
+            \item \kt{MutableSolver}s can be provided with their KB dynamically
+            %
+            \begin{itemize}
+                \item[eg] via the many methods of \kt{MutableSolver}
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+
+    \framebreak
+
+    \ktSnippet{./snippets/MissingExample.kt}
+    % initialising a solver with custom knowledge bases
+
+    \framebreak
+
+    \ktSnippet{./snippets/MissingExample.kt}
+    % loading a custom kb into a mutable solver
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Custom KB and \kt{Directive}s}
+
+    \begin{block}{About directives}
+        \begin{itemize}
+            \item KB may contain some \kt{Directive}s
+            \item Implementations of \kt{Solver} should react to particular \kt{Directive}s
+            %
+            \begin{itemize}
+                \item upon KB provisioing (either by construciton or otherwise)
+                \item other sorts of directives are ignored
+            \end{itemize}
+            \item Notice that \kt{Directive}s are just headless \kt{Clauses}
+            %
+            \begin{itemize}
+                \item unless they are provided to a \kt{Solver}
+                \item at that point, they acquire procedural meaning
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+
+    \framebreak
+
+    Notable directives:
+    %
+    \begin{description}
+        \item[\pl{:- dynamic(\textit{F} / \textit{N}).}] makes any subsequent clause whose head indicator is \pl{\textit{F}/\textit{N}} be loaded into the \alert{dynamic} KB, event if the theory is loaded as static
+        \item[\pl{:- static(\textit{F} / \textit{N}).}] dual w.r.t. \pl{dynamic(F/N)}
+        \item[\pl{:- op(\textit{P}, \textit{S}, \textit{F}).}] loads a new operator into the \kt{Solver}, having the provided proprity (\pl{\textit{P}}), specifier (\pl{\textit{S}}), and functor (\pl{\textit{F}})
+        \item[\pl{:- solve(\textit{G}).}] executes goal \pl{\textit{G}} as soon as the theory has been loaded
+        \item[\pl{:- initialization(\textit{G}).}] alias for \pl{solve(\textit{G})}
+        \item[\pl{:- set\_prolog\_flag(\textit{N}, \textit{V}).}] (re)sets the flag named \pl{\textit{N}} to the value \pl{\textit{V}}
+        \item[\pl{:- include(\textit{P}).}] loads the theory whose path is \pl{\textit{P}} as if it was part of the currently loading one
+        %
+        \begin{itemize}\small
+            \item[!] requires the \module{io-lib} module to be available at run-time 
+        \end{itemize} 
+        \item[\pl{:- load(\textit{P}).}] alias for \pl{include(\textit{P})} 
+    \end{description}
+
+    \framebreak
+
+    \ktSnippet{./snippets/MissingExample.kt}
 \end{frame}
 
 \subsubsection{Extending \kt{Solver}s via \kt{Librarie}s}

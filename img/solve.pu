@@ -1,14 +1,14 @@
 @startuml
 
 package solve {
-    interface ExecutionContextAware
+    ' interface ExecutionContextAware
 
     interface Solver
 
     interface ExecutionContext
 
-    ExecutionContext --|> ExecutionContextAware
-    Solver --|> ExecutionContextAware
+    ' ExecutionContext --|> ExecutionContextAware
+    ' Solver --|> ExecutionContextAware
 
     Solver <.. ExecutionContext : "encapsulate\nstate"
 
@@ -16,14 +16,14 @@ package solve {
 
     SolverFactory --> Solver : creates
 
-    note right of Solver: "this is what users use" as usage
+    note right of Solver: this is what users use
 
     interface SolveOptions
 
     interface Solution
 
-    Solver "1" --> "N" Solution
-    Solver "1" <-- "1" SolveOptions
+    Solver "1" -left-> "N" Solution
+    Solver "1" <-left- "1" SolveOptions
 }
 
 package solve.primitive {
@@ -55,7 +55,7 @@ package solve.library {
 Library "1" *-down- "N" PrologFunction
 Library "1" *-- "N" Primitive
 
-ExecutionContextAware "1" *-- "1" Libraries
+ExecutionContext "1" *-- "1" Libraries
 
 package theory {
     interface Theory
@@ -66,8 +66,8 @@ package theory {
 
 Library "1" *-right- "1" Theory
 
-ExecutionContextAware "1" *-- "1" Theory: static KB
-ExecutionContextAware "1" *-- "1" MutableTheory: dynamic KB
+ExecutionContext "1" *-- "1" Theory: static KB
+ExecutionContext "1" *-- "1" MutableTheory: dynamic KB
 
 package core {
 '    interface Term
@@ -86,7 +86,7 @@ package core {
 Library "1" *-- "N" OperatorSet
 Theory "1" *-- "N" Clause
 
-ExecutionContextAware "1" *-- "1" OperatorSet
+ExecutionContext "1" *-- "1" OperatorSet
 
 package solve.flags {
     interface NotableFlag
@@ -97,7 +97,7 @@ package solve.flags {
     FlagStore "1" *-- "N" NotableFlag
 }
 
-ExecutionContextAware "1" *-up- "1" FlagStore
+ExecutionContext "1" *-up- "1" FlagStore
 
 package solve.channels {
     interface Listener
@@ -115,7 +115,7 @@ package solve.channels {
     OutputStore "1" *-- "N" OutputChannel
 }
 
-ExecutionContextAware "1" *-left- "1" InputStore
-ExecutionContextAware "1" *-left- "1" OutputStore
+ExecutionContext "1" *-left- "1" InputStore
+ExecutionContext "1" *-left- "1" OutputStore
 
 @enduml

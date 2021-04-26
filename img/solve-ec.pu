@@ -1,5 +1,4 @@
 @startuml
-
 interface ExecutionContextAware {
     + libraries: Libraries
     + flags: FlagStore
@@ -37,32 +36,4 @@ interface ExecutionContext {
 
 ExecutionContext -down-|> ExecutionContextAware
 Solver -right-|> ExecutionContextAware
-
-interface MutableSolver {
-      + loadLibrary(library: AliasedLibrary)
-      + unloadLibrary(library: AliasedLibrary
-      + setLibraries(libraries: Libraries)
-      ..
-      + loadStaticKb(theory: Theory)
-      + loadStaticClauses(clauses: Iterable<Clause>)
-      + appendStaticKb(theory: Theory)
-      + resetStaticKb()
-      ..
-      + loadDynamicKb(theory: Theory)
-      + loadDynamicClauses(clauses: Iterable<Clause>)
-      + appendDynamicKb(theory: Theory)
-      + resetDynamicKb()
-      ..
-      + assertA(clause: Clause)
-      + assertZ(clause: Clause)
-      ..
-      + retract(clause: Clause): RetractResult<Theory>
-      + retractAll(clause: Clause): RetractResult<Theory>
-      ..
-      + setFlag(name: String, value: Term)
-}
-
-MutableSolver -down-|> Solver
-
-
 @enduml
