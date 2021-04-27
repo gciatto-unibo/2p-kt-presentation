@@ -1,0 +1,50 @@
+class Signature {
+    + name: String
+    + arity: Int
+}
+
+interface Primitive 
+
+interface PrologFunction
+
+Signature "1" -- "1" Primitive
+Signature "1" -- "1" PrologFunction
+
+interface Library {
+    + operators: OperatoSet
+    + theory: Theory
+    + primitives: Map<Signature, Primitive>
+    + functions: Map<Signature, PrologFunction>
+    --
+    + contains(Signature): Boolean
+    + contains(Operator): Boolean
+    + hasPrimitive(Signature): Boolean
+    + hasFunction(Signature): Boolean
+}
+
+Library "1" *-- "N" Signature
+
+interface AliasedLibrary {
+    + alias: String
+}
+
+AliasedLibrary --|> Library
+
+interface LibraryGroup<L : Library> {
+    + libraries: Collection<L>
+    --
+    + plus(L): LibraryGroup<L>
+    + plus(LibraryGroup<L>): LibraryGroup<L>
+    + minus(L): LibraryGroup<L>
+    + update(L): LibraryGroup<L>
+}
+
+LibraryGroup --|> Library
+
+class Libraries
+
+Libraries "1" *-- "N" AliasedLibrary
+
+Libraries --|> LibraryGroup
+
+note right of Libraries: this is what users use

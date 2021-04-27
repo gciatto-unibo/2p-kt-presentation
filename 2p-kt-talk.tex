@@ -2334,73 +2334,665 @@
 
 \section{Generic Logic Resolution: the \module{solve} Module}
 
-\begin{frame}[allowframebreaks]{Overview}
-    re-use as much as possible of the Prolog standard without committing to a particular resolution strategy
+\begin{frame}[allowframebreaks]{The \module{solve} Module: Overview}
 
-    purpose:
-      - constrain the Solver and Solution interfaces
-      - constrain the notions of library, channel, flag, primitive, error
+    \begin{block}{Purpose}
+        \begin{itemize}
+            \item Provide generic support to logic resolution
+            \item Re-use as much as possible of Prolog standard 
+            %
+            \begin{itemize}
+                \item without committing to any particular resolution strategy
+                \item nor to any inference procedure
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+
+    \framebreak
+
+    Thus, \module{solve} provides the following abstractions:
+
+    \begin{block}{Solvers and Solutions}\centering
+        Solvers are reactive entities capable of answering to users' queries by producing one or more solutions, exploiting logic resolution
+    \end{block}
+
+    \begin{block}{Execution Contexts}
+        \begin{center}
+            An execution context encapsulates some solver's internal state
+            Resolution affects and is affected by the solver's execution context.
+        \end{center}
+
+        \small
+        Composed by:
+        %
+        \begin{description}
+            \item[libraries] | containers of built-in functionalities exploitable by resolution
+            \item[flags] | configurable aspects of a solver
+            \item[knowledge bases] (KB) | containers of the logic knowledge used by resolution
+            \item[operators] | set of operators used to parse queries and to present solutions
+            \item[channels] | I/O facilities to communicate with the external world
+        \end{description}
+        %
+        \begin{itemize}\small
+            \item[+] any resolution-specific aspect
+            %
+            \begin{itemize}\scriptsize
+                \item (this may vary depending on how resolution is implemented)
+            \end{itemize} 
+        \end{itemize}
+    \end{block}
+
+    \framebreak
+
+    \begin{block}{Libraries}
+        \begin{center}
+            Containers of built-in functionalities exploitable by resolution
+        \end{center}
+        
+        Possibly, including:
+        %
+        \begin{description}
+            \item[some \textbf{clauses}] containing logic predicates provided by the library
+            \item[some \textbf{primitives}] i.e., logic predicates, implemented in Kotlin, and provided by the library
+            \item[some \textbf{functions}] i.e., custom ways to reduce expressions of terms
+            \item[some \textbf{operators}] automatically imported into the solver along with the library 
+        \end{description}
+    \end{block}
+
+    \framebreak
+
+    \begin{block}{Flags}
+        \begin{center}
+            Key-value pairs aimed at configuring a solver behaviour
+        \end{center}
+        
+        Where:
+        %
+        \begin{itemize}
+            \item the key is a string
+            \item the value is an arbitrary term
+        \end{itemize}
+    \end{block}
+
+    \framebreak
+
+    \begin{block}{Knowledge bases (KB)}
+        \begin{center}
+            Containers of the logic knowledge taken into account by resolution to answer users' queries
+        \end{center}
+        
+        Following Prolog's conventions, KB are of two sorts:
+        %
+        \begin{description}
+            \item[static KB] | which cannot be altered during resultion
+            \item[dynamic KB] | which can be altered during resultion 
+        \end{description}
+    \end{block}
+
+    \framebreak
+
+    \begin{block}{Operators}
+        \begin{center}
+            Each solver may operate upon a dynamic set of operators
+        \end{center}
+        
+        That:
+        %
+        \begin{itemize}
+            \item may be loaded along with libraries or be dynamically altered during resolution
+            \item may affect the way users' queries are parsed
+            \item may affect the way solutions are presented to users
+        \end{itemize}
+    \end{block}
+
+    \framebreak
+
+    \begin{block}{Channels}
+        \begin{center}
+            Communication facilities among the solver and the external world
+        \end{center}
+        
+        Channels are of two sorts:
+        %
+        \begin{description}
+            \item[input channels] (a.k.a. \alert{sources}) let a solver receive inputs messages
+            \item[output channels] (a.k.a. \alert{sinks}) let a solver provide output messages
+        \end{description}
+    \end{block}
 \end{frame}
 
 \subsection{\kt{Solver}s and the \kt{Solution}s}
 
-\begin{frame}[allowframebreaks]{The \kt{Solver}, \kt{Solution}, and \kt{SolveOpts} Types}
-    Solver
+\begin{frame}[allowframebreaks]{The \kt{Solver}, \kt{Solution}, and \kt{SolveOptions} Types}
+    % Solver
 
-    MutableSolver
+    % MutableSolver
 
-    Solution.*
+    % Solution.*
 
-    SolveOpts
+    % SolveOpts
+
+    \begin{center}
+        \includegraphics[width=\linewidth]{img/solve-io.pdf}
+    \end{center}
+
+    \begin{block}{The \kt{Solver} type}
+        \kt{Solver}s expose many \kt{solve*} methods, accepting:
+        %
+        \begin{itemize}
+            \item a \alert{goal}, i.e. a \kt{Struct} representing the query to be answered via resolution
+            \item an instance of \kt{SolveOptions} describing/constraining the way answers are provided
+        \end{itemize}
+        %
+        and returning one or more \kt{Solution}s 
+    \end{block}
+
+    \begin{block}{The \kt{Solution} type}
+        A \kt{Solution} represents an answer provided by a \kt{Solver} w.r.t. the user's query
+        It can be of three actual sorts:
+        %
+        \begin{description}
+            \item[\kt{Solution.Yes}] representing a positive answer
+            %
+            \begin{itemize}\small
+                \item carrying a \kt{Unifier} assigning some variable from the user's query
+            \end{itemize} 
+
+            \item[\kt{Solution.No}] representing a negative answer
+
+            \item[\kt{Solution.Halt}] representing an exceptional answer
+            %
+            \begin{itemize}\small
+                \item carrying a \kt{TuPrologRuntimeException} locating the error w.r.t. the resultion process
+            \end{itemize}
+        \end{description}
+    \end{block}
+
+    \begin{block}{The \kt{SolveOptions} type}
+        Instances of \kt{SolveOptions} are provided along with users' queries and aim at constraining the way solutions are computed by the solver:
+        %
+        \begin{description}
+            \item[\kt{isEager: Boolean}] | if \kt{true} all solutions are computed ASAP
+            %
+            \begin{itemize}\small
+                \item may saturate memory in case of many/infinite solutions!
+            \end{itemize} 
+            
+            \item[\kt{isLazy: Boolean}] | if \kt{true} solutions are \emph{lazily} computed jsut before being consumed
+            %
+            \begin{itemize}\small
+                \item this is \kt{true} by default
+            \end{itemize}  
+
+            \item[\kt{timeout: TimeDuration}] | dictates the \alert{maximum} amount of time resolution may use to compute a single solution
+            %
+            \begin{itemize}\small
+                \item defaults to infinite time
+            \end{itemize} 
+            
+            \item[\kt{limit: Int}] | limits the \alert{maximum} amount of computed solutions 
+            %
+            \begin{itemize}\small
+                \item defaults to infinite
+            \end{itemize}
+        \end{description}
+    \end{block}
+
+    \begin{block}{The \kt{solve*} methods in \kt{Solver}}
+        \begin{description}
+            \item[\kt{solve}] | returns a \kt{Sequence} (i.e., a stream) of \kt{Solution}s
+            \item[\kt{solveList}] | returns a \kt{List} of \kt{Solution}s 
+            %
+            \begin{itemize}\small
+                \item implies \kt{solveOpts.isEager == true}
+            \end{itemize} 
+            \item[\kt{solveOnce}] | returns a single \kt{Solution} 
+            %
+            \begin{itemize}\small
+                \item implies \kt{solveOpts.limit == 1}
+            \end{itemize} 
+        \end{description}
+    \end{block}
+
+    \framebreak
+
+    \ktSnippet{./snippets/MissingExample.kt}
+
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Creating a \kt{Solver}}
-    the notion of SolverFactory
+\begin{frame}[allowframebreaks]{\kt{Solver} vs. \kt{MutableSolver}}
+    Notice that there are 2 types for solvers:
+    %
+    \begin{center}
+        \includegraphics[width=.8\linewidth]{img/solve-mutable.pdf}
+    \end{center}
+    %
+    \begin{itemize}\small
+        \item \emph{solvers} expose properties supporting \alert{inspection} of their state
+        \item \alert{mutalbe} solvers expose methods to \alert{alter} their state
+        %
+        \begin{itemize}
+            \item[!] the state of \emph{non}-mutable solvers may change too, because of resolution
+            %
+            \begin{itemize}
+                \item[$\rightarrow$] they are \alert{not} immutable
+            \end{itemize} 
+        \end{itemize}
+    \end{itemize}
+\end{frame}
 
-    implementers of \module{solve} must provide a public SolverFactory singleton
+\begin{frame}[allowframebreaks]{Creating \kt{Solvers} via a \kt{SolverFactory}}
+    \begin{block}{About solver factories}\centering
+        Objects of \kt{SolverFactory} aim at instantiating \kt{Solver}s
+    \end{block}
+
+    \bigskip
+
+    Main sorts of methods:
+    %
+    \begin{description}
+        \item[\kt{solverOf(\ldots)}] | creates an empty \kt{Solver}
+        \item[\kt{solverWithDefaultBuiltins(\ldots)}] | creates a \kt{Solver} and endows it with some default built-in predicates
+        \item[\kt{mutableSolverOf(\ldots)}] | creates an empty \kt{MutableSolver}
+        \item[\kt{mutableSolverWithDefaultBuiltins(\ldots)}] | creates a \kt{MutableSolver} and endows it with some default built-in predicates
+    \end{description}
+
+    \framebreak
+    
+    \begin{itemize}
+        \item All such methods come with various overloads\ldots
+        \item \ldots letting the caller specify the new solver's:
+        %
+        \begin{enumerate}
+            \item libraries to be loaded upon construction (possibly, other than the default ones)
+            \item initial values of specific flags
+            \item content of the static KB
+            \item initial content of the dynamic KB
+            \item operators to be loaded upon construction
+            \item input/output channels to be used for the solver
+            \item or some sub-set of the above
+        \end{enumerate}
+    \end{itemize}
+
+    \framebreak
+
+    \begin{alertblock}{Important convention}\centering
+        All implementations of \kt{Solver} should be packed with a corresponding implementation of \kt{SolveFactory}, possibly as a \alert{singleton}
+    \end{alertblock}
+    %
+    \begin{itemize}
+        \item[eg] \module{solve-classic} exposes object \kt{ClassicSolverFactory}
+        %
+        \begin{itemize}
+            \item also accessbile via \kt{Solver.\alert{classic}}
+        \end{itemize} 
+
+        \item[eg] \module{solve-streams} exposes object \kt{StreamsSolverFactory}
+        %
+        \begin{itemize}
+            \item also accessbile via \kt{Solver.\alert{streams}}
+        \end{itemize} 
+    \end{itemize}
+
+    \framebreak
+
+    \ktSnippet{./snippets/MissingExample.kt}
+
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Using a \kt{Solver}}
-    usage examples covering all possible cases where yes/no/halt/timeout solutions are depicted
+
+    \begin{block}{Concept}
+        \centering
+        \includegraphics[width=.4\linewidth]{img/streamful-solver.pdf}
+    \end{block}
+
+    \framebreak
+
+    \ktSnippet{./snippets/MissingExample.kt}
 \end{frame}
 
 \subsection{The \kt{ExecutionContext}}
 
 \begin{frame}[allowframebreaks]{Overview on the general purpose \kt{ExecutionContext}}
-    mutable aspects of a solver
+    \begin{itemize}
+        \item Module \module{solve} exposes a general interface for \kt{ExecutionContext}s
+        \item This must be exploited \& customised by implementers of \kt{Solver}s
+    \end{itemize}
+    %
+    \begin{center}
+        \includegraphics[width=.6\linewidth]{img/solve-ec.pdf}
+    \end{center}
+
+    \framebreak
+
+    \begin{block}{An \kt{ExecutionContext} keeps track of (at least)}
+        \begin{itemize}
+            \item all inspectable aspects of a \kt{Solver}
+            %
+            \begin{itemize}
+                \item[ie] libraries, flags, KB, operators, and channels
+            \end{itemize}
+            \item[+] the \alert{\kt{procedure}} resolution is currently focussing upon
+            \item[+] the \alert{\kt{substitution}} resolution has constructed so far 
+            \item[+] other fields possibly specified/customised by implementers
+        \end{itemize}
+    \end{block}
+
+    \framebreak
+
+    \begin{alertblock}{Conventions}
+        \begin{itemize}
+            \item \kt{ExecutionContext}s are \alert{immutable}
+            
+            \item An \kt{ExecutionContext} can be attained from another one via:
+            %
+            \begin{description}\small
+                \item[\kt{update(\ldots)}] | creating a copy of the current context, only differing for the provided fields
+                \item[\kt{apply(\textit{SideEffect})}] | creating a copy of the current context by applying the provide \kt{SideEffect} to it
+            \end{description}
+        \end{itemize}
+    \end{alertblock}
+
+    \framebreak
+
+    \begin{exampleblock}{Notice that}
+        \begin{itemize}
+            \item It is always possible to create a novel \kt{(Mutable)Solver} via
+             %
+             \begin{description}\small
+                \item[\kt{createSolver(\ldots)}] 
+                \item[\kt{createMutableSolver(\ldots)}]
+            \end{description}
+
+            \item The new solver is initialised using the current context
+            %
+            \begin{itemize}
+                \item[!] this is fundamental to realise complex functionalities
+            \end{itemize}
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{\kt{ExecutionContext} is where everything is linked together}
+    \centering
+    \includegraphics[width=.75\linewidth]{img/solve.pdf}
 \end{frame}
 
 \subsubsection{About \kt{Solver}s' Knowledge Bases}
 
 \begin{frame}[allowframebreaks]{Static vs. Dynamic Knowledge bases}
-    analogies and differences
+    \begin{alertblock}{Conventions}
+        \begin{itemize}
+            \item The \kt{staticKb} is assumed to reference an \alert{immutable} \kt{Theory}
+            %
+            \begin{itemize}
+                \item[ie] read efficient
+            \end{itemize}
+
+            \item The \kt{dynamicKb} is assumed to reference a \kt{\alert{Mutable}Theory}
+            %
+            \begin{itemize}
+                \item[ie] write efficient
+            \end{itemize}
+
+            \item Resolution is generally only allowed to alter the \alert{dynamic} KB
+            %
+            \begin{itemize}
+                \item[eg] via \pl{assert/1}, or \pl{retract/1}
+            \end{itemize}
+
+            \item However, notable exceptions exist
+            %
+            \begin{itemize}
+                \item[eg] via \pl{consult/1}, or \pl{register/2} (from the \module{oop-lib} module)
+            \end{itemize}
+        \end{itemize}
+    \end{alertblock}
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Example: Using \kt{Solver}s with Custom KB}
-    initialising a solver with custom knowledge bases
+\begin{frame}[allowframebreaks]{Example: Using \kt{Solver}s with custom KB}
 
-    loading a custom kb into a mutable solver
+    \begin{block}{Endowing \kt{Solver}s with their KB}
+        \begin{itemize}
+            \item \kt{Solver}s can be provided with their KB upon construction
+            %
+            \begin{itemize}
+                \item cf. \kt{SolverFactory}'s methods
+            \end{itemize}
+
+            \item \kt{MutableSolver}s can be provided with their KB dynamically
+            %
+            \begin{itemize}
+                \item[eg] via the many methods of \kt{MutableSolver}
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+
+    \framebreak
+
+    \ktSnippet{./snippets/MissingExample.kt}
+    % initialising a solver with custom knowledge bases
+
+    \framebreak
+
+    \ktSnippet{./snippets/MissingExample.kt}
+    % loading a custom kb into a mutable solver
 \end{frame}
 
-\subsubsection{Extending \kt{Solver}s via \kt{Librarie}s}
+\begin{frame}[allowframebreaks]{Custom KB and \kt{Directive}s}
 
-\begin{frame}[allowframebreaks]{Overview on Libraries}
-    purpose: extending the solver
+    \begin{block}{About directives}
+        \begin{itemize}
+            \item KB may contain some \kt{Directive}s
+            \item Implementations of \kt{Solver} should react to particular \kt{Directive}s
+            %
+            \begin{itemize}
+                \item upon KB provisioing (either by construciton or otherwise)
+                \item other sorts of directives are ignored
+            \end{itemize}
+            \item Notice that \kt{Directive}s are just headless \kt{Clauses}
+            %
+            \begin{itemize}
+                \item unless they are provided to a \kt{Solver}
+                \item at that point, they acquire procedural meaning
+            \end{itemize}
+        \end{itemize}
+    \end{block}
 
-    composition: rules + operators + primitives + functions
-        purpose of each
+    \framebreak
+
+    Notable directives:
+    %
+    \begin{description}
+        \item[\pl{:- dynamic(\textit{F} / \textit{N}).}] makes any subsequent clause whose head indicator is \pl{\textit{F}/\textit{N}} be loaded into the \alert{dynamic} KB, event if the theory is loaded as static
+        \item[\pl{:- static(\textit{F} / \textit{N}).}] dual w.r.t. \pl{dynamic(F/N)}
+        \item[\pl{:- op(\textit{P}, \textit{S}, \textit{F}).}] loads a new operator into the \kt{Solver}, having the provided proprity (\pl{\textit{P}}), specifier (\pl{\textit{S}}), and functor (\pl{\textit{F}})
+        \item[\pl{:- solve(\textit{G}).}] executes goal \pl{\textit{G}} as soon as the theory has been loaded
+        \item[\pl{:- initialization(\textit{G}).}] alias for \pl{solve(\textit{G})}
+        \item[\pl{:- set\_prolog\_flag(\textit{N}, \textit{V}).}] (re)sets the flag named \pl{\textit{N}} to the value \pl{\textit{V}}
+        \item[\pl{:- include(\textit{P}).}] loads the theory whose path is \pl{\textit{P}} as if it was part of the currently loading one
+        %
+        \begin{itemize}\small
+            \item[!] requires the \module{io-lib} module to be available at run-time 
+        \end{itemize} 
+        \item[\pl{:- load(\textit{P}).}] alias for \pl{include(\textit{P})} 
+    \end{description}
+
+    \framebreak
+
+    \ktSnippet{./snippets/MissingExample.kt}
+\end{frame}
+
+\subsubsection{Extending \kt{Solver}s via \kt{Libraries}}
+
+\begin{frame}[allowframebreaks]{Overview on \kt{Libraries}}
+    \begin{block}{Why \kt{Libraries}}
+        \begin{itemize}
+            \item Need to extend \kt{Solver}s via built-in functionalities
+            \item[eg] operators, rules, (logic) functions, or primitives
+        \end{itemize}
+    \end{block}
+
+    \framebreak
+
+    \begin{center}
+        \includegraphics[height=.75\textheight]{img/libraries.pdf}
+    \end{center}
+
+    \framebreak
+
+    \begin{block}{Definition: \kt{Library}}
+        A type for \alert{immutable} containers of:
+        %
+        \begin{description}
+            \item[operators] to be loaded along with the \kt{Library}
+            \item[theory] in turn containing pre-built rules and facts
+            \item[primitives] i.e. logic predicates, written in Kotlin
+            \item[functions] i.e. logic functions, written in Kotlin 
+        \end{description}
+    \end{block}
+
+    \begin{block}{Definition: \kt{Signature}}
+        Primitives and functions are indexed in \kt{Library}s via \kt{Signature}s,
+        %
+        \begin{itemize}
+            \item[ie] couples \kt{names}-\kt{arities}
+        \end{itemize}
+    \end{block}
+
+    \framebreak
+
+    \begin{block}{Definition: \kt{AliasedLibrary}}
+        A \kt{Library} with an \alert{alias}
+        %
+        \begin{itemize}
+            \item think about aliases as Java packages names
+        \end{itemize}
+    \end{block}
+
+    \begin{exampleblock}{Conventions on \textbf{aliases}}
+        \begin{itemize}
+            \item Same of Java packages names
+            \item[ie] camel case, dot separated, spaceless
+            \item[eg] \texttt{prolog.lang}, \texttt{prolog.io} 
+        \end{itemize}
+    \end{exampleblock}
+
+    \framebreak
+
+    \begin{block}{Definition: \kt{LibraryGroup}}
+        A \kt{Library} attained by collecting several \kt{Library}s
+    \end{block}
+
+    \framebreak
+
+    \begin{block}{Definition: \kt{Libraries}}
+        A group of \kt{AliasedLibrary}, indexed by \alert{alias} 
+    \end{block}
+    %
+    \begin{itemize}
+        \item this is what \kt{Solver}s' users use, in practice
+    \end{itemize}
+
+    \framebreak
+
+    \ktSnippet{snippets/MissingExample.kt}
+
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{Primitive} Type}
-    client server metaphor
 
-    definition
+    \begin{alertblock}{Problem}
+        \begin{itemize}
+            \item Some built-in logic functionalities are easier to write in Kotlin
+            \item \ldots as they require \alert{altering} the \kt{Solver}'s \kt{ExecutionContext}
+            %
+            \begin{itemize}
+                \item[eg] \pl{assert/1}, \pl{retract/1}, \pl{write/1}
+            \end{itemize}
+            \item Some logic functionalities may exploit external computational facilities
+        \end{itemize}
+    \end{alertblock}
 
-    request \& response
+    \begin{block}{Why \kt{Primitive}s}
+        \begin{itemize}
+            \item A means for calling Kotlin code from LP
+            \item A means for writing logic \alert{relations} via OOP+FP+IP
+        \end{itemize}
+    \end{block}
 
-    purpose
+    \framebreak
 
-    example
+    Client-server metaphor:
+    %
+    \begin{itemize}
+        \item users are clients for \kt{Solver}s, which act as servers
+        \item \kt{Solver}s are clients for \kt{Primitive}s, which act as servers
+    \end{itemize}
+
+    \smallskip
+
+    \begin{center}
+        \includegraphics[width=.5\linewidth]{img/primitive-usage.pdf}
+    \end{center}
+
+    \framebreak
+    
+    When needing to solve a (sub-)goal $G$, a \kt{Solver} may
+    %
+    \begin{itemize}
+        \item look into its KB, or
+        \item pick a \kt{Primitive} $P$, compliant with $G$, from a \kt{Library}
+        %
+        \begin{enumerate}
+            \item send a \alert{request}, describing $G$, to $P$
+            \item receive several \alert{responses}, describing solutions to $G$, from $P$
+        \end{enumerate}
+    \end{itemize}
+
+    \framebreak
+
+    In code:
+    %
+    \begin{center}
+        \includegraphics[width=.5\linewidth]{img/primitive.pdf}
+    \end{center}
+
+    \framebreak
+
+    \ktSnippet{snippets/MissingExample.kt}
+    % natural 
+
+    \ktSnippet{snippets/MissingExample.kt}
+    % assert 
+
+    \framebreak
+
+    \begin{block}{The many sides of the \kt{Primitive}s}
+        \kt{Primitive} are:
+        %
+        \begin{itemize}
+            \item $N$-ary relations, in the eyes of LP
+            \item servers \& data producers, in the eyes of \kt{Solver}s
+            \item callbacks, in the eyes of libraries implementers
+        \end{itemize}
+    \end{block}
+
+    \framebreak
+
+    \begin{block}{Within \kt{Primitive}s, \kt{Request}s are}
+        \begin{itemize}
+            \item descriptors of the \alert{current} \kt{ExecutionContext}
+            \item descriptors of the \alert{actual} arguments of the (sub-)goal
+            \item factories of \kt{Response}s
+            %
+            \begin{itemize}
+                \item possibility to specify \alert{success} / \alert{failure} / \alert{exceptions}
+                \item possibility to provoke \alert{\kt{SideEffects}}
+            \end{itemize}
+        \end{itemize}
+    \end{block}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{Function} Type}
