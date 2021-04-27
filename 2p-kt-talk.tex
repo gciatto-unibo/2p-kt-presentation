@@ -2577,25 +2577,175 @@
     \ktSnippet{./snippets/MissingExample.kt}
 \end{frame}
 
-\subsubsection{Extending \kt{Solver}s via \kt{Librarie}s}
+\subsubsection{Extending \kt{Solver}s via \kt{Libraries}}
 
-\begin{frame}[allowframebreaks]{Overview on Libraries}
-    purpose: extending the solver
+\begin{frame}[allowframebreaks]{Overview on \kt{Libraries}}
+    \begin{block}{Why \kt{Libraries}}
+        \begin{itemize}
+            \item Need to extend \kt{Solver}s via built-in functionalities
+            \item[eg] operators, rules, (logic) functions, or primitives
+        \end{itemize}
+    \end{block}
 
-    composition: rules + operators + primitives + functions
-        purpose of each
+    \framebreak
+
+    \begin{center}
+        \includegraphics[height=.75\textheight]{img/libraries.pdf}
+    \end{center}
+
+    \framebreak
+
+    \begin{block}{Definition: \kt{Library}}
+        A type for \alert{immutable} containers of:
+        %
+        \begin{description}
+            \item[operators] to be loaded along with the \kt{Library}
+            \item[theory] in turn containing pre-built rules and facts
+            \item[primitives] i.e. logic predicates, written in Kotlin
+            \item[functions] i.e. logic functions, written in Kotlin 
+        \end{description}
+    \end{block}
+
+    \begin{block}{Definition: \kt{Signature}}
+        Primitives and functions are indexed in \kt{Library}s via \kt{Signature}s,
+        %
+        \begin{itemize}
+            \item[ie] couples \kt{names}-\kt{arities}
+        \end{itemize}
+    \end{block}
+
+    \framebreak
+
+    \begin{block}{Definition: \kt{AliasedLibrary}}
+        A \kt{Library} with an \alert{alias}
+        %
+        \begin{itemize}
+            \item think about aliases as Java packages names
+        \end{itemize}
+    \end{block}
+
+    \begin{exampleblock}{Conventions on \textbf{aliases}}
+        \begin{itemize}
+            \item Same of Java packages names
+            \item[ie] camel case, dot separated, spaceless
+            \item[eg] \texttt{prolog.lang}, \texttt{prolog.io} 
+        \end{itemize}
+    \end{exampleblock}
+
+    \framebreak
+
+    \begin{block}{Definition: \kt{LibraryGroup}}
+        A \kt{Library} attained by collecting several \kt{Library}s
+    \end{block}
+
+    \framebreak
+
+    \begin{block}{Definition: \kt{Libraries}}
+        A group of \kt{AliasedLibrary}, indexed by \alert{alias} 
+    \end{block}
+    %
+    \begin{itemize}
+        \item this is what \kt{Solver}s' users use, in practice
+    \end{itemize}
+
+    \framebreak
+
+    \ktSnippet{snippets/MissingExample.kt}
+
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{Primitive} Type}
-    client server metaphor
 
-    definition
+    \begin{alertblock}{Problem}
+        \begin{itemize}
+            \item Some built-in logic functionalities are easier to write in Kotlin
+            \item \ldots as they require \alert{altering} the \kt{Solver}'s \kt{ExecutionContext}
+            %
+            \begin{itemize}
+                \item[eg] \pl{assert/1}, \pl{retract/1}, \pl{write/1}
+            \end{itemize}
+            \item Some logic functionalities may exploit external computational facilities
+        \end{itemize}
+    \end{alertblock}
 
-    request \& response
+    \begin{block}{Why \kt{Primitive}s}
+        \begin{itemize}
+            \item A means for calling Kotlin code from LP
+            \item A means for writing logic \alert{relations} via OOP+FP+IP
+        \end{itemize}
+    \end{block}
 
-    purpose
+    \framebreak
 
-    example
+    Client-server metaphor:
+    %
+    \begin{itemize}
+        \item users are clients for \kt{Solver}s, which act as servers
+        \item \kt{Solver}s are clients for \kt{Primitive}s, which act as servers
+    \end{itemize}
+
+    \smallskip
+
+    \begin{center}
+        \includegraphics[width=.5\linewidth]{img/primitive-usage.pdf}
+    \end{center}
+
+    \framebreak
+    
+    When needing to solve a (sub-)goal $G$, a \kt{Solver} may
+    %
+    \begin{itemize}
+        \item look into its KB, or
+        \item pick a \kt{Primitive} $P$, compliant with $G$, from a \kt{Library}
+        %
+        \begin{enumerate}
+            \item send a \alert{request}, describing $G$, to $P$
+            \item receive several \alert{responses}, describing solutions to $G$, from $P$
+        \end{enumerate}
+    \end{itemize}
+
+    \framebreak
+
+    In code:
+    %
+    \begin{center}
+        \includegraphics[width=.5\linewidth]{img/primitive.pdf}
+    \end{center}
+
+    \framebreak
+
+    \ktSnippet{snippets/MissingExample.kt}
+    % natural 
+
+    \ktSnippet{snippets/MissingExample.kt}
+    % assert 
+
+    \framebreak
+
+    \begin{block}{The many sides of the \kt{Primitive}s}
+        \kt{Primitive} are:
+        %
+        \begin{itemize}
+            \item $N$-ary relations, in the eyes of LP
+            \item servers \& data producers, in the eyes of \kt{Solver}s
+            \item callbacks, in the eyes of libraries implementers
+        \end{itemize}
+    \end{block}
+
+    \framebreak
+
+    \begin{block}{Within \kt{Primitive}s, \kt{Request}s are}
+        \begin{itemize}
+            \item descriptors of the \alert{current} \kt{ExecutionContext}
+            \item descriptors of the \alert{actual} arguments of the (sub-)goal
+            \item factories of \kt{Response}s
+            %
+            \begin{itemize}
+                \item possibility to specify \alert{success} / \alert{failure} / \alert{exceptions}
+                \item possibility to provoke \alert{\kt{SideEffects}}
+            \end{itemize}
+        \end{itemize}
+    \end{block}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{Function} Type}

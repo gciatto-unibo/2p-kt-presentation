@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="661px" preserveAspectRatio="none" style="width:671px;height:661px;" version="1.1" viewBox="0 0 671 661" width="671px" zoomAndPan="magnify"><defs><filter height="300%" id="f1adlz88eri3fr" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[c2e013bfd207ce413d543e434d298cae]
+class SideEffect--><rect codeLine="1" fill="#FEFECE" filter="url(#f1adlz88eri3fr)" height="60.8047" id="SideEffect" style="stroke:#A80036;stroke-width:1.5;" width="280" x="55" y="587"/><ellipse cx="159.25" cy="603" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M162.2188,608.6406 Q161.6406,608.9375 161,609.0781 Q160.3594,609.2344 159.6563,609.2344 Q157.1563,609.2344 155.8281,607.5938 Q154.5156,605.9375 154.5156,602.8125 Q154.5156,599.6875 155.8281,598.0313 Q157.1563,596.375 159.6563,596.375 Q160.3594,596.375 161,596.5313 Q161.6563,596.6875 162.2188,596.9844 L162.2188,599.7031 Q161.5938,599.125 161,598.8594 Q160.4063,598.5781 159.7813,598.5781 Q158.4375,598.5781 157.75,599.6563 Q157.0625,600.7188 157.0625,602.8125 Q157.0625,604.9063 157.75,605.9844 Q158.4375,607.0469 159.7813,607.0469 Q160.4063,607.0469 161,606.7813 Q161.5938,606.5 162.2188,605.9219 L162.2188,608.6406 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="63" x="179.75" y="607.1543">SideEffect</text><line style="stroke:#A80036;stroke-width:1.5;" x1="56" x2="334" y1="619" y2="619"/><line style="stroke:#A80036;stroke-width:1.5;" x1="56" x2="334" y1="627" y2="627"/><ellipse cx="66" cy="638" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="254" x="75" y="641.2104">applyTo(ExecutionContext): ExecutionContext</text><!--MD5=[81de0658c7867d71173c7f1326ac054e]
+class SideEffectFactory--><rect codeLine="5" fill="#FEFECE" filter="url(#f1adlz88eri3fr)" height="368.1172" id="SideEffectFactory" style="stroke:#A80036;stroke-width:1.5;" width="499" x="158.5" y="142"/><ellipse cx="348.75" cy="158" fill="#B4A7E5" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M344.6719,153.7656 L344.6719,151.6094 L352.0625,151.6094 L352.0625,153.7656 L349.5938,153.7656 L349.5938,161.8438 L352.0625,161.8438 L352.0625,164 L344.6719,164 L344.6719,161.8438 L347.1406,161.8438 L347.1406,153.7656 L344.6719,153.7656 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="110" x="369.25" y="162.1543">SideEffectFactory</text><line style="stroke:#A80036;stroke-width:1.5;" x1="159.5" x2="656.5" y1="174" y2="174"/><line style="stroke:#A80036;stroke-width:1.5;" x1="159.5" x2="656.5" y1="182" y2="182"/><ellipse cx="169.5" cy="193" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="249" x="178.5" y="196.2104">resetStaticKb(Iterable&lt;Clause&gt;): SideEffect</text><ellipse cx="169.5" cy="205.8047" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="326" x="178.5" y="209.0151">addStaticClauses(Iterable&lt;Clause&gt;, Boolean): SideEffect</text><ellipse cx="169.5" cy="218.6094" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="294" x="178.5" y="221.8198">removeStaticClauses(Iterable&lt;Clause&gt;): SideEffect</text><ellipse cx="169.5" cy="231.4141" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="265" x="178.5" y="234.6245">resetDynamicKb(Iterable&lt;Clause&gt;): SideEffect</text><ellipse cx="169.5" cy="244.2188" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="342" x="178.5" y="247.4292">addDynamicClauses(Iterable&lt;Clause&gt;, Boolean): SideEffect</text><ellipse cx="169.5" cy="257.0234" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="310" x="178.5" y="260.2339">removeDynamicClauses(Iterable&lt;Clause&gt;): SideEffect</text><ellipse cx="169.5" cy="269.8281" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="234" x="178.5" y="273.0386">setFlags(Map&lt;String, Term&gt;): SideEffect</text><ellipse cx="169.5" cy="282.6328" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="246" x="178.5" y="285.8433">resetFlags(Map&lt;String, Term&gt;): SideEffect</text><ellipse cx="169.5" cy="295.4375" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="226" x="178.5" y="298.6479">clearFlags(Iterable&lt;String&gt;): SideEffect</text><ellipse cx="169.5" cy="308.2422" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="217" x="178.5" y="311.4526">loadLibrary(String, Library): SideEffect</text><ellipse cx="169.5" cy="321.0469" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="216" x="178.5" y="324.2573">loadLibrary(AliasedLibrary): SideEffect</text><ellipse cx="169.5" cy="333.8516" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="256" x="178.5" y="337.062">unloadLibraries(Iterable&lt;String&gt;): SideEffect</text><ellipse cx="169.5" cy="346.6563" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="232" x="178.5" y="349.8667">updateLibrary(String, Library): SideEffect</text><ellipse cx="169.5" cy="359.4609" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="231" x="178.5" y="362.6714">updateLibrary(AliasedLibrary): SideEffect</text><ellipse cx="169.5" cy="372.2656" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="294" x="178.5" y="375.4761">resetLibraries(Iterable&lt;AliasedLibrary&gt;): SideEffect</text><ellipse cx="169.5" cy="385.0703" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="285" x="178.5" y="388.2808">addLibraries(Iterable&lt;AliasedLibrary&gt;): SideEffect</text><ellipse cx="169.5" cy="397.875" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="261" x="178.5" y="401.0854">setOperators(Iterable&lt;Operator&gt;): SideEffect</text><ellipse cx="169.5" cy="410.6797" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="273" x="178.5" y="413.8901">resetOperators(Iterable&lt;Operator&gt;): SideEffect</text><ellipse cx="169.5" cy="423.4844" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="286" x="178.5" y="426.6948">removeOperators(Iterable&lt;Operator&gt;): SideEffect</text><ellipse cx="169.5" cy="436.2891" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="391" x="178.5" y="439.4995">openInputChannels(Map&lt;String, InputChannel&lt;String&gt;&gt;): SideEffect</text><ellipse cx="169.5" cy="449.0938" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="393" x="178.5" y="452.3042">resetInputChannels(Map&lt;String, InputChannel&lt;String&gt;&gt;): SideEffect</text><ellipse cx="169.5" cy="461.8984" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="279" x="178.5" y="465.1089">closeInputChannels(Iterable&lt;String&gt;): SideEffect</text><ellipse cx="169.5" cy="474.7031" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="411" x="178.5" y="477.9136">openOutputChannels(Map&lt;String, OutputChannel&lt;String&gt;&gt;): SideEffect</text><ellipse cx="169.5" cy="487.5078" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="473" x="178.5" y="490.7183">resetOutputChannels(Iterable&lt;Pair&lt;String, OutputChannel&lt;String&gt;&gt;&gt;): SideEffect</text><ellipse cx="169.5" cy="500.3125" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="289" x="178.5" y="503.5229">closeOutputChannels(Iterable&lt;String&gt;): SideEffect</text><!--MD5=[77a721296487300385bfd5234182259b]
+class SideEffectBuilder--><rect codeLine="39" fill="#FEFECE" filter="url(#f1adlz88eri3fr)" height="73.6094" id="SideEffectBuilder" style="stroke:#A80036;stroke-width:1.5;" width="236" x="7" y="7"/><ellipse cx="67.75" cy="23" fill="#B4A7E5" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M63.6719,18.7656 L63.6719,16.6094 L71.0625,16.6094 L71.0625,18.7656 L68.5938,18.7656 L68.5938,26.8438 L71.0625,26.8438 L71.0625,29 L63.6719,29 L63.6719,26.8438 L66.1406,26.8438 L66.1406,18.7656 L63.6719,18.7656 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="106" x="88.25" y="27.1543">SideEffectBuilder</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="242" y1="39" y2="39"/><ellipse cx="18" cy="50" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="210" x="27" y="53.2104">sideEffects: MutableList&lt;SideEffect&gt;</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="242" y1="59.8047" y2="59.8047"/><ellipse cx="18" cy="70.8047" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="138" x="27" y="74.0151">build(): List&lt;SideEffect&gt;</text><!--MD5=[b8f9c9f402fdb0639661b25476f0741f]
+class ExecutionContext--><rect codeLine="51" fill="#FEFECE" filter="url(#f1adlz88eri3fr)" height="48" id="ExecutionContext" style="stroke:#A80036;stroke-width:1.5;" width="143" x="434.5" y="593.5"/><ellipse cx="449.5" cy="609.5" fill="#B4A7E5" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M445.4219,605.2656 L445.4219,603.1094 L452.8125,603.1094 L452.8125,605.2656 L450.3438,605.2656 L450.3438,613.3438 L452.8125,613.3438 L452.8125,615.5 L445.4219,615.5 L445.4219,613.3438 L447.8906,613.3438 L447.8906,605.2656 L445.4219,605.2656 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="111" x="463.5" y="613.6543">ExecutionContext</text><line style="stroke:#A80036;stroke-width:1.5;" x1="435.5" x2="576.5" y1="625.5" y2="625.5"/><line style="stroke:#A80036;stroke-width:1.5;" x1="435.5" x2="576.5" y1="633.5" y2="633.5"/><!--MD5=[03e7aabe1242f28e0855118d7aacfae7]
+link SideEffectBuilder to SideEffectFactory--><path codeLine="45" d="M161.42,81.03 C174.73,94.2 190.88,110.18 208.48,127.6 " fill="none" id="SideEffectBuilder-to-SideEffectFactory" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="none" points="213.59,122.8,222.88,141.85,203.74,132.76,213.59,122.8" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[d4873fec0d2b4500466953b924b4deb7]
+link SideEffectFactory to SideEffect--><path codeLine="47" d="M273.1,510.34 C252.84,537.89 234.06,563.42 219.99,582.53 " fill="none" id="SideEffectFactory-to-SideEffect" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="216.88,586.76,225.4301,581.8718,219.8387,582.7293,218.9811,577.1379,216.88,586.76" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="48" x="247" y="553.0669">creates</text><!--MD5=[864169fe56d671cb02e866c5f1e029e4]
+reverse link SideEffectBuilder to SideEffect--><path codeLine="49" d="M119.83,94.23 C112.31,180.2 103.07,362.57 141,510 C148.08,537.51 163.04,566.07 175.43,586.69 " fill="none" id="SideEffectBuilder-backto-SideEffect" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#FFFFFF" points="121.04,81.04,116.5099,86.6505,119.9464,92.9901,124.4766,87.3796,121.04,81.04" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="111.6719" y="100.8072">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="8" x="162.5687" y="575.8893">1</text><!--MD5=[e8ca9119c277b35d7572a6f085fa8a27]
+link SideEffect to ExecutionContext--><path codeLine="53" d="M335.03,617.5 C367.36,617.5 400.59,617.5 429.06,617.5 " fill="none" id="SideEffect-to-ExecutionContext" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="434.32,617.5,425.32,613.5,429.32,617.5,425.32,621.5,434.32,617.5" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="63" x="353.25" y="610.5669">applied to</text><!--MD5=[fa99a7c786d8b9aba953d36d443c8090]
+@startuml
+class SideEffect {
+    + applyTo(ExecutionContext): ExecutionContext
+}
+
+interface SideEffectFactory {
+    + resetStaticKb(Iterable<Clause>): SideEffect
+    + addStaticClauses(Iterable<Clause>, Boolean): SideEffect
+    + removeStaticClauses(Iterable<Clause>): SideEffect
+    + resetDynamicKb(Iterable<Clause>): SideEffect
+    + addDynamicClauses(Iterable<Clause>, Boolean): SideEffect
+    + removeDynamicClauses(Iterable<Clause>): SideEffect
+    + setFlags(Map<String, Term>): SideEffect
+    + resetFlags(Map<String, Term>): SideEffect
+    + clearFlags(Iterable<String>): SideEffect
+    + loadLibrary(String, Library): SideEffect
+    + loadLibrary(AliasedLibrary): SideEffect
+    + unloadLibraries(Iterable<String>): SideEffect
+    + updateLibrary(String, Library): SideEffect
+    + updateLibrary(AliasedLibrary): SideEffect
+    + resetLibraries(Iterable<AliasedLibrary>): SideEffect
+    + addLibraries(Iterable<AliasedLibrary>): SideEffect
+    + setOperators(Iterable<Operator>): SideEffect
+    + resetOperators(Iterable<Operator>): SideEffect
+    + removeOperators(Iterable<Operator>): SideEffect
+    + openInputChannels(Map<String, InputChannel<String>>): SideEffect
+    + resetInputChannels(Map<String, InputChannel<String>>): SideEffect
+    + closeInputChannels(Iterable<String>): SideEffect
+    + openOutputChannels(Map<String, OutputChannel<String>>): SideEffect
+    + resetOutputChannels(Iterable<Pair<String, OutputChannel<String>>>): SideEffect
+    + closeOutputChannels(Iterable<String>): SideEffect
+    ' + addEphemeralData(String, Any): SideEffect
+    ' + setEphemeralData(String, Any): SideEffect
+    ' + addDurableData(String, Any): SideEffect
+    ' + setDurableData(String, Any): SideEffect
+    ' + addPersistentData(String, Any): SideEffect
+    ' + setPersistentData(String, Any): SideEffect
+}
+
+interface SideEffectBuilder { 
+    + sideEffects: MutableList<SideEffect>
+    + build(): List<SideEffect>
+}
+
+
+SideEffectBuilder - -|>  SideEffectFactory
+
+SideEffectFactory ..> SideEffect: creates
+
+SideEffectBuilder "1" o- - "1" SideEffect
+
+interface ExecutionContext
+
+SideEffect .right.> ExecutionContext: applied to
+@enduml
+
+@startuml
+class SideEffect {
+    + applyTo(ExecutionContext): ExecutionContext
+}
+
+interface SideEffectFactory {
+    + resetStaticKb(Iterable<Clause>): SideEffect
+    + addStaticClauses(Iterable<Clause>, Boolean): SideEffect
+    + removeStaticClauses(Iterable<Clause>): SideEffect
+    + resetDynamicKb(Iterable<Clause>): SideEffect
+    + addDynamicClauses(Iterable<Clause>, Boolean): SideEffect
+    + removeDynamicClauses(Iterable<Clause>): SideEffect
+    + setFlags(Map<String, Term>): SideEffect
+    + resetFlags(Map<String, Term>): SideEffect
+    + clearFlags(Iterable<String>): SideEffect
+    + loadLibrary(String, Library): SideEffect
+    + loadLibrary(AliasedLibrary): SideEffect
+    + unloadLibraries(Iterable<String>): SideEffect
+    + updateLibrary(String, Library): SideEffect
+    + updateLibrary(AliasedLibrary): SideEffect
+    + resetLibraries(Iterable<AliasedLibrary>): SideEffect
+    + addLibraries(Iterable<AliasedLibrary>): SideEffect
+    + setOperators(Iterable<Operator>): SideEffect
+    + resetOperators(Iterable<Operator>): SideEffect
+    + removeOperators(Iterable<Operator>): SideEffect
+    + openInputChannels(Map<String, InputChannel<String>>): SideEffect
+    + resetInputChannels(Map<String, InputChannel<String>>): SideEffect
+    + closeInputChannels(Iterable<String>): SideEffect
+    + openOutputChannels(Map<String, OutputChannel<String>>): SideEffect
+    + resetOutputChannels(Iterable<Pair<String, OutputChannel<String>>>): SideEffect
+    + closeOutputChannels(Iterable<String>): SideEffect
+}
+
+interface SideEffectBuilder { 
+    + sideEffects: MutableList<SideEffect>
+    + build(): List<SideEffect>
+}
+
+
+SideEffectBuilder - -|>  SideEffectFactory
+
+SideEffectFactory ..> SideEffect: creates
+
+SideEffectBuilder "1" o- - "1" SideEffect
+
+interface ExecutionContext
+
+SideEffect .right.> ExecutionContext: applied to
+@enduml
+
+PlantUML version 1.2021.00(Sun Jan 10 11:25:05 CET 2021)
+(MIT source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: it
+Country: IT
+--></g></svg>

@@ -1,0 +1,55 @@
+@startuml
+class SideEffect {
+    + applyTo(ExecutionContext): ExecutionContext
+}
+
+interface SideEffectFactory {
+    + resetStaticKb(Iterable<Clause>): SideEffect
+    + addStaticClauses(Iterable<Clause>, Boolean): SideEffect
+    + removeStaticClauses(Iterable<Clause>): SideEffect
+    + resetDynamicKb(Iterable<Clause>): SideEffect
+    + addDynamicClauses(Iterable<Clause>, Boolean): SideEffect
+    + removeDynamicClauses(Iterable<Clause>): SideEffect
+    + setFlags(Map<String, Term>): SideEffect
+    + resetFlags(Map<String, Term>): SideEffect
+    + clearFlags(Iterable<String>): SideEffect
+    + loadLibrary(String, Library): SideEffect
+    + loadLibrary(AliasedLibrary): SideEffect
+    + unloadLibraries(Iterable<String>): SideEffect
+    + updateLibrary(String, Library): SideEffect
+    + updateLibrary(AliasedLibrary): SideEffect
+    + resetLibraries(Iterable<AliasedLibrary>): SideEffect
+    + addLibraries(Iterable<AliasedLibrary>): SideEffect
+    + setOperators(Iterable<Operator>): SideEffect
+    + resetOperators(Iterable<Operator>): SideEffect
+    + removeOperators(Iterable<Operator>): SideEffect
+    + openInputChannels(Map<String, InputChannel<String>>): SideEffect
+    + resetInputChannels(Map<String, InputChannel<String>>): SideEffect
+    + closeInputChannels(Iterable<String>): SideEffect
+    + openOutputChannels(Map<String, OutputChannel<String>>): SideEffect
+    + resetOutputChannels(Iterable<Pair<String, OutputChannel<String>>>): SideEffect
+    + closeOutputChannels(Iterable<String>): SideEffect
+    ' + addEphemeralData(String, Any): SideEffect
+    ' + setEphemeralData(String, Any): SideEffect
+    ' + addDurableData(String, Any): SideEffect
+    ' + setDurableData(String, Any): SideEffect
+    ' + addPersistentData(String, Any): SideEffect
+    ' + setPersistentData(String, Any): SideEffect
+}
+
+interface SideEffectBuilder { 
+    + sideEffects: MutableList<SideEffect>
+    + build(): List<SideEffect>
+}
+
+
+SideEffectBuilder --|>  SideEffectFactory
+
+SideEffectFactory ..> SideEffect: creates
+
+SideEffectBuilder "1" o-- "1" SideEffect
+
+interface ExecutionContext
+
+SideEffect .right.> ExecutionContext: applied to
+@enduml
