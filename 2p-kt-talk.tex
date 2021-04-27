@@ -2287,8 +2287,17 @@
 
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Creating a \kt{ClauseCollection}}
-    available static factories
+\begin{frame}[allowframebreaks]{Creating a \kt{Theory}}
+    Static factories for \kt{Theory} (same methods apply for \kt{MutableTheory}):
+    %
+    \begin{description}
+        \item[\kt{empty(): Theory}] creates an empty \kt{Theory} (indexed by default)
+        \item[\kt{of(vararg Clause): Theory}] creates a \kt{Theory} containing the given clauses
+        \item[\kt{emptyIndexed(): Theory}] creates an empty \kt{Theory} backed by an indexed data structure
+        \item[\kt{indexedOf(vararg Clause): Theory}] creates an indexed \kt{Theory} containing the given \kt{Clauses} 
+        \item[\kt{emptyListed(): Theory}] creates an empty \kt{Theory} backed by a list
+        \item[\kt{listedOf(vararg Clause): Theory}] creates a \kt{Theory} backed by a list, containing the given clauses
+    \end{description}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Using a \kt{Theory}}
