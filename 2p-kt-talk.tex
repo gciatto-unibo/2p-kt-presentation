@@ -2273,6 +2273,7 @@
         \item[\kt{assertA(Clause): Theory}] adds the given clause \textit{before} all other clauses in this theory
         \item[\kt{assertZ(Clause): Theory}] adds the given clause \textit{after} all other clauses in this theory
         \item[\kt{abolish(Indicator): Theory}] removes all the clauses matching the given \kt{Indicator}
+        \item[\kt{retract(Clause): RetractResult<Theory>}] tries to delete a matching clause from this theory
     \end{description}
 
     \framebreak
@@ -2284,6 +2285,19 @@
         \item[\kt{toMutableTheory(): MutableTheory}] converts this \kt{Theory} to a mutable one
         \item[\kt{toImmutableTheory(): Theory}] converts this \kt{Theory} to an immutable one
     \end{description}
+
+    \framebreak
+    
+    \begin{block}{The \kt{RetractResult} type}
+        \begin{itemize}
+            \item represents the output of a \kt{retract(Clause)} call
+            \item can be a \kt{Success} or a \kt{Failure}
+        \end{itemize}
+    \end{block}
+    %
+    \begin{center}
+        \includegraphics[width=0.7\linewidth]{img/retract-result.pdf}
+    \end{center}    
 
 \end{frame}
 
@@ -2301,7 +2315,21 @@
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Using a \kt{Theory}}
-    usage examples
+    Asserting clauses into a \kt{Theory}:
+    %
+    \ktSnippet{./snippets/TheoryAssert.kt}
+
+    \framebreak
+
+    Abolishing \kt{Indicator}s from a \kt{Theory}:
+    %
+    \ktSnippet{./snippets/TheoryAbolish.kt}
+
+    \framebreak
+
+    Retracting clauses from a \kt{Theory}:
+    %
+    \ktSnippet{./snippets/TheoryRetract.kt}
 \end{frame}
 
 \section{Generic Logic Resolution: the \module{solve} Module}
