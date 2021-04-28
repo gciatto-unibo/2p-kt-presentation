@@ -1,0 +1,35 @@
+@startuml
+left to right direction
+
+interface Substitution {
+    + isSuccess: Boolean
+    + isFailed: Boolean
+    + getOriginal(Var): Var?
+    + getByName(String): Term?
+    + plus(Substitution): Substitution
+    + minus(Iterable<Var>): Substitution
+    + filter((Var, Term) -> Boolean): Substitution
+}
+
+interface Map<K, V> {
+    + size: Int
+    + keys: Set<K>
+    + values: Collection<V>
+    + entries: Set<Map.Entry<K, V>>
+    + isEmpty(): Boolean
+    + containsKey(K): Boolean
+    + containsValue(V): Boolean
+    + get(K): V?
+    + getOrDefault(K, V): V
+}
+
+interface Unifier
+
+interface Fail
+
+Substitution --|> Map: binds //K// to //Var//\nand //V// to //Term//
+
+Unifier --|> Substitution
+
+Fail --|> Substitution
+@enduml
