@@ -2358,7 +2358,7 @@
 
     \begin{block}{Execution Contexts}
         \begin{center}
-            An execution context encapsulates some solver's internal state
+            An execution context encapsulates some solver's internal state.
             Resolution affects and is affected by the solver's execution context.
         \end{center}
 
@@ -2569,7 +2569,7 @@
     %
     \begin{itemize}\small
         \item \emph{solvers} expose properties supporting \alert{inspection} of their state
-        \item \alert{mutalbe} solvers expose methods to \alert{alter} their state
+        \item \alert{mutable} solvers expose methods to \alert{alter} their state
         %
         \begin{itemize}
             \item[!] the state of \emph{non}-mutable solvers may change too, because of resolution
@@ -2583,7 +2583,7 @@
 
 \begin{frame}[allowframebreaks]{Creating \kt{Solvers} via a \kt{SolverFactory}}
     \begin{block}{About solver factories}\centering
-        Objects of \kt{SolverFactory} aim at instantiating \kt{Solver}s
+        Objects of type \kt{SolverFactory} aim at instantiating \kt{Solver}s
     \end{block}
 
     \bigskip
@@ -2604,7 +2604,11 @@
         \item \ldots letting the caller specify the new solver's:
         %
         \begin{enumerate}
-            \item libraries to be loaded upon construction (possibly, other than the default ones)
+            \item libraries to be loaded upon construction 
+            %
+            \begin{itemize}
+                \item (possibly, other than the default ones)
+            \end{itemize}
             \item initial values of specific flags
             \item content of the static KB
             \item initial content of the dynamic KB
@@ -2857,7 +2861,7 @@
         Primitives and functions are indexed in \kt{Library}s via \kt{Signature}s,
         %
         \begin{itemize}
-            \item[ie] couples \kt{names}-\kt{arities}
+            \item[ie] \kt{name}-\kt{arity} pairs
         \end{itemize}
     \end{block}
 
@@ -2873,7 +2877,7 @@
 
     \begin{exampleblock}{Conventions on \textbf{aliases}}
         \begin{itemize}
-            \item Same of Java packages names
+            \item Same of Jiesava packages names
             \item[ie] camel case, dot separated, spaceless
             \item[eg] \texttt{prolog.lang}, \texttt{prolog.io} 
         \end{itemize}
@@ -2948,6 +2952,10 @@
         \begin{enumerate}
             \item send a \alert{request}, describing $G$, to $P$
             \item receive several \alert{responses}, describing solutions to $G$, from $P$
+            %
+            \begin{itemize}
+                \item possibly containing some \emph{side effect}, to be \alert{reified}
+            \end{itemize}
         \end{enumerate}
     \end{itemize}
 
@@ -2962,10 +2970,10 @@
     \framebreak
 
     \ktSnippet{snippets/MissingExample.kt}
-    % natural 
+    % sum (functional)
 
     \ktSnippet{snippets/MissingExample.kt}
-    % assert 
+    % natural (backtraclabkle)
 
     \framebreak
 
@@ -2989,38 +2997,179 @@
             %
             \begin{itemize}
                 \item possibility to specify \alert{success} / \alert{failure} / \alert{exceptions}
-                \item possibility to provoke \alert{\kt{SideEffects}}
+                \item possibility to provoke \alert{\kt{SideEffect}}s
             \end{itemize}
         \end{itemize}
     \end{block}
 \end{frame}
 
-\begin{frame}[allowframebreaks]{The \kt{Function} Type}
-    definition
+\begin{frame}[allowframebreaks]{\kt{Primitive}s provoking \kt{SideEffect}s}
+    \begin{block}{Definition: \kt{SideEffect}s}
+        \begin{itemize}
+            \item Instances of \kt{SideEffect} represent an \alert{edit to be perfomed} to some \kt{ExecutionContext}
+            \item Only \alert{differences} are represented
+            %
+            \begin{itemize}
+                \item[eg] \alert{clauses} to be \alert{added} / \alert{removed} to the static / dynamic KB
+                \item[eg] \alert{flags} to be \alert{set} / \alert{removed} by \alert{name}
+                \item[eg] \alert{channels} to be \alert{opened} / \alert{closed} by \alert{name} 
+            \end{itemize}
+            \item \kt{SideEffect}s can be \alert{applied} to \kt{ExecutionContext}
+            %
+            \begin{itemize}
+                \item producing \alert{another} \kt{ExecutionContext}
+                \item only differing from the former one for the \alert{edit} represented by the \kt{SideEffect}
+            \end{itemize}
+            \item \kt{SideEffect} creation \alert{$\neq$} \kt{SideEffect} application
+            %
+            \begin{itemize}
+                \item analogy with lambda expressions
+            \end{itemize}
+        \end{itemize}
+    \end{block}
 
-    request \& response
+    \begin{center}
+        \includegraphics[height=.75\textheight]{img/sideeffects.pdf}
+    \end{center}
 
-    purpose
+    \begin{block}{\kt{SideEffect}s creation}
+        \begin{itemize}
+            \item Side effects are created along with \kt{Responses}
+            \item \ldots via \kt{SideEffects\alert{Builder}}\alert{s}
+            %
+            \begin{itemize}
+                \item overloads exist for each \kt{Response.\alert{reply*}} method
+                \item supporting the syntax:
+                %
+                \begin{center}
+                    \kt{request.reply*(solution) \alert{\{ \meta{add side effects here} \}}}
+                \end{center}
+            \end{itemize}
+        \end{itemize}
+    \end{block}
 
-    example
+    \framebreak
+
+    \ktSnippet{snippets/MissingExample.kt}
+    % assert
+
 \end{frame}
 
-\begin{frame}[allowframebreaks]{The \kt{Library} Type Hierarchy}
-    definition
+\begin{frame}[allowframebreaks]{The \kt{PrologFunction} Type}
+    \begin{alertblock}{Problem}
+        \begin{itemize}
+            \item Some predicates may require \alert{logic expressions} to be \alert{evalued} / \alert{reduced}
+            %
+            \begin{itemize}
+                \item[eg] \pl{X is Y + 1} (which is equal to \alert{\pl{is(X, '+'(Y, 1))}})
+            \end{itemize}
+            \item Evaluation may involve several \alert{functions}
+            %
+            \begin{itemize}
+                \item[ie] objects consuming $N \geq$ terms a producing a \alert{result}
+                %
+                \begin{itemize}
+                    \item which is, in turn, a \kt{Term}
+                \end{itemize}
+            \end{itemize}
+            \item Plugging \alert{custom} functions into a \kt{Solver} should be possible
+        \end{itemize}
+    \end{alertblock}
 
-    purpose
+    \begin{block}{Why \kt{PrologFunction}s}
+        \begin{itemize}
+            \item A means for calling Kotlin code from LP
+            %
+            \begin{itemize}
+                \item with the purpose of \alert{evaluating} an expression
+            \end{itemize}
+        \end{itemize}
+    \end{block}
 
-    example
-\end{frame}
+    \framebreak
 
-\begin{frame}[allowframebreaks]{Example: The \kt{CommonBuiltins} Type}
-    which items does it include and what's their type, and why
+    Design very similar to \kt{Primitives}:
+    %
+    \begin{center}
+        \includegraphics[height=.7\textheight]{img/function.pdf}
+    \end{center}
+    %
+    \begin{itemize}
+        \item[!] no support for side effects, nor multiple responses
+    \end{itemize}
 
-    example of rule
+    \framebreak
 
-    example of primitive
+    \ktSnippet{snippets/MissingExample.kt}
+    % sum (functional)
 
-    example of function
+    \framebreak
+
+    \begin{alertblock}{About \kt{PrologFunction}s usage}
+        Expression evaluation:
+        % 
+        \begin{itemize}
+            \item is expected to \alert{only} occur as part of some \kt{Primitive} execution
+            \item is likely to involve \alert{several} \kt{PrologFunction}s
+            \item must be \alert{atomic} in the eyes of the \kt{Solver}
+        \end{itemize}
+    \end{alertblock}
+
+    \begin{exampleblock}{Example: the \pl{is/2} predicate}
+        \begin{itemize}
+            \item Prolog's \pl{is/2} is both an operator and a primitive in \twopkt{}
+            \item Whenever a goal of the form \pl{is(X, Expr)} is met:
+            %
+            \begin{itemize}
+                \item \pl{Expr} is \alert{evalued}, by applying \alert{all} possible functions
+                \item the resulting term is bound to \pl{X}
+            \end{itemize}
+        \end{itemize}
+    \end{exampleblock}
+
+    \framebreak
+
+    \alert{Evaluators} aim to ``apply \alert{all possible} functions'' to an expression:
+    %
+    \begin{center}
+        \includegraphics[width=.5\linewidth]{img/evaluator.pdf}
+    \end{center}
+    %
+    \small
+    where
+    %
+    \begin{itemize}
+        \item ``all possible functions'' = \emph{``all functions currently loaded into the \kt{Solver}''}
+    \end{itemize}
+
+    \framebreak
+
+    \begin{block}{Sorts of evaluators}
+        \begin{description}
+            \item[\kt{ExpressionReducer}] reduces all sub-expressions matching some function, leaving others unreduced
+            %
+            \begin{itemize}\small
+                \item sub-expressions are evalued using a \alert{post-order} visit
+                \item[eg] \pl{g(f(1 + 2), 3 + 4)} $\rightarrow$ \pl{g(f(3), 7)} 
+            \end{itemize} 
+            \item[\kt{ExpressionEvaluator}] attempts to evaluate all sub-expressions matching some function, throws an error if some does not
+            %
+            \begin{itemize}\small
+                \item sub-expressions are evalued using a \alert{post-order} visit
+                \item[eg] \pl{(1 + 2) - (3 + f(x))} $\rightarrow$ error as there is no function for \pl{f/1}
+            \end{itemize} 
+            \item[\kt{ArithmeticEvaluator}] like \kt{ExpressionEvaluator}, but only leverages on arithmetic functions
+            %
+            \begin{itemize}\small
+                \item[ie] functions accepting and returning \kt{Numeric} arguments
+            \end{itemize} 
+        \end{description}
+    \end{block}
+
+    \framebreak
+
+    \ktSnippet{snippets/MissingExample.kt}
+    % implementation of the is/2 primitive
 \end{frame}
 
 \subsubsection{Communicating with the external world via \kt{Channel}s}
@@ -3123,7 +3272,7 @@
     main subtypes
 \end{frame}
 
-\section{Custom \kt{Primitives}s, \kt{Function}s, and \kt{Libraries}s}
+\subsection{Custom \kt{Primitive}s, \kt{Function}s, and \kt{Libraries}s}
 
 \begin{frame}[allowframebreaks]{Overview on Custom Libraries}
     containers of operators + rules + primitives + functions
@@ -3137,7 +3286,7 @@
     primitives as the main way to implement logic functions in Kotlin
 \end{frame}
 
-\subsection{About \kt{PrimitiveWrappers} and \kt{SideEffect}s}
+\subsubsection{About \kt{PrimitiveWrappers} and \kt{SideEffect}s}
 
 \begin{frame}[allowframebreaks]{Overview on \kt{PrimitiveWrappers}}
     enumerate the sorts of primitive wrappers
@@ -3147,45 +3296,11 @@
     list of ensurer methods
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Overview on \kt{SideEffect}s and \kt{SideEffectBuilder}s}
-    enumerate the sorts of side effects which can be created
-
-\end{frame}
-
-\begin{frame}[allowframebreaks]{Overview Requests and Responses}
-    enumerate the sorts of responses which can be created out of requests (in Solve)
-\end{frame}
-
 \begin{frame}[allowframebreaks]{Example of \kt{PrimitiveWrappers} of all sorts}
    one example for each sort of primitive wrapper from the CommonBuiltins
 \end{frame}
 
-\subsection{Logic \kt{Function}s and Evaluators}
-
-\begin{frame}[allowframebreaks]{Overview on \kt{FunctionWrappers}}
-    enumerate the sorts of function wrappers
-
-    description of the general Pattern
-\end{frame}
-
-\begin{frame}[allowframebreaks]{Overview on Evaluators}
-    definition of evaluator
-
-    main sorts of evaluators
-
-\end{frame}
-
-\begin{frame}[allowframebreaks]{Overview Requests and Responses}
-    enumerate the sorts of responses which can be created out of requests (in Compute)
-\end{frame}
-
-\begin{frame}[allowframebreaks]{Example of \kt{FunctionWrappers} of all sorts}
-   a few example of functions of different sorts from the CommonBuiltins
-
-   invocation of an evaluator from within a primitive
-\end{frame}
-
-\subsection{Writing \kt{Library}}
+\subsubsection{Writing \kt{Library}}
 
 \begin{frame}[allowframebreaks]{\kt{Library} end-to-end}
     full example of a library containing at least 1 operator, 1 rule, 1 primitive and 1 function
@@ -3193,9 +3308,21 @@
     loading the library into a solver
  \end{frame}
 
+\subsubsection{Default libraries}
+
+\begin{frame}[allowframebreaks]{Example: The \kt{CommonBuiltins} Type}
+    which items does it include and what's their type, and why
+
+    example of rule
+
+    example of primitive
+
+    example of function
+\end{frame}
+
 \section{Prolog as a State Machine: the \module{solve-classic} Module}
 
-\begin{frame}[allowframebreaks]{Overview on the \module{:solve-classic} Module}
+\begin{frame}[allowframebreaks]{Overview on the \module{solve-classic} Module}
     state machine based design
 
     AbstractClassicSolver

@@ -1,0 +1,28 @@
+@startuml
+
+interface TermVisitor<T>
+
+abstract class AbstractEvaluator<E : ExecutionContext, T : Term> {
+  # request: Solve.Request<E>
+  # index: Int
+  --
+  # unevaluable(Struct): T
+  # staticCheck(Term)
+  # dynamicCheck(Term, Term)
+}
+
+AbstractEvaluator --|> TermVisitor : binds //T// to subtypes of //Term//
+
+class  ExpressionReducer<E> 
+
+ExpressionReducer <|-- AbstractEvaluator : binds //T// to //Term//
+
+class  ExpressionEvaluator<E>
+
+ExpressionEvaluator <|-- AbstractEvaluator : binds //T// to //Term//
+
+class  ArithmeticEvaluator<E>
+
+ArithmeticEvaluator <|-- AbstractEvaluator : binds //T// to //Term//
+
+@enduml

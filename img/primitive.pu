@@ -7,7 +7,7 @@ class Request<C : ExecutionContext> {
     + context: C
     --
     + replyWith(Solution): Response
-    + replyWith(Solution, **SideEffectsBuilder.() -> Unit): Response
+    + replyWith(Solution, **SideEffectsBuilder.() -> Unit**): Response
     ..
     + replySuccess(...): Response
     + replyFail(...): Response

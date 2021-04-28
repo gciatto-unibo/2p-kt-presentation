@@ -1,0 +1,29 @@
+@startuml
+abstract class Compute 
+
+class Request<C : ExecutionContext> {
+    + signature: Signature
+    + arguments: List<Term>
+    + context: C
+    --
+    + replyWith(Term): Response
+}
+
+Request --|> Compute 
+
+class Response {
+    + result: Term
+}
+
+Response --|> Compute 
+
+interface PrologFunction<C : ExecutionContext> << (T,#3495eb) typealias >>  {
+  **alias for:** (Request<C>) -> Response
+}
+
+PrologFunction "1" <.. "1" Request
+
+PrologFunction "1" ..> "1" Response
+
+note top of PrologFunction: functions accepting 1 request and returning 1 response
+@enduml
