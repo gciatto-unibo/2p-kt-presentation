@@ -3174,27 +3174,120 @@
 
 \subsubsection{Communicating with the external world via \kt{Channel}s}
 
-\begin{frame}[allowframebreaks]{Overview on Channels}
-    channels as the basic IO facilities for solvers
+\begin{frame}[allowframebreaks]{Overview on \kt{Channel}s}
+    \begin{block}{Why \kt{Channel}s}
+        \begin{itemize}
+            \item \kt{Solver}s are \alert{prosumers} of data \alert{streams}
+            \item Data represented in the form of \alert{characters} / \alert{strings}
+            \item I/O facilities similar to Java's \kt{Reader}s and \kt{Writer}s are needed
+            %
+            \begin{itemize}
+                \item[!] unfortunately, Kotlin MP does not support I/O
+            \end{itemize}
+        \end{itemize}
+    \end{block}
 
-    channel stores as key-value pair letting a solver keep track of the open channels and their names
+    \begin{block}{Design choices}
+        \begin{itemize}
+            \item \kt{Channel}s are of 2 sorts: either \kt{InputChannel}s or \kt{OutputChannel}s
+            %
+            \begin{itemize}
+                \item \kt{InputChannel}s (aka \alert{sources}) let \kt{Solver}s read data of type \kt{T}
+                \item \kt{OutputChannel}s (aka \alert{sinks}) let \kt{Solver}s write data of type \kt{T}
+            \end{itemize}
+            \item \kt{Channel}s are identified by univoke terms, in the eyes of \kt{Solver}s
+            %
+            \begin{itemize}
+                \item or by some \alert{alias}, i.e. an \alert{atom}
+            \end{itemize}
+            \item \kt{Channel}s provide basic support to the features of \module{:io-lib}
+            \item Each \kt{Solver} contains an \kt{InputStore} and an \kt{OutputStore}
+            %
+            \begin{itemize}
+                \item keeping track of currently available \kt{Channel}s
+                \item and their aliases
+            \end{itemize}
+        \end{itemize}
+    \end{block}
 
-    input channels let solvers consume inputs
-        + listeners can be added to intercept consumption
-
-    output channels let solvers produce outputs
-        + listeners can be added to intercept production
-
-    similar to Java Input/Output Streams, but non-blocking
+    \begin{block}{Default \kt{Channel}s}
+        Each \kt{Solver} is initialised with 4 default \kt{Channel}s:
+        %
+        \begin{description} 
+            \item[\kt{stdIn: InputChannel<\textit{String}>}] main input channel
+            \item[\kt{stdOut: OutputChannel<\textit{String}>}] main output channel 
+            \item[\kt{stdErr: OutputChannel<\textit{String}>}] error channel
+            \item[\kt{warnings: OutputChannel<\textit{PrologWarning}>}] warning channel 
+            %
+            \begin{itemize}
+                \item does not output strings, but instances of \kt{PrologWarning}
+            \end{itemize} 
+        \end{description}
+    \end{block}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{Channel} Type Hierarchy}
-    input channels
+    \begin{center}
+        \includegraphics[width=.6\linewidth]{img/channels.pdf}
+    \end{center}
 
-    output channels
+    \begin{block}{The \kt{Channel<\texttt{T}>}}\centering
+        Base type for both input/output channels. 
+        All channels are \alert{observable} entities supporting the (un)registration of \alert{listeners}.
+    \end{block}
+    %
+    \begin{description}
+        \item[\kt{addListener(Listener<T>)}] registers a new listener
+        \item[\kt{removeListener(Listener<T>)}] unregisters a listener
+        \item[\kt{clearListeners(Listener<T>)}] unregisters all listeners
+        \item[\kt{close()}] closes the channel (no more write/read allowed)
+        \item[\kt{isClosed: Boolean}] returns \kt{true} iff the channel has been closed
+        \item[\kt{streamTerm: Struct}] returns the \kt{Struct} identifying this channel
+        %
+        \begin{itemize}\small
+            \item is always a struct of the form:
+            %
+            \begin{center}
+                \pl{'\$stream'(InOut, Id)}
+            \end{center}
+            where
+            %
+            \begin{itemize}\scriptsize
+                \item \pl{InOut} is either \pl{`in'} or \pl{`out'}, depending on the sort of channel
+                \item \pl{Id} is a number univokely identifying the channel instance
+            \end{itemize}
+        \end{itemize}  
+    \end{description}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Creating \kt{Channel}s}
+
+    \begin{block}{Design choices -- \kt{InputChannel}s}
+        \kt{InputChannel}s may be created out of:
+        %
+        \begin{itemize}
+            \item a \alert{generator} function (of type \alert{\kt{() -> T}})
+            \item an \kt{InputStream} or \kt{Reader} (JVM only)
+            %
+            \begin{itemize}
+                \item[eg] \kt{System.in}
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Design choices -- \kt{InputChannel}s}
+        \kt{OutputChannel}s may be created out of:
+        %
+        \begin{itemize}
+            \item a \alert{consumer} function (of type \alert{\kt{(T) -> Unit}})
+            \item an \kt{OutputStream} or \kt{Writer} (JVM only)
+            %
+            \begin{itemize}
+                \item[eg] \kt{System.out} or \kt{System.err}
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+
     creating input channels from callbacks
 
     creating input channels from strings

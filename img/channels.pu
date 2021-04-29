@@ -27,50 +27,8 @@ interface OutputChannel<T> {
     + flush()
 }
 
-interface InputStore {
-    + stdIn: InputChannel<String>
-    ..
-    + current: InputChannel<String>?
-    + currentAliases: Sequence<String>
-    --
-    + setCurrent(String): InputStore
-    + setCurrent(InputChannel<String>): InputStore
-    ..
-    + findByTerm(Term): Sequence<InputChannel<String>>
-    + aliasesOf(InputChannel<String>): Sequence<String>
-}
-
-interface OutputStore {
-    + stdOut: OutputChannel<String>
-    + stdErr: OutputChannel<String>
-    + warnings: OutputChannel<PrologWarning>
-    ..
-    + current: OutputChannel<String>?
-    + currentAliases: Sequence<String>
-    --
-    + setCurrent(String): OutputStore
-    + setCurrent(OutputChannel<String>): OutputStore
-    ..
-    + findByTerm(Term): Sequence<OutputChannel<String>>
-    + aliasesOf(OutputChannel<String>): Sequence<String>
-}
-
-interface Map<K, V>
-
-InputStore --|> Map: binds //K// to //String//\nand //V// to //InputChannel<String>>//
-OutputStore --|> Map: binds //K// to //String//\nand //V// to //OutputChannel<String>>//
-
-interface OutputStore
-
 Channel "1" *-left- "N" Listener
 InputChannel --|> Channel
 OutputChannel --|> Channel
 
-InputStore "1" *-- "N" InputChannel
-OutputStore "1" *-- "N" OutputChannel
-
-interface ExecutionContext
-
-ExecutionContext "1" *-- "1" InputStore
-ExecutionContext "1" *-- "1" OutputStore
 @enduml
