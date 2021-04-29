@@ -3686,6 +3686,8 @@
         \end{itemize}
     \end{block}
 
+    \framebreak
+
     \begin{description}
         \item[\kt{InstantiationError}] to be thrown when a sub-goal/argument is being evalued but it is not sufficiently instantiated
         %
@@ -3829,25 +3831,86 @@
 \subsection{Custom \kt{Primitive}s, \kt{Function}s, and \kt{Libraries}s}
 
 \begin{frame}[allowframebreaks]{Overview on Custom Libraries}
-    containers of operators + rules + primitives + functions
+    \begin{itemize}
+        \item Libraries are the basic means to provide built-in functionalities to solvers
+    
+        \bigskip
 
-    aliased by a string
+        \item Default built-in functionalities are provided via libraries as well
+        
+        \bigskip
 
-    they take priority over solvers KB
+        \item Creating a library essentially means:
+        %
+        \begin{enumerate}
+            \item defining a number of \alert{primitives}
+            \item defining a number of \alert{functions}
+            \item defining a number of \alert{rules} and \alert{facts}
+            \item deciding which of these should be usable as operators
+            \item defining \alert{operators} accordingly
+        \end{enumerate}
 
-    primitives as the main way to implement back-trackable predicates in Kotlin
+        \bigskip
 
-    primitives as the main way to implement logic functions in Kotlin
+        \item[!] Primitives, in particular, are the most common object libraries implementers will manupulate
+    \end{itemize}
+
+    \framebreak
+
+    \begin{block}{Writing \textbf{primitives} involves many common aspects}
+        \begin{itemize}
+            \item[eg] input validation
+            \item[eg] permission checking
+            \item[eg] arguments/results packing \& unpacking
+            \item[\vdots] 
+        \end{itemize}
+    \end{block}
 \end{frame}
 
-\subsubsection{About \kt{PrimitiveWrappers} and \kt{SideEffect}s}
-
 \begin{frame}[allowframebreaks]{Overview on \kt{PrimitiveWrappers}}
-    enumerate the sorts of primitive wrappers
+    \begin{block}{The \kt{PrimitiveWrapper} type hierarchy}
+        A pool of abstract classes factorising common aspects of primitives' implementation
+        %
+        \begin{itemize}
+            \item primitive wrapper $\approx$ signature + primitive + utility methods
+        \end{itemize}
+    \end{block}
 
-    description of the general Pattern
+    \framebreak
+    
+    \begin{center}
+        \includegraphics[width=\linewidth]{img/wrappers.pdf}
+    \end{center}
 
-    list of ensurer methods
+    \framebreak
+
+    Main wrapper classes:
+    %
+    \begin{description}
+        \item[\kt{PredicateWithoutArguments}] base class for 0-ary predicates
+        \item[\kt{UnaryPredicate}] base class for 1-ary predicates 
+        \item[\kt{BinaryRelation}] base class for 2-ary predicates  
+        \item[\kt{TernaryRelation}] base class for 3-ary predicates   
+        \item[\kt{QuaternaryRelation}] base class for 4-ary predicates   
+        \item[\kt{QuinaryRelation}] base class for 5-ary predicates   
+    \end{description}
+
+    \framebreak
+
+    Each wrapper class, comes with 4 more abstract sub-classes:
+    %
+    \begin{description}
+        \item[\kt{WithoutSideEffects}] to be preferred if the predicate does not provoke side-effects
+        \item[\kt{NonBacktrackable}] to be preferred if the predicate is not backtrackable, yet it may provoke side-effects
+        \item[\kt{Functional}] to be preferred if the predicate is not backtrackable and does not provoke side-effects
+        \item[\kt{Predicative}] to be preferred if the predicate has a boolean semantics, i.e. it is not backtrackable, it does not provoke side-effects, and it does not assign any variable
+    \end{description}
+
+    \framebreak
+
+    Each sub-class of \kt{PrimitiveWrapper} inherits a number of protected utility methods:
+    %
+    
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Example of \kt{PrimitiveWrappers} of all sorts}
