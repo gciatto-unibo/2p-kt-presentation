@@ -3373,7 +3373,7 @@
     \framebreak
 
     \begin{block}{The \kt{InputStore} type}
-        Map keeping track of currently open \kt{InputChannel}s for a \kt{Solver}, and their aliases
+        Immmutable map keeping track of currently open \kt{InputChannel}s for a \kt{Solver}, and their aliases
         %
         \begin{itemize}
             \item References the \alert{standard} input channel
@@ -3428,58 +3428,402 @@
 
 \subsubsection{Configuring \kt{Solver}s via \kt{Flag}s}
 
-\begin{frame}[allowframebreaks]{Overview on flags}
-    key/value pairs where keys are atoms and values are terms
-
-    they configure the operation of a solver
-
-    some are mutable some are not
+\begin{frame}{Overview on flags}
+    \begin{block}{About flags}
+        \begin{itemize}
+            \item Flags are key-value pairs carrying configurable aspects of \kt{Solver}s
+            %
+            \begin{itemize}
+                \item \alert{keys} are \kt{String}s, whereas
+                \item \alert{values} are \kt{Term}s
+            \end{itemize}
+            \item Some flags are editable, while others are \kt{read-only}
+            %
+            \begin{itemize}
+                \item All flags can be inspected during resolution
+                \item Editable flags' values can be altered during resolution
+            \end{itemize}
+            \item Custom flags may be defined/inspected during resultion
+        \end{itemize}
+    \end{block}
 \end{frame}
 
-\begin{frame}[allowframebreaks]{The \kt{FlagStore} Type}
-    API
+\begin{frame}[allowframebreaks]{The \kt{FlagStore} and \kt{NotableFlag} Types}
+    \begin{center}
+        \includegraphics[width=.8\linewidth]{img/flags.pdf}
+    \end{center}
 
-    purpose
+    \begin{alertblock}{No type for flags}
+        \begin{itemize}
+            \item Kotlin's \kt{Pair}s are used instead
+            \item Flag $\equiv$ \kt{Pair<String, Term>}, in the general case
+            \item \kt{NotableFlag} as the convenience type for \alert{built-in} flags
+        \end{itemize}
+    \end{alertblock}
+
+    \framebreak
+
+    \begin{block}{The \kt{NotableFlag} type}\centering
+        Ad-hoc type representing \alert{built-in} flags and their admissible values
+    \end{block}
+    %
+    \begin{description}
+        \item[\kt{name: String}] returns the name (i.e. the key) of the flag
+        \item[\kt{admissibleValues: Sequence<Term>}] returns the set of admissible values of the flag
+        \item[\kt{defaultValue: Term}] returns some item of \kt{admissibleValues}
+        \item[\kt{isEditable: Boolean}] returns \kt{true} iff the flag's value can be altered during resolution
+        \item[\kt{isAdmissibleValue(Term): Boolean}] checks whether the provided \kt{Term} is an admissible value for the flag
+        \item[\kt{toPair(): Pair<String, Term>}] converts the notable flag into a key-value pair
+    \end{description}
+
+    \framebreak
+
+    \begin{block}{The \kt{FlagStore} type}
+        Immutable map keeping track of currently defined \alert{flags}' keys and their \alert{values}
+        %
+        \begin{itemize}
+            \item[+] some methods for getting/setting \kt{NotableFlag}s
+        \end{itemize}
+    \end{block}
+    %
+    \begin{description}
+        \item[\kt{get(NotableFlag): Term?}] returns the \emph{actual} value of some \alert{notable} flag 
+        \item[\kt{get(String): Term?}] returns the \emph{actual} value of some flag
+        \item[\kt{set(NotableFlag): FlagStore}] returns a novel store where the provided \alert{notable} flag is set to its \emph{default} value 
+        \item[\kt{set(NotableFlag, Term): FlagStore}] returns a novel store where the provided \alert{notable} flag is set to the \emph{provided} value 
+        \item[\kt{set(String, Term): FlagStore}] returns a novel store where the provided flag is set to the provided value 
+        \item[\kt{plus(\meta{OtherFlags}): FlagStore}] returns a novel store containing the provided flags as well
+        \item[\kt{minus(\meta{FlagNames}): FlagStore}] returns a novel store not containing the provided flags names 
+    \end{description}
+    %
+    \begin{itemize}
+        \item[+] methods of \kt{Map}
+    \end{itemize}
 \end{frame}
 
-\begin{frame}[allowframebreaks]{The \kt{NotableFlag} Type}
-    API
+\begin{frame}[allowframebreaks]{Example: Default \kt{NotableFlag}s and their Purpose}
 
-    purpose
-\end{frame}
+    \begin{block}{\pl{unknown}}
+        Defines what to do when no rule/primitive is found for solving a (sub-)goal:
+        %
+        \begin{itemize}
+            \item Class: \kt{it.unibo.tuprolog.solve.flags.\alert{Unknown}}
+            \item Admissible values: 
+            %
+            \begin{description}
+                \item[\pl{fail}] the goal is silently considered \pl{false}
+                \item[\pl{warning}] \emph{(default)}  the goal is considered \pl{false} \& a warning is raised
+                \item[\pl{error}] an error is raised and resolution is interrupted 
+            \end{description}
+        \end{itemize} 
+    \end{block}
 
-\begin{frame}[allowframebreaks]{Example: Default Flags and their Purpose}
-    unknown
+    \begin{block}{\pl{max\_arity}}
+        Read-only flag dictating the maximum admissible value for a \kt{Struct}
+        %
+        \begin{itemize}
+            \item Class: \kt{it.unibo.tuprolog.solve.flags.\alert{MaxArity}}
+            \item Admissible values: \kt{Int.MAX\_VALUE} (i.e. $2^{31} - 1$)
+        \end{itemize} 
+    \end{block}
 
-    max arty
+    \begin{block}{\pl{last\_call\_optimization}}
+        Dictates whether Prolog \kt{Solver}s should optimise \alert{tail-recursive} rules
+        %
+        \begin{itemize}
+            \item Class: \kt{it.unibo.tuprolog.solve.flags.\alert{LastCallOptimization}}
+            \item Admissible values: 
+            %
+            \begin{description}
+                \item[\pl{on}] \emph{(default)} optimization is performed whenever possible
+                \item[\pl{off}] optimization is never perfomed
+            \end{description}
+        \end{itemize} 
+    \end{block}
 
-    last call optimization
+    \begin{block}{\pl{double\_quotes}}
+        Read-only flag dictating how double-quoted literals should be interpreted
+        %
+        \begin{itemize}
+            \item Class: \kt{it.unibo.tuprolog.solve.flags.\alert{DoubleQuotes}}
+            \item Admissible values: \pl{atom}
+            %
+            \begin{itemize}
+                \item[ie] double-quoted literals are always considered as \kt{Atom}
+            \end{itemize}
+        \end{itemize} 
+    \end{block}
 \end{frame}
 
 \subsubsection{Other sorts of custom fields}
 
-\begin{frame}[allowframebreaks]{Overview on \kt{CustomDataStore}s}
-    containers of custom fields with arbitrary names
+\begin{frame}[allowframebreaks]{Overview on \kt{CustomData}}
 
-    persistent -> never automatically erased
+    \begin{center}
+        \includegraphics[width=.8\linewidth]{img/customdata.pdf}
+    \end{center}
+    
+    \begin{block}{About \kt{CustomDataStore}s}
+        \begin{itemize}
+            \item To ease extensibility, \kt{ExecutionContext}s main contain \kt{CustomData} too
+            \item This is acheieved via one more property, of type \kt{CustomDataStore}
+            \item \kt{CustomDataStore}s have 3 fields of type \kt{CustomData}
+            \item \kt{CustomData} are key-value store which may keep \alert{any sort} of data
+            \item This may exploited by \kt{Primitive}s/\kt{Solver}s implementers
+            %
+            \begin{itemize}
+                \item to accumulate/inspect data to affect resolution
+            \end{itemize}
+        \end{itemize}
+    \end{block}
 
-    durable -> erased after each solution is provided
-
-    ephemeral -> erased upon backtracking
+    \begin{block}{Sorts of \kt{CustomData}}
+        Custom data are of 3 sorts:
+        %
+        \begin{description}
+            \item[ephemeral] | automatically erased after a choice point is selected
+            %
+            \begin{itemize}\small
+                \item[eg] in Prolog, once every time \alert{backtracking} is performed
+            \end{itemize} 
+            \item[durable] | automatically erased after a solution is reached
+            \item[persistent] | never erased automatically
+        \end{description}
+    \end{block}
 \end{frame}
 
-\subsection{Prolog Errors and Warnings}
+\subsection{Errors and Warnings}
 
-\begin{frame}[allowframebreaks]{Overview on Prolog errors}
-    errors and errors terms
+\begin{frame}[allowframebreaks]{The \kt{TuPrologRuntimeException} Type Hierarchy}
+    
+    \begin{center}
+        \includegraphics[width=\linewidth]{img/errors.pdf}
+    \end{center}
 
-    types of errors, their meaning and structure
+    \framebreak
+
+    \begin{description}
+        \item[\kt{TuProlog\textit{Runtime}Exception}] base type for all issues which may occur during resolution 
+        %
+        \begin{itemize}\small
+            \item when thrown \alert{within \kt{Primitive}s}, they affect the ongoing resolution
+            \item resolution is interrupted, and a \kt{Solution.\alert{Halt}} is produced
+            %
+            \begin{itemize}\scriptsize
+                \item the solution keeps track of the exception
+                \item the exception keeps track of the execution context where the issue occurred
+            \end{itemize}
+        \end{itemize} 
+         
+        \item[\kt{HaltException}] provokes the immediate interruption of the resolution process
+        %
+        \begin{itemize}\small
+            \item may carry an \alert{exit code} (integer)
+            \item analogous to \kt{System.exit(\meta{int})} one the JVM
+            \item produces a \kt{Solution.Halt}
+        \end{itemize} 
+        
+        \item[\kt{TimeOutException}] provokes the immediate interruption of the resolution process
+        %
+        \begin{itemize}\small
+            \item automatically thrown by \kt{Solver}s upon \alert{timeouts}
+        \end{itemize}
+
+        \framebreak
+        
+        \item[\kt{PrologError}] base types for LP-related errors
+        %
+        \begin{itemize}\small
+            \item[ie] errors which can be catched in LP
+            \item[eg] via \kt{catch/3}, in Prolog
+        \end{itemize} 
+
+        \item[\kt{PrologWarning}] base types for LP-related warnings
+        %
+        \begin{itemize}\small
+            \item these are not meant to be thrown
+            \item instances of \kt{PrologWarning} must be considered ordinary data structures to be outputted on the \kt{warnings} \kt{OutputChannel}
+        \end{itemize} 
+    \end{description}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{PrologError} Type Hierarchy}
-    general structure of \kt{PrologError}
 
-    main subtypes
+    \begin{block}{About \kt{PrologError}s}
+        \begin{itemize}
+            \item Each instance of \kt{PrologError} corresponds to a \kt{Term}
+            \item The term can be thrown with predicate \alert{\kt{throw/1}}\ldots
+            \item \ldots and catched via \alert{\kt{catch/3}} 
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Prolog ISO Standard Errors}
+        Following the Standard:
+        %
+        \begin{itemize}
+            \item each subtype of \kt{PrologError} has a corresponding \alert{error \kt{Struct}}
+            \item the general pattern is as follows:
+            %
+            \begin{center}
+                \pl{error(\textit{Description}, \textit{Custom})}
+            \end{center}
+            %
+            where:
+            %
+            \begin{description}\small
+                \item[\pl{\textit{Description}}] is a \kt{Term} whose structure depends on the particular sub-type of \kt{PrologError}
+                %
+                \begin{itemize}\scriptsize
+                    \item it aims at describing the error, logically
+                \end{itemize} 
+                \item[\pl{\textit{Custom}}] is a custom, implementation-specific \kt{Term}
+                %
+                \begin{itemize}\scriptsize
+                    \item \twopkt{}'s convention: it carries the message to be shown to the user
+                    \item so, it is commonly an \kt{Atom}
+                \end{itemize}  
+            \end{description}
+        \end{itemize}
+    \end{block}
+
+    \begin{description}
+        \item[\kt{InstantiationError}] to be thrown when a sub-goal/argument is being evalued but it is not sufficiently instantiated
+        %
+        \begin{description}\small
+            \item[\pl{\textit{Description}}] is always the atom \alert{\pl{instantiation\_error}}
+            \item[\pl{\textit{Custom}}] describes what argument/sub-term provoked the error
+        \end{description} 
+
+        \framebreak
+
+        \item[\kt{TypeError}] to be thrown when a sub-goal/argument is being evalued but has not the right logic type
+        %
+        \begin{description}\small
+            \item[\pl{\textit{Description}}] is a \kt{Struct} of the form \pl{type\_error(\textit{Expected}, \textit{Culprit})}
+            \item[\pl{\textit{Expected}}] is an \kt{Atom} describing the expected type
+            %
+            \begin{itemize}\scriptsize
+                \item admissible values are contained into the class \kt{TypeError.\alert{Expected}}
+                \item[eg] \pl{atom}, \pl{atomic}, \pl{callable}, \pl{character}, \pl{compound}, etc. 
+            \end{itemize} 
+            \item[\pl{\textit{Culprit}}] is the \kt{Term} having the wrong type
+        \end{description} 
+
+        \framebreak
+
+        \item[\kt{DomainError}] to be thrown when a sub-goal/argument is being evalued and it has the right type, but its value is not admissible
+        %
+        \begin{description}\small
+            \item[\pl{\textit{Description}}] is a \kt{Struct} of the form \pl{domain\_error(\textit{Expected}, \textit{Culprit})}
+            \item[\pl{\textit{Expected}}] is an \kt{Atom} describing the expected value
+            %
+            \begin{itemize}\scriptsize
+                \item admissible values are contained into the class \kt{DomainError.\alert{Expected}}
+                \item[eg] \pl{not\_less\_than\_zero}, \pl{non\_empty\_list}, \pl{operator\_specifier}, etc. 
+            \end{itemize} 
+            \item[\pl{\textit{Culprit}}] is the \kt{Term} having the wrong value
+        \end{description} 
+
+        \framebreak
+
+        \item[\kt{RepresentationError}] to be thrown when a value cannot be represented as a \kt{Term}
+        %
+        \begin{description}\small
+            \item[\pl{\textit{Description}}] is a \kt{Struct} of the form \pl{representation\_error(\textit{Limit})}
+            \item[\pl{\textit{Limit}}] describes the representation limit which has been hit
+            %
+            \begin{itemize}\scriptsize
+                \item admissible values are contained into the class \kt{RepresentationError.\alert{Limit}}
+                \item[eg] \pl{character}, \pl{character\_code}, \pl{max\_arity}, etc. 
+            \end{itemize} 
+        \end{description} 
+
+        \framebreak
+
+        \item[\kt{SyntaxError}] to be thrown when parsing some badly formed string during resolution
+        %
+        \begin{description}\small
+            \item[\pl{\textit{Description}}] is always the atom \alert{\pl{syntax\_error}}
+            \item[\pl{\textit{Custom}}] describes why the string could not be parsed, and localizes the issue into the string
+        \end{description} 
+
+        \framebreak
+
+        \item[\kt{EvaluationError}] to be thrown when some expression evaluation meets an arithmetic issue
+        %
+        \begin{description}\small
+            \item[\pl{\textit{Description}}] is a \kt{Struct} of the form \pl{evaluation\_error(\textit{Type})}
+            \item[\pl{\textit{Type}}] describes the evaluation issue which has been met
+            %
+            \begin{itemize}\scriptsize
+                \item admissible values are contained into the class \kt{EvaluationError.\alert{Type}}
+                \item[eg] \pl{zero\_divisor}, \pl{int\_overflow}, \pl{float\_overflow}, etc. 
+            \end{itemize} 
+        \end{description} 
+
+        \framebreak
+
+        \item[\kt{ExistenceError}] to be thrown accessing some resource by name/reference fails because the resource does not exist 
+        %
+        \begin{description}\small
+            \item[\pl{\textit{Description}}] is a \kt{Struct} of the form \pl{existence\_error(\textit{ObjectType}, \textit{Culprit})}
+            \item[\pl{\textit{ObjectType}}] describes the sort of resource which does not exist
+            %
+            \begin{itemize}\scriptsize
+                \item admissible values are contained into the class \kt{ExistenceError.\alert{ObjectType}}
+                \item[eg] \pl{procedure}, \pl{source\_sink}, \pl{stream}, etc. 
+            \end{itemize} 
+        \end{description} 
+
+        \framebreak
+
+        \item[\kt{PermissionError}] to be thrown when performing an operation which is not permitted
+        %
+        \begin{description}\small
+            \item[\pl{\textit{Description}}] is a \kt{Struct} of the form \pl{permission\_error(\textit{Operation}, \textit{Permission}, \textit{Culprit})}
+            \item[\pl{\textit{Operation}}] describes the sort of operation which failed
+            %
+            \begin{itemize}\scriptsize
+                \item admissible values are contained into the class \kt{PermissionError.\alert{Operation}}
+                \item[eg] \pl{access}, \pl{invoke}, \pl{modify}, \pl{open}, etc. 
+            \end{itemize} 
+            \item[\pl{\textit{Permission}}] describes the sort of resource for which the operation is not permitted
+            %
+            \begin{itemize}\scriptsize
+                \item admissible values are contained into the class \kt{PermissionError.\alert{Permission}}
+                \item[eg] \pl{flag}, \pl{operator}, \pl{source\_sink}, \pl{static\_procedure}, etc. 
+            \end{itemize} 
+            \item[\pl{\textit{Culprit}}] is the (sub-)goal which provoked the error
+        \end{description} 
+
+        \framebreak
+
+        \item[\kt{SystemError}] to be thrown for any other circumstance
+        %
+        \begin{description}\small
+            \item[\pl{\textit{Description}}] is always the atom \alert{\pl{system\_error}}
+            \item[\pl{\textit{Custom}}] provides the actual description of the problem
+        \end{description} 
+        %
+        \begin{itemize}
+            \item[!] this may be used to wrap Kotlin exceptions occurring during resolution
+        \end{itemize}
+    \end{description} 
+\end{frame}
+
+\begin{frame}{The \kt{PrologWarning} Type Hierarchy}
+
+    Main sub-types:
+    %
+    \bigskip
+    %
+    \begin{description}
+        \item[\kt{MissingPredicate}] used to signal that a \kt{Solver} knows no predicate to solve a (sub-)goal
+        
+        \bigskip
+
+        \item[\kt{InitializationIssue}] used to signal a failure/error while executing some \alert{directive}
+    \end{description}
 \end{frame}
 
 \subsection{Custom \kt{Primitive}s, \kt{Function}s, and \kt{Libraries}s}

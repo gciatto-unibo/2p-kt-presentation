@@ -1,0 +1,19 @@
+@startuml
+interface CustomData << (T,#3495eb) typealias >>  {
+  **alias for:** Map<//String//, //Any//>
+}
+
+class CustomDataStore {
+  + persistent: CustomData
+  + durable: CustomData
+  + ephemeral: CustomData
+  + discardEphemeral(): CustomDataStore
+  + preservePersistent(): CustomDataStore
+}
+
+CustomDataStore "1" *-right- "3" CustomData
+
+interface ExecutionContext
+
+ExecutionContext "1" *-right- "1" CustomDataStore
+@enduml
