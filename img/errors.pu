@@ -1,0 +1,59 @@
+@startuml
+package kotlin {
+  interface Throwable
+  class RuntimeException
+
+  RuntimeException -left-|> Throwable
+}
+
+package core {
+  class TuPrologException
+
+  TuPrologException -left-|> RuntimeException
+}
+
+package solve {
+  class TuPrologRuntimeExeception
+
+  TuPrologRuntimeExeception --|> TuPrologException
+
+  class TimeOutException
+  class HaltException
+
+  TimeOutException --|> TuPrologRuntimeExeception
+  HaltException --|> TuPrologRuntimeExeception
+
+  class PrologError
+  class PrologWarning
+
+  PrologError --|> TuPrologRuntimeExeception
+  PrologWarning --|> TuPrologRuntimeExeception
+
+  class InitializationIssue
+  class MissingPredicate
+  
+  InitializationIssue --|> PrologWarning
+  MissingPredicate --|> PrologWarning
+
+  class PermissionError
+  class InstantiationError
+  class SyntaxError
+  class EvaluationError
+  class MessageError
+  class ExistenceError
+  class SystemError
+  class TypeError
+  class DomainError
+
+  PermissionError --|> PrologError
+  InstantiationError --|> PrologError
+  SyntaxError --|> PrologError
+  EvaluationError --|> PrologError
+  MessageError -up-|> PrologError
+  ExistenceError --|> PrologError
+  SystemError -up-|> PrologError
+  TypeError --|> PrologError
+  DomainError --|> PrologError
+
+}
+@enduml
