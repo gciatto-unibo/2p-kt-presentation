@@ -3231,7 +3231,7 @@
         \includegraphics[width=.6\linewidth]{img/channels.pdf}
     \end{center}
 
-    \begin{block}{The \kt{Channel<\texttt{T}>}}\centering
+    \begin{block}{The \kt{Channel<\texttt{T}>} type}\centering
         Base type for both input/output channels. 
         All channels are \alert{observable} entities supporting the (un)registration of \alert{listeners}.
     \end{block}
@@ -3258,6 +3258,46 @@
             \end{itemize}
         \end{itemize}  
     \end{description}
+
+    \framebreak
+
+    \begin{block}{The \kt{InputChannel<\texttt{T}>} type is a sub-type of \kt{Channel<\texttt{T}>}}\centering
+        Base type for \alert{input} channels. 
+        Support reading an instance of \kt{\texttt{T}} at a time, from some data source.
+    \end{block}
+    %
+    \begin{description}
+        \item[\kt{read(): T?}] consumes and returns the next instance of \kt{\texttt{T}} in the channel
+        %
+        \begin{itemize}\small
+            \item returns \kt{null} if the channel is \alert{over}
+            \item throws \kt{IllegalStateException} if the channel is \alert{closed}
+        \end{itemize} 
+        \item[\kt{peek(): T?}] like \kt{read}, but does not consume
+        \item[\kt{available: Boolean}] returns \kt{true} iff  the next instance of \kt{\texttt{T}} can be read/peeked without blocking
+        \item[\kt{isOver: Boolean}] returns \kt{tree} iff the next call to \kt{read}/\kt{peek} would return \kt{null}
+    \end{description}
+
+    \framebreak
+
+    \begin{block}{The \kt{OutputChannel<\texttt{T}>} type is a sub-type of \kt{Channel<\texttt{T}>}}\centering
+        Base type for \alert{output} channels. 
+        Support writing an instance of \kt{\texttt{T}} at a time, onto some data sink.
+    \end{block}
+    %
+    \begin{description}
+        \item[\kt{write(T)}] writes an instance of \kt{\texttt{T}}
+        %
+        \begin{itemize}\small
+            \item throws \kt{IllegalStateException} if the channel is \alert{closed}
+        \end{itemize} 
+        \item[\kt{flush()}] ensures data is actually written to the channel
+        %
+        \begin{itemize}\small
+            \item (useful in case of buffering / caching)
+        \end{itemize} 
+    \end{description}
+
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Creating \kt{Channel}s}
@@ -3267,6 +3307,7 @@
         %
         \begin{itemize}
             \item a \alert{generator} function (of type \alert{\kt{() -> T}})
+            \item a \kt{String}---supporting its consumption \alert{character-wise}
             \item an \kt{InputStream} or \kt{Reader} (JVM only)
             %
             \begin{itemize}
@@ -3274,6 +3315,21 @@
             \end{itemize}
         \end{itemize}
     \end{block}
+    %
+    \begin{description}
+        \item[\kt{stdIn(): InputChannel<String>}] returns a wrapper of the actual standard input of the current program
+        %
+        \begin{itemize}\small
+            \item[eg] \kt{System.in} on the JVM
+            \item[!] makes no sense on \alert{JS Browser-side} 
+        \end{itemize} 
+        \item[\kt{of(() -> \textit{T}): InputChannel<\textit{T}>}] creates an input channel out of a generator function
+        \item[\kt{of(String): InputChannel<String>}] creates an input channel consuming a string \alert{character-wise}
+    \end{description}
+
+    \ktSnippet{snippets/MissingExample.kt}
+
+    \framebreak
 
     \begin{block}{Design choices -- \kt{InputChannel}s}
         \kt{OutputChannel}s may be created out of:
@@ -3287,26 +3343,87 @@
             \end{itemize}
         \end{itemize}
     \end{block}
+    %
+    \begin{description}
+        \item[\kt{stdOut(): OutputChannel<String>}] returns a wrapper of the actual standard output of the current program
+        %
+        \begin{itemize}\small
+            \item[eg] \kt{System.out} on the JVM
+            \item[eg] \kt{Console.log} on JS 
+        \end{itemize}
+        \item[\kt{stdErr(): OutputChannel<String>}] returns a wrapper of the actual standard error of the current program
+        %
+        \begin{itemize}\small
+            \item[eg] \kt{System.err} on the JVM
+            \item[eg] \kt{Console.error} on JS 
+        \end{itemize} 
+        \item[\kt{warn(): OutputChannel<PrologWarning>}] returns a channel outputting warnings to the actual standard error of the current program
+        \item[\kt{of((\textit{T}) -> Unit): OutputChannel<\textit{T}>}] creates an output channel out of a consumer function
+    \end{description}
 
-    creating input channels from callbacks
-
-    creating input channels from strings
-
-    creating output channels towards the console
-
-    creating output channels from callbacks
+    \ktSnippet{snippets/MissingExample.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{ChannelStore} Type Hierarchy}
-    input stores
 
-    output stores
+    \begin{center}
+        \includegraphics[width=.8\linewidth]{img/channels+stores.pdf}
+    \end{center}
+
+    \framebreak
+
+    \begin{block}{The \kt{InputStore} type}
+        Map keeping track of currently open \kt{InputChannel}s for a \kt{Solver}, and their aliases
+        %
+        \begin{itemize}
+            \item References the \alert{standard} input channel
+            \item Keeps track of the \alert{current} input channel
+            %
+            \begin{itemize}
+                \item[ie] the one the \kt{Solver} reads from, by default
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+
+    \framebreak
+
+    \begin{block}{The \kt{OutputStore} type}
+        Map keeping track of currently open \kt{OutputChannel}s for a \kt{Solver}, and their aliases
+        %
+        \begin{itemize}
+            \item References the \alert{standard} input and error channels
+            \item References the \alert{warnings} channel
+            \item Keeps track of the \alert{current} output channel
+            %
+            \begin{itemize}
+                \item[ie] the one the \kt{Solver} writes onto, by default
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+
+    \framebreak
+
+    Common methods:
+    %
+    \begin{description}
+        \item[\kt{current: Channel<String>}] returns the current channel
+        \item[\kt{setCurrent(Channel<String>)}] returns a new store having a different current channel
+        \item[\kt{setCurrent(String)}] returns a new store having a different current channel (selected by \alert{alias})
+        \item[\kt{findByTerm(Term)}] returns a channel by its identifier term
+        \item[\kt{aliasesOf(Channel<String>)}] returns all the aliases of a given channel 
+    \end{description}
+    %
+    \begin{itemize}
+        \item[+] all methods of \kt{Map<String, Channel<String>>}
+    \end{itemize}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Using \kt{Channel}s}
-    creating solvers with custom channels
+    \ktSnippet{snippets/MissingExample.kt}
+    % creating solvers with custom channels
 
-    attaching callbacks to a solver's channels
+    \ktSnippet{snippets/MissingExample.kt}
+    % attaching callbacks to a solver's channels
 \end{frame}
 
 \subsubsection{Configuring \kt{Solver}s via \kt{Flag}s}

@@ -1,0 +1,35 @@
+@startuml
+class FlagStore {
+    + get(NotableFlag): Term?
+    + set(NotableFlag): FlagStore
+    + set(NotableFlag, Term): FlagStore
+    + set(String, Term): FlagStore
+    + plus(String, Term): FlagStore
+    + plus(Pair<String, Term>): FlagStore
+    + plus(Map<String, Term>): FlagStore
+    + minus(String): FlagStore
+    + minus(Iterable<String>): FlagStore
+}
+
+interface Flag << (T,#3495eb) typealias >>  {
+  **alias for:** Pair<//String//, //Term//>
+}
+
+interface Map<K, V>
+
+FlagStore -right-|> Map: binds //K// to //String//\nand //V// to //Term//
+
+interface NotableFlag {
+    + name: String
+    + defaultValue: Term
+    + isEditable: Boolean
+    + admissibleValues: Sequence<Term>
+    + isAdmissibleValue(Term): Boolean
+    + toPair(): Flag
+}
+
+FlagStore "1" o.. "N" NotableFlag
+FlagStore "1" o.. "N" Flag
+
+NotableFlag .left.> Flag: toPair()
+@enduml
