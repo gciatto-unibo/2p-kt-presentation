@@ -3918,7 +3918,6 @@
         % \framebreak
         \item[\kt{ensuringArgumentIsWellFormedClause(Int)}] checks whether the argument at the provided index is a well formed clause (i.e. no sub-goal in the body is a \kt{Var}), throwing the most adequate error in case it is not
         % \framebreak
-        % \framebreak
         \item[\kt{ensuringArgumentIsInstantiated(Int)}] throws an \kt{InstantiationError} if the argument at the provided index is a \kt{Var}
         % \framebreak
         \item[\kt{ensuringArgumentIsNumeric(Int)}] throws a \kt{TypeError} if the argument at the provided index is not \kt{Numeric}
@@ -3936,47 +3935,153 @@
         \item[\kt{ensuringArgumentIsConstant(Int)}] throws a \kt{TypeError} if the argument at the provided index is not a \kt{Constant}
         % \framebreak
         \item[\kt{ensuringArgumentIsGround(Int)}] throws an \kt{InstantiationError} if the argument at the provided index is not \emph{ground}
-       % \framebreak
-       \item[\kt{ensuringArgumentIsChar(Int)}] throws a \kt{TypeError} if the argument at the provided index is not an \kt{Atom} s.t. $\kt{value.length} == 1$
-       % \framebreak
-       \item[\kt{ensuringArgumentIsSpecifier(Int)}] throws a \kt{DomainError} if the argument at the provided index is not an \kt{Atom} from the set \pl{\{fx, fy, xf, yf, xfx, yfx, xfy\}}
-       % \framebreak
-       \item[\kt{ensuringArgumentIsList(Int)}] throws a \kt{TypeError} if the argument at the provided index is not an \kt{List}
-       % \framebreak
-       \item[\kt{ensuringArgumentIsInteger(Int)}] throws a \kt{TypeError} if the argument at the provided index is not an \kt{Integer}
-       % \framebreak
-       \item[\kt{ensuringArgumentIsNonNegativeInteger(Int)}] throws a \kt{TypeError} if the argument at the provided index is not an \kt{Integer}, or a \kt{DomainError} if it is a negative integer
-       % \framebreak
-       \item[\kt{ensuringArgumentIsArity(Int)}] throws a \kt{TypeError} if the argument at the provided index is not an \kt{Integer}, a \kt{DomainError} if it is a negative integer, or a \kt{RepresentationError} is it is an integer greater than \kt{MaxArity.defaultValue}
-       % \framebreak
-       \item[\kt{ensuringArgumentIsWellFormedList(Int)}] throws a \kt{TypeError} if the argument at the provided index is not an \kt{List}, or a \kt{DomainError} if it is a \kt{List} whose termination item is not \pl{[]}
-       % \framebreak
-       \item[\kt{ensuringArgumentIsCharCode(Int)}] throws a \kt{RepresentationError} if the argument at the provided index does not correspond to a character according to the UTF-16 encoding
-       % \framebreak
-       \item[\kt{checkTermIsRecursivelyCallable(Term)}] checks whether the provided \kt{Term} is a well formed clause (i.e. no sub-goal in the body is a \kt{Var}), throwing the most adequate error in case it is not
-       % \framebreak
-       \item[\kt{ensuringTermIsCharCode(Term)}] throws a \kt{RepresentationError} if the provided \kt{Term} does not correspond to a character according to the UTF-16 encoding
-       % \framebreak
-       \item[\kt{ensuringTermIsWellFormedList(Term)}] throws a \kt{TypeError} if the provided \kt{Term} is not an \kt{List}, or a \kt{DomainError} if it is a \kt{List} whose termination item is not \pl{[]}
-       % \framebreak
-       \item[\kt{ensuringProcedureHasPermission(Signature, PermissionError.Operation)}] throws a \kt{PermissionError} is the provided \kt{Signature} matches some entry among the \kt{Solver}'s libraries, or static KB
-       % \framebreak
-       \item[\kt{ensuringClauseProcedureHasPermission(Clause, PermissionError.Operation)}] same as above, except that the \kt{Signature} of the \kt{Clause}'s \kt{head} is considerer
+        % \framebreak
+        \item[\kt{ensuringArgumentIsChar(Int)}] throws a \kt{TypeError} if the argument at the provided index is not an \kt{Atom} s.t. $\kt{value.length} == 1$
+        % \framebreak
+        \item[\kt{ensuringArgumentIsSpecifier(Int)}] throws a \kt{DomainError} if the argument at the provided index is not an \kt{Atom} from the set \pl{\{fx, fy, xf, yf, xfx, yfx, xfy\}}
+        % \framebreak
+        \item[\kt{ensuringArgumentIsList(Int)}] throws a \kt{TypeError} if the argument at the provided index is not an \kt{List}
+        % \framebreak
+        \item[\kt{ensuringArgumentIsInteger(Int)}] throws a \kt{TypeError} if the argument at the provided index is not an \kt{Integer}
+        % \framebreak
+        \item[\kt{ensuringArgumentIsNonNegativeInteger(Int)}] throws a \kt{TypeError} if the argument at the provided index is not an \kt{Integer}, or a \kt{DomainError} if it is a negative integer
+        % \framebreak
+        \item[\kt{ensuringArgumentIsArity(Int)}] throws a \kt{TypeError} if the argument at the provided index is not an \kt{Integer}, a \kt{DomainError} if it is a negative integer, or a \kt{RepresentationError} is it is an integer greater than \kt{MaxArity.defaultValue}
+        % \framebreak
+        \item[\kt{ensuringArgumentIsWellFormedList(Int)}] throws a \kt{TypeError} if the argument at the provided index is not an \kt{List}, or a \kt{DomainError} if it is a \kt{List} whose termination item is not \pl{[]}
+        % \framebreak
+        \item[\kt{ensuringArgumentIsCharCode(Int)}] throws a \kt{RepresentationError} if the argument at the provided index does not correspond to a character according to the UTF-16 encoding
+        % \framebreak
+        \item[\kt{checkTermIsRecursivelyCallable(Term)}] checks whether the provided \kt{Term} is a well formed clause (i.e. no sub-goal in the body is a \kt{Var}), throwing the most adequate error in case it is not
+        % \framebreak
+        \item[\kt{ensuringTermIsCharCode(Term)}] throws a \kt{RepresentationError} if the provided \kt{Term} does not correspond to a character according to the UTF-16 encoding
+        % \framebreak
+        \item[\kt{ensuringTermIsWellFormedList(Term)}] throws a \kt{TypeError} if the provided \kt{Term} is not an \kt{List}, or a \kt{DomainError} if it is a \kt{List} whose termination item is not \pl{[]}
+        % \framebreak
+        \item[\kt{ensuringProcedureHasPermission(Signature, PermissionError.Operation)}] throws a \kt{PermissionError} is the provided \kt{Signature} matches some entry among the \kt{Solver}'s libraries, or static KB
+        % \framebreak
+        \item[\kt{ensuringClauseProcedureHasPermission(Clause, PermissionError.Operation)}] same as above, except that the \kt{Signature} of the \kt{Clause}'s \kt{head} is considerer
     \end{description}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Example of \kt{PrimitiveWrappers} of all sorts}
+
+    \begin{block}{Example 1: \pl{atom\_length(\textit{+Atom}, \textit{-Length})}}
+        \begin{itemize}
+            \item Purpose: computes the length of an atom
+            \item Sort of primitive: binary relation, non-backtrackable, no side effect
+            \item May throw:
+            %
+            \begin{description}\small
+                \item[\kt{InstantiationError}] if the $1^{st}$ argument is a \kt{Var} 
+                \item[\kt{TypeError}] if the $1^{st}$ argument is not an \kt{Atom}, or the $2^{nd}$ is not an \kt{Integer}
+                \item[\kt{DomainError}] if the $2^{nd}$ argument is a \emph{negative} \kt{Integer}
+            \end{description}  
+            \item Usage example, in Prolog:
+            %
+            \begin{itemize}
+                \item[?-] \pl{atom\_length(abc, X)} $\rightarrow$ \pl{X=3}
+                \item[?-] \pl{atom\_length(abc, 3)} $\rightarrow$ \pl{true}
+                \item[?-] \pl{atom\_length(abc, 4)} $\rightarrow$ \pl{false}  
+                \item[?-] \pl{atom\_length(X, 4)} $\rightarrow$ \pl{instantiation\_error}   
+                \item[?-] \pl{atom\_length(a, b)} $\rightarrow$ \pl{type\_error}
+                \item[?-] \pl{atom\_length(a, -1)} $\rightarrow$ \pl{domain\_error} 
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+
     \ktSnippet[\tiny]{snippets/AtomLength.kt}
     
     \framebreak
+
+    \begin{block}{Example 2: \pl{assert(\textit{+Clause})}}
+        \begin{itemize}
+            \item Purpose: adds a clause to the dynamic KB
+            \item Sort of primitive: unary predicate, non-backtrackable, side effects
+            \item May throw:
+            %
+            \begin{description}\small
+                \item[\kt{InstantiationError}] if the $1^{st}$ argument is a \kt{Var} 
+                \item[\kt{TypeError}] if the $1^{st}$ argument is not a \kt{Struct}
+                \item[\kt{DomainError}] if the $1^{st}$ argument is a bad-formed \kt{Clause}
+                \item[\kt{PermissionError}] if the signature of \pl{\textit{Clause}} clashes with some other procedure from the \kt{Solver}'s library or static KB 
+            \end{description}  
+            \item Usage example, in Prolog:
+            %
+            \begin{itemize}
+                \item[?-] \pl{assert(fact)} $\rightarrow$ \pl{true}
+                \item[?-] \pl{assert(goal :- subgoal)} $\rightarrow$ \pl{true}
+                \item[?-] \pl{assert(goal :- (subgoal, G))} $\rightarrow$ \pl{domain\_error}  
+                \item[?-] \pl{assert(1)} $\rightarrow$ \pl{type\_error}   
+                \item[?-] \pl{assert(X)} $\rightarrow$ \pl{instantiation\_error}
+            \end{itemize}
+        \end{itemize}
+    \end{block}
     
     \ktSnippet[\tiny]{snippets/Assert.kt}
 
-    % \framebreak
+    \framebreak
 
-    % \ktSnippet[\tiny]{snippets/Retract.kt}
+    \begin{block}{Example 3: \pl{retract(\textit{?Pattern})}}
+        \begin{itemize}
+            \item Purpose: removes each clause matching \pl{\textit{Pattern}} in the dynamic KB
+            %
+            \begin{itemize}
+                \item removes clauses one by one, via backtracking
+            \end{itemize}
+            \item Sort of primitive: unary predicate, backtrackable, side effects
+            \item May throw:
+            %
+            \begin{description}\small
+                \item[\kt{InstantiationError}] if the $1^{st}$ argument is a \kt{Var} 
+                \item[\kt{TypeError}] if the $1^{st}$ argument is not a \kt{Struct}
+                \item[\kt{DomainError}] if the $1^{st}$ argument is a bad-formed \kt{Clause}
+                \item[\kt{PermissionError}] if the signature of \pl{\textit{Clause}} matches some other procedure from the \kt{Solver}'s library or static KB 
+            \end{description}  
+            \item Usage example, in Prolog (assume KB contains \alert{\pl{f(1). f(2).}})
+            %
+            \begin{itemize}
+                \item[?-] \pl{retract(f(X))} $\rightarrow$ \pl{X=1}, \pl{X=2}
+                \item[?-] \pl{retract(f(1))} $\rightarrow$ \pl{true}
+                \item[?-] \pl{retract(1)} $\rightarrow$ \pl{type\_error}   
+                \item[?-] \pl{retract(X)} $\rightarrow$ \pl{instantiation\_error}
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+
+    \ktSnippet[\tiny]{snippets/Retract.kt}
 
     \framebreak
+
+    \begin{block}{Example 4: \pl{findall(\textit{+Template}, \textit{:Goal}, \textit{-Solutions})} \hfill (pt. 1)}
+        \begin{itemize}
+            \item Assumptions: \pl{\textit{Template}} is a pattern reusing variables from \pl{\textit{Goal}}
+            \item Purpose: computes all solutions to \pl{\textit{Goal}}, each solution is mapped into \pl{\textit{Template}}, all templates are aggregates into a list and the list is bound to \pl{\textit{Solutions}}
+            \item Sort of primitive: ternary relation, non-backtrackable, no side-effects
+            \item[!] Peculiarities: involves an \alert{inner} resolution process
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Example 4: \pl{findall(\textit{+Template}, \textit{:Goal}, \textit{-Solutions})} \hfill (pt. 2)} 
+        \begin{itemize}
+            \item May throw:
+            %
+            \begin{description}\small
+                \item[\kt{InstantiationError}] if the $2^{nd}$ argument is a \kt{Var} 
+                \item[\kt{TypeError}] if the $2^{nd}$ argument is not a \kt{Struct}
+                \item[any other error] possibly thrown by \pl{\textit{Goal}} 
+            \end{description}  
+            \item Usage example, in Prolog:
+            %
+            \begin{itemize}
+                \item[?-] \pl{findall(X+1, member(X, [a,b]), L)} $\rightarrow$ \pl{L=[a+1, b+1]}
+                \item[?-] \pl{findall(\_, false, [])} $\rightarrow$ \pl{true}
+                \item[?-] \pl{findall(Z, (Z is X + 1), L)} $\rightarrow$ \pl{instantiation\_error}
+                \item[?-] \pl{findall(\_, 4, \_)} $\rightarrow$ \pl{type\_error}   
+                \item[?-] \pl{findall(\_, G, \_)} $\rightarrow$ \pl{instantiation\_error}
+            \end{itemize}
+        \end{itemize}
+    \end{block}
 
     \ktSnippet[\tiny]{snippets/FindAll.kt}
 \end{frame}
