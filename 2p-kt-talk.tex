@@ -2084,7 +2084,7 @@
         \item[\kt{retrieve(Clause): RetrieveResult<ClauseCollection>}] tries to remove the given clause from the collection
         \item[\kt{contains(Clause): Boolean}] checks if the collection contains the given clause
         \item[\kt{size: Int}] computes the size of the collection
-        \item[\kt{isEmpty(): Boolean}] checks if the collection contains any clauses 
+        \item[\kt{isEmpty(): Boolean}] checks if the collection contains any clauses
         \item[\kt{iterator(): Iterator<Clause>}] returns the collection's iterator
     \end{description}
 
@@ -2109,7 +2109,7 @@
             \item insertions and removals are performed \textbf{in-place}
             \begin{description}
                 \item [!] same collection is returned after any operation
-            \end{description}    
+            \end{description}
         \end{itemize}
     \end{block}
     %
@@ -2133,7 +2133,7 @@
     %
     \begin{description}
         \item[\kt{addFirst(Clause): ClauseQueue}] adds a clause in the \textit{first} position to the collection
-        \item[\kt{add/addLast(Clause): ClauseQueue}]  adds a clause in the \textit{last} position to the collection 
+        \item[\kt{add/addLast(Clause): ClauseQueue}]  adds a clause in the \textit{last} position to the collection
         \item[\kt{getFifoOrdered(Clause): Sequence<Clause>}] produces a sequence of clauses unifying with the given one, searching \textit{from first to last}
         \item[\kt{getLifoOrdered(Clause): Sequence<Clause>}] produces a sequence of clauses unifying with the given one, searching \textit{from last to first}
     \end{description}
@@ -2219,7 +2219,7 @@
             \item designed as \kt{Iterable} sub-types
         \end{itemize}
     \end{block}
-    
+
     \framebreak
 
     \begin{block}{Mutable vs. immutable theories}
@@ -2287,7 +2287,7 @@
     \end{description}
 
     \framebreak
-    
+
     \begin{block}{The \kt{RetractResult} type}
         \begin{itemize}
             \item represents the output of a \kt{retract(Clause)} call
@@ -2297,7 +2297,7 @@
     %
     \begin{center}
         \includegraphics[width=0.7\linewidth]{img/retract-result.pdf}
-    \end{center}    
+    \end{center}
 
 \end{frame}
 
@@ -2308,7 +2308,7 @@
         \item[\kt{empty(): Theory}] creates an empty \kt{Theory} (indexed by default)
         \item[\kt{of(vararg Clause): Theory}] creates a \kt{Theory} containing the given clauses
         \item[\kt{emptyIndexed(): Theory}] creates an empty \kt{Theory} backed by an indexed data structure
-        \item[\kt{indexedOf(vararg Clause): Theory}] creates an indexed \kt{Theory} containing the given \kt{Clauses} 
+        \item[\kt{indexedOf(vararg Clause): Theory}] creates an indexed \kt{Theory} containing the given \kt{Clauses}
         \item[\kt{emptyListed(): Theory}] creates an empty \kt{Theory} backed by a list
         \item[\kt{listedOf(vararg Clause): Theory}] creates a \kt{Theory} backed by a list, containing the given clauses
     \end{description}
@@ -2339,7 +2339,7 @@
     \begin{block}{Purpose}
         \begin{itemize}
             \item Provide generic support to logic resolution
-            \item Re-use as much as possible of Prolog standard 
+            \item Re-use as much as possible of Prolog standard
             %
             \begin{itemize}
                 \item without committing to any particular resolution strategy
@@ -2378,7 +2378,7 @@
             %
             \begin{itemize}\scriptsize
                 \item (this may vary depending on how resolution is implemented)
-            \end{itemize} 
+            \end{itemize}
         \end{itemize}
     \end{block}
 
@@ -2388,14 +2388,14 @@
         \begin{center}
             Containers of built-in functionalities exploitable by resolution
         \end{center}
-        
+
         Possibly, including:
         %
         \begin{description}
             \item[some \textbf{clauses}] containing logic predicates provided by the library
             \item[some \textbf{primitives}] i.e., logic predicates, implemented in Kotlin, and provided by the library
             \item[some \textbf{functions}] i.e., custom ways to reduce expressions of terms
-            \item[some \textbf{operators}] automatically imported into the solver along with the library 
+            \item[some \textbf{operators}] automatically imported into the solver along with the library
         \end{description}
     \end{block}
 
@@ -2405,7 +2405,7 @@
         \begin{center}
             Key-value pairs aimed at configuring a solver behaviour
         \end{center}
-        
+
         Where:
         %
         \begin{itemize}
@@ -2420,12 +2420,12 @@
         \begin{center}
             Containers of the logic knowledge taken into account by resolution to answer users' queries
         \end{center}
-        
+
         Following Prolog's conventions, KB are of two sorts:
         %
         \begin{description}
             \item[static KB] | which cannot be altered during resultion
-            \item[dynamic KB] | which can be altered during resultion 
+            \item[dynamic KB] | which can be altered during resultion
         \end{description}
     \end{block}
 
@@ -2435,7 +2435,7 @@
         \begin{center}
             Each solver may operate upon a dynamic set of operators
         \end{center}
-        
+
         That:
         %
         \begin{itemize}
@@ -2451,7 +2451,7 @@
         \begin{center}
             Communication facilities among the solver and the external world
         \end{center}
-        
+
         Channels are of two sorts:
         %
         \begin{description}
@@ -2484,7 +2484,7 @@
             \item an instance of \kt{SolveOptions} describing/constraining the way answers are provided
         \end{itemize}
         %
-        and returning one or more \kt{Solution}s 
+        and returning one or more \kt{Solution}s
     \end{block}
 
     \begin{block}{The \kt{Solution} type}
@@ -2496,7 +2496,7 @@
             %
             \begin{itemize}\small
                 \item carrying a \kt{Unifier} assigning some variable from the user's query
-            \end{itemize} 
+            \end{itemize}
 
             \item[\kt{Solution.No}] representing a negative answer
 
@@ -2516,21 +2516,21 @@
             %
             \begin{itemize}\small
                 \item may saturate memory in case of many/infinite solutions!
-            \end{itemize} 
-            
+            \end{itemize}
+
             \item[\kt{isLazy: Boolean}] | if \kt{true} solutions are \emph{lazily} computed jsut before being consumed
             %
             \begin{itemize}\small
                 \item this is \kt{true} by default
-            \end{itemize}  
+            \end{itemize}
 
             \item[\kt{timeout: TimeDuration}] | dictates the \alert{maximum} amount of time resolution may use to compute a single solution
             %
             \begin{itemize}\small
                 \item defaults to infinite time
-            \end{itemize} 
-            
-            \item[\kt{limit: Int}] | limits the \alert{maximum} amount of computed solutions 
+            \end{itemize}
+
+            \item[\kt{limit: Int}] | limits the \alert{maximum} amount of computed solutions
             %
             \begin{itemize}\small
                 \item defaults to infinite
@@ -2541,16 +2541,16 @@
     \begin{block}{The \kt{solve*} methods in \kt{Solver}}
         \begin{description}
             \item[\kt{solve}] | returns a \kt{Sequence} (i.e., a stream) of \kt{Solution}s
-            \item[\kt{solveList}] | returns a \kt{List} of \kt{Solution}s 
+            \item[\kt{solveList}] | returns a \kt{List} of \kt{Solution}s
             %
             \begin{itemize}\small
                 \item implies \kt{solveOpts.isEager == true}
-            \end{itemize} 
-            \item[\kt{solveOnce}] | returns a single \kt{Solution} 
+            \end{itemize}
+            \item[\kt{solveOnce}] | returns a single \kt{Solution}
             %
             \begin{itemize}\small
                 \item implies \kt{solveOpts.limit == 1}
-            \end{itemize} 
+            \end{itemize}
         \end{description}
     \end{block}
 
@@ -2576,7 +2576,7 @@
             %
             \begin{itemize}
                 \item[$\rightarrow$] they are \alert{not} immutable
-            \end{itemize} 
+            \end{itemize}
         \end{itemize}
     \end{itemize}
 \end{frame}
@@ -2598,13 +2598,13 @@
     \end{description}
 
     \framebreak
-    
+
     \begin{itemize}
         \item All such methods come with various overloads\ldots
         \item \ldots letting the caller specify the new solver's:
         %
         \begin{enumerate}
-            \item libraries to be loaded upon construction 
+            \item libraries to be loaded upon construction
             %
             \begin{itemize}
                 \item (possibly, other than the default ones)
@@ -2629,13 +2629,13 @@
         %
         \begin{itemize}
             \item also accessbile via \kt{Solver.\alert{classic}}
-        \end{itemize} 
+        \end{itemize}
 
         \item[eg] \module{solve-streams} exposes object \kt{StreamsSolverFactory}
         %
         \begin{itemize}
             \item also accessbile via \kt{Solver.\alert{streams}}
-        \end{itemize} 
+        \end{itemize}
     \end{itemize}
 
     \framebreak
@@ -2678,7 +2678,7 @@
                 \item[ie] libraries, flags, KB, operators, and channels
             \end{itemize}
             \item[+] the \alert{\kt{procedure}} resolution is currently focussing upon
-            \item[+] the \alert{\kt{substitution}} resolution has constructed so far 
+            \item[+] the \alert{\kt{substitution}} resolution has constructed so far
             \item[+] other fields possibly specified/customised by implementers
         \end{itemize}
     \end{block}
@@ -2688,7 +2688,7 @@
     \begin{alertblock}{Conventions}
         \begin{itemize}
             \item \kt{ExecutionContext}s are \alert{immutable}
-            
+
             \item An \kt{ExecutionContext} can be attained from another one via:
             %
             \begin{description}\small
@@ -2705,7 +2705,7 @@
             \item It is always possible to create a novel \kt{(Mutable)Solver} via
              %
              \begin{description}\small
-                \item[\kt{createSolver(\ldots)}] 
+                \item[\kt{createSolver(\ldots)}]
                 \item[\kt{createMutableSolver(\ldots)}]
             \end{description}
 
@@ -2818,9 +2818,9 @@
         \item[\pl{:- include(\textit{P}).}] loads the theory whose path is \pl{\textit{P}} as if it was part of the currently loading one
         %
         \begin{itemize}\small
-            \item[!] requires the \module{io-lib} module to be available at run-time 
-        \end{itemize} 
-        \item[\pl{:- load(\textit{P}).}] alias for \pl{include(\textit{P})} 
+            \item[!] requires the \module{io-lib} module to be available at run-time
+        \end{itemize}
+        \item[\pl{:- load(\textit{P}).}] alias for \pl{include(\textit{P})}
     \end{description}
 
     \framebreak
@@ -2853,7 +2853,7 @@
             \item[operators] to be loaded along with the \kt{Library}
             \item[theory] in turn containing pre-built rules and facts
             \item[primitives] i.e. logic predicates, written in Kotlin
-            \item[functions] i.e. logic functions, written in Kotlin 
+            \item[functions] i.e. logic functions, written in Kotlin
         \end{description}
     \end{block}
 
@@ -2879,7 +2879,7 @@
         \begin{itemize}
             \item Same of Jiesava packages names
             \item[ie] camel case, dot separated, spaceless
-            \item[eg] \texttt{prolog.lang}, \texttt{prolog.io} 
+            \item[eg] \texttt{prolog.lang}, \texttt{prolog.io}
         \end{itemize}
     \end{exampleblock}
 
@@ -2892,7 +2892,7 @@
     \framebreak
 
     \begin{block}{Definition: \kt{Libraries}}
-        A group of \kt{AliasedLibrary}, indexed by \alert{alias} 
+        A group of \kt{AliasedLibrary}, indexed by \alert{alias}
     \end{block}
     %
     \begin{itemize}
@@ -2942,7 +2942,7 @@
     \end{center}
 
     \framebreak
-    
+
     When needing to solve a (sub-)goal $G$, a \kt{Solver} may
     %
     \begin{itemize}
@@ -3012,7 +3012,7 @@
             \begin{itemize}
                 \item[eg] \alert{clauses} to be \alert{added} / \alert{removed} to the static / dynamic KB
                 \item[eg] \alert{flags} to be \alert{set} / \alert{removed} by \alert{name}
-                \item[eg] \alert{channels} to be \alert{opened} / \alert{closed} by \alert{name} 
+                \item[eg] \alert{channels} to be \alert{opened} / \alert{closed} by \alert{name}
             \end{itemize}
             \item \kt{SideEffect}s can be \alert{applied} to \kt{ExecutionContext}
             %
@@ -3107,7 +3107,7 @@
 
     \begin{alertblock}{About \kt{PrologFunction}s usage}
         Expression evaluation:
-        % 
+        %
         \begin{itemize}
             \item is expected to \alert{only} occur as part of some \kt{Primitive} execution
             \item is likely to involve \alert{several} \kt{PrologFunction}s
@@ -3150,19 +3150,19 @@
             %
             \begin{itemize}\small
                 \item sub-expressions are evalued using a \alert{post-order} visit
-                \item[eg] \pl{g(f(1 + 2), 3 + 4)} $\rightarrow$ \pl{g(f(3), 7)} 
-            \end{itemize} 
+                \item[eg] \pl{g(f(1 + 2), 3 + 4)} $\rightarrow$ \pl{g(f(3), 7)}
+            \end{itemize}
             \item[\kt{ExpressionEvaluator}] attempts to evaluate all sub-expressions matching some function, throws an error if some does not
             %
             \begin{itemize}\small
                 \item sub-expressions are evalued using a \alert{post-order} visit
                 \item[eg] \pl{(1 + 2) - (3 + f(x))} $\rightarrow$ error as there is no function for \pl{f/1}
-            \end{itemize} 
+            \end{itemize}
             \item[\kt{ArithmeticEvaluator}] like \kt{ExpressionEvaluator}, but only leverages on arithmetic functions
             %
             \begin{itemize}\small
                 \item[ie] functions accepting and returning \kt{Numeric} arguments
-            \end{itemize} 
+            \end{itemize}
         \end{description}
     \end{block}
 
@@ -3213,15 +3213,15 @@
     \begin{block}{Default \kt{Channel}s}
         Each \kt{Solver} is initialised with 4 default \kt{Channel}s:
         %
-        \begin{description} 
+        \begin{description}
             \item[\kt{stdIn: InputChannel<\textit{String}>}] main input channel
-            \item[\kt{stdOut: OutputChannel<\textit{String}>}] main output channel 
+            \item[\kt{stdOut: OutputChannel<\textit{String}>}] main output channel
             \item[\kt{stdErr: OutputChannel<\textit{String}>}] error channel
-            \item[\kt{warnings: OutputChannel<\textit{PrologWarning}>}] warning channel 
+            \item[\kt{warnings: OutputChannel<\textit{PrologWarning}>}] warning channel
             %
             \begin{itemize}
                 \item does not output strings, but instances of \kt{PrologWarning}
-            \end{itemize} 
+            \end{itemize}
         \end{description}
     \end{block}
 \end{frame}
@@ -3232,7 +3232,7 @@
     \end{center}
 
     \begin{block}{The \kt{Channel<\texttt{T}>} type}\centering
-        Base type for both input/output channels. 
+        Base type for both input/output channels.
         All channels are \alert{observable} entities supporting the (un)registration of \alert{listeners}.
     \end{block}
     %
@@ -3256,13 +3256,13 @@
                 \item \pl{InOut} is either \pl{`in'} or \pl{`out'}, depending on the sort of channel
                 \item \pl{Id} is a number univokely identifying the channel instance
             \end{itemize}
-        \end{itemize}  
+        \end{itemize}
     \end{description}
 
     \framebreak
 
     \begin{block}{The \kt{InputChannel<\texttt{T}>} type is a sub-type of \kt{Channel<\texttt{T}>}}\centering
-        Base type for \alert{input} channels. 
+        Base type for \alert{input} channels.
         Support reading an instance of \kt{\texttt{T}} at a time, from some data source.
     \end{block}
     %
@@ -3272,7 +3272,7 @@
         \begin{itemize}\small
             \item returns \kt{null} if the channel is \alert{over}
             \item throws \kt{IllegalStateException} if the channel is \alert{closed}
-        \end{itemize} 
+        \end{itemize}
         \item[\kt{peek(): T?}] like \kt{read}, but does not consume
         \item[\kt{available: Boolean}] returns \kt{true} iff  the next instance of \kt{\texttt{T}} can be read/peeked without blocking
         \item[\kt{isOver: Boolean}] returns \kt{tree} iff the next call to \kt{read}/\kt{peek} would return \kt{null}
@@ -3281,7 +3281,7 @@
     \framebreak
 
     \begin{block}{The \kt{OutputChannel<\texttt{T}>} type is a sub-type of \kt{Channel<\texttt{T}>}}\centering
-        Base type for \alert{output} channels. 
+        Base type for \alert{output} channels.
         Support writing an instance of \kt{\texttt{T}} at a time, onto some data sink.
     \end{block}
     %
@@ -3290,12 +3290,12 @@
         %
         \begin{itemize}\small
             \item throws \kt{IllegalStateException} if the channel is \alert{closed}
-        \end{itemize} 
+        \end{itemize}
         \item[\kt{flush()}] ensures data is actually written to the channel
         %
         \begin{itemize}\small
             \item (useful in case of buffering / caching)
-        \end{itemize} 
+        \end{itemize}
     \end{description}
 
 \end{frame}
@@ -3321,8 +3321,8 @@
         %
         \begin{itemize}\small
             \item[eg] \kt{System.in} on the JVM
-            \item[!] makes no sense on \alert{JS Browser-side} 
-        \end{itemize} 
+            \item[!] makes no sense on \alert{JS Browser-side}
+        \end{itemize}
         \item[\kt{of(() -> \textit{T}): InputChannel<\textit{T}>}] creates an input channel out of a generator function
         \item[\kt{of(String): InputChannel<String>}] creates an input channel consuming a string \alert{character-wise}
     \end{description}
@@ -3349,14 +3349,14 @@
         %
         \begin{itemize}\small
             \item[eg] \kt{System.out} on the JVM
-            \item[eg] \kt{Console.log} on JS 
+            \item[eg] \kt{Console.log} on JS
         \end{itemize}
         \item[\kt{stdErr(): OutputChannel<String>}] returns a wrapper of the actual standard error of the current program
         %
         \begin{itemize}\small
             \item[eg] \kt{System.err} on the JVM
-            \item[eg] \kt{Console.error} on JS 
-        \end{itemize} 
+            \item[eg] \kt{Console.error} on JS
+        \end{itemize}
         \item[\kt{warn(): OutputChannel<PrologWarning>}] returns a channel outputting warnings to the actual standard error of the current program
         \item[\kt{of((\textit{T}) -> Unit): OutputChannel<\textit{T}>}] creates an output channel out of a consumer function
     \end{description}
@@ -3410,7 +3410,7 @@
         \item[\kt{setCurrent(Channel<String>)}] returns a new store having a different current channel
         \item[\kt{setCurrent(String)}] returns a new store having a different current channel (selected by \alert{alias})
         \item[\kt{findByTerm(Term)}] returns a channel by its identifier term
-        \item[\kt{aliasesOf(Channel<String>)}] returns all the aliases of a given channel 
+        \item[\kt{aliasesOf(Channel<String>)}] returns all the aliases of a given channel
     \end{description}
     %
     \begin{itemize}
@@ -3487,13 +3487,13 @@
     \end{block}
     %
     \begin{description}
-        \item[\kt{get(NotableFlag): Term?}] returns the \emph{actual} value of some \alert{notable} flag 
+        \item[\kt{get(NotableFlag): Term?}] returns the \emph{actual} value of some \alert{notable} flag
         \item[\kt{get(String): Term?}] returns the \emph{actual} value of some flag
-        \item[\kt{set(NotableFlag): FlagStore}] returns a novel store where the provided \alert{notable} flag is set to its \emph{default} value 
-        \item[\kt{set(NotableFlag, Term): FlagStore}] returns a novel store where the provided \alert{notable} flag is set to the \emph{provided} value 
-        \item[\kt{set(String, Term): FlagStore}] returns a novel store where the provided flag is set to the provided value 
+        \item[\kt{set(NotableFlag): FlagStore}] returns a novel store where the provided \alert{notable} flag is set to its \emph{default} value
+        \item[\kt{set(NotableFlag, Term): FlagStore}] returns a novel store where the provided \alert{notable} flag is set to the \emph{provided} value
+        \item[\kt{set(String, Term): FlagStore}] returns a novel store where the provided flag is set to the provided value
         \item[\kt{plus(\meta{OtherFlags}): FlagStore}] returns a novel store containing the provided flags as well
-        \item[\kt{minus(\meta{FlagNames}): FlagStore}] returns a novel store not containing the provided flags names 
+        \item[\kt{minus(\meta{FlagNames}): FlagStore}] returns a novel store not containing the provided flags names
     \end{description}
     %
     \begin{itemize}
@@ -3508,14 +3508,14 @@
         %
         \begin{itemize}
             \item Class: \kt{it.unibo.tuprolog.solve.flags.\alert{Unknown}}
-            \item Admissible values: 
+            \item Admissible values:
             %
             \begin{description}
                 \item[\pl{fail}] the goal is silently considered \pl{false}
                 \item[\pl{warning}] \emph{(default)}  the goal is considered \pl{false} \& a warning is raised
-                \item[\pl{error}] an error is raised and resolution is interrupted 
+                \item[\pl{error}] an error is raised and resolution is interrupted
             \end{description}
-        \end{itemize} 
+        \end{itemize}
     \end{block}
 
     \begin{block}{\pl{max\_arity}}
@@ -3524,7 +3524,7 @@
         \begin{itemize}
             \item Class: \kt{it.unibo.tuprolog.solve.flags.\alert{MaxArity}}
             \item Admissible values: \kt{Int.MAX\_VALUE} (i.e. $2^{31} - 1$)
-        \end{itemize} 
+        \end{itemize}
     \end{block}
 
     \begin{block}{\pl{last\_call\_optimization}}
@@ -3532,13 +3532,13 @@
         %
         \begin{itemize}
             \item Class: \kt{it.unibo.tuprolog.solve.flags.\alert{LastCallOptimization}}
-            \item Admissible values: 
+            \item Admissible values:
             %
             \begin{description}
                 \item[\pl{on}] \emph{(default)} optimization is performed whenever possible
                 \item[\pl{off}] optimization is never perfomed
             \end{description}
-        \end{itemize} 
+        \end{itemize}
     \end{block}
 
     \begin{block}{\pl{double\_quotes}}
@@ -3551,7 +3551,7 @@
             \begin{itemize}
                 \item[ie] double-quoted literals are always considered as \kt{Atom}
             \end{itemize}
-        \end{itemize} 
+        \end{itemize}
     \end{block}
 \end{frame}
 
@@ -3562,7 +3562,7 @@
     \begin{center}
         \includegraphics[width=.8\linewidth]{img/customdata.pdf}
     \end{center}
-    
+
     \begin{block}{About \kt{CustomDataStore}s}
         \begin{itemize}
             \item To ease extensibility, \kt{ExecutionContext}s main contain \kt{CustomData} too
@@ -3585,7 +3585,7 @@
             %
             \begin{itemize}\small
                 \item[eg] in Prolog, once every time \alert{backtracking} is performed
-            \end{itemize} 
+            \end{itemize}
             \item[durable] | automatically erased after a solution is reached
             \item[persistent] | never erased automatically
         \end{description}
@@ -3595,7 +3595,7 @@
 \subsection{Errors and Warnings}
 
 \begin{frame}[allowframebreaks]{The \kt{TuPrologRuntimeException} Type Hierarchy}
-    
+
     \begin{center}
         \includegraphics[width=\linewidth]{img/errors.pdf}
     \end{center}
@@ -3603,7 +3603,7 @@
     \framebreak
 
     \begin{description}
-        \item[\kt{TuProlog\textit{Runtime}Exception}] base type for all issues which may occur during resolution 
+        \item[\kt{TuProlog\textit{Runtime}Exception}] base type for all issues which may occur during resolution
         %
         \begin{itemize}\small
             \item when thrown \alert{within \kt{Primitive}s}, they affect the ongoing resolution
@@ -3613,16 +3613,16 @@
                 \item the solution keeps track of the exception
                 \item the exception keeps track of the execution context where the issue occurred
             \end{itemize}
-        \end{itemize} 
-         
+        \end{itemize}
+
         \item[\kt{HaltException}] provokes the immediate interruption of the resolution process
         %
         \begin{itemize}\small
             \item may carry an \alert{exit code} (integer)
             \item analogous to \kt{System.exit(\meta{int})} one the JVM
             \item produces a \kt{Solution.Halt}
-        \end{itemize} 
-        
+        \end{itemize}
+
         \item[\kt{TimeOutException}] provokes the immediate interruption of the resolution process
         %
         \begin{itemize}\small
@@ -3630,20 +3630,20 @@
         \end{itemize}
 
         \framebreak
-        
+
         \item[\kt{PrologError}] base types for LP-related errors
         %
         \begin{itemize}\small
             \item[ie] errors which can be catched in LP
             \item[eg] via \kt{catch/3}, in Prolog
-        \end{itemize} 
+        \end{itemize}
 
         \item[\kt{PrologWarning}] base types for LP-related warnings
         %
         \begin{itemize}\small
             \item these are not meant to be thrown
             \item instances of \kt{PrologWarning} must be considered ordinary data structures to be outputted on the \kt{warnings} \kt{OutputChannel}
-        \end{itemize} 
+        \end{itemize}
     \end{description}
 \end{frame}
 
@@ -3653,7 +3653,7 @@
         \begin{itemize}
             \item Each instance of \kt{PrologError} corresponds to a \kt{Term}
             \item The term can be thrown with predicate \alert{\kt{throw/1}}\ldots
-            \item \ldots and catched via \alert{\kt{catch/3}} 
+            \item \ldots and catched via \alert{\kt{catch/3}}
         \end{itemize}
     \end{block}
 
@@ -3675,13 +3675,13 @@
                 %
                 \begin{itemize}\scriptsize
                     \item it aims at describing the error, logically
-                \end{itemize} 
+                \end{itemize}
                 \item[\pl{\textit{Custom}}] is a custom, implementation-specific \kt{Term}
                 %
                 \begin{itemize}\scriptsize
                     \item \twopkt{}'s convention: it carries the message to be shown to the user
                     \item so, it is commonly an \kt{Atom}
-                \end{itemize}  
+                \end{itemize}
             \end{description}
         \end{itemize}
     \end{block}
@@ -3694,7 +3694,7 @@
         \begin{description}\small
             \item[\pl{\textit{Description}}] is always the atom \alert{\pl{instantiation\_error}}
             \item[\pl{\textit{Custom}}] describes what argument/sub-term provoked the error
-        \end{description} 
+        \end{description}
 
         \framebreak
 
@@ -3706,10 +3706,10 @@
             %
             \begin{itemize}\scriptsize
                 \item admissible values are contained into the class \kt{TypeError.\alert{Expected}}
-                \item[eg] \pl{atom}, \pl{atomic}, \pl{callable}, \pl{character}, \pl{compound}, etc. 
-            \end{itemize} 
+                \item[eg] \pl{atom}, \pl{atomic}, \pl{callable}, \pl{character}, \pl{compound}, etc.
+            \end{itemize}
             \item[\pl{\textit{Culprit}}] is the \kt{Term} having the wrong type
-        \end{description} 
+        \end{description}
 
         \framebreak
 
@@ -3721,10 +3721,10 @@
             %
             \begin{itemize}\scriptsize
                 \item admissible values are contained into the class \kt{DomainError.\alert{Expected}}
-                \item[eg] \pl{not\_less\_than\_zero}, \pl{non\_empty\_list}, \pl{operator\_specifier}, etc. 
-            \end{itemize} 
+                \item[eg] \pl{not\_less\_than\_zero}, \pl{non\_empty\_list}, \pl{operator\_specifier}, etc.
+            \end{itemize}
             \item[\pl{\textit{Culprit}}] is the \kt{Term} having the wrong value
-        \end{description} 
+        \end{description}
 
         \framebreak
 
@@ -3736,9 +3736,9 @@
             %
             \begin{itemize}\scriptsize
                 \item admissible values are contained into the class \kt{RepresentationError.\alert{Limit}}
-                \item[eg] \pl{character}, \pl{character\_code}, \pl{max\_arity}, etc. 
-            \end{itemize} 
-        \end{description} 
+                \item[eg] \pl{character}, \pl{character\_code}, \pl{max\_arity}, etc.
+            \end{itemize}
+        \end{description}
 
         \framebreak
 
@@ -3747,7 +3747,7 @@
         \begin{description}\small
             \item[\pl{\textit{Description}}] is always the atom \alert{\pl{syntax\_error}}
             \item[\pl{\textit{Custom}}] describes why the string could not be parsed, and localizes the issue into the string
-        \end{description} 
+        \end{description}
 
         \framebreak
 
@@ -3759,13 +3759,13 @@
             %
             \begin{itemize}\scriptsize
                 \item admissible values are contained into the class \kt{EvaluationError.\alert{Type}}
-                \item[eg] \pl{zero\_divisor}, \pl{int\_overflow}, \pl{float\_overflow}, etc. 
-            \end{itemize} 
-        \end{description} 
+                \item[eg] \pl{zero\_divisor}, \pl{int\_overflow}, \pl{float\_overflow}, etc.
+            \end{itemize}
+        \end{description}
 
         \framebreak
 
-        \item[\kt{ExistenceError}] to be thrown accessing some resource by name/reference fails because the resource does not exist 
+        \item[\kt{ExistenceError}] to be thrown accessing some resource by name/reference fails because the resource does not exist
         %
         \begin{description}\small
             \item[\pl{\textit{Description}}] is a \kt{Struct} of the form \pl{existence\_error(\textit{ObjectType}, \textit{Culprit})}
@@ -3773,9 +3773,9 @@
             %
             \begin{itemize}\scriptsize
                 \item admissible values are contained into the class \kt{ExistenceError.\alert{ObjectType}}
-                \item[eg] \pl{procedure}, \pl{source\_sink}, \pl{stream}, etc. 
-            \end{itemize} 
-        \end{description} 
+                \item[eg] \pl{procedure}, \pl{source\_sink}, \pl{stream}, etc.
+            \end{itemize}
+        \end{description}
 
         \framebreak
 
@@ -3787,16 +3787,16 @@
             %
             \begin{itemize}\scriptsize
                 \item admissible values are contained into the class \kt{PermissionError.\alert{Operation}}
-                \item[eg] \pl{access}, \pl{invoke}, \pl{modify}, \pl{open}, etc. 
-            \end{itemize} 
+                \item[eg] \pl{access}, \pl{invoke}, \pl{modify}, \pl{open}, etc.
+            \end{itemize}
             \item[\pl{\textit{Permission}}] describes the sort of resource for which the operation is not permitted
             %
             \begin{itemize}\scriptsize
                 \item admissible values are contained into the class \kt{PermissionError.\alert{Permission}}
-                \item[eg] \pl{flag}, \pl{operator}, \pl{source\_sink}, \pl{static\_procedure}, etc. 
-            \end{itemize} 
+                \item[eg] \pl{flag}, \pl{operator}, \pl{source\_sink}, \pl{static\_procedure}, etc.
+            \end{itemize}
             \item[\pl{\textit{Culprit}}] is the (sub-)goal which provoked the error
-        \end{description} 
+        \end{description}
 
         \framebreak
 
@@ -3805,12 +3805,12 @@
         \begin{description}\small
             \item[\pl{\textit{Description}}] is always the atom \alert{\pl{system\_error}}
             \item[\pl{\textit{Custom}}] provides the actual description of the problem
-        \end{description} 
+        \end{description}
         %
         \begin{itemize}
             \item[!] this may be used to wrap Kotlin exceptions occurring during resolution
         \end{itemize}
-    \end{description} 
+    \end{description}
 \end{frame}
 
 \begin{frame}{The \kt{PrologWarning} Type Hierarchy}
@@ -3821,7 +3821,7 @@
     %
     \begin{description}
         \item[\kt{MissingPredicate}] used to signal that a \kt{Solver} knows no predicate to solve a (sub-)goal
-        
+
         \bigskip
 
         \item[\kt{InitializationIssue}] used to signal a failure/error while executing some \alert{directive}
@@ -3833,11 +3833,11 @@
 \begin{frame}[allowframebreaks]{Overview on Custom Libraries}
     \begin{itemize}
         \item Libraries are the basic means to provide built-in functionalities to solvers
-    
+
         \bigskip
 
         \item Default built-in functionalities are provided via libraries as well
-        
+
         \bigskip
 
         \item Creating a library essentially means:
@@ -3862,7 +3862,7 @@
             \item[eg] input validation
             \item[eg] permission checking
             \item[eg] arguments/results packing \& unpacking
-            \item[\vdots] 
+            \item[\vdots]
         \end{itemize}
     \end{block}
 \end{frame}
@@ -3877,7 +3877,7 @@
     \end{block}
 
     \framebreak
-    
+
     \begin{center}
         \includegraphics[width=\linewidth]{img/wrappers.pdf}
     \end{center}
@@ -3888,11 +3888,11 @@
     %
     \begin{description}
         \item[\kt{PredicateWithoutArguments}] base class for 0-ary predicates
-        \item[\kt{UnaryPredicate}] base class for 1-ary predicates 
-        \item[\kt{BinaryRelation}] base class for 2-ary predicates  
-        \item[\kt{TernaryRelation}] base class for 3-ary predicates   
-        \item[\kt{QuaternaryRelation}] base class for 4-ary predicates   
-        \item[\kt{QuinaryRelation}] base class for 5-ary predicates   
+        \item[\kt{UnaryPredicate}] base class for 1-ary predicates
+        \item[\kt{BinaryRelation}] base class for 2-ary predicates
+        \item[\kt{TernaryRelation}] base class for 3-ary predicates
+        \item[\kt{QuaternaryRelation}] base class for 4-ary predicates
+        \item[\kt{QuinaryRelation}] base class for 5-ary predicates
     \end{description}
 
     \framebreak
@@ -3905,16 +3905,80 @@
         \item[\kt{Functional}] to be preferred if the predicate is not backtrackable and does not provoke side-effects
         \item[\kt{Predicative}] to be preferred if the predicate has a boolean semantics, i.e. it is not backtrackable, it does not provoke side-effects, and it does not assign any variable
     \end{description}
+\end{frame}
 
-    \framebreak
+\begin{frame}[allowframebreaks]{\kt{PrimitiveWrapper}s' Utility Methods}\small
 
     Each sub-class of \kt{PrimitiveWrapper} inherits a number of protected utility methods:
     %
-    
+    \begin{description}
+        \item[\kt{ensuringAllArgumentsAreInstantiated()}] throws an \kt{InstantiationError} if some argument is a \kt{Var}
+        % \framebreak
+        \item[\kt{ensuringArgumentIsWellFormedIndicator(Int)}] checks whether the argument at the provided index is a well formed indicator (i.e. \pl{\meta{Atom}/\meta{Integer}}), throwing the most adequate error in case it is not
+        % \framebreak
+        \item[\kt{ensuringArgumentIsWellFormedClause(Int)}] checks whether the argument at the provided index is a well formed clause (i.e. no sub-goal in the body is a \kt{Var}), throwing the most adequate error in case it is not
+        % \framebreak
+        % \framebreak
+        \item[\kt{ensuringArgumentIsInstantiated(Int)}] throws an \kt{InstantiationError} if the argument at the provided index is a \kt{Var}
+        % \framebreak
+        \item[\kt{ensuringArgumentIsNumeric(Int)}] throws a \kt{TypeError} if the argument at the provided index is not \kt{Numeric}
+        % \framebreak
+        \item[\kt{ensuringArgumentIsStruct(Int)}] throws a \kt{TypeError} if the argument at the provided index is not a \kt{Struct}
+        % \framebreak
+        \item[\kt{ensuringArgumentIsCallable(Int)}] alias for \kt{ensuringArgumentIsStruct}
+        % \framebreak
+        \item[\kt{ensuringArgumentIsVariable(Int)}] throws a \kt{TypeError} if the argument at the provided index is not a \kt{Var}
+        % \framebreak
+        \item[\kt{ensuringArgumentIsCompound(Int)}] throws a \kt{TypeError} if the argument at the provided index is not a \kt{Struct} s.t. $\kt{arity} > 0$
+        % \framebreak
+        \item[\kt{ensuringArgumentIsAtom(Int)}] throws a \kt{TypeError} if the argument at the provided index is not an \kt{Atom}
+        % \framebreak
+        \item[\kt{ensuringArgumentIsConstant(Int)}] throws a \kt{TypeError} if the argument at the provided index is not a \kt{Constant}
+        % \framebreak
+        \item[\kt{ensuringArgumentIsGround(Int)}] throws an \kt{InstantiationError} if the argument at the provided index is not \emph{ground}
+       % \framebreak
+       \item[\kt{ensuringArgumentIsChar(Int)}] throws a \kt{TypeError} if the argument at the provided index is not an \kt{Atom} s.t. $\kt{value.length} == 1$
+       % \framebreak
+       \item[\kt{ensuringArgumentIsSpecifier(Int)}] throws a \kt{DomainError} if the argument at the provided index is not an \kt{Atom} from the set \pl{\{fx, fy, xf, yf, xfx, yfx, xfy\}}
+       % \framebreak
+       \item[\kt{ensuringArgumentIsList(Int)}] throws a \kt{TypeError} if the argument at the provided index is not an \kt{List}
+       % \framebreak
+       \item[\kt{ensuringArgumentIsInteger(Int)}] throws a \kt{TypeError} if the argument at the provided index is not an \kt{Integer}
+       % \framebreak
+       \item[\kt{ensuringArgumentIsNonNegativeInteger(Int)}] throws a \kt{TypeError} if the argument at the provided index is not an \kt{Integer}, or a \kt{DomainError} if it is a negative integer
+       % \framebreak
+       \item[\kt{ensuringArgumentIsArity(Int)}] throws a \kt{TypeError} if the argument at the provided index is not an \kt{Integer}, a \kt{DomainError} if it is a negative integer, or a \kt{RepresentationError} is it is an integer greater than \kt{MaxArity.defaultValue}
+       % \framebreak
+       \item[\kt{ensuringArgumentIsWellFormedList(Int)}] throws a \kt{TypeError} if the argument at the provided index is not an \kt{List}, or a \kt{DomainError} if it is a \kt{List} whose termination item is not \pl{[]}
+       % \framebreak
+       \item[\kt{ensuringArgumentIsCharCode(Int)}] throws a \kt{RepresentationError} if the argument at the provided index does not correspond to a character according to the UTF-16 encoding
+       % \framebreak
+       \item[\kt{checkTermIsRecursivelyCallable(Term)}] checks whether the provided \kt{Term} is a well formed clause (i.e. no sub-goal in the body is a \kt{Var}), throwing the most adequate error in case it is not
+       % \framebreak
+       \item[\kt{ensuringTermIsCharCode(Term)}] throws a \kt{RepresentationError} if the provided \kt{Term} does not correspond to a character according to the UTF-16 encoding
+       % \framebreak
+       \item[\kt{ensuringTermIsWellFormedList(Term)}] throws a \kt{TypeError} if the provided \kt{Term} is not an \kt{List}, or a \kt{DomainError} if it is a \kt{List} whose termination item is not \pl{[]}
+       % \framebreak
+       \item[\kt{ensuringProcedureHasPermission(Signature, PermissionError.Operation)}] throws a \kt{PermissionError} is the provided \kt{Signature} matches some entry among the \kt{Solver}'s libraries, or static KB
+       % \framebreak
+       \item[\kt{ensuringClauseProcedureHasPermission(Clause, PermissionError.Operation)}] same as above, except that the \kt{Signature} of the \kt{Clause}'s \kt{head} is considerer
+    \end{description}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Example of \kt{PrimitiveWrappers} of all sorts}
-   one example for each sort of primitive wrapper from the CommonBuiltins
+    \ktSnippet[\tiny]{snippets/AtomLength.kt}
+    
+    \framebreak
+    
+    \ktSnippet[\tiny]{snippets/Assert.kt}
+
+    % \framebreak
+
+    % \ktSnippet[\tiny]{snippets/Retract.kt}
+
+    \framebreak
+
+    \ktSnippet[\tiny]{snippets/FindAll.kt}
 \end{frame}
 
 \subsubsection{Writing \kt{Library}}
