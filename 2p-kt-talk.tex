@@ -4310,11 +4310,61 @@
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{TermReader} Type (JVM-only)}
-    definition
+    \begin{block}{The \kt{TermReader} interface}
+        \begin{itemize}
+            \item provides methods to parse \kt{Term}s
+            \item input is loaded \textbf{lazily} from an \kt{InputStream}/\kt{Reader}/\kt{String}
+            \item only available on the JVM as part of the \kt{jvm} implementations of the \kt{parser-core} module
+        \end{itemize}
+    \end{block}
+    %
+    \begin{description}
+        \item [\kt{readTerm(Reader): Term?}] tries to read a term from the given \kt{Reader}, with default operators
+        \item [\kt{readTerm(Reader, OperatorSet): Term?}] tries to read a term from the given \kt{Reader}, with the given operator set
+        \item [\kt{readTerm(InputStream): Term?}] tries to read a term from the given \kt{InputStream}, with default operators
+        \item [\kt{readTerm(InputStream, OperatorSet): Term?}] tries to read a term from the given \kt{InputStream}, with the given operator set
+    \end{description}
 
-    creation
+    \framebreak
 
-    usage examples
+    Multiple-\kt{Term} reading methods:
+    %
+    \begin{description}
+        \item [\kt{readTerms(Reader): Sequence<Term>}] reads a sequence of terms from the given \kt{Reader}, with default operators
+        \item [\kt{readTerms(Reader, OperatorSet): Sequence<Term>}] reads a sequence of terms from the given \kt{Reader}, with the given operator set
+        \item [\kt{readTerms(InputStream): Sequence<Term>}] reads a sequence of terms from the given \kt{InputStream}, with default operators
+        \item [\kt{readTerms(InputStream, OperatorSet): Sequence<Term>}] reads a sequence of terms from the given \kt{InputStream}, with the given operator set
+        \item [\kt{readTerms(String): Sequence<Term>}] reads a sequence of terms from the given \kt{String}, with default operators
+        \item [\kt{readTerms(String, OperatorSet): Sequence<Term>}] reads a sequence of terms from the given \kt{String}, with the given operator set
+    \end{description}
+
+    \framebreak
+
+    Static factories for \kt{TermReader}:
+    %
+    \begin{description}
+        \item [\kt{withNoOperator: TermReader}] creates a \kt{TermReader} with no operators loaded
+        \item [\kt{withStandardOperators: TermReader}] creates a \kt{TermReader} with standard operators loaded
+        \item [\kt{withDefaultOperators: TermReader}] creates a \kt{TermReader} with default operators loaded (\kt{standard} operators)
+        \item [\kt{withOperators(OperatorsSet): TermReader}] creates a \kt{TermReader} with the given \kt{OperatorSet} loaded
+        \item [\kt{withOperators(vararg Operator): TermReader}] creates a \kt{TermReader} with the given operators loaded 
+    \end{description}
+
+    \framebreak
+
+    Reading \kt{Term}s from a \kt{String}:
+    %
+    \ktSnippet{./snippets/TermReaderString.kt}
+    %
+    Reading \kt{Term}s from a \kt{File}:
+    %
+    \ktSnippet{./snippets/TermReaderFile.kt}
+
+    \framebreak
+
+    Reading failure:
+    %
+    \ktSnippet{./snippets/TermReaderFailure.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{ClausesParser} Type}
