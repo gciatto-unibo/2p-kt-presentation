@@ -2553,6 +2553,14 @@
             \end{itemize}
         \end{description}
     \end{block}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Using a \kt{Solver}}
+
+    \begin{block}{Concept}
+        \centering
+        \includegraphics[width=.4\linewidth]{img/streamful-solver.pdf}
+    \end{block}
 
     \framebreak
 
@@ -2581,7 +2589,6 @@
     \framebreak
 
     \ktSnippet[\tiny]{./snippets/ManySolutionsEager.kt}
-
 \end{frame}
 
 \begin{frame}[allowframebreaks]{\kt{Solver} vs. \kt{MutableSolver}}
@@ -2603,6 +2610,10 @@
             \end{itemize}
         \end{itemize}
     \end{itemize}
+
+    \framebreak
+
+    \ktSnippet[\tiny]{./snippets/SolverVsMutableSolver.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Creating \kt{Solvers} via a \kt{SolverFactory}}
@@ -2664,20 +2675,14 @@
 
     \framebreak
 
-    \ktSnippet{./snippets/MissingExample.kt}
-
-\end{frame}
-
-\begin{frame}[allowframebreaks]{Using a \kt{Solver}}
-
-    \begin{block}{Concept}
-        \centering
-        \includegraphics[width=.4\linewidth]{img/streamful-solver.pdf}
-    \end{block}
+    \ktSnippet[\tiny]{./snippets/SolverFactories.kt}
 
     \framebreak
 
-    \ktSnippet{./snippets/MissingExample.kt}
+    Solver factories support writing \alert{implementation-agnostic} tests for \kt{Solver}s:
+    %
+    \ktSnippet[\tiny]{./snippets/TestSolverPrototype.kt}
+
 \end{frame}
 
 \subsection{The \kt{ExecutionContext}}
@@ -2799,12 +2804,12 @@
 
     \framebreak
 
-    \ktSnippet{./snippets/MissingExample.kt}
+    \ktSnippet{./snippets/CustomTheoriesSolver.kt}
     % initialising a solver with custom knowledge bases
 
     \framebreak
 
-    \ktSnippet{./snippets/MissingExample.kt}
+    \ktSnippet{./snippets/CustomTheoriesMutableSolver.kt}
     % loading a custom kb into a mutable solver
 \end{frame}
 
@@ -2849,7 +2854,7 @@
 
     \framebreak
 
-    \ktSnippet{./snippets/MissingExample.kt}
+    \ktSnippet[\tiny]{./snippets/DynamicDirective.kt}
 \end{frame}
 
 \subsubsection{Extending \kt{Solver}s via \kt{Libraries}}
@@ -2925,7 +2930,15 @@
 
     \framebreak
 
-    \ktSnippet{snippets/MissingExample.kt}
+    Example 1 -- Using \kt{Libraries}:
+    %
+    \ktSnippet{snippets/UsingLibraries.kt}
+
+    \framebreak
+
+    Example 2 -- Defining custom \kt{Libraries}:
+    %
+    \ktSnippet[\tiny]{snippets/DefiningLibraries.kt}
 
 \end{frame}
 
