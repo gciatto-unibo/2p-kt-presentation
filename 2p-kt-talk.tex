@@ -4300,27 +4300,155 @@
 \section{Parsing Logic Knowledge: the \module{parser-*} Modules}
 
 \begin{frame}[allowframebreaks]{The \kt{TermParser} Type}
-    definition
 
-    creation
+    \begin{block}{The \kt{TermParser} interface}
+        \begin{itemize}
+            \item provides methods to parse \kt{Term}s from strings
+            \begin{description}
+                \item[!] throwing a \kt{ParseException} upon failure 
+            \end{description}
+            \item allows to select the operators used for parsing
+        \end{itemize}
+    \end{block}
+    %
+    All methods come in two forms:
+    %
+    \begin{description}
+        \item[\kt{parseT(String): T}] parses a \kt{T} from a given string, using default operators
+        \item[\kt{parseT(String, OperatorSet): T}] parses a \kt{T} from a given string, using the given operators
+    \end{description}
+    %
+    with \kt{T} being a \kt{Term}, \kt{Struct}, \kt{Constant}, \kt{Var}, \kt{Atom}, \kt{Numeric}, \kt{Integer}, \kt{Real} or \kt{Clause}
 
-    usage examples
+    \framebreak
+
+    Static factories for \kt{TermParser}:
+    %
+    \begin{description}
+        \item [\kt{withNoOperator: TermParser}] creates a parser with no operators loaded
+        \item [\kt{withStandardOperators: TermParser}] creates a parser with standard operators loaded
+        \item [\kt{withDefaultOperators: TermParser}] creates a parser with default operators loaded (\kt{standard} operators)
+        \item [\kt{withOperators(OperatorsSet): TermParser}] creates a parser with the given \kt{OperatorSet} loaded
+        \item [\kt{withOperators(vararg Operator): TermParser}] creates a parser with the given operators loaded 
+    \end{description}
+
+    \framebreak
+
+    Successful \kt{Term} parsing:
+    %
+    \ktSnippet{./snippets/TermParserUsage.kt}
+
+    \framebreak
+
+    \kt{Term} parsing failure:
+    %
+    \ktSnippet{./snippets/TermParserFailure.kt}
+
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{TermReader} Type (JVM-only)}
-    definition
+    \begin{block}{The \kt{TermReader} interface}
+        \begin{itemize}
+            \item provides methods to parse \kt{Term}s
+            \item input is loaded \textbf{lazily} from an \kt{InputStream}/\kt{Reader}/\kt{String}
+            \item only available on the JVM as part of the \kt{jvm} implementations of the \kt{parser-core} module
+        \end{itemize}
+    \end{block}
+    %
+    \begin{description}
+        \item [\kt{readTerm(Reader): Term?}] tries to read a term from the given \kt{Reader}, with default operators
+        \item [\kt{readTerm(Reader, OperatorSet): Term?}] tries to read a term from the given \kt{Reader}, with the given operator set
+        \item [\kt{readTerm(InputStream): Term?}] tries to read a term from the given \kt{InputStream}, with default operators
+        \item [\kt{readTerm(InputStream, OperatorSet): Term?}] tries to read a term from the given \kt{InputStream}, with the given operator set
+    \end{description}
 
-    creation
+    \framebreak
 
-    usage examples
+    Multiple-\kt{Term} reading methods:
+    %
+    \begin{description}
+        \item [\kt{readTerms(Reader): Sequence<Term>}] reads a sequence of terms from the given \kt{Reader}, with default operators
+        \item [\kt{readTerms(Reader, OperatorSet): Sequence<Term>}] reads a sequence of terms from the given \kt{Reader}, with the given operator set
+        \item [\kt{readTerms(InputStream): Sequence<Term>}] reads a sequence of terms from the given \kt{InputStream}, with default operators
+        \item [\kt{readTerms(InputStream, OperatorSet): Sequence<Term>}] reads a sequence of terms from the given \kt{InputStream}, with the given operator set
+        \item [\kt{readTerms(String): Sequence<Term>}] reads a sequence of terms from the given \kt{String}, with default operators
+        \item [\kt{readTerms(String, OperatorSet): Sequence<Term>}] reads a sequence of terms from the given \kt{String}, with the given operator set
+    \end{description}
+
+    \framebreak
+
+    Static factories for \kt{TermReader}:
+    %
+    \begin{description}
+        \item [\kt{withNoOperator: TermReader}] creates a \kt{TermReader} with no operators loaded
+        \item [\kt{withStandardOperators: TermReader}] creates a \kt{TermReader} with standard operators loaded
+        \item [\kt{withDefaultOperators: TermReader}] creates a \kt{TermReader} with default operators loaded (\kt{standard} operators)
+        \item [\kt{withOperators(OperatorsSet): TermReader}] creates a \kt{TermReader} with the given \kt{OperatorSet} loaded
+        \item [\kt{withOperators(vararg Operator): TermReader}] creates a \kt{TermReader} with the given operators loaded 
+    \end{description}
+
+    \framebreak
+
+    Reading \kt{Term}s from a \kt{String}:
+    %
+    \ktSnippet{./snippets/TermReaderString.kt}
+    %
+    Reading \kt{Term}s from a \kt{File}:
+    %
+    \ktSnippet{./snippets/TermReaderFile.kt}
+
+    \framebreak
+
+    Reading failure:
+    %
+    \ktSnippet{./snippets/TermReaderFailure.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{ClausesParser} Type}
-    definition
+    \begin{block}{The \kt{ClausesParser} interface}
+        \begin{itemize}
+            \item provides methods to parse multiple \kt{Clause}s from strings
+            \begin{description}
+                \item[!] throwing a \kt{ParseException} upon failure 
+            \end{description}
+            \item allows to select the operators used for parsing
+            \item very similar to \kt{TermParser}, but is capable of parsing entire theories instead of single \kt{Term}s
+        \end{itemize}
+    \end{block}
+    %
+    \begin{description}
+        \item [\kt{parseTheory(String, OperatorSet): Theory}] parses a \kt{Theory} from the given string, using the given operator set
+        \item [\kt{parseTheory(String): Theory}] parses a \kt{Theory} from the given string, using default operators
+        \item [\kt{parseClausesLazily(String, OperatorSet): Sequence<Clause>}] parses a \textit{lazily evaluated} sequence of \kt{Clause}s from the given string, with the given operator set
+        \item [\kt{parseClausesLazily(String): Sequence<Clause>}] parses a \textit{lazily evaluated} sequence of \kt{Clause}s from the given string, with default operators
+        \item [\kt{parseClauses(String, OperatorSet): List<Clause>}] parses a sequence of \kt{Clause}s from the given string, with the given operator set
+        \item [\kt{parseClauses(String): List<Clause>}] parses a sequence of \kt{Clause}s from the given string, with default operators
+    \end{description}
 
-    creation
+    \framebreak
 
-    usage examples
+    Static factories for \kt{ClausesParser}:
+    %
+    \begin{description}
+        \item [\kt{withNoOperator: ClausesParser}] creates a parser with no operators loaded
+        \item [\kt{withStandardOperators: ClausesParser}] creates a parser with standard operators loaded
+        \item [\kt{withDefaultOperators: ClausesParser}] creates a parser with default operators loaded (\kt{standard} operators)
+        \item [\kt{withOperators(OperatorSet): ClausesParser}] creates a parser with the given \kt{OperatorSet} loaded
+        \item [\kt{withOperators(vararg Operator): ClausesParser}] creates a parser with the given operators loaded
+    \end{description}
+
+    \framebreak
+
+    Successful clauses parsing (as \kt{Theory}, \kt{Sequence} and \kt{List} of \kt{Clause}s):
+    %
+    \ktSnippet{./snippets/ClausesParserUsage.kt}
+
+    \framebreak
+
+    \kt{Clause}s parsing failure:
+    %
+    \ktSnippet{./snippets/ClausesParserFailure.kt}
+
 \end{frame}
 
 \section{(De)Serialising Logic Knowledge: the \module{serialize-*} Modules}
