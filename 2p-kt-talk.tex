@@ -4297,13 +4297,13 @@
 
     \framebreak
 
-    Successful term parsing:
+    Successful \kt{Term} parsing:
     %
     \ktSnippet{./snippets/TermParserUsage.kt}
 
     \framebreak
 
-    Parsing failure:
+    \kt{Term} parsing failure:
     %
     \ktSnippet{./snippets/TermParserFailure.kt}
 
@@ -4368,11 +4368,50 @@
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{ClausesParser} Type}
-    definition
+    \begin{block}{The \kt{ClausesParser} interface}
+        \begin{itemize}
+            \item provides methods to parse multiple \kt{Clause}s from strings
+            \begin{description}
+                \item[!] throwing a \kt{ParseException} upon failure 
+            \end{description}
+            \item allows to select the operators used for parsing
+            \item very similar to \kt{TermParser}, but is capable of parsing entire theories instead of single \kt{Term}s
+        \end{itemize}
+    \end{block}
+    %
+    \begin{description}
+        \item [\kt{parseTheory(String, OperatorSet): Theory}] parses a \kt{Theory} from the given string, using the given operator set
+        \item [\kt{parseTheory(String): Theory}] parses a \kt{Theory} from the given string, using default operators
+        \item [\kt{parseClausesLazily(String, OperatorSet): Sequence<Clause>}] parses a \textit{lazily evaluated} sequence of \kt{Clause}s from the given string, with the given operator set
+        \item [\kt{parseClausesLazily(String): Sequence<Clause>}] parses a \textit{lazily evaluated} sequence of \kt{Clause}s from the given string, with default operators
+        \item [\kt{parseClauses(String, OperatorSet): List<Clause>}] parses a sequence of \kt{Clause}s from the given string, with the given operator set
+        \item [\kt{parseClauses(String): List<Clause>}] parses a sequence of \kt{Clause}s from the given string, with default operators
+    \end{description}
 
-    creation
+    \framebreak
 
-    usage examples
+    Static factories for \kt{ClausesParser}:
+    %
+    \begin{description}
+        \item [\kt{withNoOperator: ClausesParser}] creates a parser with no operators loaded
+        \item [\kt{withStandardOperators: ClausesParser}] creates a parser with standard operators loaded
+        \item [\kt{withDefaultOperators: ClausesParser}] creates a parser with default operators loaded (\kt{standard} operators)
+        \item [\kt{withOperators(OperatorSet): ClausesParser}] creates a parser with the given \kt{OperatorSet} loaded
+        \item [\kt{withOperators(vararg Operator): ClausesParser}] creates a parser with the given operators loaded
+    \end{description}
+
+    \framebreak
+
+    Successful clauses parsing (as \kt{Theory}, \kt{Sequence} and \kt{List} of \kt{Clause}s):
+    %
+    \ktSnippet{./snippets/ClausesParserUsage.kt}
+
+    \framebreak
+
+    \kt{Clause}s parsing failure:
+    %
+    \ktSnippet{./snippets/ClausesParserFailure.kt}
+
 \end{frame}
 
 \section{(De)Serialising Logic Knowledge: the \module{serialize-*} Modules}
