@@ -3006,10 +3006,10 @@
 
     \framebreak
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \ktSnippet[\tiny]{snippets/SumPrimitive.kt}
     % sum (functional)
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \ktSnippet[\tiny]{snippets/NatPrimitive.kt}
     % natural (backtraclabkle)
 
     \framebreak
@@ -3087,7 +3087,7 @@
 
     \framebreak
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \ktSnippet[\tiny]{snippets/AssertAllPrimitive.kt}
     % assert
 
 \end{frame}
@@ -3137,7 +3137,7 @@
 
     \framebreak
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \ktSnippet[\tiny]{snippets/NextFunction.kt}
     % sum (functional)
 
     \framebreak
@@ -3205,8 +3205,11 @@
 
     \framebreak
 
-    \ktSnippet{snippets/MissingExample.kt}
-    % implementation of the is/2 primitive
+    \ktSnippet[\tiny]{snippets/ReducePrimitive.kt}
+    %
+    \begin{itemize}\small
+        \item implementation of \pl{is/2} is analogous, except \kt{ExpressionEvaluator} is used
+    \end{itemize}
 \end{frame}
 
 \subsubsection{Communicating with the external world via \kt{Channel}s}
@@ -3364,7 +3367,9 @@
         \item[\kt{of(String): InputChannel<String>}] creates an input channel consuming a string \alert{character-wise}
     \end{description}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \ktSnippet{snippets/InputFromStdin.kt}
+    \ktSnippet{snippets/InputFromString.kt}
+    \ktSnippet{snippets/InputFromFunction.kt}
 
     \framebreak
 
@@ -3388,7 +3393,7 @@
             \item[eg] \kt{System.out} on the JVM
             \item[eg] \kt{Console.log} on JS
         \end{itemize}
-        \item[\kt{stdErr(): OutputChannel<String>}] returns a wrapper of the actual standard error of the current program
+        \item[\kt{stdErr(): OutputChannel<String>}] returns a wrapper of the actual standard error of the program
         %
         \begin{itemize}\small
             \item[eg] \kt{System.err} on the JVM
@@ -3398,7 +3403,8 @@
         \item[\kt{of((\textit{T}) -> Unit): OutputChannel<\textit{T}>}] creates an output channel out of a consumer function
     \end{description}
 
-    \ktSnippet{snippets/MissingExample.kt}
+    \ktSnippet{snippets/OutputToStd.kt}
+    \ktSnippet{snippets/OutputToCallback.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{ChannelStore} Type Hierarchy}
@@ -3455,12 +3461,8 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Using \kt{Channel}s}
-    \ktSnippet{snippets/MissingExample.kt}
-    % creating solvers with custom channels
-
-    \ktSnippet{snippets/MissingExample.kt}
-    % attaching callbacks to a solver's channels
+\begin{frame}{Using \kt{Channel}s}
+    \ktSnippet[\tiny]{snippets/CustomChannels.kt}
 \end{frame}
 
 \subsubsection{Configuring \kt{Solver}s via \kt{Flag}s}
@@ -3590,6 +3592,10 @@
             \end{itemize}
         \end{itemize}
     \end{block}
+\end{frame}
+
+\begin{frame}{Using \kt{Flag}s}
+    \ktSnippet{snippets/Flags.kt}
 \end{frame}
 
 \subsubsection{Other sorts of custom fields}
@@ -4130,14 +4136,6 @@
 
     \ktSnippet[\tiny]{snippets/FindAll.kt}
 \end{frame}
-
-\subsubsection{Writing \kt{Library}}
-
-\begin{frame}[allowframebreaks]{\kt{Library} end-to-end}
-    full example of a library containing at least 1 operator, 1 rule, 1 primitive and 1 function
-
-    loading the library into a solver
- \end{frame}
 
 \subsubsection{Default libraries}
 
