@@ -4224,25 +4224,133 @@
 \section{Prolog as a State Machine: the \module{solve-classic} Module}
 
 \begin{frame}[allowframebreaks]{Overview on the \module{solve-classic} Module}
-    state machine based design
 
-    AbstractClassicSolver
+    \begin{block}{Module \module{solve-classic} in a nutshell}
+        \begin{itemize}
+            \item Main implementation of \kt{Solver}
+            
+            \item Provides Prolog ISO Standard resolution
+            
+            \item State-Machine-based design inspired by \cite{tuprolog-sac08} 
+        \end{itemize}
+    \end{block}
 
-    SolutionIterator
+    \framebreak
 
-    ClassicSolver
+    Main abstractions from this module (\alert{client-code}):
+    %
+    \begin{center}
+        \includegraphics[width=.6\linewidth]{img/classic.pdf}
+    \end{center}
+
+    \begin{block}{The \kt{ClassicSolver}}
+        \begin{itemize}
+            \item State-Machine-based implementation of \kt{Solver}
+            %
+            \begin{itemize}
+                \item whose instances are created via the \kt{ClassicSolverFactory}
+                %
+                \begin{itemize}
+                    \item also accessible via \kt{Solver.classic}
+                \end{itemize}
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+
+    \framebreak
+
+    Main abstractions from this module (details):
+    %
+    \begin{center}
+        \includegraphics[width=.6\linewidth]{img/classic-details.pdf}
+    \end{center}
+
+    \begin{description}
+        \item[\kt{State}] base type for states of the Prolog State Machine (PSM)
+        
+        \medskip
+
+        \item[\kt{ClassicExecutionContext}] data structure containing the \kt{ExecutionContext} of (each state of) the PSM
+        
+        \medskip
+        
+        \item[\kt{SolutionIterator}] where the PSM is executed
+        %
+        \begin{itemize}
+            \item[ie] an object iterating over states and outputting \kt{Solution}s
+        \end{itemize} 
+
+        \medskip
+        
+        \item[\kt{MutableSolutionIterator}] a particular sort of solution iterator supporting \alert{hijack of state transitions}
+        %
+        \begin{itemize}
+            \item[eg] to alter the execution context or the destination state
+        \end{itemize}  
+
+        \medskip
+
+        \item[\kt{AbstractClassicSolver}] abstract class for classic-like solvers
+        %
+        \begin{itemize}
+            \item supporting the creation of custom solvers reusing (part of) the PSM
+        \end{itemize}   
+    \end{description}
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Formal State Machine}
-    whole formalization here
+\begin{frame}[allowframebreaks]{Prolog State Machine in a Nutshell}
+    \begin{center}
+        \includegraphics[width=.9\linewidth]{img/classic-sm.pdf}
+    \end{center}
+
+    \begin{block}{Main Features}
+        \begin{itemize}
+            \item 9 locations (1 initial, 2 ending)
+            \item 2 ancillary data structures
+            \item infinite possible states
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{Ancillary data structures}
+        \begin{description}
+            \item[Execution Context \textbf{Stack} ($\mathbf{E}$)] tracking currently exploring items of the proof-tree
+            \item[Choice Point \textbf{Queue} ($\mathbf{C}$)] tracking unexplored items of the proof-tree
+        \end{description}
+    \end{block}
+
+    \begin{block}{Locations}
+        \begin{description}\small
+            \item[Goal Selection] selects the next (sub-)goal to be proved, possibly popping from $\mathbf{E}$
+
+            \item[Primitive Selection] looks for a primitive to solve the selected (sub-)goal;
+            
+            \item[Primitive Execution] if some is found, the $1^{st}$ response is consumed, while a choice points are appended to $\mathbf{C}$ for the others
+        
+            \item[Rule Selection] if no primitive is selected, some rule is looked for instead, for the same sub-goal;
+            
+            \item[Rule Execution] if a rule is found, resolution proceeds by pushing a new execution context to $\mathbf{E}$, to tackle the body;
+            
+            \item[Backtracking] if no rule is found, the sub-goal is considered failed and resolution continues taking the next choice point in $\mathbf{C}$.
+            
+            \item[End] reached when there are no more goals or no more choice points.
+            
+            \item[Execption] reached some primitive responses carries an exception. This is where catching occurs.
+            
+            \item[Halt] reached when an exception is not caught.  
+        \end{description}
+    \end{block}
 \end{frame}
 
-\begin{frame}[allowframebreaks]{State Machine in Practice}
-    design of state
-
-    responsibilities of each state
-
-    iterating over states
+\begin{frame}{Prolog State Machine, Formally}
+    \begin{alertblock}{Formal specification here:}\small
+        \begin{center}
+            \url{https://github.com/tuProlog/2pkt-state-machine/releases/latest}
+        \end{center}
+        %
+        \begin{itemize}
+            \item[$\rightarrow$] download the \texttt{2pkt-state-machine-X.Y.Z-DATE.pdf} file
+        \end{itemize}
+    \end{alertblock}
 \end{frame}
 
 \section{Reading and Writing Data: the \module{io-lib} Module}
