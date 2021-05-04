@@ -7,6 +7,9 @@ val theory = Theory.of(
 val successfulRetract = theory.retract(
     Fact.of(Struct.of("f", Integer.of(1)))
 )
+
+println(successfulRetract.firstClause) // f(1)
+
 val theory2 = successfulRetract.theory // f(2), f(3)
 
 val failedRetract = theory2.retract(

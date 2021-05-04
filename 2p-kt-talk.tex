@@ -3240,7 +3240,7 @@
             \begin{itemize}
                 \item or by some \alert{alias}, i.e. an \alert{atom}
             \end{itemize}
-            \item \kt{Channel}s provide basic support to the features of \module{:io-lib}
+            \item \kt{Channel}s provide basic support to the features of \module{io-lib}
             \item Each \kt{Solver} contains an \kt{InputStore} and an \kt{OutputStore}
             %
             \begin{itemize}
@@ -3387,7 +3387,7 @@
     \end{block}
     %
     \begin{description}
-        \item[\kt{stdOut(): OutputChannel<String>}] returns a wrapper of the actual standard output of the current program
+        \item[\kt{stdOut(): OutputChannel<String>}] returns a wrapper of the actual standard output of the program
         %
         \begin{itemize}\small
             \item[eg] \kt{System.out} on the JVM
@@ -3399,8 +3399,8 @@
             \item[eg] \kt{System.err} on the JVM
             \item[eg] \kt{Console.error} on JS
         \end{itemize}
-        \item[\kt{warn(): OutputChannel<PrologWarning>}] returns a channel outputting warnings to the actual standard error of the current program
-        \item[\kt{of((\textit{T}) -> Unit): OutputChannel<\textit{T}>}] creates an output channel out of a consumer function
+        \item[\kt{warn(): OutputChannel<PrologWarning>}] returns a channel outputting warnings to the actual standard error of the program
+        \item[\kt{of((\textit{T}) -> Unit): OutputChannel<\textit{T}>}] creates an output channel out of a consumer function (i.e. a \emph{callback})
     \end{description}
 
     \ktSnippet{snippets/OutputToStd.kt}
@@ -4139,14 +4139,86 @@
 
 \subsubsection{Default libraries}
 
-\begin{frame}[allowframebreaks]{Example: The \kt{CommonBuiltins} Type}
-    which items does it include and what's their type, and why
+\begin{frame}[allowframebreaks]{About \kt{DefaultBuiltins} and \kt{CommonBuiltins}}
+    \begin{alertblock}{Convention}
+        Each implementer of \kt{Solver} should provide a library object named \alert{\kt{DefaultBuiltins}}
+        %
+        \begin{itemize}
+            \item containing all default built-in functionalities for that sort of \kt{Solver}
+            \item to be used by the specific \kt{SolveFactory} implementation
+            \item modules \module{solve-classic} and \module{solve-streams} are no excetion
+            %
+            \begin{itemize}
+                \item[eg] \kt{it.unibo.tuprolog.solve.\alert{classic}.stdlib.DefaultBuiltins}
+                \item[eg] \kt{it.unibo.tuprolog.solve.\alert{streams}.stdlib.DefaultBuiltins} 
+            \end{itemize}
+        \end{itemize}
+    \end{alertblock}
 
-    example of rule
+    \begin{block}{The \kt{CommonBuiltins} library}
+        \begin{itemize}
+            \item Most functionalities are \alert{agnostic} w.r.t. how \kt{Solver}s are implemented
+            \item[$\rightarrow$] Module \module{solve} provides an implementation for most of them
+            %
+            \begin{itemize}
+                \item in \kt{it.unibo.tuprolog.solve.stdlib.\alert{CommonBuiltins}}
+            \end{itemize} 
+            \item These functionalities are taken from the Prolog ISO Standard \cite{prologISO-pt1}
+            %
+            \begin{itemize}
+                \item yet, they are \alert{resolution-agnostic}
+            \end{itemize}
+            \item Implementors may choose to reuse some or all functionalities from \kt{CommonBuiltins}
+        \end{itemize}
+    \end{block}
 
-    example of primitive
+    \framebreak
 
-    example of function
+    Module \kt{solve}'s \kt{CommonBuiltins} content:
+    %
+    \begin{description}
+        \item[operators:] all Prolog standard operators
+        
+        \item[primitives:] \pl{abolish/1}, \pl{arg/3}, \pl{'=:='/2}, \pl{'>'/2}, \pl{'>='/2}, \pl{'<'/2}, \pl{'=<'/2}, \pl{'=$\backslash$='/2}, \pl{assert/1}, \pl{asserta/1}, \pl{assertz/1}, \pl{atom/1}, \pl{atom\_chars/2}, \pl{atom\_codes/2}, \pl{atom\_concat/3}, \pl{atomic/1}, \pl{atom\_length/2}, \pl{between/3}, \pl{bagof/3}, \pl{callable/1}, \pl{char\_code/2}, \pl{clause/2}, \pl{compound/1}, \pl{copy\_term/2}, \pl{current\_op/2}, \pl{current\_prolog\_flag/2}, \pl{ensure\_executable/1}, \pl{findall/3}, \pl{float/1}, \pl{functor/3}, \pl{get\_durable/2}, \pl{get\_ephemeral/2}, \pl{get\_persistent/2}, \pl{ground/1}, \pl{halt/0}, \pl{halt/1}, \pl{integer/1}, \pl{is/2}, \pl{natural/1}, \pl{nl/0}, \pl{nonvar/1}, \pl{'$\backslash$='/2}, \pl{number/1}, \pl{number\_chars/2}, \pl{number\_codes/2}, \pl{op/3}, \pl{repeat/0}, \pl{retract/1}, \pl{retractall/1}, \pl{reverse/2}, \pl{set\_durable/2}, \pl{set\_ephemeral/2}, \pl{setof/2}, \pl{set\_persistent/2}, \pl{set\_prolog\_plag/2}, \pl{sleep/1}, \pl{sub\_atom/5}, \pl{'@>'/2}, \pl{'@>='/2}, \pl{'=='/2}, \pl{'@<'/2}, \pl{'@=<'/2}, \pl{'$\backslash$=='/2}, \pl{'$\backslash$=@='/2}, \pl{'=@='/2}, \pl{'='/2}, \pl{'=..'/2}, \pl{var/1}, \pl{write/1}
+        
+        \item[functions:] \pl{abs/1}, \pl{'+'/2}, \pl{atan/1}, \pl{'/$\backslash$'/2}, \pl{'$\backslash$'/1}, \pl{'<<'/2}, \pl{'$\backslash$/'/2}, \pl{'>>'/2}, \pl{ceiling/1}, \pl{cos/1}, \pl{exp/1}, \pl{'**'/2}, \pl{float/1}, \pl{float\_fractional\_part/1}, \pl{float\_integer\_part/1}, \pl{'/'/2floor/1}, \pl{'//'/2}, \pl{mod/2}, \pl{'*'/2}, \pl{log/1}, \pl{rem/2}, \pl{round/1}, \pl{sign/1}, \pl{'-'/1}, \pl{sin/1}, \pl{sqrt/1}, \pl{'-'/2}, \pl{truncate/1}
+
+        \item[theory:] \pl{not/1}, \pl{'->/2}, \pl{';'/2}, \pl{member/2}, \pl{append/3}
+    \end{description}
+
+    \framebreak
+
+    Module \alert{\kt{solve-classic}}'s \kt{DefaultBuiltins} content:
+    %
+    \begin{description}
+        \item[operators:] all operators in \kt{CommonBuiltins.operators}
+        \item[functions:] all functions in \kt{CommonBuiltins.functions} 
+        \item[theory:] all clauses in \kt{CommonBuiltins.theory}  
+        %
+        \begin{itemize}
+            \item[+] \pl{call/1}, \pl{catch/3}, \pl{','/2}, \pl{'!'/0}, \pl{'$\backslash$+'/1}
+        \end{itemize}  
+        \item[primitives:] all primitives in \kt{CommonBuiltins.primitives}
+        %
+        \begin{itemize}
+            \item[+] \pl{throw/1}
+        \end{itemize}   
+    \end{description}
+
+    \framebreak
+
+    Module \alert{\kt{solve-classic}}'s \kt{DefaultBuiltins} content:
+    %
+    \begin{description}
+        \item[operators:] all operators in \kt{CommonBuiltins.operators}
+        \item[functions:] all functions in \kt{CommonBuiltins.functions} 
+        \item[theory:] all clauses in \kt{CommonBuiltins.theory}  
+        \item[primitives:] all primitives in \kt{CommonBuiltins.primitives}
+        %
+        \begin{itemize}
+            \item[+] \pl{call/1}, \pl{catch/3}, \pl{','/2}, \pl{'!'/0}, \pl{throw/1}, \pl{'$\backslash$+'/1}
+        \end{itemize}   
+    \end{description}
 \end{frame}
 
 \section{Prolog as a State Machine: the \module{solve-classic} Module}
