@@ -4370,18 +4370,58 @@
 \section{OOP and Prolog: the \module{oop-lib} Module}
 
 \begin{frame}[allowframebreaks]{Overview on the OOP Lib Design}
-    references to types and objects
 
-    term to object conversions
-        + smart cast and overloading selection
+    \begin{block}{Purpose}
+        \begin{description}
+            \item[\kt{Solver}s] $\rightarrow$ let OOP exploit LP
+            \item[\kt{Primitive}s] $\rightarrow$ let LP wrap/call OOP 
+            \item[\module{oop-lib}] $\rightarrow$ lets LP exploit OOP 
+        \end{description}
+    \end{block}
 
-    object to term conversions
+    \framebreak
 
-    ad-hoc predicates
+    Concept:
+    %
+    \bigskip
+    %
+    \begin{enumerate}
+        \item Two more sub-sorts of \kt{Atom}:
+        %
+        \begin{description}
+            \item[\kt{ObjectRef}] | representing references to \alert{objects}
+            \item[\kt{TypeRef}] | representing references to \alert{Type}s
+            %
+            \begin{itemize}
+                \item[eg] interfaces, classes, etc.
+            \end{itemize} 
+        \end{description}
 
-    ad-hoc operators
+        \bigskip
 
-    aliases
+        \item \kt{TypeRef}erenes can be attained from type names via \pl{type/2}:
+        %
+        \plSnippet{snippets/type2.pl}
+
+        \framebreak
+
+        \item \kt{ObjectRef}erenes can be attained from \kt{TypeRef}erenes via \pl{new\_object/2}:
+        %
+        \plSnippet{snippets/new_object2.pl}
+    \end{enumerate}
+
+    % references to types and objects
+
+    % term to object conversions
+    %     + smart cast and overloading selection
+
+    % object to term conversions
+
+    % ad-hoc predicates
+
+    % ad-hoc operators
+
+    % aliases
 \end{frame}
 
 \subsection{\kt{Ref}erences: \kt{TypeRef}erences and \kt{ObjectRef}}
