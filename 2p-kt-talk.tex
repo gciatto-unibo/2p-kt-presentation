@@ -4632,43 +4632,172 @@
 \section{(De)Serialising Logic Knowledge: the \module{serialize-*} Modules}
 
 \begin{frame}[allowframebreaks]{(De)Serialisation Overview}
-    onion design: (de)objectifiers <-> (de)serializers
+    % onion design: (de)objectifiers <-> (de)serializers
 
-    single/multiple design: core vs. theory
+    \begin{block}{Serialisation}
+        \begin{itemize}
+            \item performed via \kt{Serializer}s and \kt{Objectifier}s
+            \item \kt{Serializer}s convert \kt{Term}s/\kt{Theory}s into strings
+            \begin{description}
+                \item[!] formatted according to some \kt{MIME} type 
+            \end{description}
+            \item \kt{Objectifier}s are used by \kt{Serializer}s to convert \kt{Term}s/\kt{Theory}s into translatable objects first
+            \begin{description}
+                \item[!] acting as a middleware layer 
+            \end{description}
+        \end{itemize}
+    \end{block}
+    %
+    \begin{block}{De-serialisation}
+        \begin{itemize}
+            \item serialisation's dual process
+            \item converting strings into \kt{Term}s and \kt{Theory}s
+            \item employing \kt{Deserializer}s and \kt{Deobjectifier}s
+        \end{itemize}
+    \end{block}
 
-    supported mime types: json and yaml
+    \framebreak
+
+    \begin{block}{\kt{Term} vs \kt{Theory} (de)serialisation}
+        \begin{itemize}
+            \item \twopkt's design tackles both single and multiple serialisation strategies
+            \begin{itemize}
+                \item \kt{:serialize-core} concerns single-\kt{Term} (de)serialisation
+                \item \kt{:serialize-theory} concerns \kt{Theory} (de)serialisation
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+    %
+    \begin{block}{Supported MIME types}
+        \begin{itemize}
+            \item currently, (de)serialisation supports \kt{JSON} and \kt{YAML}
+        \end{itemize}
+    \end{block}
+
+\end{frame}
+
+\begin{frame}[allowframebreaks]{The \kt{Serializer}/\kt{Objectifier} hierarchy}
+    \begin{center}
+        \includegraphics[width=\linewidth]{img/serialization.pdf}
+    \end{center}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{The \kt{Deserializer}/\kt{Deobjectifier} hierarchy}
+    \begin{center}
+        \includegraphics[width=\linewidth]{img/deserialization.pdf}
+    \end{center}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{TermSerializer} Type}
-    definition
 
-    creation
+    \begin{block}{The \kt{TermSerializer} type}
+        \begin{itemize}
+            \item exposes methods that perform \kt{Term} serialisation
+            \item targeting a specific MIME type
+        \end{itemize}
+    \end{block}
+    %
+    \begin{description}
+        \item [\kt{mimeType: MimeType}] the format to which input \kt{Term}s are serialized 
+        \item [\kt{serialize(Term): String}] serialises a given \kt{Term} to a string formatted according to the selected \kt{mimeType}
+        \item [\kt{serializeMany(vararg Term): String}] serialises the given \kt{Term}s to a string formatted according to the selected \kt{mimeType}
+        \item [\kt{serializeMany(Iterable<Term>): String}] analogous to \kt{serializeMany(vararg Term): String}
+        \item [\kt{serializeMany(Sequence<Term>): String}] analogous to \kt{serializeMany(vararg Term): String}
+    \end{description}
+
+    \framebreak
+
+    Static factories for \kt{TermSerializer}:
+    %
+    \begin{description}
+        \item [\kt{of(MimeType): TermSerializer}] creates a new \kt{TermSerializer} employing the given format
+    \end{description}
+
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{TermDeserializer} Type}
-    definition
 
-    creation
+    \begin{block}{The \kt{TermDeserializer} Type}
+        \begin{itemize}
+            \item provides methods that convert strings back to \kt{Term}s
+            \item according to a specific MIME type
+        \end{itemize}
+    \end{block}
+    %
+    \begin{description}
+        \item [\kt{mimeType: MimeType}] the format from which the input string is de-serialised
+        \item [\kt{deserialize(String): Term}] de-serialises the given string according to the selected \kt{mimeType}, yielding a single \kt{Term}
+        \item [\kt{deserializeMany(String): Iterable<Term>}]  de-serialises the given string according to the selected \kt{mimeType}, yielding multiple \kt{Term}s
+    \end{description}
+
+    \framebreak
+
+    Static factories for \kt{TermDeserializer}:
+    %
+    \begin{description}
+        \item [\kt{of(MimeType): TermDeserializer}] creates a new \kt{TermDeserializer} according to the given format
+    \end{description}
+
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{TheorySerializer} Type}
-    definition
+    
+    \begin{block}{The \kt{TheorySerializer} Type}
+        \begin{itemize}
+            \item exposes methods that perform \kt{Theory} serialisation
+            \item targeting a specific MIME type
+        \end{itemize}
+    \end{block}
+    %
+    \begin{description}
+        \item [\kt{mimeType: MimeType}] the format to which input \kt{Theory}s are serialized 
+        \item [\kt{serialize(Theory): String}] serialises a given \kt{Theory} to a string formatted according to the selected \kt{mimeType}
+        \item [\kt{serializeMany(vararg Theory): String}] serialises the given \kt{Theory}s to a string formatted according to the selected \kt{mimeType}
+        \item [\kt{serializeMany(Iterable<Theory>): String}] analogous to \kt{serializeMany(vararg Theory): String}
+        \item [\kt{serializeMany(Sequence<Theory>): String}] analogous to \kt{serializeMany(vararg Theory): String}
+    \end{description}
 
-    creation
+    \framebreak
+
+    Static factories for \kt{TheorySerializer}:
+    %
+    \begin{description}
+        \item [\kt{of(MimeType): TheorySerializer}] creates a new \kt{TheorySerializer} employing the given format
+    \end{description}
+
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{TheoryDeserializer} Type}
-    definition
+    
+    \begin{block}{The \kt{TheoryDeserializer} Type}
+        \begin{itemize}
+            \item provides methods that convert strings back to \kt{Theory}s
+            \item according to a specific MIME type
+        \end{itemize}
+    \end{block}
+    %
+    \begin{description}
+        \item [\kt{mimeType: MimeType}] the format from which the input string is de-serialised
+        \item [\kt{deserialize(String): Theory}] de-serialises the given string according to the selected \kt{mimeType}, yielding a single \kt{Theory}
+        \item [\kt{deserializeMany(String): Iterable<Theory>}]  de-serialises the given string according to the selected \kt{mimeType}, yielding multiple \kt{Theory}s
+    \end{description}
 
-    creation
+    \framebreak
+
+    Static factories for \kt{TheoryDeserializer}:
+    %
+    \begin{description}
+        \item [\kt{of(MimeType): TheoryDeserializer}] creates a new \kt{TheoryDeserializer} according to the given format
+    \end{description}
+
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Terms/Thoery to JSON Mapping}
-    mapping definition
+\begin{frame}[allowframebreaks]{Terms/Theory to JSON Mapping}
+    \input{tab-serialization-mapping.tex}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Complete Usage Example}
-    serialize-and-then-deserialize example
+    \ktSnippet{./snippets/SerializeDeserialize.kt}
 \end{frame}
 
 \section{Using \twopkt}

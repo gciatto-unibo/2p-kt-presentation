@@ -1,0 +1,19 @@
+% !TEX root = 2p-kt-talk.tex
+
+\begin{center}
+\begin{adjustbox}{width=.8\textwidth} 
+% \begin{table}[]
+\begin{tabular}{llll}
+    \hline
+    type & example & JSON & YAML \\ \hline
+    atom & a & "a" & "a" \\
+    numeric & 42 & 42 & 42 \\
+    list & {[}1, 2, 3{]} & \{"list":{[}1,2,3{]}\} & list: {[}1, 2, 3{]} \\
+    set & \{1, 2, 3\} & \{"set":{[}1,2,3{]}\} & set: {[}1, 2, 3{]} \\
+    struct & f(hello, 2) & \{"fun":"f","args":{[}"hello",2{]}\} & \begin{tabular}[c]{@{}l@{}}fun: "f"\\ args: {[}"hello", 2{]}\end{tabular} \\
+    constant & true & true & true \\
+    variable & X & \{"var":"X"\} & var: "X" \\ \hline
+\end{tabular}
+% \end{table}
+\end{adjustbox}
+\end{center}
