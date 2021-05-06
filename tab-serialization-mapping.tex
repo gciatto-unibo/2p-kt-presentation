@@ -1,18 +1,52 @@
 % !TEX root = 2p-kt-talk.tex
 
 \begin{center}
-\begin{adjustbox}{width=.8\textwidth} 
+\begin{adjustbox}{width=\textwidth} 
 % \begin{table}[]
-\begin{tabular}{llll}
+\begin{tabular}{c|c||c|c|l}
     \hline
-    type & example & JSON & YAML \\ \hline
-    atom & a & "a" & "a" \\
-    numeric & 42 & 42 & 42 \\
-    list & {[}1, 2, 3{]} & \{"list":{[}1,2,3{]}\} & list: {[}1, 2, 3{]} \\
-    set & \{1, 2, 3\} & \{"set":{[}1,2,3{]}\} & set: {[}1, 2, 3{]} \\
-    struct & f(hello, 2) & \{"fun":"f","args":{[}"hello",2{]}\} & \begin{tabular}[c]{@{}l@{}}fun: "f"\\ args: {[}"hello", 2{]}\end{tabular} \\
-    constant & true & true & true \\
-    variable & X & \{"var":"X"\} & var: "X" \\ \hline
+    Type & JSON Type & Logic & JSON & YAML \\ 
+    \hline\hline
+    \kt{Atom} & string & \pl{a} & \js{"a"} & \yml{a} \\
+    \hdashline
+    & & \pl{'a b'} & \js{"a b"} & \yml{a b} \\
+    \hline
+    \kt{Numeric} & number & \pl{42} & \js{42} & \yml{42} \\
+    \hdashline
+    \kt{Integer} & object & \pl{42} & \js{\{"integer":"42"\}} & \yml{integer: "42"} \\
+    \hdashline
+    \kt{Real} & object & \pl{4.2} & \js{\{"real":"4.2"\}} & \yml{real: "4.2"} \\
+    \hline
+    \kt{List} & object & \pl{[\meta{$t_1$}, \ldots, \meta{$t_n$}]} & \js{\{"list":[\meta{$j_1$},\ldots,\meta{$j_n$}]\}} & \yml{list: [\meta{$y_1$},\ldots,\meta{$y_n$}]} \\
+    \hdashline
+    & & \pl{[\meta{$t_1$}, \ldots, \meta{$t_n$} | \meta{$t$} ]} & \js{\{"list":[\meta{$j_1$},\ldots,\meta{$j_n$}],"last":\meta{$j$}\}} & \yml{list: [\meta{$y_1$},\ldots,\meta{$y_n$}]} \\
+    & & & & \yml{last: \meta{$y$}} \\
+    \hline
+    \kt{Set} & object & \pl{\{\meta{$t_1$}, \ldots, \meta{$t_n$}\}} & \js{\{"set":[\meta{$j_1$},\ldots,\meta{$j_n$}]\}} & \yml{set: [\meta{$y_1$},\ldots,\meta{$y_n$}]} \\
+    \hline
+    \kt{Tuple} & object & \pl{(\meta{$t_1$}, \ldots, \meta{$t_n$})} & \js{\{"tuple":[\meta{$j_1$},\ldots,\meta{$j_n$}]\}} & \yml{tuple:[ \meta{$y_1$},\ldots,\meta{$y_n$}]} \\
+    \hline
+    \kt{Struct} & object & \pl{f(\meta{$t_1$}, \ldots, \meta{$t_n$})} & \js{\{"fun":"f","args":[\meta{$j_1$},\ldots,\meta{$j_n$}]\}} & \yml{fun: f} \\
+    & & & & \yml{args: [\meta{$y_1$}, \ldots, \meta{$y_n$}]} \\
+    \hline
+    \kt{Truth} & boolean & \pl{true} & \js{true} & \yml{true} \\
+    \hdashline
+    & & \pl{false} & \js{false} & \yml{false} \\
+    \hdashline
+    & string & \pl{fail} & \js{"fail"} & \yml{fail} \\
+    \hline
+    \kt{Var} & object & \pl{X} & \js{\{"var":"X"\}} & \yml{var: X} \\ 
+    \hline
+    \kt{Indicator} & object & \pl{\meta{$t_1$} / \meta{$t_2$}} & \js{\{"name":\meta{$j_1$}, "arity":\meta{$j_2$}\}} & \yml{name: \meta{$y_1$}} \\
+    & & & & \yml{arity: \meta{$y_2$}} \\
+    \hline
+    \kt{Rule} & object & \pl{\meta{$t_1$} :- \meta{$t_2$}} & \js{\{"head":\meta{$j_1$}, "body":\meta{$j_2$}\}} & \yml{head: \meta{$y_1$}} \\
+    & & & & \yml{body: \meta{$y_2$}} \\
+    \hline
+    \kt{Fact} & object & \pl{\meta{$t$} :- true} & \js{\{"head":\meta{$j$}\}} & \yml{head: \meta{$y$}} \\
+    \hline
+    \kt{Directive} & object & \pl{:- \meta{$t$}} & \js{\{"body":\meta{$j$}\}} & \yml{body: \meta{$y$}} \\
+    \hline
 \end{tabular}
 % \end{table}
 \end{adjustbox}
