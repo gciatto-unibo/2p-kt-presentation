@@ -4480,7 +4480,7 @@
 
     \begin{block}{\kt{Term} vs \kt{Theory} (de)serialisation}
         \begin{itemize}
-            \item \textsc{2P-Kt}'s design tackles both single and multiple serialisation strategies
+            \item \twopkt's design tackles both single and multiple serialisation strategies
             \begin{itemize}
                 \item \kt{:serialize-core} concerns single-\kt{Term} (de)serialisation
                 \item \kt{:serialize-theory} concerns \kt{Theory} (de)serialisation
@@ -4490,7 +4490,7 @@
     %
     \begin{block}{Supported MIME types}
         \begin{itemize}
-            \item currently, (de)serialisation supports \kt{JSON}, \kt{YAML} and \kt{XML}
+            \item currently, (de)serialisation supports \kt{JSON} and \kt{YAML}
         \end{itemize}
     \end{block}
 
@@ -4612,8 +4612,8 @@
 
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Terms/Thoery to JSON Mapping}
-    mapping definition
+\begin{frame}[allowframebreaks]{Terms/Theory to JSON Mapping}
+    \input{tab-serialization-mapping.tex}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Complete Usage Example}
