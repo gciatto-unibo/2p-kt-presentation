@@ -7,6 +7,9 @@ val queue = ClauseCollection.queueOf(
 val successfulRetrieve = queue.retrieveFirst(
     Fact.of(Struct.of("f", Integer.of(1)))
 )
+
+println(successfulRetrieve.firstClause) // f(1)
+
 val queue2 = successfulRetrieve.collection // f(2), f(3)
 
 val failedRetrieve = queue2.retrieveFirst(

@@ -1,0 +1,40 @@
+@startuml
+package solve {
+    interface Solver
+
+    interface ExecutionContext
+}
+
+package solve-classic {
+
+    abstract class AbstractClassicSolver
+
+    class ClassicSolver
+
+    AbstractClassicSolver <|-- ClassicSolver
+
+    class ClassicExecutionContext
+
+    interface SolutionIterator
+
+    interface MutableSolutionIterator
+
+    SolutionIterator <|-- MutableSolutionIterator
+
+    interface State
+
+    SolutionIterator "1" ..> "N" State: steps\nthrough
+
+    AbstractClassicSolver "1" ..> "N" SolutionIterator: uses
+
+    AbstractClassicSolver "1" <.. "1" ClassicExecutionContext: encapsulates\nstate of
+
+    State "1" *.up. "1" ClassicExecutionContext
+
+    note bottom of ClassicSolver: this is what users use
+    note left of AbstractClassicSolver: developers may extend this\nto create custom solvers
+}
+
+Solver <|-- AbstractClassicSolver
+ExecutionContext <|-- ClassicExecutionContext
+@enduml

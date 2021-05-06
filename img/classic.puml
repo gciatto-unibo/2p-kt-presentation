@@ -1,0 +1,22 @@
+@startuml
+left to right direction
+
+package solve {
+  interface Solver
+
+  interface SolverFactory
+
+  Solver  ..  SolverFactory
+}
+
+package solve-classic {
+  class ClassicSolver
+
+  class ClassicSolverFactory << (S,#FF7700) Singleton >>
+
+  ClassicSolver "N" <.. "1" ClassicSolverFactory: creates
+}
+
+Solver <|-down- ClassicSolver
+SolverFactory <|-down- ClassicSolverFactory
+@enduml
