@@ -17,6 +17,7 @@
 \usepackage{tabularx}
 \usepackage{multirow}
 \usepackage{arydshln}
+% \usepackage{lstprolog}
 
 % Macros
 \newcommand{\unibo}{\textsc{Alma Mater Studiorum}---Univerisità di Bologna}
@@ -102,6 +103,17 @@
     sensitive=true,
 }
 
+\lstdefinelanguage{MyProlog}{
+    comment=[l]{\%},
+    emph={},
+    keywords={setof, is, assert, retract},
+    morecomment=[s]{/*}{*/},
+    morestring=[b]",
+    morestring=[b]',
+    % ndkeywords={@Deprecated, @JvmField, @JvmName, @JvmOverloads, @JvmStatic, @JvmSynthetic},
+    sensitive=true,
+}
+
 \newcommand{\ktSnippet}[2][\scriptsize]{\lstinputlisting[language=Kotlin,basicstyle=#1\ttfamily]{#2}}
-\newcommand{\plSnippet}[2][\scriptsize]{\lstinputlisting[language=Kotlin,basicstyle=#1\ttfamily]{#2}}
+\newcommand{\plSnippet}[2][\scriptsize]{\lstinputlisting[language=MyProlog,basicstyle=#1\ttfamily]{#2}}
 \newcommand{\missingExampleSnippet}{\begin{lstlisting}missing example here\end{lstlisting}}

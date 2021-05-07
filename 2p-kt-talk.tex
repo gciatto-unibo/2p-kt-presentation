@@ -4386,28 +4386,76 @@
     \bigskip
     %
     \begin{enumerate}
-        \item Two more sub-sorts of \kt{Atom}:
+        \item Two more sub-sorts of \kt{Atom}, generically called \alert{\kt{Ref}erences}
         %
         \begin{description}
-            \item[\kt{ObjectRef}] | representing references to \alert{objects}
-            \item[\kt{TypeRef}] | representing references to \alert{Type}s
+            \item[\kt{ObjectRef}erences] | representing references to \alert{objects}
+            \item[\kt{TypeRef}erences] | representing references to \alert{type}s
             %
             \begin{itemize}
                 \item[eg] interfaces, classes, etc.
             \end{itemize} 
         \end{description}
+        %
+        \begin{center}
+            \includegraphics[width=\linewidth]{img/refs.pdf}
+        \end{center}
 
-        \bigskip
+        \framebreak
 
         \item \kt{TypeRef}erenes can be attained from type names via \pl{type/2}:
         %
         \plSnippet{snippets/type2.pl}
 
-        \framebreak
+        \bigskip
 
         \item \kt{ObjectRef}erenes can be attained from \kt{TypeRef}erenes via \pl{new\_object/2}:
         %
-        \plSnippet{snippets/new_object2.pl}
+        \plSnippet[\tiny]{snippets/new_object2.pl}
+
+        \framebreak
+
+        \item \kt{Ref}erences' methods can be invoked via the following syntax:
+        %
+        \begin{center}
+            \pl{Ref\alert{.}methodName(Arg$_1$, \ldots, Arg$_n$)}
+        \end{center}
+
+        \smallskip
+
+        \item \kt{Ref}erences' properties, fields, 0-ary methods can be similarly accessed:
+        %
+        \begin{center}
+            \pl{Ref\alert{.}propertyName} \quad or \quad \pl{Ref.'PropertyName'}
+        \end{center}
+
+        \smallskip
+
+        \item Results of properties / fields / methods can be bound to variables via \kt{':='/2}:
+        %   
+        \plSnippet[\tiny]{snippets/System_out_println.pl}
+
+        \framebreak
+
+        \item Terms are automatically converted into object of the \alert{most adequate} type, upon method invocation, and result are converted back into terms
+        %
+        \plSnippet[\tiny]{snippets/StringBuilder_append_toString.pl}
+
+        \framebreak
+
+        \item \alert{Aliases} are available to quick-access common types or objects
+        %
+        \plSnippet[\tiny]{snippets/aliases.pl}
+
+        \framebreak
+
+        \item \alert{Aliases} can 
+        %
+        \begin{itemize}
+            \item be inspected via \pl{alias/2}
+            \item be added (resp. removed) via \pl{register/2} (resp. \pl{unregister/1})
+            \item be used in place of actual \kt{Ref}erences via the \alert{de-aliasing operator} \pl{\$/1}
+        \end{itemize}
     \end{enumerate}
 
     % references to types and objects

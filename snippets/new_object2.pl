@@ -1,5 +1,4 @@
-?- type('java.lang.StringBuilder', Type), 
-   new_object(Type, Instance).
+?- type('java.lang.StringBuilder', Type), new_object(Type, Obj).
         % yes.
         %   Type = <type:java.lang.StringBuilder>
-        %   Instance = <object:java.lang.StringBuilder#6223cf0b>
+        %   Obj = <object:java.lang.StringBuilder#6223cf0b>
