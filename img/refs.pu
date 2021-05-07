@@ -1,0 +1,29 @@
+@startuml
+
+left to right direction
+
+package :core {
+    interface Term
+    interface Constant
+    interface Struct
+    interface Atom
+
+    Term <|-- Constant
+    Term <|-- Struct
+    Struct <|-- Atom
+}
+
+package :oop-lib {
+    interface Ref 
+    interface ObjectRef
+    interface TypeRef
+    interface NullRef
+
+    Ref <|-- ObjectRef
+    Ref <|-- TypeRef
+    ObjectRef <|-- NullRef
+}
+
+Atom <|-- Ref
+
+@enduml
