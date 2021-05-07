@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="655px" preserveAspectRatio="none" style="width:700px;height:655px;" version="1.1" viewBox="0 0 700 655" width="700px" zoomAndPan="magnify"><defs><filter height="300%" id="f1wsqwmjct50sl" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[b2b2024fd2e5cfdb31e1d7c7d7b88fc2]
+class PrologAwareScope--><rect codeLine="23" fill="#FEFECE" filter="url(#f1wsqwmjct50sl)" height="53.8359" id="PrologAwareScope" style="stroke:#A80036;stroke-width:1.5;" width="137" x="256.5" y="59.5"/><ellipse cx="271.5" cy="75.5" fill="#B4A7E5" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M272.4531,72.1406 L272.4531,78.7969 L274.1719,78.7969 Q274.7813,78.7969 275.0469,79.0313 Q275.3125,79.2656 275.3125,79.6563 Q275.3125,80.0313 275.0469,80.2656 Q274.7813,80.5 274.1719,80.5 L269.0313,80.5 Q268.4219,80.5 268.1563,80.2656 Q267.8906,80.0313 267.8906,79.6406 Q267.8906,79.2656 268.1563,79.0313 Q268.4219,78.7969 269.0313,78.7969 L270.75,78.7969 L270.75,72.1406 L269.0313,72.1406 Q268.4219,72.1406 268.1563,71.9063 Q267.8906,71.6719 267.8906,71.2813 Q267.8906,70.9063 268.1563,70.6719 Q268.4219,70.4375 269.0313,70.4375 L274.1719,70.4375 Q274.7813,70.4375 275.0469,70.6719 Q275.3125,70.9063 275.3125,71.2813 Q275.3125,71.6719 275.0469,71.9063 Q274.7813,72.1406 274.1719,72.1406 L272.4531,72.1406 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="105" x="285.5" y="80.4102">PrologAwareScope</text><line style="stroke:#A80036;stroke-width:1.5;" x1="257.5" x2="392.5" y1="91.5" y2="91.5"/><ellipse cx="267.5" cy="102.5" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="21" x="276.5" y="106.9189">Any</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="88" x="297.5" y="106.9189">.toTerm(): Term</text><!--MD5=[00e08d6c549a0b2bb8bcc16a81a2ab1f]
+class VariablesAwareScope--><rect codeLine="31" fill="#FEFECE" filter="url(#f1wsqwmjct50sl)" height="81.5078" id="VariablesAwareScope" style="stroke:#A80036;stroke-width:1.5;" width="154" x="155" y="226"/><ellipse cx="170" cy="242" fill="#B4A7E5" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M170.9531,238.6406 L170.9531,245.2969 L172.6719,245.2969 Q173.2813,245.2969 173.5469,245.5313 Q173.8125,245.7656 173.8125,246.1563 Q173.8125,246.5313 173.5469,246.7656 Q173.2813,247 172.6719,247 L167.5313,247 Q166.9219,247 166.6563,246.7656 Q166.3906,246.5313 166.3906,246.1406 Q166.3906,245.7656 166.6563,245.5313 Q166.9219,245.2969 167.5313,245.2969 L169.25,245.2969 L169.25,238.6406 L167.5313,238.6406 Q166.9219,238.6406 166.6563,238.4063 Q166.3906,238.1719 166.3906,237.7813 Q166.3906,237.4063 166.6563,237.1719 Q166.9219,236.9375 167.5313,236.9375 L172.6719,236.9375 Q173.2813,236.9375 173.5469,237.1719 Q173.8125,237.4063 173.8125,237.7813 Q173.8125,238.1719 173.5469,238.4063 Q173.2813,238.6406 172.6719,238.6406 L170.9531,238.6406 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="122" x="184" y="246.9102">VariablesAwareScope</text><line style="stroke:#A80036;stroke-width:1.5;" x1="156" x2="308" y1="258" y2="258"/><ellipse cx="166" cy="269" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="32" x="175" y="273.4189">A: Var</text><ellipse cx="166" cy="282.8359" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="31" x="175" y="287.2549">B: Var</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="9" x="175" y="301.0908">...</text><!--MD5=[7c3a6541f87f3ad50ff8cb81ace56c77]
+class PrologStdLibScope--><rect codeLine="27" fill="#FEFECE" filter="url(#f1wsqwmjct50sl)" height="53.8359" id="PrologStdLibScope" style="stroke:#A80036;stroke-width:1.5;" width="145" x="344.5" y="240"/><ellipse cx="362.2" cy="256" fill="#B4A7E5" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M363.1531,252.6406 L363.1531,259.2969 L364.8719,259.2969 Q365.4813,259.2969 365.7469,259.5313 Q366.0125,259.7656 366.0125,260.1563 Q366.0125,260.5313 365.7469,260.7656 Q365.4813,261 364.8719,261 L359.7313,261 Q359.1219,261 358.8563,260.7656 Q358.5906,260.5313 358.5906,260.1406 Q358.5906,259.7656 358.8563,259.5313 Q359.1219,259.2969 359.7313,259.2969 L361.45,259.2969 L361.45,252.6406 L359.7313,252.6406 Q359.1219,252.6406 358.8563,252.4063 Q358.5906,252.1719 358.5906,251.7813 Q358.5906,251.4063 358.8563,251.1719 Q359.1219,250.9375 359.7313,250.9375 L364.8719,250.9375 Q365.4813,250.9375 365.7469,251.1719 Q366.0125,251.4063 366.0125,251.7813 Q366.0125,252.1719 365.7469,252.4063 Q365.4813,252.6406 364.8719,252.6406 L363.1531,252.6406 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="107" x="376.8" y="260.9102">PrologStdLibScope</text><line style="stroke:#A80036;stroke-width:1.5;" x1="345.5" x2="488.5" y1="272" y2="272"/><text fill="#000000" font-family="sans-serif" font-size="11" font-style="italic" lengthAdjust="spacing" textLength="133" x="350.5" y="287.4189">standard library predicates</text><!--MD5=[c6405faf3eec86f25cb2f12a0b629493]
+class PrologScope--><rect codeLine="37" fill="#FEFECE" filter="url(#f1wsqwmjct50sl)" height="67.6719" id="PrologScope" style="stroke:#A80036;stroke-width:1.5;" width="233" x="207.5" y="375"/><ellipse cx="284.25" cy="391" fill="#B4A7E5" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M285.2031,387.6406 L285.2031,394.2969 L286.9219,394.2969 Q287.5313,394.2969 287.7969,394.5313 Q288.0625,394.7656 288.0625,395.1563 Q288.0625,395.5313 287.7969,395.7656 Q287.5313,396 286.9219,396 L281.7813,396 Q281.1719,396 280.9063,395.7656 Q280.6406,395.5313 280.6406,395.1406 Q280.6406,394.7656 280.9063,394.5313 Q281.1719,394.2969 281.7813,394.2969 L283.5,394.2969 L283.5,387.6406 L281.7813,387.6406 Q281.1719,387.6406 280.9063,387.4063 Q280.6406,387.1719 280.6406,386.7813 Q280.6406,386.4063 280.9063,386.1719 Q281.1719,385.9375 281.7813,385.9375 L286.9219,385.9375 Q287.5313,385.9375 287.7969,386.1719 Q288.0625,386.4063 288.0625,386.7813 Q288.0625,387.1719 287.7969,387.4063 Q287.5313,387.6406 286.9219,387.6406 L285.2031,387.6406 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="71" x="304.75" y="395.9102">PrologScope</text><line style="stroke:#A80036;stroke-width:1.5;" x1="208.5" x2="439.5" y1="407" y2="407"/><ellipse cx="218.5" cy="418" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="34" x="227.5" y="422.4189">String</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="173" x="261.5" y="422.4189">.invoke(Any, vararg Any): Struct</text><ellipse cx="218.5" cy="431.8359" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="67" x="227.5" y="436.2549">Substitution</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="105" x="294.5" y="436.2549">.get(String): Term?</text><!--MD5=[c87973e538c34ecbed24fed2d345da41]
+class PrologScopeWithUnification--><rect codeLine="42" fill="#FEFECE" filter="url(#f1wsqwmjct50sl)" height="81.5078" id="PrologScopeWithUnification" style="stroke:#A80036;stroke-width:1.5;" width="201" x="475.5" y="368"/><ellipse cx="497.7" cy="384" fill="#B4A7E5" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M498.6531,380.6406 L498.6531,387.2969 L500.3719,387.2969 Q500.9813,387.2969 501.2469,387.5313 Q501.5125,387.7656 501.5125,388.1563 Q501.5125,388.5313 501.2469,388.7656 Q500.9813,389 500.3719,389 L495.2313,389 Q494.6219,389 494.3563,388.7656 Q494.0906,388.5313 494.0906,388.1406 Q494.0906,387.7656 494.3563,387.5313 Q494.6219,387.2969 495.2313,387.2969 L496.95,387.2969 L496.95,380.6406 L495.2313,380.6406 Q494.6219,380.6406 494.3563,380.4063 Q494.0906,380.1719 494.0906,379.7813 Q494.0906,379.4063 494.3563,379.1719 Q494.6219,378.9375 495.2313,378.9375 L500.3719,378.9375 Q500.9813,378.9375 501.2469,379.1719 Q501.5125,379.4063 501.5125,379.7813 Q501.5125,380.1719 501.2469,380.4063 Q500.9813,380.6406 500.3719,380.6406 L498.6531,380.6406 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="153" x="513.3" y="388.9102">PrologScopeWithUnification</text><line style="stroke:#A80036;stroke-width:1.5;" x1="476.5" x2="675.5" y1="400" y2="400"/><ellipse cx="486.5" cy="411" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="21" x="495.5" y="415.4189">Any</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="154" x="516.5" y="415.4189">.mguWith(Any): Substitution</text><ellipse cx="486.5" cy="424.8359" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" font-style="italic" lengthAdjust="spacing" textLength="18" x="495.5" y="429.2549">Any</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="117" x="513.5" y="429.2549">.matches(Any): Boolean</text><ellipse cx="486.5" cy="438.6719" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" font-style="italic" lengthAdjust="spacing" textLength="18" x="495.5" y="443.0908">Any</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="112" x="513.5" y="443.0908">.unifyWith(Any): Term?</text><!--MD5=[5b5a1ef3dfc3dcb35647d40562a6c7fa]
+class PrologScopeWithTheories--><rect codeLine="48" fill="#FEFECE" filter="url(#f1wsqwmjct50sl)" height="109.1797" id="PrologScopeWithTheories" style="stroke:#A80036;stroke-width:1.5;" width="220" x="466" y="521"/><ellipse cx="501.25" cy="537" fill="#B4A7E5" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M502.2031,533.6406 L502.2031,540.2969 L503.9219,540.2969 Q504.5313,540.2969 504.7969,540.5313 Q505.0625,540.7656 505.0625,541.1563 Q505.0625,541.5313 504.7969,541.7656 Q504.5313,542 503.9219,542 L498.7813,542 Q498.1719,542 497.9063,541.7656 Q497.6406,541.5313 497.6406,541.1406 Q497.6406,540.7656 497.9063,540.5313 Q498.1719,540.2969 498.7813,540.2969 L500.5,540.2969 L500.5,533.6406 L498.7813,533.6406 Q498.1719,533.6406 497.9063,533.4063 Q497.6406,533.1719 497.6406,532.7813 Q497.6406,532.4063 497.9063,532.1719 Q498.1719,531.9375 498.7813,531.9375 L503.9219,531.9375 Q504.5313,531.9375 504.7969,532.1719 Q505.0625,532.4063 505.0625,532.7813 Q505.0625,533.1719 504.7969,533.4063 Q504.5313,533.6406 503.9219,533.6406 L502.2031,533.6406 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="143" x="519.75" y="541.9102">PrologScopeWithTheories</text><line style="stroke:#A80036;stroke-width:1.5;" x1="467" x2="685" y1="553" y2="553"/><ellipse cx="477" cy="564" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="159" x="486" y="568.4189">theoryOf(vararg Clause): Theory</text><ellipse cx="477" cy="577.8359" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="193" x="486" y="582.2549">rule(PrologWithTheories.() -&gt; Any): Rule</text><ellipse cx="477" cy="591.6719" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="194" x="486" y="596.0908">fact(PrologWithTheories.() -&gt; Any): Fact</text><ellipse cx="477" cy="605.5078" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="102" x="486" y="609.9268">and(Any, Any): Term</text><ellipse cx="477" cy="619.3438" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="94" x="486" y="623.7627">or(Any, Any): Term</text><!--MD5=[bece8b4c4229b3549b4a8159d27930ed]
+class Scope--><rect codeLine="12" fill="#FEFECE" filter="url(#f1wsqwmjct50sl)" height="158.6875" id="Scope" style="stroke:#A80036;stroke-width:1.5;" width="214" x="7" y="7"/><ellipse cx="92.25" cy="23" fill="#B4A7E5" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M93.2031,19.6406 L93.2031,26.2969 L94.9219,26.2969 Q95.5313,26.2969 95.7969,26.5313 Q96.0625,26.7656 96.0625,27.1563 Q96.0625,27.5313 95.7969,27.7656 Q95.5313,28 94.9219,28 L89.7813,28 Q89.1719,28 88.9063,27.7656 Q88.6406,27.5313 88.6406,27.1406 Q88.6406,26.7656 88.9063,26.5313 Q89.1719,26.2969 89.7813,26.2969 L91.5,26.2969 L91.5,19.6406 L89.7813,19.6406 Q89.1719,19.6406 88.9063,19.4063 Q88.6406,19.1719 88.6406,18.7813 Q88.6406,18.4063 88.9063,18.1719 Q89.1719,17.9375 89.7813,17.9375 L94.9219,17.9375 Q95.5313,17.9375 95.7969,18.1719 Q96.0625,18.4063 96.0625,18.7813 Q96.0625,19.1719 95.7969,19.4063 Q95.5313,19.6406 94.9219,19.6406 L93.2031,19.6406 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="35" x="112.75" y="27.9102">Scope</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="220" y1="39" y2="39"/><ellipse cx="18" cy="50" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="30" x="27" y="54.4189">_: Var</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="220" y1="60.8359" y2="60.8359"/><ellipse cx="18" cy="71.8359" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="95" x="27" y="76.2549">varOf(String): Var</text><ellipse cx="18" cy="85.6719" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="102" x="27" y="90.0908">atomOf(String): Atom</text><ellipse cx="18" cy="99.5078" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="188" x="27" y="103.9268">structOf(String, Iterable&lt;Term&gt;): Struct</text><ellipse cx="18" cy="113.3438" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="106" x="27" y="117.7627">emptyList(): EmptyList</text><ellipse cx="18" cy="127.1797" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="127" x="27" y="131.5986">listOf(Iterable&lt;Term&gt;): List</text><ellipse cx="18" cy="141.0156" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="100" x="27" y="145.4346">numOf(Double): Real</text><ellipse cx="18" cy="154.8516" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="90" x="27" y="159.2705">numOf(Int): Integer</text><!--MD5=[2b299a0fe000edcf4c2f898848938fc1]
+class PrologScopeWithResolution--><rect codeLine="56" fill="#FEFECE" filter="url(#f1wsqwmjct50sl)" height="131.0156" id="PrologScopeWithResolution" style="stroke:#A80036;stroke-width:1.5;" width="203" x="227.5" y="510"/><ellipse cx="250.15" cy="526" fill="#B4A7E5" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M251.1031,522.6406 L251.1031,529.2969 L252.8219,529.2969 Q253.4313,529.2969 253.6969,529.5313 Q253.9625,529.7656 253.9625,530.1563 Q253.9625,530.5313 253.6969,530.7656 Q253.4313,531 252.8219,531 L247.6813,531 Q247.0719,531 246.8063,530.7656 Q246.5406,530.5313 246.5406,530.1406 Q246.5406,529.7656 246.8063,529.5313 Q247.0719,529.2969 247.6813,529.2969 L249.4,529.2969 L249.4,522.6406 L247.6813,522.6406 Q247.0719,522.6406 246.8063,522.4063 Q246.5406,522.1719 246.5406,521.7813 Q246.5406,521.4063 246.8063,521.1719 Q247.0719,520.9375 247.6813,520.9375 L252.8219,520.9375 Q253.4313,520.9375 253.6969,521.1719 Q253.9625,521.4063 253.9625,521.7813 Q253.9625,522.1719 253.6969,522.4063 Q253.4313,522.6406 252.8219,522.6406 L251.1031,522.6406 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="154" x="265.85" y="530.9102">PrologScopeWithResolution</text><line style="stroke:#A80036;stroke-width:1.5;" x1="228.5" x2="429.5" y1="542" y2="542"/><ellipse cx="238.5" cy="553" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="177" x="247.5" y="557.4189">solve(Any): Sequence&lt;Solution&gt;</text><ellipse cx="238.5" cy="566.8359" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="59" x="247.5" y="571.2549">solverOf(...)</text><line style="stroke:#A80036;stroke-width:1.0;" x1="228.5" x2="429.5" y1="577.6719" y2="577.6719"/><ellipse cx="238.5" cy="588.6719" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="122" x="247.5" y="593.0908">member(Any, Any): Term</text><ellipse cx="238.5" cy="602.5078" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="92" x="247.5" y="606.9268">is(Any, Any): Term</text><ellipse cx="238.5" cy="616.3438" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="33" x="247.5" y="620.7627">!: Atom</text><ellipse cx="238.5" cy="630.1797" fill="none" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="45" x="247.5" y="634.5986">fail: Atom</text><!--MD5=[7675a4a116b5e3b58d6d182b1d807453]
+reverse link Scope to PrologAwareScope--><path codeLine="71" d="M241.28,86.5 C246.33,86.5 251.39,86.5 256.44,86.5 " fill="none" id="Scope-backto-PrologAwareScope" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="none" points="241.15,93.5,221.15,86.5,241.15,79.5,241.15,93.5" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[b48ed2d0edd2745228506481f362bc7a]
+reverse link PrologAwareScope to PrologStdLibScope--><path codeLine="73" d="M347.83,131.79 C365.34,165.76 388.91,211.49 403.52,239.84 " fill="none" id="PrologAwareScope-backto-PrologStdLibScope" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="none" points="341.52,134.82,338.57,113.84,353.96,128.41,341.52,134.82" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[22c9350ac1d2a2a5fcda44c7d03e99e4]
+reverse link PrologAwareScope to VariablesAwareScope--><path codeLine="74" d="M301.94,131.76 C286.96,160.52 267.58,197.72 253.02,225.66 " fill="none" id="PrologAwareScope-backto-VariablesAwareScope" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="none" points="295.83,128.34,311.28,113.84,308.24,134.81,295.83,128.34" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[c1099ec761505f90c4ff9025f664b7d9]
+reverse link PrologStdLibScope to PrologScope--><path codeLine="76" d="M388.48,310.94 C374.79,331.54 358.65,355.84 345.94,374.97 " fill="none" id="PrologStdLibScope-backto-PrologScope" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="none" points="382.83,306.79,399.73,294,394.49,314.54,382.83,306.79" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[b21bc71e35ce9d788c396da2e4ae583f]
+reverse link VariablesAwareScope to PrologScope--><path codeLine="77" d="M269.42,324.95 C280.6,341.95 292.47,360.03 302.29,374.96 " fill="none" id="VariablesAwareScope-backto-PrologScope" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="none" points="263.5,328.68,258.36,308.12,275.2,320.99,263.5,328.68" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[e21529c33995bf6a46f79bf9c26f301d]
+reverse link PrologScope to PrologScopeWithUnification--><path codeLine="81" d="M460.67,409 C465.54,409 470.41,409 475.28,409 " fill="none" id="PrologScope-backto-PrologScopeWithUnification" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="none" points="460.65,416,440.65,409,460.65,402,460.65,416" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[7cf5bd8d644ee9721a52685dbd532303]
+reverse link PrologScopeWithUnification to PrologScopeWithTheories--><path codeLine="83" d="M576,470.26 C576,486.77 576,504.57 576,520.7 " fill="none" id="PrologScopeWithUnification-backto-PrologScopeWithTheories" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="none" points="569,470.24,576,450.24,583,470.24,569,470.24" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[ef37aae7327213499c6173fe08e61a10]
+link PrologScopeWithResolution to PrologScopeWithTheories--><path codeLine="85" d="M430.79,575.5 C435.83,575.5 440.87,575.5 445.9,575.5 " fill="none" id="PrologScopeWithResolution-to-PrologScopeWithTheories" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="none" points="445.96,568.5,465.96,575.5,445.96,582.5,445.96,568.5" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[0e1340412c040d3a91ad2e77cf3614d7]
+@startuml dsl-core
+
+' hide members
+' show AnyToTermConverter fields
+
+hide PrologAwareScope fields
+hide VariablesAwareScope methods
+hide PrologStdLibScope methods
+hide PrologScope fields
+hide PrologScopeWithUnification fields
+hide PrologScopeWithTheories fields
+
+interface Scope {
+    + _: Var
+    + **varOf(String): Var**
+    + atomOf(String): Atom
+    + structOf(String, Iterable<Term>): Struct
+    + emptyList(): EmptyList
+    + listOf(Iterable<Term>): List
+    + numOf(Double): Real
+    + numOf(Int): Integer
+}
+
+interface PrologAwareScope {
+    + **//Any//.toTerm(): Term**
+}
+
+interface PrologStdLibScope {
+    //standard library predicates//
+}
+
+interface VariablesAwareScope {
+    + A: Var
+    + B: Var
+    ...
+}
+
+interface PrologScope {
+    + **//String//.invoke(Any, vararg Any): Struct**
+    + **//Substitution//.get(String): Term?**
+}
+
+interface PrologScopeWithUnification {
+    + **//Any//.mguWith(Any): Substitution**
+    + //Any//.matches(Any): Boolean
+    + //Any//.unifyWith(Any): Term?
+}
+
+interface PrologScopeWithTheories {
+    + theoryOf(vararg Clause): Theory
+    + rule(PrologWithTheories.() -> Any): Rule
+    + fact(PrologWithTheories.() -> Any): Fact
+    + and(Any, Any): Term
+    + or(Any, Any): Term
+}
+
+interface PrologScopeWithResolution {
+    + **solve(Any): Sequence<Solution>**
+    + solverOf(...)
+- - -
+    + member(Any, Any): Term
+    + is(Any, Any): Term
+    + !: Atom
+    + fail: Atom
+}
+
+' interface AnyToTermConverter {
+'     + prologScope: PrologScope
+' }
+
+' Scope <|-right- PrologAwareScope
+PrologAwareScope -left-|> Scope
+
+PrologAwareScope <|- - PrologStdLibScope
+PrologAwareScope <|- - VariablesAwareScope
+
+PrologScope -up-|> PrologStdLibScope
+PrologScope -up-|> VariablesAwareScope
+
+' AnyToTermConverter o-left- PrologScope
+
+PrologScope <|-right- PrologScopeWithUnification
+
+PrologScopeWithUnification <|-down- PrologScopeWithTheories
+
+PrologScopeWithTheories <|-left- PrologScopeWithResolution
+
+@enduml
+
+@startuml dsl-core
+
+
+hide PrologAwareScope fields
+hide VariablesAwareScope methods
+hide PrologStdLibScope methods
+hide PrologScope fields
+hide PrologScopeWithUnification fields
+hide PrologScopeWithTheories fields
+
+interface Scope {
+    + _: Var
+    + **varOf(String): Var**
+    + atomOf(String): Atom
+    + structOf(String, Iterable<Term>): Struct
+    + emptyList(): EmptyList
+    + listOf(Iterable<Term>): List
+    + numOf(Double): Real
+    + numOf(Int): Integer
+}
+
+interface PrologAwareScope {
+    + **//Any//.toTerm(): Term**
+}
+
+interface PrologStdLibScope {
+    //standard library predicates//
+}
+
+interface VariablesAwareScope {
+    + A: Var
+    + B: Var
+    ...
+}
+
+interface PrologScope {
+    + **//String//.invoke(Any, vararg Any): Struct**
+    + **//Substitution//.get(String): Term?**
+}
+
+interface PrologScopeWithUnification {
+    + **//Any//.mguWith(Any): Substitution**
+    + //Any//.matches(Any): Boolean
+    + //Any//.unifyWith(Any): Term?
+}
+
+interface PrologScopeWithTheories {
+    + theoryOf(vararg Clause): Theory
+    + rule(PrologWithTheories.() -> Any): Rule
+    + fact(PrologWithTheories.() -> Any): Fact
+    + and(Any, Any): Term
+    + or(Any, Any): Term
+}
+
+interface PrologScopeWithResolution {
+    + **solve(Any): Sequence<Solution>**
+    + solverOf(...)
+- - -
+    + member(Any, Any): Term
+    + is(Any, Any): Term
+    + !: Atom
+    + fail: Atom
+}
+
+
+PrologAwareScope -left-|> Scope
+
+PrologAwareScope <|- - PrologStdLibScope
+PrologAwareScope <|- - VariablesAwareScope
+
+PrologScope -up-|> PrologStdLibScope
+PrologScope -up-|> VariablesAwareScope
+
+
+PrologScope <|-right- PrologScopeWithUnification
+
+PrologScopeWithUnification <|-down- PrologScopeWithTheories
+
+PrologScopeWithTheories <|-left- PrologScopeWithResolution
+
+@enduml
+
+PlantUML version 1.2021.00(Sun Jan 10 11:25:05 CET 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: en
+Country: US
+--></g></svg>
