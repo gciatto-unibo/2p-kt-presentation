@@ -1,0 +1,34 @@
+% !TEX root = 2p-kt-talk.tex
+\centering
+%
+\begin{adjustbox}{width=.8\linewidth} 
+    \begin{tabular}{c|c}
+    \textbf{LP Type} & \textbf{OOP Types}$^a$ \\
+    \hline\hline
+    \kt{NullRef} & \kt{Nothing} \\
+    \hline
+    \kt{Var} & \kt{Nothing} \\
+    \hline
+    \kt{ObjectRef} & type of refereced object \\
+    \hline
+    \kt{TypeRef} & \kt{KClass<*>} \\
+    \hline
+    \kt{Truth} & \kt{Boolean}, \kt{String} \\
+    \hline
+    \kt{Atom} & \kt{String}, \kt{Char}$^b$ \\
+    \hline
+    \kt{Real} & \kt{BigDecimal}, \kt{Double}, \kt{Float} \\
+    \hline
+    \kt{Integer} & \kt{BigInteger}, \kt{Long}$^c$, \kt{Int}$^c$, \kt{Short}$^c$, \kt{Byte}$^c$, \kt{Double}, \kt{Float} \\
+    \hline
+    \kt{Struct} & \begin{tabular}[c]{@{}c@{}}\pl{as(\_, \meta{Type})} $\rightarrow$ \pl{\meta{Type}}\\ \pl{\$\meta{ObjectRef}} $\rightarrow$ type of refereced object \\ \pl{\$\meta{TypeRef}} $\rightarrow$ \kt{KClass<*>}\\ otherwise $\rightarrow$ \kt{TermToObjectConversionException}\end{tabular} \\
+    \hline
+    otherwise & \kt{TermToObjectConversionException}
+    \end{tabular}
+\end{adjustbox}
+%
+\begin{description}
+    \item[$^a$] written in decreasing priority order
+    \item[$^b$] only if the atom's length is 1
+    \item[$^c$] only if the integer's value is within the OOP type's range
+\end{description}

@@ -1,0 +1,4 @@
+interface TypeFactory {
+    + typeFromName(typeName: String): KClass<*>?
+    + typeRefFromName(typeName: String): TypeRef?
+}

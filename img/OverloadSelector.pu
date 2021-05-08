@@ -1,0 +1,7 @@
+interface OverloadSelector {
+    + type: KClass<*>
+    + termToObjectConverter: TermToObjectConverter
+    + findMethod(name: String, arguments: List<Term>): KCallable<*>
+    + findProperty(name: String, value: Term): KMutableProperty<*>
+    + findConstructor(arguments: List<Term>): KCallable<*>
+}
