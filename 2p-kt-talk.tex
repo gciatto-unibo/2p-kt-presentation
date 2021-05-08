@@ -4590,9 +4590,48 @@
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Architecture}
+    
     \begin{center}
         \includegraphics[width=0.60\linewidth]{img/dsl-core.pdf}
     \end{center}
+
+    \framebreak
+
+    \begin{block}{The \kt{PrologAwareScope} interface}
+        \begin{itemize}
+            \item Enables the conversion of Kotlin objects to Prolog \kt{Term}s via the \kt{Any.toTerm()} extension method
+            \item using the following type mapping:
+            \begin{itemize}
+                \item a Kotlin number is converted either to a Prolog real or integer number
+                \item a Kotlin string is converted either to a Prolog variable or atom
+                \item a Kotlin boolean is always converted to an atom
+                \item a Kotlin iterable is always converted into a Prolog list
+                \begin{description}
+                    \item [!] each item has to be convertible to a \kt{Term} 
+                \end{description}
+                \item Kotlin objects that are sub-types of \kt{Term} remain unaffected
+                \item if the object cannot be converted to a \kt{Term}, an error is raised
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+
+    \framebreak
+
+    \begin{block}{The \kt{VariablesAwareScope} interface}
+        \begin{itemize}
+            \item provides \kt{A-Z} shortcuts to instantiate Prolog variables
+        \end{itemize}
+    \end{block}
+    %
+    \begin{block}{The \kt{PrologStdLibScope} interface}
+        \begin{itemize}
+            \item provides a number of methods that allow the invocation of standard library predicates
+            \begin{description}
+                \item [e.g.] \kt{assert}, \kt{retract}, \kt{bagof}, \kt{consult}, etc\ldots 
+            \end{description}
+        \end{itemize}
+    \end{block}
+
 \end{frame}
 
 \begin{frame}{Usage Example}
