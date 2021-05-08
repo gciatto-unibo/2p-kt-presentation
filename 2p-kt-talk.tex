@@ -4778,19 +4778,55 @@
 \section{LP + OOP + FP in Kotlin: the \module{dsl-*} Modules}
 
 \begin{frame}[allowframebreaks]{Overview on the DSL}
-    purpose
 
-    principles (from \cite{kotlinDSl4PrologWoa2020})
+    \begin{block}{Purpose}
+        \begin{itemize}
+            \item integrating OOP, FP and LP
+            \item bringing OOP software engineering techniques to LP and FP
+            \item bringing declarativity from FP and LP to OOP
+            \item enriching the Kotlin language in a fruitful and natural way
+        \end{itemize}
+    \end{block}
 
-    organization
+    \framebreak
+    
+    \begin{block}{Principles}
+        \begin{enumerate}
+            \item the DSL has to be a \textit{strict} extension of Kotlin
+            \begin{description}
+                \item [$\rightarrow$] no Kotlin feature is hindered by using the DSL
+            \end{description}
+            \item the DSL has to be fully \textit{interoperable} with the hosting language
+            \begin{description}
+                \item [$\rightarrow$] all Kotlin features may be exploited by the DSL
+            \end{description}
+            \item the DSL has to be fully \textit{encapsulated} and \textit{identifiable}
+            \begin{description}
+                \item [$\rightarrow$] preventing unintended usage
+            \end{description}
+            \item the DSL should be as close as possible to Prolog, syntactically and semantically
+            \begin{description}
+                \item [$\rightarrow$] easing its exploitation by logic programmers
+            \end{description}
+        \end{enumerate}
+    \end{block}
+
+    \framebreak
+
+    \begin{center}
+        \includegraphics[width=0.3\linewidth]{img/dsl-layers.pdf}
+    \end{center}
+
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Architecture}
-    class diagram
+    \begin{center}
+        \includegraphics[width=0.60\linewidth]{img/dsl-core.pdf}
+    \end{center}
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Usage Example}
-    reuse examples from \cite{kotlinDSl4PrologWoa2020}
+\begin{frame}{Usage Example}
+    \ktSnippet[\tiny]{./snippets/DslNQueens.kt}
 \end{frame}
 
 \section{Parsing Logic Knowledge: the \module{parser-*} Modules}
