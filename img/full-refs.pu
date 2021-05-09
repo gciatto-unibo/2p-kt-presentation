@@ -1,0 +1,46 @@
+@startuml
+package :core {
+    interface Atom
+}
+
+package :oop-lib {
+    interface Ref {
+        + invoke(TermToObjectConverter, String, Iterable<//Term//>): Result
+        + invoke(String, Iterable<//Term//>): Result
+        + assign(TermToObjectConverter, String, Term): Boolean
+        + assign(String, Term): Boolean
+    }
+    interface ObjectRef {
+        + object: Any
+    }
+    interface TypeRef {
+        + type: KClass<*>
+        + create(TermToObjectConverter, Iterable<//Term//>): Result
+        + create(Iterable<//Term//>): Result
+    }
+
+    interface NullRef
+
+    Ref <|-- ObjectRef
+    Ref <|-- TypeRef
+    ObjectRef <|-- NullRef
+
+    class Result {
+        + toTerm(): Term?
+        + asObjectRef(): ObjectRef?
+    }
+
+    class None << (S,#FF7700) Singleton >>
+
+    class Value {
+        + value: Any?
+    }
+
+    Ref .right. Result
+
+    Result <|-- None
+    Result <|-- Value
+}
+
+Atom <|-- Ref
+@enduml

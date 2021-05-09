@@ -1,0 +1,8 @@
+interface TermToObjectConverter {
+    + convertInto(type: KClass<*>, term: Term): Any?
+    + possibleConversions(term: Term): Sequence<Any?>
+    + admissibleTypes(term: Term): Set<KClass<*>>
+    + priorityOfConversion(type: KClass<*>, term: Term): Int?
+    + mostAdequateType(term: Term): KClass<*>
+    + convert(term: Term): Any?
+}

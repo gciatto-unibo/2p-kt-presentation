@@ -4439,7 +4439,16 @@
 
         \item Terms are automatically converted into object of the \alert{most adequate} type, upon method invocation, and result are converted back into terms
         %
+        \begin{itemize}
+            \item we call this \alert{smart cast}
+            \item smart \alert{overload selection} is perfomed in case of ambiguity
+        \end{itemize}
+        %
         \plSnippet[\tiny]{snippets/StringBuilder_append_toString.pl}
+        %
+        \begin{itemize}\small
+            \item recall that Java's \kt{StringBuilder.\textit{append}} has several overloads
+        \end{itemize}
 
         \framebreak
 
@@ -4449,14 +4458,50 @@
 
         \framebreak
 
-        \item \alert{Aliases} can 
+        \item \alert{Aliases} can be
         %
         \begin{itemize}
-            \item be inspected via \pl{alias/2}
-            \item be added (resp. removed) via \pl{register/2} (resp. \pl{unregister/1})
-            \item be used in place of actual \kt{Ref}erences via the \alert{de-aliasing operator} \pl{\$/1}
+            \item inspected via \pl{alias/2}
+            \item added (resp. removed) via \pl{register/2} (resp. \pl{unregister/1})
+            \item used in place of actual \kt{Ref}erences via the \alert{de-aliasing operator} \pl{\$/1}
         \end{itemize}
+        %
+        \plSnippet[\tiny]{snippets/aliases_usage.pl}
+
+        \framebreak
+
+        \item \alert{Specific casts} can be performed via the \alert{cast operator} \pl{as/2}
+        %
+        \begin{itemize}
+            \item which enables \emph{explicit} overload selection
+        \end{itemize}
+        %
+        \plSnippet[\tiny]{snippets/overload_selection.pl}
     \end{enumerate}
+
+    \framebreak
+
+    \begin{alertblock}{Notable remarks about \module{oop-lib}}
+        \begin{itemize}
+            \item API is currently considered unstable
+            \item Design is tailored on Kotlin's OOP model:
+            %
+            \begin{itemize}
+                \item fields $\rightarrow$ properties
+                \item static members $\rightarrow$ companion objects
+                \item strong reliance on Kotlin's reflection
+                \item pervasive exploitation of \kt{KClass}es
+            \end{itemize}
+            \item Design is multi-platform, yet only JVM implementation works
+            %
+            \begin{itemize}
+                \item Kotlin's JS reflection is poorly supported ATM
+                \item Kotlin's JVM reflection is quite buggy ATM 
+                \item Kotlin's reflection has a very clean design
+            \end{itemize}
+            \item On JVM, fields and static are supported too!
+        \end{itemize}
+    \end{alertblock}
 
     % references to types and objects
 
@@ -4475,53 +4520,238 @@
 \subsection{\kt{Ref}erences: \kt{TypeRef}erences and \kt{ObjectRef}}
 
 \begin{frame}[allowframebreaks]{The \kt{Ref} Type Hierarchy}
-    definition and API of ref
 
-    definition and API of object ref
+    \begin{center}
+        \includegraphics[width=.8\linewidth]{./img/full-refs.pdf}
+    \end{center}
 
-    definition and API of null ref
+    \framebreak
 
-    definition and API of type ref
+    \begin{block}{The \kt{Ref} type is a sub-type of \kt{Atom}}
+        \centering
+        Base type for all sorts of references
+    \end{block}
+    %
+    \begin{description}
+        \item[\kt{invoke(TermToObjectConverter, String, \meta{Terms}): Result}] invokes a \alert{method} on the current \kt{Ref}erence by name, passing the provided \kt{Term}s as arguments, which are converted into objects using the provided \kt{TermToObjectConverter}
+
+        \item[\kt{invoke(String, \meta{Terms}): Result}] invokes a \alert{method} on the current \kt{Ref}erence by name, passing the provided \kt{Term}s as arguments, which are converted into objects using the \emph{default} \kt{TermToObjectConverter}
+        
+        \item[\kt{assign(TermToObjectConverter, String, Term): Boolean}] assign the provided \kt{Term} as the new value of some \alert{property}/\alert{field} of the current \kt{Ref}erence, selected by name. The term is converted into an object using the provided \kt{TermToObjectConverter}
+
+        \item[\kt{assign(String, Term): Boolean}] assign the provided \kt{Term} as the new value of some \alert{property}/\alert{field} of the current \kt{Ref}erence, selected by name. The term is converted into an object using the \emph{default} \kt{TermToObjectConverter}
+    \end{description}
+
+    \framebreak
+
+    \begin{block}{The \kt{TypeRef} type is a sub-type of \kt{Ref}}
+        \centering
+        Base type for all sorts of references to \alert{types}---there including interfaces, classes, Kotlin objects, etc.
+    \end{block}
+    %
+    \begin{description}
+        \item[\kt{type: KClass<*>}] the type being refereced
+
+        \item[\kt{invoke(\ldots)}] methods inherited from \kt{Ref} can be used to call both \alert{static} methods and \kt{companion objects'} methods
+        
+        \item[\kt{assign(\ldots)}] methods inherited from \kt{Ref} can be used to set both static properties/methods or compation objects' ones
+        
+        \item[\kt{create(TermToObjectConverter, \meta{Terms}): Result}] calls the constructor of the referenced type to create a new instance. The provided terms are passed to the constructor after being converted into objects using the provided \kt{TermToObjectConverter}
+        
+        \item[\kt{create(\meta{Terms}): Result}] calls the constructor of the referenced type to create a new instance. The provided terms are passed to the constructor after being converted into objects using the \emph{default} \kt{TermToObjectConverter}
+    \end{description}
+
+    \framebreak
+
+    \begin{block}{The \kt{ObjectRef} type is a sub-type of \kt{Ref}}
+        \centering
+        Base type for all sorts of references to \alert{objects}---i.e. instances of types
+    \end{block}
+    %
+    \begin{description}
+        \item[\kt{object: Any}] the object being referenced
+        
+        \item[\kt{invoke(\ldots)}] methods inherited from \kt{Ref} can be used to call both \alert{instance} methods on the referenced objects
+        
+        \item[\kt{assign(\ldots)}] methods inherited from \kt{Ref} can be used to set \alert{instance} properties/fields on the referenced objects
+    \end{description}
+
+    \framebreak
+
+    \begin{block}{The \kt{Result} type}
+        Instances of \kt{Result} aim to wrap objects:
+        %
+        \begin{itemize}
+            \item returned by invoking methods on \kt{Ref}erences
+            \item created from \kt{TypeRef}erences
+        \end{itemize}
+
+        Two sub-types:
+        %
+        \begin{description}
+            \item[\kt{None}] representing the lack of result
+            \item[\kt{Value}] representing the return of an object   
+        \end{description}
+    \end{block}
+    %
+    \begin{description}
+        \item[\kt{value: Any?}] is the returned object
+        
+        \item[\kt{toTerm(): Term?}] converts the returned value (if any) into a \kt{Term}, using the default \kt{ObjectToTermConverter}
+        
+        \item[\kt{asObjectRef(): ObjectRef?}] converts the returned value (if any) into an \kt{ObjectRef}erence
+    \end{description}
+
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Creation of \kt{Ref}erences}
-    static factories for refs
+\begin{frame}{Creation of \kt{Ref}erences}
+    \begin{description}
+        \item[\kt{ObjectRef.of(Any?)}] creates a new \kt{ObjectRef} to the provided object. May return a \kt{NullRef} is the provided object is \kt{null}
+        
+        \bigskip
 
-    type factories
+        \item[\kt{ObjectRef.NULL}] returns the singleton instance of \kt{NullRef}
+        
+        \bigskip
+        
+        \item[\kt{TypeRef.of(KClass<*>)}] creates a new \kt{TypeRef} to the provided type 
+    \end{description}
 \end{frame}
 
 \subsection{OOP to/from LP Conversions}
 
+\begin{frame}[allowframebreaks]{The \kt{TypeFactory} Type}
+    \begin{block}{Purpose}
+        \begin{itemize}
+            \item Loading OOP types from names
+            \item Instantiating \kt{TypeRef}erences from type names
+        \end{itemize}
+    \end{block}
+
+    \begin{alertblock}{Concept}
+        \begin{itemize}
+            \item Type discovery/loading is platform specific\ldots
+            \item \ldots a platform-agnostic type is necessary in a multi-platform module
+        \end{itemize}
+    \end{alertblock}
+
+    \framebreak
+
+    \begin{center}
+        \includegraphics[width=.5\linewidth]{img/TypeFactory.pdf}
+    \end{center}
+
+    \framebreak
+
+    \begin{alertblock}{Platform-specific names for types}
+        \begin{description}
+            \item[JVM:] \kt{name.of.package.\alert{TypeName}}
+            \item[JS:] \kt{\alert{module-name}:name.of.package.\alert{TypeName}}  
+        \end{description}
+    \end{alertblock}
+\end{frame}
+
 \begin{frame}[allowframebreaks]{The \kt{TermToObjectConverter} Type}
-    definition
+    \begin{block}{Purpose}
+        \begin{itemize}
+            \item Converting \alert{arguments} of methods into objects upon \alert{invocation}
+            \item Converting \alert{arguments} of constructors into objects upon \alert{creation}
+            \item Converting \alert{values} of properties into objects upon \alert{assignment}
+        \end{itemize}
+    \end{block}
 
-    api
+    \begin{alertblock}{Concept}
+        \begin{itemize}
+            \item Each LP type may correspond to several OOP types
+            \item Preferences may exists among target OOP types
+            \item Each LP type has 1 preferred corresponding OOP type
+        \end{itemize}
+    \end{alertblock}
 
-    implemented strategy
+    \framebreak
 
-    example
+    \begin{center}
+        \includegraphics[width=.6\linewidth]{img/TermToObjectConverter.pdf}
+    \end{center}
+
+    \framebreak
+
+    \input{tab-terms-to-objects.tex}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{ObjectToTermConverter} Type}
-    definition
+    \begin{block}{Purpose}
+        \begin{itemize}
+            \item Converting \alert{results} of methods invocations into \alert{\kt{Term}s}
+            \item Converting \alert{results} of constructors into \alert{\kt{ObjectRef}erences}
+        \end{itemize}
+    \end{block}
 
-    api
+    \begin{alertblock}{Concept}
+        \begin{itemize}
+            \item Conversion of OOP types into LP ones is \alert{straightforward}
+        \end{itemize}
+    \end{alertblock}
 
-    implemented strategy
+    \framebreak
 
-    example
+    \begin{center}
+        \includegraphics[width=.5\linewidth]{img/ObjectToTermConverter.pdf}
+    \end{center}
+
+    \framebreak
+
+    \begin{center}
+        \input{tab-objects-to-terms.tex}
+    \end{center}
 \end{frame}
 
 \subsection{Overload Selection}
 
 \begin{frame}[allowframebreaks]{The \kt{OverloadSelector} Type}
-    definition
+    \begin{block}{Purpose}
+        Selecting the \alert{most adequate overload}
+        \begin{itemize}
+            \item of a method / property / constructor
+            \item w.r.t. the admissible LP$\rightarrow$OOP conversions for \alert{actual} arguments
+            \item when invoking / assigning / creating
+        \end{itemize}
+    \end{block}
 
-    api
+    \begin{alertblock}{Concept}
+        \begin{itemize}
+            \item Many \alert{strategies} may be exploited to select an overload
+            \item \kt{OverloadSelector} is the general API to do so
+            \item They essentially select \alert{target OOP types} for actual arguments
+        \end{itemize}
+    \end{alertblock}
 
-    implemented strategy
+    \framebreak
 
-    example
+    \begin{center}
+        \includegraphics[width=.5\linewidth]{img/OverloadSelector.pdf}
+    \end{center}
+
+    \framebreak
+
+    \begin{exampleblock}{Current strategy (JVM)}
+        An attempt is performed to select the available overload which
+        %
+        \begin{itemize}
+            \item maximizes the sum of the proprities of all target OOP types
+            \item using explicit casts (i.e. \pl{as/2}) as \alert{strong} constraints
+            \item taking the most specific formal type into account
+            %
+            \begin{itemize}
+                \item[eg] among \kt{Any} and \kt{String}, the latter should be preferred for \kt{Atom}s
+            \end{itemize}
+            \item taking actual values into account
+            %
+            \begin{itemize}
+                \item[eg] 129 cannot be converted into \kt{Byte}
+            \end{itemize}
+        \end{itemize}
+    \end{exampleblock}
 \end{frame}
 
 \subsection{Logic Predicates and Operators for OOP}
