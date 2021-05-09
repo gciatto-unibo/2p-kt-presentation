@@ -4592,7 +4592,7 @@
 \begin{frame}[allowframebreaks]{Architecture}
     
     \begin{center}
-        \includegraphics[width=0.60\linewidth]{img/dsl-core.pdf}
+        \includegraphics[width=0.50\linewidth]{img/dsl-core.pdf}
     \end{center}
 
     \framebreak
@@ -4629,6 +4629,77 @@
             \begin{description}
                 \item [e.g.] \kt{assert}, \kt{retract}, \kt{bagof}, \kt{consult}, etc\ldots 
             \end{description}
+        \end{itemize}
+    \end{block}
+
+    \framebreak
+
+    \begin{block}{The \kt{PrologScope} interface}
+        \begin{itemize}
+            \item enables the construction of compound terms
+            \begin{description}
+                \item [$\rightarrow$] via the \kt{String.invoke()} extension method
+                \item [e.g.] \kt{"human"("socrates")}
+            \end{description}
+            \item allows to retrieve variable substitutions in a leaner fashion, without having to create explicit variables through \kt{varOf()}
+            \begin{description}
+                \item [$\rightarrow$] via the \kt{Substitution.get(Any)} extension method
+                \item [e.g.] \kt{substitution.get("X")}
+            \end{description}
+            \item adds the capability of converting Kotlin objects into logic clauses
+            \begin{description}
+                \item [$\rightarrow$] via the \kt{rule} and \kt{fact} factory methods
+                \item [$\rightarrow$] via the \kt{Any.and(Any)} and \kt{Any.or(Any)} extension methods
+            \end{description}
+        \end{itemize}
+    \end{block}
+
+    \framebreak
+
+    \begin{block}{The \kt{PrologScopeWithUnification interface}}
+        \begin{itemize}
+            \item exposes a number of extension methods providing unification-related support to Kotlin objects
+            \begin{description}
+                \item [!] provided that they can be converted into \kt{Term}s 
+            \end{description}
+        \end{itemize}
+    \end{block}
+    %
+    \begin{description}
+        \item [\kt{Any.mguWith(Any): Substitution}] computes the MGU between two Kotlin objects
+        \item [\kt{Any.matches(Any): Boolean}] checks whether two Kotlin objects match or not, according to logic unification
+        \item [\kt{Any.unifyWith(Any): Term?}] unifies two Kotlin objects, according to logic unification
+    \end{description}
+
+    \framebreak
+
+    \begin{block}{The \kt{PrologScopeWithTheories} interface}
+        \begin{itemize}
+            \item allows the combination of clauses into logic theories
+            \begin{description}
+                \item [$\rightarrow$] via the \kt{theoryOf} factory method 
+            \end{description}
+        \end{itemize}
+    \end{block}
+    %
+    \begin{block}{The \kt{PrologScopeWithResolution} interface}
+        \begin{itemize}
+            \item adds the capability of performing logic queries and consuming their solutions
+            \item provides methods that allow
+            \begin{itemize}
+                \item instancing Prolog solvers
+                \begin{description}
+                    \item [$\rightarrow$] via \kt{solverOf(...)} 
+                \end{description}
+                \item loading static and dynamic Prolog theories
+                \begin{description}
+                    \item [$\rightarrow$] via \kt{staticKb(...)}, \kt{dynamicKb(...)}
+                \end{description}
+                \item invoking Prolog queries on the loaded theories
+                \begin{description}
+                    \item [$\rightarrow$] via \kt{solve(...)}
+                \end{description}
+            \end{itemize}
         \end{itemize}
     \end{block}
 
