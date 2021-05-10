@@ -59,6 +59,74 @@
 \frame{\titlepage}
 %\\\\\\\\\\\\\\\\\\\\\
 
+\begin{frame}{\tuprolog{} vs \twopkt{}}
+    \begin{block}{\tuprolog{} in the \textbf{past}}
+        \begin{itemize}
+            \item Malleable Java-based Prolog interpreter
+            
+            \item Java library for Prolog-Java interoperability
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{\tuprolog{} \textbf{nowadays}}
+        \begin{itemize}
+            \item An opne, multi-platform, multi-paradigm ecosystem for LP
+            
+            \item \twopkt{} as the main, Kotlin-based implementation
+            %
+            \begin{itemize}
+                \item currently targetting both JVM and JS
+                \item involving both GUI and CLI executables
+                \item[$\rightarrow$] providing a rich library for LP 
+            \end{itemize}
+
+            \item Where each LP aspect is made individually avaiable for re-use
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Useful Links}
+    \begin{block}{\tuprolog{} project homepage}
+        \centering
+        \url{http://tuprolog.unibo.it}
+    \end{block}
+
+    \smallskip
+
+    \begin{alertblock}{\tuprolog{} GitHub repository \hfill \textbf{(pleas support us with your star =)}}
+        \centering
+        \url{https://github.com/tuProlog/2p-kt}
+    \end{alertblock}
+    % %
+    % \begin{itemize}
+    %     \item star us if you like this project, it's important!
+    % \end{itemize}
+
+    \smallskip
+
+    \begin{exampleblock}{Other useful links}
+        \begin{itemize}
+            \item \url{https://github.com/tuProlog}
+            %
+            \begin{itemize}
+                \item GitHub organization containing all \tuprolog{}-related software projects
+            \end{itemize}
+
+            \item \url{https://gitlab.com/pika-lab/tuprolog/2p-in-kotlin}
+            %
+            \begin{itemize}
+                \item GitLab repository where the actual development occurs
+            \end{itemize}
+
+            \item \url{https://pika-lab.gitlab.io/tuprolog/2p-in-kotlin}
+            %
+            \begin{itemize}
+                \item documentation of \twopkt{}
+            \end{itemize}
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
 \begin{frame}<beamer>[shrink,noframenumbering]\frametitle{Outline}
     \mbox{~}
     \tableofcontents
@@ -84,44 +152,62 @@
 \subsection{\tuprolog{} History}
 
 \begin{frame}[allowframebreaks]{\tuprolog{} History}
-\begin{block}{Foundational features and ideas}
-	\begin{itemize}
-		\item light-weight Prolog system for \alert{distributed} applications and infrastructures \ccite{tuprolog-padl01}
-		\item intentionally designed around a \alert{minimal core}
-		\item to be either statically or dynamically \emph{configured} by loading/unloading \alert{libraries} of predicates
-		\item \tuprolog{} natively supports \alert{multi-paradigm programming} \ccite{tuprolog-scp57}, providing a clean, seamless integration model between Prolog and mainstream object-oriented languages
-	\end{itemize}
-\end{block}
+    \begin{block}{The original idea}
+        \begin{itemize}
+            \item light-weight Prolog system for \alert{distributed} applications \ccite{tuprolog-padl01}
+            \item intentionally designed around a \alert{minimal core}
+            \item \emph{configurable} by loading/unloading \alert{libraries} of predicates
+            \item native support for \alert{multi-paradigm programming} \ccite{tuprolog-scp57}
+            %
+            \begin{itemize}
+                \item bi-directional intergration among OOP and Prolog
+            \end{itemize}
+        \end{itemize}
+    \end{block}
 
-\framebreak
+    \framebreak
 
-\begin{itemize}
-	\item first release lightweight Prolog solver written in Java \ccite{tuprolog-padl01}
-	\begin{itemize}
-		\item state of the art advancements: OOP-interoperable, and SM-based \ccite{weblp-ia5}
-	\end{itemize}
-	\item extended along many research directions
-	\begin{description}
-		\item[LPaaS] micro-intelligence vision (lightweight logic solvers running on most devices) for IoT and Cloud/Edge computing \ccite{lpaas-tplp18}
-		\item[TuSoW] bringing tuple-based coordination at the edge \ccite{tusow-icccn2019}
-	\end{description}
-	\item foundation of many research projects
-	\begin{description}
-		\item[TuCSoN / ReSpecT] coordination model for Internet applications based on network-aware and mobile agents \ccite{tucson-jaamas2} by means of reactions to communication events \ccite{respect-scp41}
-		\item[MoK] self-organising knowledge-oriented model based on biochemical tuple space \ccite{mok-idc2012}
-		\item[Arg2P] defeasible reasoning and argumentation tool \ccite{arg2p-cilc2020}
-	\end{description}
-\end{itemize}
+    \begin{itemize}
+        \item first release lightweight Prolog solver written in Java \ccite{tuprolog-padl01}
+        \begin{itemize}
+            \item OOP-interoperable
+            \item state-machine-based \ccite{weblp-ia5}
+        \end{itemize}
 
-\framebreak
+        \bigskip
 
-\begin{itemize}
-	\item[$\rightarrow$] legacy code: making it Prolog-constrained and hard to maintain
-	\item[$\rightarrow$] complete re-design and re-write as Kotlin MPP
-	\begin{itemize}
-		\item[$\Rightarrow$]  widening the scope to whole LP rather than Prolog alone
-	\end{itemize}
-\end{itemize}
+        \item foundation of many research projects
+        \begin{description}
+            \item[TuCSoN / ReSpecT] coordination model for Internet applications based on network-aware and mobile agents \ccite{tucson-jaamas2} by means of reactions to communication events \ccite{respect-scp41}
+            \item[MoK] self-organising knowledge-oriented model based on biochemical tuple space \ccite{mok-idc2012}
+            \item[LPaaS] micro-intelligence vision (lightweight logic solvers running on most devices) for IoT and Cloud/Edge computing \ccite{lpaas-tplp18}
+            \item[TuSoW] bringing tuple-based coordination at the edge \ccite{tusow-icccn2019} 
+            \item[Arg2P] defeasible reasoning and argumentation tool \ccite{arg2p-cilc2020}
+        \end{description}
+    \end{itemize}
+
+    \framebreak
+
+    \begin{block}{Why a complete re-write}
+        \begin{itemize}
+            \item Need to support LP in general, not only Prolog
+            %
+            \begin{itemize}
+                \item re-design made \twopkt{} an \alert{ecosystem} for LP
+                \item widening the scope w.r.t. Prolog
+            \end{itemize}
+
+            \item Need to get rid of a lot of legacy-code
+            %
+            \begin{itemize}
+                \item accumulated as the code base stepped through many persons
+                \item sub-optimal design choices due to limitations of early Java 
+                \item lack of fine-grained test units made the codebase hard to maintain
+                \item lack of module \& package segregation
+                \item lack of automated dependency management
+            \end{itemize}
+        \end{itemize}
+    \end{block}
 
 \end{frame}
 
@@ -5128,11 +5214,11 @@
     All methods come in two forms:
     %
     \begin{description}
-        \item[\kt{parseT(String): T}] parses a \kt{T} from a given string, using default operators
-        \item[\kt{parseT(String, OperatorSet): T}] parses a \kt{T} from a given string, using the given operators
+        \item[\kt{parse\meta{T}(String): \meta{T}}] parses a \kt{\meta{T}} from a given string, using default operators
+        \item[\kt{parse\meta{T}(String, OperatorSet): \meta{T}}] parses a \kt{\meta{T}} from a given string, using the given operators
     \end{description}
     %
-    with \kt{T} being a \kt{Term}, \kt{Struct}, \kt{Constant}, \kt{Var}, \kt{Atom}, \kt{Numeric}, \kt{Integer}, \kt{Real} or \kt{Clause}
+    with \kt{\meta{T}} a sub-type of \kt{Term} %, \kt{Struct}, \kt{Constant}, \kt{Var}, \kt{Atom}, \kt{Numeric}, \kt{Integer}, \kt{Real} or \kt{Clause}
 
     \framebreak
 
