@@ -1,0 +1,13 @@
+interface Url {
+    + protocol: String
+    + host: String
+    + path: String
+    + port: Int?
+    + query: String?
+    + isFile: Boolean
+    + isHttp: Boolean
+    + readAsText(): String
+    + readAsByteArray(): ByteArray
+    + resolve(child: String): Url
+    + div(child: String): Url
+}

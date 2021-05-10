@@ -4356,26 +4356,137 @@
 \section{Reading and Writing Data: the \module{io-lib} Module}
 
 \begin{frame}[allowframebreaks]{Overview on IO in LP}
-    urls for locating resources
 
-    sinks and sources
+    \begin{block}{Purpose / Requirements}
+        Provide \kt{Solver}s with I/O facilities:
+        %
+        \begin{enumerate}
+            \item\label{iolib:platform-independence} in a \alert{platform-independent} way
+            %
+            \begin{itemize}
+                \item[ie] supporting both JVM and JS 
+            \end{itemize}
 
-    main predicates
+            \item\label{iolib:solver-agnosticism} in a \alert{solver-implentation-agnostic} way
+            %
+            \begin{itemize}
+                \item[ie] supporting both \emph{classic}, and \emph{streams} solvers
+                \item[+] supporting future sorts of solvers too
+            \end{itemize}
+
+            \item\label{iolib:location-transparency} in a \alert{location-transparent} way
+            %
+            \begin{itemize}
+                \item[ie] supporting transparent access to both \emph{local} and \emph{remote} resources
+            \end{itemize}
+        \end{enumerate}
+    \end{block}
+
+    \framebreak
+
+    \begin{alertblock}{Main challenges}
+        \begin{itemize}
+            \item Kotlin MP does not provide platform independent I/O API
+            \item JVM supports accessing both local and remote resources via \alert{streams}
+            %
+            \begin{itemize}
+                \item blocking, synchronous API
+                \item async API available too
+            \end{itemize}
+            \item JS server-side (i.e. NodeJS) supports accessing both local and remote resource via \alert{callbacks}
+            %
+            \begin{itemize}
+                \item non-blocking, asynchronous API
+                \item sync API available too
+            \end{itemize}
+            \item JS browser-side supports accessing remote resources via \alert{callbacks}
+            %
+            \begin{itemize}
+                \item non-blocking, asynchronous API
+                \item NO sync API
+            \end{itemize}
+            \item[$\rightarrow$] requirements \ref{iolib:platform-independence} and \ref{iolib:location-transparency} are hard to attain
+        \end{itemize}
+    \end{alertblock}
+
+    \framebreak
+
+    \begin{exampleblock}{Strategy}
+        \begin{enumerate}
+            \item Define minimal multi-platform API for I/O
+            \item Provide platform-specific implementations for that API
+            \item Provide implementation of \kt{Channel}s exploiting such API
+            \item Provide logic predicated to manipulate \kt{Channel}s from LP
+        \end{enumerate}
+    \end{exampleblock}
+
+    \framebreak
+
+    \begin{block}{Goal}
+        \centering
+        Support access to local/remote resources to any solver on all platforms
+    \end{block}
+
+    \medskip
+
+    Cf. the \pl{consult/1} predicate/directive, supporting loading of extern theories into the current solver's static KB:
+    %
+    \plSnippet{snippets/consult.pl}
+
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Platform-specific Issues}
+\begin{frame}[allowframebreaks]{The multi-platform notion of \kt{Url}}
+    \begin{center}
+        \includegraphics[width=.5\linewidth]{img/url.pdf}
+    \end{center}
 
+    \begin{block}{Purpose}
+        \begin{itemize}
+            \item Mimicing Java's URL type
+            \item Prividing unified multi-platform API for I/O
+            \item Supporting requirements \ref{iolib:platform-independence} and \ref{iolib:location-transparency} 
+        \end{itemize}
+    \end{block}
 \end{frame}
+
+\begin{frame}[allowframebreaks]{Content of the \kt{IOLib}}
+    \kt{it.unibo.tuprolog.solve.libs.io.\alert{IOLib}}
+    %
+    \medskip
+    %
+    \begin{description}
+        
+        \item[primitives:] \pl{at\_end\_of\_stream/0}, \pl{at\_end\_of\_stream/1}, \pl{char\_conversion/2}, \pl{close/1}, \pl{close/2}, \pl{consult/1}, \pl{current\_char\_conversion/2}, \pl{current\_input/1}, \pl{current\_output/1}, \pl{flush\_output/1}, \pl{get\_byte/1}, \pl{get\_byte/2}, \pl{get\_char/1}, \pl{get\_char/2}, \pl{get\_code/1}, \pl{get\_code/2}, \pl{nl/1}, \pl{open/3}, \pl{open/4}, \pl{peek\_byte/1}, \pl{peek\_byte/2}, \pl{peek\_char/1}, \pl{peek\_char/2}, \pl{peek\_code/1}, \pl{peek\_code/2}, \pl{put\_byte/1}, \pl{put\_byte/2}, \pl{put\_char/1}, \pl{put\_char/2}, \pl{put\_code/1}, \pl{put\_code/2}, \pl{read/1}, \pl{read/2}, \pl{read\_term/2}, \pl{read\_term/3}, \pl{set\_input/1}, \pl{set\_output/1}, \pl{set\_theory/1}, \pl{stream\_property/2}, \pl{write/2}, \pl{write\_canonical/1}, \pl{write\_canonical/2}, \pl{write\_eq/1}, \pl{write\_eq/2}, \pl{write\_term/2}, \pl{write\_term/3}
+        
+        \framebreak
+
+        \item[operators:] none
+    
+        \item[theory:] none
+        
+        \item[functions:] none
+    \end{description}
+
+    \bigskip
+
+    \begin{block}{Takeaway}\centering
+        \kt{IOLib} = I/O predicates from the Prolog ISO Standard \ccite{prologISO-pt1}, realised as \kt{Solver}-independent primitives
+    \end{block}
+\end{frame}
+
+% \begin{frame}[allowframebreaks]{Platform-specific Issues}
+
+% \end{frame}
 
 \section{OOP and Prolog: the \module{oop-lib} Module}
 
 \begin{frame}[allowframebreaks]{Overview on the OOP Lib Design}
 
-    \begin{block}{Purpose}
+    \begin{block}{Perspective}
         \begin{description}
             \item[\kt{Solver}s] $\rightarrow$ let OOP exploit LP
             \item[\kt{Primitive}s] $\rightarrow$ let LP wrap/call OOP 
-            \item[\module{oop-lib}] $\rightarrow$ lets LP exploit OOP 
+            \item[\module{oop-lib}] $\rightarrow$ \alert{lets LP exploit OOP}
         \end{description}
     \end{block}
 
@@ -4756,28 +4867,61 @@
 
 \subsection{Logic Predicates and Operators for OOP}
 
-\begin{frame}[allowframebreaks]{Main Predicates from the OOP Lib}
-    (for each: definition, semantics)
+\begin{frame}{Content of the \kt{OOPLib}}
 
-    \ttfamily
-    invoke\_method/3
-    invoke\_strict/3
-    assign/3
-    cast/3
-    new\_object/3
-    new\_object/2 (rule)
-    register/2
-    unregister/1
-    alias/2 (rule)
-    :=/2 (rule)
-    ./2 (rule)
-    fluent\_reduce/3
-    property\_reduce/3
+    \kt{it.unibo.tuprolog.solve.libs.oop.\alert{OOPLib}}
+    %
+    \vfill
+    %
+    \begin{description}
+
+        \item[operators:] \pl{'.'/2}, \pl{':='/2}, \pl{'as/2'}, \pl{'\$'/1} 
+        
+        \vfill
+        
+        \item[theory:] \pl{':='/2}, \pl{'.'/2}, \pl{fluent\_reduce/2}, \pl{new\_object/2}, \pl{property\_reduce/2}
+        
+        \vfill
+        
+        \item[primitives:] \pl{assign/3}, \pl{cast/3}, \pl{type/2}, \pl{invoke\_method/3}, \pl{invoke\_strict/3}, \pl{new\_object/3}, \pl{null\_ref/1}, \pl{object\_ref/1}, \pl{ref/1}, \pl{register/2}, \pl{type\_ref/1}, \pl{unregister/1}
+        
+        \vfill
+        
+        \item[functions:] none
+    \end{description}
 \end{frame}
+
+% \begin{frame}{Main predicates of the \kt{OOPLib}}
+%     \ttfamily
+%     invoke\_method/3
+%     invoke\_strict/3
+%     assign/3
+%     cast/3
+%     new\_object/3
+%     new\_object/2 (rule)
+%     register/2
+%     unregister/1
+%     alias/2 (rule)
+%     :=/2 (rule)
+%     ./2 (rule)
+%     fluent\_reduce/3
+%     property\_reduce/3
+% \end{frame}
 
 \section{LP + OOP + FP in Kotlin: the \module{dsl-*} Modules}
 
 \begin{frame}[allowframebreaks]{Overview on the DSL}
+
+    \begin{block}{Perspective}
+        \begin{description}
+            \item[\kt{Solver}s] $\rightarrow$ let OOP exploit LP
+            \item[\kt{Primitive}s] $\rightarrow$ let LP wrap/call OOP 
+            \item[\module{oop-lib}] $\rightarrow$ lets LP exploit OOP
+            \item[\module{dsl-*}] $\rightarrow$ \alert{let Kotlin expoit LP with Prolog-like syntax}
+        \end{description}
+    \end{block}
+
+    \framebreak
 
     \begin{block}{Purpose}
         \begin{itemize}
@@ -4789,37 +4933,65 @@
     \end{block}
 
     \framebreak
-    
-    \begin{block}{Principles}
-        \begin{enumerate}
-            \item the DSL has to be a \textit{strict} extension of Kotlin
-            \begin{description}
-                \item [$\rightarrow$] no Kotlin feature is hindered by using the DSL
-            \end{description}
-            \item the DSL has to be fully \textit{interoperable} with the hosting language
-            \begin{description}
-                \item [$\rightarrow$] all Kotlin features may be exploited by the DSL
-            \end{description}
-            \item the DSL has to be fully \textit{encapsulated} and \textit{identifiable}
-            \begin{description}
-                \item [$\rightarrow$] preventing unintended usage
-            \end{description}
-            \item the DSL should be as close as possible to Prolog, syntactically and semantically
-            \begin{description}
-                \item [$\rightarrow$] easing its exploitation by logic programmers
-            \end{description}
-        \end{enumerate}
-    \end{block}
+
+    \begin{exampleblock}{DSL in practice}
+        \begin{itemize}
+            \item writing tests using LP-like syntax
+            \item[!] \alert{without} relying a parser
+            %
+            \begin{itemize}
+                \item to keep the dependency graph small/sparse
+                \item to prevent developers from using the parser unless strictly needed
+            \end{itemize}
+        \end{itemize}
+    \end{exampleblock}
 
     \framebreak
+
+    \begin{columns}
+        \centering
+        \begin{column}{.48\linewidth}
+            \ktSnippet[\tiny]{snippets/Relatives.kt}
+        \end{column}
+        \hfill
+        \begin{column}{.48\linewidth}
+            \plSnippet[\tiny]{snippets/relatives.pl}
+        \end{column}
+    \end{columns}
+
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Design Principles of the DSL (cf. \ccite{kotlinDSl4PrologWoa2020})}  
+    \begin{enumerate}
+        \item the DSL has to be a \textit{strict} extension of Kotlin
+        \begin{description}
+            \item [$\rightarrow$] no Kotlin feature is hindered by using the DSL
+        \end{description}
+        \vfill
+        \item the DSL has to be fully \textit{interoperable} with the hosting language
+        \begin{description}
+            \item [$\rightarrow$] all Kotlin features may be exploited by the DSL
+        \end{description}
+        \vfill
+        \item the DSL has to be fully \textit{encapsulated} and \textit{identifiable}
+        \begin{description}
+            \item [$\rightarrow$] preventing unintended usage
+        \end{description}
+        \vfill
+        \item the DSL should be as close as possible to LP, syntactically and semantically
+        \begin{description}
+            \item [$\rightarrow$] easing its exploitation by logic programmers
+        \end{description}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Architecture}
 
     \begin{center}
         \includegraphics[width=0.3\linewidth]{img/dsl-layers.pdf}
     \end{center}
 
-\end{frame}
-
-\begin{frame}[allowframebreaks]{Architecture}
+    \framebreak
     
     \begin{center}
         \includegraphics[width=0.50\linewidth]{img/dsl-core.pdf}
