@@ -477,9 +477,16 @@
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{Term} type}
+
     \begin{block}{The \kt{Term} type}\centering
         Base type for all terms
     \end{block}
+    %
+    \begin{center}
+        \includegraphics[width=0.5\linewidth]{img/term.pdf}
+    \end{center}
+    %
+    \framebreak
     %
     \begin{description}
         \item[\kt{is\meta{SubType}: Boolean}] checks whether the current term is an instance of \kt{\meta{SubType}} or not
@@ -507,16 +514,14 @@
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Main Sorts of \kt{Term}s}
-
-    \begin{center}
-        \includegraphics[width=0.8\linewidth]{img/constant.pdf}
-    \end{center}
-
-    \framebreak
     
     \begin{block}{The \kt{Constant} type is a sub-type of \kt{Term}}\centering
         Base type for all constant terms (namely, strings and numbers)
     \end{block}
+    %
+    \begin{center}
+        \includegraphics[width=0.4\linewidth]{img/constant.pdf}
+    \end{center}
     %
     \begin{description}
         \item[\kt{value: Any}] returns the value of this \kt{Constant}
@@ -532,15 +537,15 @@
 
     \framebreak
 
-    \begin{center}
-        \includegraphics[width=0.9\linewidth]{img/numeric.pdf}
-    \end{center}
-
-    \framebreak
-
     \begin{block}{The \kt{Numeric} type is a sub-type of \kt{Constant}}\centering
         Base type for all numeric terms (namely, reals and integers)
     \end{block}
+    %
+    \begin{center}
+        \includegraphics[width=0.8\linewidth]{img/numeric.pdf}
+    \end{center}
+    %
+    \framebreak
     %
     \begin{description}
         \item[\kt{intValue: BigInteger}] returns the integer value of the current number
@@ -594,15 +599,15 @@
 
     \framebreak
 
-    \begin{center}
-        \includegraphics[width=0.9\linewidth]{img/struct.pdf}
-    \end{center}
-
-    \framebreak
-
     \begin{block}{The \kt{Struct} type is a sub-type of \kt{Term}}\centering
         Type for all terms of the form \kt{$f$($t_1$, \ldots, $t_N$)}, i.e. composed by a \alert{funtor} string $f$ and $N$ terms $t_1, \ldots, t_N$ called \alert{arguments}, where $N \geq 0$ is called \alert{arity}
     \end{block}
+    %
+    \begin{center}
+        \includegraphics[width=0.6\linewidth]{img/struct.pdf}
+    \end{center}
+    %
+    \framebreak
     %
     \begin{description}
         \item[\kt{functor: String}] returns $f$
@@ -650,15 +655,15 @@
 
     \framebreak
 
-    \begin{center}
-        \includegraphics[width=0.9\linewidth]{img/atom.pdf}
-    \end{center}
-
-    \framebreak
-
     \begin{block}{The \kt{Atom} type is a sub-type of both \kt{Struct} and \kt{Constant}}\centering
         Type for all constant 0-ary structures (i.e., with no arguments), representing strings
     \end{block}
+    %
+    \begin{center}
+        \includegraphics[width=0.6\linewidth]{img/atom.pdf}
+    \end{center}
+    %
+    \framebreak
     %
     \begin{description}
         \item[\kt{value: String}] returns \kt{this.functor}
@@ -671,18 +676,18 @@
     \framebreak
 
     \ktSnippet{snippets/AtomUsage.kt}
-
-    \framebreak
-
-    \begin{center}
-        \includegraphics[width=0.8\linewidth]{img/var.pdf}
-    \end{center}
     
     \framebreak
 
     \begin{block}{The \kt{Var} type is a sub-type of \kt{Term}}\centering
         Type for all variable terms, representing \alert{named} placeholders for other terms.
     \end{block}
+    %
+    \begin{center}
+        \includegraphics[width=0.5\linewidth]{img/var.pdf}
+    \end{center}
+    %
+    \framebreak
     %
     \begin{alertblock}{About \kt{Var}iable names}
         \begin{itemize}
@@ -714,12 +719,6 @@
     \end{description}
 
     \ktSnippet{snippets/VarUsage.kt}
-
-    \framebreak
-
-    \begin{center}
-        \includegraphics[width=0.8\linewidth]{img/indicator.pdf}
-    \end{center}
     
     \framebreak
 
@@ -734,6 +733,12 @@
         \end{center}
     \end{block}
     %
+    \begin{center}
+        \includegraphics[width=0.7\linewidth]{img/indicator.pdf}
+    \end{center}
+    %
+    \framebreak
+    %
     \begin{description}
         \item[\kt{nameTerm: Term}] returns $f$, shortcut for \kt{get(0)}
         \item[\kt{indicatedName: String?}] if $f$ is an atom, returns \kt{$f$.value}, otherwise \kt{null}
@@ -745,12 +750,6 @@
     \end{description}
 
     \ktSnippet{snippets/IndicatorUsage.kt}
-
-    \framebreak
-
-    \begin{center}
-        \includegraphics[width=0.9\linewidth]{img/truth.pdf}
-    \end{center}
     
     \framebreak
 
@@ -761,10 +760,16 @@
         \end{center}
     \end{block}
     %
+    \begin{center}
+        \includegraphics[width=0.9\linewidth]{img/truth.pdf}
+    \end{center}
+    %
     \begin{description}
         \item[\kt{isTrue: Boolean}] returns \kt{true} if the atom is a tautology
         \item[\kt{isFail: Boolean}] returns \kt{true} if the atom is a contradiction
     \end{description}
+
+    \framebreak
 
     \ktSnippet[\tiny]{snippets/TruthUsage.kt}
 \end{frame}
@@ -790,9 +795,17 @@
         \end{itemize}
     \end{exampleblock}
     %
+    \framebreak
+    %
     \begin{block}{The \kt{Collection} type is a sub-type of \kt{Struct}}\centering
         Base type for all right-recursive structures aimed at containing an unlimited amount of terms.
     \end{block}
+    %
+    \begin{center}
+        \includegraphics[width=.8\linewidth]{img/collection.pdf}
+    \end{center}
+    %
+    \framebreak
     %
     \begin{description}
         \item[\kt{unfoldedSequence: Sequence<Term>}] in general, returns a sequence containing the terms $t_1, \ldots, t_N$, plus $T$ in case of explicit folding strategy
@@ -804,12 +817,6 @@
         \item[\kt{toArray(): Array<Term>}] in general, returns an array containing the terms $t_1, \ldots, t_N$
         \item[\kt{unfold(): Sequence<Term>}] in general, returns a sequence containing the terms \pl{$f$($t1$, $f$($t_2$, \ldots))}, \pl{$f$($t_2$, \ldots)}, \pl{\ldots}, plus $T$ in case of explicit folding strategy, or \pl{$f$($t_{N-1}$, $t_N$)} otherwise
     \end{description}
-
-    \framebreak
-
-    \begin{center}
-        \includegraphics[width=0.9\linewidth]{img/list.pdf}
-    \end{center}
 
     \framebreak
 
@@ -825,6 +832,10 @@
             A list is considered well formed iff $T \equiv \pl{[]}$.
         \end{center}
     \end{block}
+    %
+    \begin{center}
+        \includegraphics[width=0.9\linewidth]{img/list.pdf}
+    \end{center}
     %
     \begin{alertblock}{About logic lists}
         \begin{itemize}
@@ -866,12 +877,6 @@
 
     \framebreak
 
-    \begin{center}
-        \includegraphics[width=0.9\linewidth]{img/tuple.pdf}
-    \end{center}
-
-    \framebreak
-
     \begin{block}{The \kt{Tuple} type is a sub-type of \kt{Collection}}
         \begin{center}
             Base type for logic conjunctions, i.e. collections using \pl{','} as functor and an implicit termination strategy.
@@ -884,6 +889,10 @@
             Notice that tuples always contain at least 2 terms.
         \end{center}
     \end{block}
+    %
+    \begin{center}
+        \includegraphics[width=0.9\linewidth]{img/tuple.pdf}
+    \end{center}
     %
     \begin{alertblock}{About logic tuples}
         \begin{itemize}
@@ -906,13 +915,9 @@
         \item[\kt{unfold(): Sequence<Term>}] returns a sequence containing the terms \pl{','($t1$, ','($t_2$, \ldots))}, \pl{','($t_2$, \ldots)}, \pl{\ldots}, \pl{','($t_{N-1}$, $t_N$)}
     \end{description}
 
-    \ktSnippet{snippets/TupleUsage.kt}
-
     \framebreak
 
-    \begin{center}
-        \includegraphics[width=0.9\linewidth]{img/set.pdf}
-    \end{center}
+    \ktSnippet{snippets/TupleUsage.kt}
 
     \framebreak
 
@@ -921,6 +926,10 @@
             Base type for logic sets, i.e. a particular sort of collection using \pl{\{\}} as functor, which may either be empty or contain a single term---which may possibly be a tuple.
         \end{center}
     \end{block}
+    %
+    \begin{center}
+        \includegraphics[width=0.9\linewidth]{img/set.pdf}
+    \end{center}
     %
     \begin{alertblock}{About logic sets}
         \begin{itemize}
@@ -957,16 +966,14 @@
 
 \begin{frame}[allowframebreaks]{Clauses}
 
-    \begin{center}
-        \includegraphics[width=0.95\linewidth]{img/clause.pdf}
-    \end{center}
-
-    \framebreak
-
     \begin{block}{The \kt{Clause} type is a sub-type of \kt{Struct}}\centering
         Base type for all structures aimed at representing Horn clauses.
         They all use \pl{':-'} as functor and carry either 1 or 2 arguments, named \emph{head} and \emph{body}.
     \end{block}
+    %
+    \begin{center}
+        \includegraphics[width=0.95\linewidth]{img/clause.pdf}
+    \end{center}
     
     \framebreak
 
@@ -1914,12 +1921,6 @@
 
 \begin{frame}[allowframebreaks]{\kt{TermVisitor}s and their Use Cases}
 
-    \begin{center}
-        \includegraphics[width=0.7\linewidth]{img/term-visitor.pdf}
-    \end{center}
-
-    \framebreak
-
     \begin{block}{About \kt{TermVisitor}s}
         \begin{itemize}
             \item Visitor pattern\footnote{\url{https://en.wikipedia.org/wiki/Visitor_pattern}} applied to \kt{Term}
@@ -1928,7 +1929,11 @@
         \end{itemize}
     \end{block}
 
+    \framebreak
+
     \ktSnippet[\tiny]{./snippets/TermVisitor.kt}
+
+    \framebreak
 
     \begin{block}{\kt{TermVisitor}s' contract}
         \begin{itemize}
@@ -1960,21 +1965,32 @@
 
 \subsection{Formatting \kt{Term}s}
 
-\begin{frame}{The \kt{TermFormatter} Type}
+\begin{frame}[allowframebreaks]{The \kt{TermFormatter} Type}
+
+    \begin{center}
+        \includegraphics[width=0.7\linewidth]{img/term-visitor.pdf}
+    \end{center}
+
+    \framebreak
+
     \begin{block}{About \kt{TermFormatter}s}
         \begin{itemize}
             \item \kt{TermFormatter}s aim at \alert{presenting} terms and clauses as \kt{string}s
             \item Many predefined formatters exist, serving disparate use cases
+            %
+            \begin{itemize}
+                \item configurable via \kt{enums}
+            \end{itemize}
         \end{itemize}
     \end{block}
 
-    \ktSnippet{./snippets/TermFormatter.kt}
+    % \ktSnippet{./snippets/TermFormatter.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{\kt{TermFormatter} enums}
-    Three \kt{enum}s exist to support many possible way to present \kt{Term}s:
-    %
-    \ktSnippet{./snippets/TermFormatterEnums.kt}
+    % Three \kt{enum}s exist to support many possible way to present \kt{Term}s:
+    % %
+    % \ktSnippet{./snippets/TermFormatterEnums.kt}
 
     \begin{block}{\kt{VarFormat} dictates how \kt{Var}iables are represented}
         \begin{description}
@@ -2038,7 +2054,7 @@
         \end{description}
     \end{block}
 
-    \ktSnippet{./snippets/TermFormatter.kt}
+    % \ktSnippet{./snippets/TermFormatter.kt}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Creating \kt{TermFormatter}s}
@@ -2089,7 +2105,7 @@
 \begin{frame}[allowframebreaks]{Exceptions in \twopkt{}}
 
     \begin{center}
-        \includegraphics[width=0.9\linewidth]{img/exception.pdf}
+        \includegraphics[width=0.7\linewidth]{img/exception.pdf}
     \end{center}
 
     \framebreak

@@ -1,12 +1,17 @@
 @startuml
-skinparam shadowing false
-
 interface Term {
   + isGround: Boolean
   + variables: Sequence<Var>
+  + is<T>(): Boolean
+  + as<T>(): Boolean
+  + castTo<T>(): Boolean
   + equals(other: Any): Boolean
+  + equals(other: Term, useVarCompleteNames: Boolean): Boolean
   + structurallyEquals(other: Term): Boolean
   + freshCopy(): Term
+  + apply(substitution: Substitution): Term
+  + accept<T>(visitor: TermVisitor<T>): T
+  + compareTo(other: Term): Int 
   + toString(): String
 }
 @enduml

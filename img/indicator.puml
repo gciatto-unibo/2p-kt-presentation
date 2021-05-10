@@ -1,7 +1,5 @@
 @startuml
 left to right direction
-skinparam shadowing false
-
 interface Term
 interface Struct
 interface Indicator {
@@ -10,8 +8,8 @@ interface Indicator {
   + arityTerm: Term
   + indicatedArity: Int?
   + isWellFormed: Boolean
-  + {static} of(name: String, arity: Int): Indicator
-  + {static} of(name: Term, arity: Term): Indicator
+  ' + {static} of(name: String, arity: Int): Indicator
+  ' + {static} of(name: Term, arity: Term): Indicator
 }
 
 Term <|-- Struct

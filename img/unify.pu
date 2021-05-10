@@ -1,0 +1,18 @@
+interface Unificator {
+    + match(Term, Term): Boolean
+    + mgu(Term, Term): Substitution
+    + unify(Term, Term): Term?
+    + merge(Substitution, Substitution): Substitution
+}
+
+abstract class AbstractUnificator {
+    + context: Substitution
+    {abstract} + checkTermsEquality(Term, Term): Boolean
+}
+
+class CachedUnificator {
+    + decorated: Unificator
+}
+
+Unificator <|.. AbstractUnificator
+Unificator <|.. CachedUnificator

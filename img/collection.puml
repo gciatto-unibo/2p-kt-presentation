@@ -1,0 +1,19 @@
+@startuml
+left to right direction
+
+interface Term
+interface Struct
+
+interface Collection {
+  + size: Int
+  + unfoldedArray: Array<Term>
+  + unfoldedList: List<Term>
+  + unfoldedSequence: Sequence<Term>
+  + toArray(): Array<Term>
+  + toList(): List<Term>
+  + toSequence(): Sequence<Term>
+  + unfold(): Sequence<Term>
+}
+Term <|-- Struct
+Struct <|-- Collection
+@enduml

@@ -1,38 +1,42 @@
 @startuml
 left to right direction
-skinparam shadowing false
 
+interface Term
 interface Struct
+interface Collection
 interface Atom
 interface Empty {
-  + {static} list(): EmptyList
-  + {static} set(): EmptySet
+  ' + {static} list(): EmptyList
+  ' + {static} set(): EmptySet
 }
 interface EmptyList {
-  + {static} invoke(): EmptyList
+  ' + {static} invoke(): EmptyList
 }
 interface List {
-  + size: Int
-  + unfoldedArray: Array<Term>
-  + unfoldedList: List<Term>
-  + unfoldedSequence: Sequence<Term>
-  + toArray(): Array<Term>
-  + toList(): List<Term>
-  + toSequence(): Sequence<Term>
-  + {static} empty(): List
-  + {static} of(**varargs** items: Term): List
-  + {static} of(items: Iterable<Term>): List
-  + {static} from(iterable: Iterable<Term>, last: Term? **= null**): List
+  ' + size: Int
+  ' + unfoldedArray: Array<Term>
+  ' + unfoldedList: List<Term>
+  ' + unfoldedSequence: Sequence<Term>
+  ' + toArray(): Array<Term>
+  ' + toList(): List<Term>
+  ' + toSequence(): Sequence<Term>
+  ' + {static} empty(): List
+  ' + {static} of(**varargs** items: Term): List
+  ' + {static} of(items: Iterable<Term>): List
+  ' + {static} from(iterable: Iterable<Term>, last: Term? **= null**): List
 }
 interface Cons {
   + head: Term
   + tail: Term
-  + {static} of(head: Term, tail: Term): Cons
-  + {static} singleton(head: Term): Cons
+  ' + {static} of(head: Term, tail: Term): Cons
+  ' + {static} singleton(head: Term): Cons
 }
 
+Term <|-- Struct
+Struct <|-- Collection
+
 Struct <|-- Atom
-Struct <|-- List
+Collection <|-- List
 
 Atom <|-- Empty
 

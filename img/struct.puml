@@ -1,22 +1,26 @@
 @startuml
 left to right direction
-skinparam shadowing false
 
-interface Term {
-  + isGround: Boolean
-  + variables: Sequence<Var>
-  + equals(other: Any): Boolean
-  + structurallyEquals(other: Term): Boolean
-  + freshCopy(): Term
-  + toString(): String
-}
+interface Term 
+
 interface Struct {
   + functor: String
   + arity: Int
+  + isFunctorWellFormed: Boolean
+  + indicator: Indicator
   + args: Array<Term>
+  + argsList: List<Term>
+  + argsSequence: Sequence<Term>
   + indicator: Indicator
   + get(index: Int): Term
-  + {static} of(functor: String, **varargs** args: Term): Struct
+  + getArgAt(index: Int): Term
+  ' + {static} of(functor: String, **varargs** args: Term): Struct
+  + addFirst(argument: Term): Struct
+  + addLast(argument: Term): Struct
+  + append(argument: Term): Struct
+  + insertAt(index: Int, argument: Term): Struct
+  + setFunctor(functor: String): Struct
+  + setArgs(arguments: Iterable<Term>): Struct
 }
 
 Term <|-- Struct

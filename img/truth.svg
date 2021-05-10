@@ -1,42 +1,85 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="105px" preserveAspectRatio="none" style="width:669px;height:105px;" version="1.1" viewBox="0 0 669 105" width="669px" zoomAndPan="magnify"><defs/><g><!--MD5=[9d35236b92952560f647498cf8a29acb]
-class Term--><rect fill="#FEFECE" height="48" id="Term" style="stroke: #A80036; stroke-width: 1.5;" width="63" x="6" y="27"/><ellipse cx="21" cy="43" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M16.9219,38.7656 L16.9219,36.6094 L24.3125,36.6094 L24.3125,38.7656 L21.8438,38.7656 L21.8438,46.8438 L24.3125,46.8438 L24.3125,49 L16.9219,49 L16.9219,46.8438 L19.3906,46.8438 L19.3906,38.7656 L16.9219,38.7656 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="31" x="35" y="47.1543">Term</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="68" y1="59" y2="59"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="68" y1="67" y2="67"/><!--MD5=[54b85b6d1a687c59d530998eb343c279]
-class Constant--><rect fill="#FEFECE" height="48" id="Constant" style="stroke: #A80036; stroke-width: 1.5;" width="88" x="129" y="27"/><ellipse cx="144" cy="43" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M139.9219,38.7656 L139.9219,36.6094 L147.3125,36.6094 L147.3125,38.7656 L144.8438,38.7656 L144.8438,46.8438 L147.3125,46.8438 L147.3125,49 L139.9219,49 L139.9219,46.8438 L142.3906,46.8438 L142.3906,38.7656 L139.9219,38.7656 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="56" x="158" y="47.1543">Constant</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="130" x2="216" y1="59" y2="59"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="130" x2="216" y1="67" y2="67"/><!--MD5=[f18b0f967872e82ff276115ca1b4c569]
-class Atom--><rect fill="#FEFECE" height="73.6094" id="Atom" style="stroke: #A80036; stroke-width: 1.5;" width="154" x="277" y="14"/><ellipse cx="333.75" cy="30" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M329.6719,25.7656 L329.6719,23.6094 L337.0625,23.6094 L337.0625,25.7656 L334.5938,25.7656 L334.5938,33.8438 L337.0625,33.8438 L337.0625,36 L329.6719,36 L329.6719,33.8438 L332.1406,33.8438 L332.1406,25.7656 L329.6719,25.7656 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="32" x="354.25" y="34.1543">Atom</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="278" x2="430" y1="46" y2="46"/><ellipse cx="288" cy="57" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="72" x="297" y="60.2104">value: String</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="278" x2="430" y1="66.8047" y2="66.8047"/><ellipse cx="288" cy="77.8047" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="128" x="297" y="81.0151">of(value: String): Atom</text><!--MD5=[de147283bee8035b23b97cb1a9ddf59d]
-class Truth--><rect fill="#FEFECE" height="86.4141" id="Truth" style="stroke: #A80036; stroke-width: 1.5;" width="167" x="491" y="8"/><ellipse cx="553.75" cy="24" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M549.6719,19.7656 L549.6719,17.6094 L557.0625,17.6094 L557.0625,19.7656 L554.5938,19.7656 L554.5938,27.8438 L557.0625,27.8438 L557.0625,30 L549.6719,30 L549.6719,27.8438 L552.1406,27.8438 L552.1406,19.7656 L549.6719,19.7656 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="33" x="574.25" y="28.1543">Truth</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="492" x2="657" y1="40" y2="40"/><ellipse cx="502" cy="51" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="90" x="511" y="54.2104">isTrue: Boolean</text><ellipse cx="502" cy="63.8047" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="83" x="511" y="67.0151">isFail: Boolean</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="492" x2="657" y1="73.6094" y2="73.6094"/><ellipse cx="502" cy="84.6094" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="141" x="511" y="87.8198">of(value: Boolean): Truth</text><!--MD5=[22dcc2a6458fba43153ab5c044b6d0f2]
-reverse link Term to Constant--><path d="M89.26,51 C102.31,51 116.24,51 128.87,51 " fill="none" id="Term&lt;-Constant" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="89.13,58,69.13,51,89.13,44,89.13,58" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[904172204236467fd977e5a86c11fa2e]
-reverse link Constant to Atom--><path d="M237.74,51 C250.41,51 263.84,51 276.87,51 " fill="none" id="Constant&lt;-Atom" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="237.33,58,217.33,51,237.33,44,237.33,58" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[5635cc4b99654f3c5c549950d77dd0db]
-reverse link Atom to Truth--><path d="M451.48,51 C464.65,51 478.07,51 490.96,51 " fill="none" id="Atom&lt;-Truth" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="451.11,58,431.11,51,451.11,44,451.11,58" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[79cd8f5d19807371f39e54d07cc09b1d]
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="184px" preserveAspectRatio="none" style="width:895px;height:184px;background:#FFFFFF;" version="1.1" viewBox="0 0 895 184" width="895px" zoomAndPan="magnify"><defs/><g><!--MD5=[9d35236b92952560f647498cf8a29acb]
+class Term--><rect codeLine="4" fill="#FEFECE" height="48" id="Term" style="stroke:#A80036;stroke-width:1.5;" width="63" x="7" y="72"/><ellipse cx="22" cy="88" fill="#B4A7E5" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M22.9531,84.7813 L24.6719,84.7813 C25.0625,84.7813 25.25,84.75 25.375,84.6719 C25.6406,84.5156 25.7813,84.2344 25.7813,83.9375 C25.7813,83.6719 25.6719,83.4063 25.4375,83.2344 C25.2656,83.125 25.125,83.0938 24.6719,83.0938 L19.5313,83.0938 C19.0938,83.0938 18.9688,83.1094 18.8125,83.2031 C18.5625,83.3594 18.4063,83.6563 18.4063,83.9375 C18.4063,84.2188 18.5469,84.4688 18.7656,84.6406 C18.9219,84.75 19.1094,84.7813 19.5313,84.7813 L21.25,84.7813 L21.25,91.2969 L19.5313,91.2969 C19.0938,91.2969 18.9688,91.3125 18.8125,91.4219 C18.5625,91.5781 18.4063,91.8594 18.4063,92.1563 C18.4063,92.4063 18.5469,92.6719 18.7656,92.8281 C18.9219,92.9531 19.125,93 19.5313,93 L24.6719,93 C25.4219,93 25.7813,92.7188 25.7813,92.1563 C25.7813,91.875 25.6719,91.625 25.4375,91.4531 C25.2656,91.3281 25.125,91.2969 24.6719,91.2969 L22.9531,91.2969 L22.9531,84.7813 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="31" x="36" y="92.1543">Term</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="69" y1="104" y2="104"/><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="69" y1="112" y2="112"/><!--MD5=[eb0f4986160aea42d9ece72995cb24c7]
+class Struct--><rect codeLine="6" fill="#FEFECE" height="48" id="Struct" style="stroke:#A80036;stroke-width:1.5;" width="70" x="130" y="72"/><ellipse cx="145" cy="88" fill="#B4A7E5" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M145.9531,84.7813 L147.6719,84.7813 C148.0625,84.7813 148.25,84.75 148.375,84.6719 C148.6406,84.5156 148.7813,84.2344 148.7813,83.9375 C148.7813,83.6719 148.6719,83.4063 148.4375,83.2344 C148.2656,83.125 148.125,83.0938 147.6719,83.0938 L142.5313,83.0938 C142.0938,83.0938 141.9688,83.1094 141.8125,83.2031 C141.5625,83.3594 141.4063,83.6563 141.4063,83.9375 C141.4063,84.2188 141.5469,84.4688 141.7656,84.6406 C141.9219,84.75 142.1094,84.7813 142.5313,84.7813 L144.25,84.7813 L144.25,91.2969 L142.5313,91.2969 C142.0938,91.2969 141.9688,91.3125 141.8125,91.4219 C141.5625,91.5781 141.4063,91.8594 141.4063,92.1563 C141.4063,92.4063 141.5469,92.6719 141.7656,92.8281 C141.9219,92.9531 142.125,93 142.5313,93 L147.6719,93 C148.4219,93 148.7813,92.7188 148.7813,92.1563 C148.7813,91.875 148.6719,91.625 148.4375,91.4531 C148.2656,91.3281 148.125,91.2969 147.6719,91.2969 L145.9531,91.2969 L145.9531,84.7813 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="38" x="159" y="92.1543">Struct</text><line style="stroke:#A80036;stroke-width:1.5;" x1="131" x2="199" y1="104" y2="104"/><line style="stroke:#A80036;stroke-width:1.5;" x1="131" x2="199" y1="112" y2="112"/><!--MD5=[3d9a9201f4e3c24a3b32edb25b35db95]
+class Clause--><rect codeLine="8" fill="#FEFECE" height="86.4141" id="Clause" style="stroke:#A80036;stroke-width:1.5;" width="157" x="260" y="53"/><ellipse cx="314.75" cy="69" fill="#B4A7E5" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M315.7031,65.7813 L317.4219,65.7813 C317.8125,65.7813 318,65.75 318.125,65.6719 C318.3906,65.5156 318.5313,65.2344 318.5313,64.9375 C318.5313,64.6719 318.4219,64.4063 318.1875,64.2344 C318.0156,64.125 317.875,64.0938 317.4219,64.0938 L312.2813,64.0938 C311.8438,64.0938 311.7188,64.1094 311.5625,64.2031 C311.3125,64.3594 311.1563,64.6563 311.1563,64.9375 C311.1563,65.2188 311.2969,65.4688 311.5156,65.6406 C311.6719,65.75 311.8594,65.7813 312.2813,65.7813 L314,65.7813 L314,72.2969 L312.2813,72.2969 C311.8438,72.2969 311.7188,72.3125 311.5625,72.4219 C311.3125,72.5781 311.1563,72.8594 311.1563,73.1563 C311.1563,73.4063 311.2969,73.6719 311.5156,73.8281 C311.6719,73.9531 311.875,74 312.2813,74 L317.4219,74 C318.1719,74 318.5313,73.7188 318.5313,73.1563 C318.5313,72.875 318.4219,72.625 318.1875,72.4531 C318.0156,72.3281 317.875,72.2969 317.4219,72.2969 L315.7031,72.2969 L315.7031,65.7813 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="39" x="335.25" y="73.1543">Clause</text><line style="stroke:#A80036;stroke-width:1.5;" x1="261" x2="416" y1="85" y2="85"/><ellipse cx="271" cy="96" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="75" x="280" y="99.2104">head: Struct?</text><ellipse cx="271" cy="108.8047" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="65" x="280" y="112.0151">body: Term</text><ellipse cx="271" cy="121.6094" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="131" x="280" y="124.8198">isWellFormed: Boolean</text><line style="stroke:#A80036;stroke-width:1.5;" x1="261" x2="416" y1="131.4141" y2="131.4141"/><!--MD5=[4cf87534c235239d37db4adfd136fff4]
+class Rule--><rect codeLine="14" fill="#FEFECE" height="73.6094" id="Rule" style="stroke:#A80036;stroke-width:1.5;" width="95" x="502.5" y="7"/><ellipse cx="534.15" cy="23" fill="#B4A7E5" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M535.1031,19.7813 L536.8219,19.7813 C537.2125,19.7813 537.4,19.75 537.525,19.6719 C537.7906,19.5156 537.9313,19.2344 537.9313,18.9375 C537.9313,18.6719 537.8219,18.4063 537.5875,18.2344 C537.4156,18.125 537.275,18.0938 536.8219,18.0938 L531.6813,18.0938 C531.2438,18.0938 531.1188,18.1094 530.9625,18.2031 C530.7125,18.3594 530.5563,18.6563 530.5563,18.9375 C530.5563,19.2188 530.6969,19.4688 530.9156,19.6406 C531.0719,19.75 531.2594,19.7813 531.6813,19.7813 L533.4,19.7813 L533.4,26.2969 L531.6813,26.2969 C531.2438,26.2969 531.1188,26.3125 530.9625,26.4219 C530.7125,26.5781 530.5563,26.8594 530.5563,27.1563 C530.5563,27.4063 530.6969,27.6719 530.9156,27.8281 C531.0719,27.9531 531.275,28 531.6813,28 L536.8219,28 C537.5719,28 537.9313,27.7188 537.9313,27.1563 C537.9313,26.875 537.8219,26.625 537.5875,26.4531 C537.4156,26.3281 537.275,26.2969 536.8219,26.2969 L535.1031,26.2969 L535.1031,19.7813 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="26" x="551.85" y="27.1543">Rule</text><line style="stroke:#A80036;stroke-width:1.5;" x1="503.5" x2="596.5" y1="39" y2="39"/><ellipse cx="513.5" cy="50" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="69" x="522.5" y="53.2104">head: Struct</text><ellipse cx="513.5" cy="62.8047" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="65" x="522.5" y="66.0151">body: Term</text><line style="stroke:#A80036;stroke-width:1.5;" x1="503.5" x2="596.5" y1="72.6094" y2="72.6094"/><!--MD5=[326c2f491a5c94a5eb0f952bc2efd709]
+class Directive--><rect codeLine="19" fill="#FEFECE" height="60.8047" id="Directive" style="stroke:#A80036;stroke-width:1.5;" width="146" x="477" y="116.5"/><ellipse cx="519.45" cy="132.5" fill="#B4A7E5" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M520.4031,129.2813 L522.1219,129.2813 C522.5125,129.2813 522.7,129.25 522.825,129.1719 C523.0906,129.0156 523.2313,128.7344 523.2313,128.4375 C523.2313,128.1719 523.1219,127.9063 522.8875,127.7344 C522.7156,127.625 522.575,127.5938 522.1219,127.5938 L516.9813,127.5938 C516.5438,127.5938 516.4188,127.6094 516.2625,127.7031 C516.0125,127.8594 515.8563,128.1563 515.8563,128.4375 C515.8563,128.7188 515.9969,128.9688 516.2156,129.1406 C516.3719,129.25 516.5594,129.2813 516.9813,129.2813 L518.7,129.2813 L518.7,135.7969 L516.9813,135.7969 C516.5438,135.7969 516.4188,135.8125 516.2625,135.9219 C516.0125,136.0781 515.8563,136.3594 515.8563,136.6563 C515.8563,136.9063 515.9969,137.1719 516.2156,137.3281 C516.3719,137.4531 516.575,137.5 516.9813,137.5 L522.1219,137.5 C522.8719,137.5 523.2313,137.2188 523.2313,136.6563 C523.2313,136.375 523.1219,136.125 522.8875,135.9531 C522.7156,135.8281 522.575,135.7969 522.1219,135.7969 L520.4031,135.7969 L520.4031,129.2813 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="53" x="539.55" y="136.6543">Directive</text><line style="stroke:#A80036;stroke-width:1.5;" x1="478" x2="622" y1="148.5" y2="148.5"/><ellipse cx="488" cy="159.5" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="79" x="497" y="162.7104">head: Nothing</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="37" x="580" y="162.7104">= null</text><line style="stroke:#A80036;stroke-width:1.5;" x1="478" x2="622" y1="169.3047" y2="169.3047"/><!--MD5=[8b7b02036613c263e1d0ae582a50c9f5]
+class Fact--><rect codeLine="23" fill="#FEFECE" height="60.8047" id="Fact" style="stroke:#A80036;stroke-width:1.5;" width="205" x="683" y="13.5"/><ellipse cx="768.25" cy="29.5" fill="#B4A7E5" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M769.2031,26.2813 L770.9219,26.2813 C771.3125,26.2813 771.5,26.25 771.625,26.1719 C771.8906,26.0156 772.0313,25.7344 772.0313,25.4375 C772.0313,25.1719 771.9219,24.9063 771.6875,24.7344 C771.5156,24.625 771.375,24.5938 770.9219,24.5938 L765.7813,24.5938 C765.3438,24.5938 765.2188,24.6094 765.0625,24.7031 C764.8125,24.8594 764.6563,25.1563 764.6563,25.4375 C764.6563,25.7188 764.7969,25.9688 765.0156,26.1406 C765.1719,26.25 765.3594,26.2813 765.7813,26.2813 L767.5,26.2813 L767.5,32.7969 L765.7813,32.7969 C765.3438,32.7969 765.2188,32.8125 765.0625,32.9219 C764.8125,33.0781 764.6563,33.3594 764.6563,33.6563 C764.6563,33.9063 764.7969,34.1719 765.0156,34.3281 C765.1719,34.4531 765.375,34.5 765.7813,34.5 L770.9219,34.5 C771.6719,34.5 772.0313,34.2188 772.0313,33.6563 C772.0313,33.375 771.9219,33.125 771.6875,32.9531 C771.5156,32.8281 771.375,32.7969 770.9219,32.7969 L769.2031,32.7969 L769.2031,26.2813 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="26" x="788.75" y="33.6543">Fact</text><line style="stroke:#A80036;stroke-width:1.5;" x1="684" x2="887" y1="45.5" y2="45.5"/><line style="stroke:#A80036;stroke-width:1.5;" x1="684" x2="887" y1="53.5" y2="53.5"/><ellipse cx="694" cy="64.5" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="65" x="703" y="67.7104">body: Term</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="110" x="772" y="67.7104">= Truth.of(true)</text><!--MD5=[f626f12429d76bc694cd64f7f069082d]
+reverse link Term to Struct--><path codeLine="27" d="M90.6401,96 C103.7691,96 117.579,96 129.632,96 " fill="none" id="Term-backto-Struct" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="none" points="90.2753,102.9999,70.2753,96,90.2753,88.9999,90.2753,102.9999" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[b7702a11f4d6cfaf0543be0d76476975]
+reverse link Struct to Clause--><path codeLine="28" d="M220.645,96 C233.061,96 246.484,96 259.656,96 " fill="none" id="Struct-backto-Clause" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="none" points="220.293,102.9999,200.293,96,220.293,88.9999,220.293,102.9999" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[f3bf6ee72f5e1a12bb542db493abdab0]
+reverse link Clause to Rule--><path codeLine="29" d="M436.674,71.88 C459.583,66.194 482.977,60.388 502.443,55.556 " fill="none" id="Clause-backto-Rule" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="none" points="438.31,78.6868,417.212,76.711,434.937,65.099,438.31,78.6868" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[528afe65e613338255b9ddfd2453915a]
+reverse link Clause to Directive--><path codeLine="30" d="M436.801,119.6865 C450.324,122.9786 464.013,126.3111 476.962,129.4632 " fill="none" id="Clause-backto-Directive" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="none" points="434.989,126.4501,417.212,114.918,438.301,112.8473,434.989,126.4501" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[20e1b802e026257bc052a955cce88ea7]
+reverse link Rule to Fact--><path codeLine="31" d="M617.798,44 C638.083,44 660.847,44 682.879,44 " fill="none" id="Rule-backto-Fact" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="none" points="617.691,51,597.691,44,617.691,37,617.691,51" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[d269d93279fdf87bcae477c4d5447fbb]
 @startuml
 left to right direction
 skinparam shadowing false
 
 interface Term
-interface Constant
-interface Atom {
-  + value: String
-  + {static} of(value: String): Atom
+
+interface Struct
+
+interface Clause {
+  + head: Struct?
+  + body: Term
+  + isWellFormed: Boolean
+  ' + {static} of(head: Struct?, **varargs** body: Term): Clause
 }
-interface Truth {
-  + isTrue: Boolean
-  + isFail: Boolean
-  + {static} of(value: Boolean): Truth
+interface Rule {
+  + head: Struct
+  + body: Term
+  ' + {static} of(head: Struct, **varargs** body: Term): Rule
 }
-
-Term <|-down- Constant
-
-Constant <|-down- Atom
-
-Atom <|-down- Truth
-
+interface Directive {
+  + head: Nothing **= null**
+  ' + {static} of(**varargs** body: Term): Directive
+}
+interface Fact {
+  + body: Term **= Truth.of(true)**
+  ' + {static} of(head: Struct): Fact
+}
+Term <|- - Struct
+Struct <|- - Clause
+Clause <|- - Rule
+Clause <|- - Directive
+Rule <|- - Fact
 @enduml
 
-PlantUML version 1.2020.02(Sun Mar 01 11:22:07 CET 2020)
+@startuml
+left to right direction
+skinparam shadowing false
+
+interface Term
+
+interface Struct
+
+interface Clause {
+  + head: Struct?
+  + body: Term
+  + isWellFormed: Boolean
+}
+interface Rule {
+  + head: Struct
+  + body: Term
+}
+interface Directive {
+  + head: Nothing **= null**
+}
+interface Fact {
+  + body: Term **= Truth.of(true)**
+}
+Term <|- - Struct
+Struct <|- - Clause
+Clause <|- - Rule
+Clause <|- - Directive
+Rule <|- - Fact
+@enduml
+
+PlantUML version 1.2021.6beta6(Unknown compile time)
 (GPL source distribution)
-Java Runtime: OpenJDK Runtime Environment
-JVM: OpenJDK 64-Bit Server VM
-Java Version: 11.0.10+9
-Operating System: Linux
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
 Default Encoding: UTF-8
-Language: it
-Country: IT
+Language: en
+Country: US
 --></g></svg>
