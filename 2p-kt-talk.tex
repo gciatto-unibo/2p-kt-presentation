@@ -852,11 +852,20 @@
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Clauses}
+
+    \begin{center}
+        \includegraphics[width=0.95\linewidth]{img/clause.pdf}
+    \end{center}
+
+    \framebreak
+
     \begin{block}{The \kt{Clause} type is a sub-type of \kt{Struct}}\centering
         Base type for all structures aimed at representing Horn clauses.
         They all use \pl{':-'} as functor and carry either 1 or 2 arguments, named \emph{head} and \emph{body}.
     \end{block}
-    %
+    
+    \framebreak
+
     \begin{alertblock}{About clauses}
         \begin{itemize}
             \item There are three sub-types of \kt{Clause}:
@@ -1257,6 +1266,13 @@
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The need for \kt{Scope}s}
+
+    \begin{center}
+        \includegraphics[width=0.35\linewidth]{img/scope.pdf}
+    \end{center}
+    
+    \framebreak
+
     \begin{block}{\kt{Scope}s}\centering
         Scopes are \alert{factories} of terms allowing re-use of variables
     \end{block}
