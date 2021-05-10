@@ -1405,7 +1405,7 @@
         \begin{itemize}
             \item $U_1 = $ \kt{\{$X_1$=$t_1$, \ldots, $X_n$=$t_n$\}} is a unifier
             \item $U_2 = $ \kt{\{$Y_1$=$t'_1$, \ldots, $Y_m$=$t'_m$\}} is another unifier
-            \item $\emptyset$ denotes the failed substitution
+            \item $\bot$ denotes the failed substitution
         \end{itemize}
         %
         \[U_1 + U_2 = \begin{cases}
@@ -1413,10 +1413,10 @@
             \qquad\text{ if } \nexists i,j : X_i = Y_j \\
             \text{\kt{\{$X_1$=$t_1$, \ldots, $Y_i$=$t'_j$, \ldots, $Y_m$=$t'_m$\}}} \\
             \qquad\text{ if } \forall i,j : X_i = Y_j \implies t_i = t'_j\\
-            \emptyset \text{ otherwise }
+            \bot \text{ otherwise }
         \end{cases}\]
         %
-        \[ U_1 + \emptyset = \emptyset + U_2 = \emptyset \]
+        \[ U_1 + \bot = \bot + U_2 = \bot \]
     \end{alertblock}
 
     \ktSnippet[\tiny]{snippets/SubstitutionUsage.kt}
@@ -1465,7 +1465,7 @@
 
     \begin{alertblock}{Notable Cases}
         \begin{itemize}
-            \item Applying the failed substitution $\emptyset$ to any term $t$ makes no sense
+            \item Applying the failed substitution $\bot$ to any term $t$ makes no sense
             \item If $x$ is \alert{ground} then $x[U] = x$, $\forall U$
         \end{itemize}
     \end{alertblock}
