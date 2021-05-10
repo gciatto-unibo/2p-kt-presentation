@@ -5438,37 +5438,366 @@
 
 \section{Using \twopkt}
 
+\begin{frame}{Intended Usages of \twopkt{}}
+    \begin{block}{Usage as a JVM or JS \textbf{library}}
+        \centering
+        For \alert{developers} willing to re-use one or more functionalities
+    \end{block}
+    
+    \vfill
+
+    \begin{block}{Usage as a JVM or Web \textbf{application}}
+        \centering
+        For \alert{users} willing to use logic solvers interactively, \emph{à la Prolog}
+    \end{block}
+
+\end{frame}
+
 \subsection{As a library, for developers}
 
-\subsubsection{For Java Developers}
+\begin{frame}{Using \twopkt{} as a library -- Overview}
+    
+    \begin{itemize}
+        \item \twopkt{} modules are compiled, packed, and deployed on both:
+        %
+        \begin{description}
+            \item[Maven Central Repository] | Multiplatform + JVM packages only
+            \item[GitHub Packages] | Multiplatform + JVM packages only
+            \item[GitHub Releases] |JVM executables only + Dokka documentation 
+            \item[NPM] | JS packages only
+        \end{description}
 
-\begin{frame}[allowframebreaks]{How to call Kotlin from Java}
-    notable aspects
+        \vfill
+
+        \item Developers willing to use \twopkt{} facilities can
+        %
+        \begin{itemize}
+            \item declare a Maven dependency (in JVM or MPP projects)
+            \item declare a NPM dependency (in JS projects)
+        \end{itemize}
+
+        \vfill
+
+        \item JS and JVM artifacts are versioned using \alert{\kt{SemVer}} and versions are kept aligned
+
+        \vfill
+
+        \item Documentation is produced for the Kotlin API alone
+        %
+        \begin{itemize}
+            \item the Java or JS API are very close to the Kotlin one
+            \item yet, knowing how Kotlin code is compiled is very useful
+        \end{itemize}
+        
+    \end{itemize}
+
+\end{frame}
+
+\subsubsection{For JVM Developers}
+
+\begin{frame}{Using \twopkt{} as a JVM library -- Overview}
+    \begin{itemize}
+        \item \twopkt{} modules are compiled into ordinary JVM bytecode 
+        
+        \vfill
+
+        \item They can be exploited as dependecies in most JVM-targetting languages
+        %
+        \begin{itemize}
+            \item[eg] Java, Scala, Groovy, etc.
+        \end{itemize}
+
+        \vfill
+
+        \item They can be imported using the Maven naming convention:
+        %
+        \begin{description}\small
+            \item[\kt{groupId}:] \kt{it.unibo.tuprolog}
+            \item[\kt{artifactId}:] \kt{\textit{MODULE\_NAME}-jvm}
+            \item[\kt{version}:] a \kt{SemVer}-compliant string  
+        \end{description}
+        %
+        which are kept coherent on all Maven Repositories\footnote{\url{https://search.maven.org/search?q=g:it.unibo.tuprolog}}
+        %
+        \begin{itemize}
+            \item provided that some dependency management system is in place
+            %
+            \begin{itemize}
+                \item[eg] Gradle, Maven, etc.
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Kotlin--Java interoperability}
+    \begin{alertblock}{Required readings}
+        \begin{itemize}
+            \item \url{https://kotlinlang.org/docs/java-to-kotlin-interop.html}
+            \item \url{https://kotlinlang.org/docs/java-interop.html}
+        \end{itemize}
+    \end{alertblock}
+
+    \begin{block}{Kotlin to Java in a nutshell}
+        \begin{itemize}\small
+            \item \kt{Unit} $\rightarrow$ \kt{void}
+            \begin{itemize}
+                \item the remainder of the type system is almost identical
+            \end{itemize}
+            \item \kt{varargs} $\rightarrow$ \kt{\ldots} (Java's varargs)
+            \item public instance properties $\rightarrow$ getters (+ setters, if \kt{var})
+            \item private/protected instance properties $\rightarrow$ fields
+            \item objects $\rightarrow$ singleton classes with \kt{INSTANCE} constant
+            \item optional parameters $\rightarrow$ method overloads
+            %
+            \begin{itemize}
+                \item if \kt{@JvmOverloads} are provided
+            \end{itemize}
+            \item companion objects $\rightarrow$ \kt{Companion} constants
+            \item companion objects members $\rightarrow$ accessible via \kt{Companion} constants
+            %
+            \begin{itemize}
+                \item unless \kt{@JvmStatic} annotations are provided
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+
+    \begin{exampleblock}{\twopkt{} Conventions}
+        \begin{itemize}
+            \item \kt{@JvmStatic} annotation on all public members of companion objects
+            \item overload provided where possible in presence of optional paramenters
+        \end{itemize}
+    \end{exampleblock}
 \end{frame}
 
 \subsubsection{For JavaScript Developers}
 
-\begin{frame}[allowframebreaks]{How to call Kotlin from JavaScript}
-    notable aspects
+\begin{frame}{Using \twopkt{} as a JS library -- Overview}
+    \begin{itemize}
+        \item \twopkt{} modules are transpiled into ordinary JS code
+        %
+        \begin{itemize}
+            \item targetting \alert{NodeJS}
+            %
+            \begin{itemize}
+                \item transpiled NodeJS code can then be packed via \alert{WebPack}
+            \end{itemize}
+        \end{itemize} 
+        
+        \vfill
+
+        \item They can be exploited as dependecies in most JS-targetting languages
+        %
+        \begin{itemize}
+            \item thereincluding TypeScript, etc
+        \end{itemize}
+
+        \vfill
+
+        \item They can be imported as NPM dependencies\footnote{\url{https://www.npmjs.com/org/tuprolog}}
+        %
+        \begin{description}\small
+            \item[\kt{organization}:] \kt{@tuprolog}
+            \item[\kt{name}:] \kt{2p-\textit{MODULE\_NAME}}
+            \item[\kt{version}:] a \kt{SemVer}-compliant string  
+        \end{description}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Kotlin--JavaScript interoperability}
+    \begin{alertblock}{Required readings}
+        \begin{itemize}
+            \item \url{https://kotlinlang.org/docs/js-to-kotlin-interop.html}
+            \item \url{https://kotlinlang.org/docs/js-interop.html}
+        \end{itemize}
+    \end{alertblock}
+
+    \begin{block}{Kotlin to JavaScript in a nutshell}
+        \begin{itemize}\small
+            \item no overloading $\rightarrow$ members name are mangled\footnotemark{} by default
+            %
+            \begin{itemize}
+                \item unless \kt{@JsName} annotation is used
+            \end{itemize}
+            \item type-system \& Kotlin's common library are re-implemented in JS
+            \item primitive types are cumbersome
+            %
+            \begin{itemize}
+                \item integer \& float types are collapsed
+                \item longs are re-implemented
+                \item Kotlin's array $\rightarrow$ JS arrays
+                \item Kotlin's function $\rightarrow$ JS funcitons (there including lambdas)
+            \end{itemize}
+            \item packages, interfaces, and classes are \alert{emulated} via JS objects
+            %
+            \begin{itemize}
+                \item but they correctly reflect the Kotlin codebase
+            \end{itemize}
+            \item companion objects $\rightarrow$ \kt{Companion} constants
+            \item \kt{varargs} $\rightarrow$ JS arrays
+        \end{itemize}
+    \end{block}
+
+    \footnotetext{\url{https://en.wikipedia.org/wiki/Name_mangling}}
+
+    \begin{exampleblock}{\twopkt{} Conventions}
+        \begin{itemize}
+            \item \kt{@JsName} annotation on all public methods/properties
+            %
+            \begin{itemize}
+                \item[$\rightarrow$] the JavaScript API is slightly different
+            \end{itemize}
+        \end{itemize}
+    \end{exampleblock}
 \end{frame}
 
 \subsection{As an application, for end users}
 
-\subsubsection{Graphical User Interface: the \module{ide} Module}
+\begin{frame}{Using \twopkt{} as an application -- Overview}
+    \begin{block}{\textbf{Graphical} User Interface (GUI)}
+        \begin{description}
+            \item[\module{ide}] JavaFX-based, JVM-specific GUI for Prolog
+            %
+            \begin{itemize}
+                \item pluggable \kt{Solver}s
+            \end{itemize} 
+            \item[Playground] Web-based, JS-specific GUI for Prolog
+        \end{description}
+    \end{block}
 
-\begin{frame}[allowframebreaks]{Usage of the IDE}
-    how to launch the gui
-
-    how to use the gui
+    \begin{block}{\textbf{Command-Line} Interface (CLI)}
+        \begin{description}
+            \item[\module{cli}] Kotlin-based, multi-platform CLI for Prolog
+            \item[Playground] Web-based, JS-specific GUI 
+        \end{description}
+    \end{block}
 \end{frame}
 
-\subsubsection{Command Line Interface: the \module{cli} Module}
+\subsubsection{Graphical User Interfaces}
+
+\begin{frame}[allowframebreaks]{The \module{ide}}
+    \begin{block}{How to obtain \& run the \module{ide}}
+        \begin{enumerate}
+            \item From \url{https://github.com/tuProlog/2p-kt/releases/latest}
+            %
+            \begin{itemize}
+                \item download the \alert{\kt{2p-ide-X.Y.Z-redist.jar}} file
+            \end{itemize}
+
+            \item Start the \kt{.jar} by either
+            %
+            \begin{itemize}
+                \item double click on the file (depends on your system configuration)
+                \item run \kt{java -jar /path/to/2p-ide-X.Y.Z-redist.jar} on your shell
+            \end{itemize}
+
+            \item[!] Requires Java 11+ to be properly installed and configured
+            %
+            \begin{itemize}
+                \item should work on Win, Linux, and MacOS
+            \end{itemize} 
+        \end{enumerate}
+    \end{block}
+
+    \framebreak
+
+    How to use the IDE:
+    %
+    \begin{center}
+        \includegraphics[width=\linewidth]{img/ide-tutorial.pdf}
+    \end{center}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{The Playground}
+    \begin{block}{How to obtain \& run the Playground}
+        \begin{enumerate}
+            \item Browse to \url{https://pika-lab.gitlab.io/tuprolog/2p-kt-web/}
+            %
+            \begin{itemize}
+                \item that's it
+            \end{itemize}
+
+            \item[!] \textbf{The Playground is currently unstable}
+            %
+            \begin{itemize}
+                \item it is just a proof of concept
+            \end{itemize} 
+        \end{enumerate}
+    \end{block}
+
+    \begin{alertblock}{Potential}
+        Even if it is currently unstable, our Playground:
+        %
+        \begin{itemize}
+            \item aims at demonstrating the feasibility of using \twopkt{} \alert{in-browser}
+            \item aims to become a valuable alternative to \href{https://swish.swi-prolog.org}{SWISH Prolog}
+            %
+            \begin{itemize}
+                \item where logic computation occurr on the \alert{browser-side}
+                %
+                \begin{itemize}
+                    \item no sandbox required
+                    \item no Internet connection required (after page load)
+                \end{itemize}
+            \end{itemize}
+        \end{itemize}
+    \end{alertblock}
+
+    \framebreak
+
+    Preview:
+    %
+    \begin{center}
+        \includegraphics[width=.9\linewidth]{img/playground.png}
+    \end{center}
+\end{frame}
+
+
+\subsubsection{Command Line Interfaces}
 
 \begin{frame}[allowframebreaks]{Usage of the CLI}
-    how to launch the cli
-        + cli arguments
+    \begin{block}{How to obtain \& run the \module{repl}}
+        \begin{enumerate}
+            \item From \url{https://github.com/tuProlog/2p-kt/releases/latest}
+            %
+            \begin{itemize}
+                \item download the \alert{\kt{2p-repl-X.Y.Z-redist.jar}} file
+            \end{itemize}
 
-    how to use the cli
+            \item Start the \kt{.jar} by either
+            %
+            \begin{itemize}
+                \item double click on the file (depends on your system configuration)
+                \item run \kt{java -jar /path/to/2p-repl-X.Y.Z-redist.jar} on your shell
+            \end{itemize}
+
+            \item[!] Requires Java 11+ to be properly installed and configured
+            %
+            \begin{itemize}
+                \item should work on Win, Linux, and MacOS
+            \end{itemize} 
+        \end{enumerate}
+    \end{block}
+
+    \framebreak
+
+    Run \kt{java -jar 2p-repl-X.Y.Z-redist.jar \alert{--help}} to get:
+    %
+    \txtSnippet[\tiny]{snippets/repl-doc.txt}
+
+    \framebreak
+
+    Run \kt{java -jar 2p-repl-X.Y.Z-redist.jar \alert{solve} --help} to get:
+    %
+    \txtSnippet[\tiny]{snippets/repl-solve-doc.txt}
+
+    \framebreak
+
+    Usage example:
+    %
+    \begin{center}
+        \includegraphics[width=.7\linewidth]{img/repl.png}
+    \end{center}
+
 \end{frame}
 
 \section*{}

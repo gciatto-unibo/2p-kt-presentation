@@ -1,0 +1,13 @@
+Usage: java -jar 2p-repl.jar [OPTIONS] COMMAND [ARGS]...
+
+  Start a Prolog Read-Eval-Print loop
+
+Options:
+  -T, --theory TEXT  Path of theory file to be loaded
+  -t, --timeout INT  Maximum amount of time for computing a solution (default:
+                     1000 ms)
+  --oop              Loads the OOP library
+  -h, --help         Show this message and exit
+
+Commands:
+  solve  Compute a particular query and then terminate

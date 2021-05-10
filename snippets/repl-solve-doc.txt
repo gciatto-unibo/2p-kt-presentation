@@ -1,0 +1,7 @@
+Usage: java -jar 2p-repl.jar solve [OPTIONS] QUERY
+
+  Compute a particular query and then terminate
+
+Options:
+  -n, --numberOfSolutions INT  Number of solution to calculate
+  -h, --help                   Show this message and exit
