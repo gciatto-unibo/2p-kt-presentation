@@ -30,11 +30,11 @@
         giovanni.ciatto@unibo.it % emph the presenting author's email
     }
     \and
-    $^{2}$\texttt{lorenzo.rizzato@studio.unibo.it}
+    $^{2}$ \texttt{lorenzo.rizzato@studio.unibo.it}
 }
 %
-\date[A.Y. 20-21]{
-    Autonomous Systems Course, A.Y. 2020-2021
+\date[May 2021]{
+    May 2021
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \AtBeginSection[]{
@@ -63,7 +63,7 @@
     \begin{block}{\tuprolog{} in the \textbf{past}}
         \begin{itemize}
             \item Malleable Java-based Prolog interpreter
-            
+
             \item Java library for Prolog-Java interoperability
         \end{itemize}
     \end{block}
@@ -71,16 +71,16 @@
     \begin{block}{\tuprolog{} \textbf{nowadays}}
         \begin{itemize}
             \item An open, multi-platform, multi-paradigm ecosystem for LP
-            
+
             \item \twopkt{} as the main, Kotlin-based implementation
             %
             \begin{itemize}
                 \item currently targetting both JVM and JS
                 \item involving both GUI and CLI executables
-                \item[$\rightarrow$] providing a rich library for LP 
+                \item[$\rightarrow$] providing a rich library for LP
             \end{itemize}
 
-            \item Where each LP aspect is made individually avaiable for re-use
+            \item Where each LP aspect is made individually available for re-use
         \end{itemize}
     \end{block}
 \end{frame}
@@ -93,7 +93,7 @@
 
     \smallskip
 
-    \begin{alertblock}{\tuprolog{} GitHub repository \hfill \textbf{(pleas support us with your star =)}}
+    \begin{alertblock}{\tuprolog{} GitHub repository \hfill \textbf{(please support us with your star =)}}
         \centering
         \url{https://github.com/tuProlog/2p-kt}
     \end{alertblock}
@@ -141,11 +141,11 @@
     \input{fig-timeline.tex}
 \end{frame}
 
-\begin{frame}{Implementations of Prolog -- Familiy Tree}
+\begin{frame}{Implementations of Prolog -- Family Tree}
     \input{fig-familytree.tex}
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Implementations of Prolog -- Features}
+\begin{frame}[allowframebreaks]{Implementations of Prolog -- Features (from \ccite{Korner2020HistoryFuturePrologTPLP})}
     \input{tab-features.tex}
 \end{frame}
 
@@ -160,7 +160,7 @@
             \item native support for \alert{multi-paradigm programming} \ccite{tuprolog-scp57}
             %
             \begin{itemize}
-                \item bi-directional intergration among OOP and Prolog
+                \item bi-directional integration among OOP and Prolog
             \end{itemize}
         \end{itemize}
     \end{block}
@@ -181,7 +181,7 @@
             \item[TuCSoN / ReSpecT] coordination model for Internet applications based on network-aware and mobile agents \ccite{tucson-jaamas2} by means of reactions to communication events \ccite{respect-scp41}
             \item[MoK] self-organising knowledge-oriented model based on biochemical tuple space \ccite{mok-idc2012}
             \item[LPaaS] micro-intelligence vision (lightweight logic solvers running on most devices) for IoT and Cloud/Edge computing \ccite{lpaas-tplp18}
-            \item[TuSoW] bringing tuple-based coordination at the edge \ccite{tusow-icccn2019} 
+            \item[TuSoW] bringing tuple-based coordination at the edge \ccite{tusow-icccn2019}
             \item[Arg2P] defeasible reasoning and argumentation tool \ccite{arg2p-cilc2020}
         \end{description}
     \end{itemize}
@@ -201,7 +201,7 @@
             %
             \begin{itemize}
                 \item accumulated as the code base stepped through many persons
-                \item sub-optimal design choices due to limitations of early Java 
+                \item sub-optimal design choices due to limitations of early Java
                 \item lack of fine-grained test units made the codebase hard to maintain
                 \item lack of module \& package segregation
                 \item lack of automated dependency management
@@ -251,7 +251,7 @@
         \vfill
         \item Generic \alert{resolution} API, possibly customisable via \alert{pluggable features}
         \vfill
-        \item \alert{SLD NF} (Prolog-like) resolution streategy \cite{Robinson65SLD,Clark77}
+        \item \alert{SLD NF} (Prolog-like) resolution strategy \cite{Robinson65SLD,Clark77}
         \vfill
         \item Support for other resolution strategies
         \vfill
@@ -316,7 +316,7 @@
 
         \medskip
 
-        \item Using a module as a dependecy $\implies$ importing \alert{all} its dependencies
+        \item Using a module as a dependency $\implies$ importing \alert{all} its dependencies
     \end{itemize}
 
     \framebreak
@@ -393,9 +393,9 @@
         %
         \begin{description}\small
             \item[\module{dsl-core}] basic DSL for building terms/clauses in Kotlin
-            \item[\module{dsl-unify}] extension of the DSL incuding \module{unify} facilities
-            \item[\module{dsl-theory}] extension of the DSL incuding \module{theory} facilities
-            \item[\module{dsl-solve}] extension of the DSL incuding \module{solve} facilities
+            \item[\module{dsl-unify}] extension of the DSL including \module{unify} facilities
+            \item[\module{dsl-theory}] extension of the DSL including \module{theory} facilities
+            \item[\module{dsl-solve}] extension of the DSL including \module{solve} facilities
         \end{description}
 
         \framebreak
@@ -434,7 +434,7 @@
     \end{block}
 
     \begin{block}{Operators and Operators Sets}\center\itshape\small
-        Immutable data strucuters for representing logic operators and their esembles
+        Immutable data structures for representing logic operators and their esembles
     \end{block}
 
     \framebreak
@@ -463,7 +463,7 @@
 
     \begin{block}{Common Conventions}
         \begin{itemize}
-            \item Only intefaces are publicly available, no classes
+            \item Only interfaces are publicly available, no classes
             \item Immutable design: all terms are immutable data structures
             \item The hierarchy is a DAG, not a tree
             \item Terms are totally ordered, as the are \kt{Comparable} among each others
@@ -514,7 +514,7 @@
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Main Sorts of \kt{Term}s}
-    
+
     \begin{block}{The \kt{Constant} type is a sub-type of \kt{Term}}\centering
         Base type for all constant terms (namely, strings and numbers)
     \end{block}
@@ -676,7 +676,7 @@
     \framebreak
 
     \ktSnippet{snippets/AtomUsage.kt}
-    
+
     \framebreak
 
     \begin{block}{The \kt{Var} type is a sub-type of \kt{Term}}\centering
@@ -701,7 +701,7 @@
             %
             \begin{description}
                 \item[$Name$] is the variable's \alert{simple} name
-                \item[$Identifier$] is the variable's \alert{identifier}, i.e. an im\-ple\-men\-ta\-tion-spe\-ci\-fic string aimed at distinguising \kt{Var}iables having the same simple name
+                \item[$Identifier$] is the variable's \alert{identifier}, i.e. an im\-ple\-men\-ta\-tion-spe\-ci\-fic string aimed at distinguishing \kt{Var}iables having the same simple name
             \end{description}
             \item Variables whose simple name is \pl{'\_'} are called \alert{anonymous}
         \end{itemize}
@@ -719,7 +719,7 @@
     \end{description}
 
     \ktSnippet{snippets/VarUsage.kt}
-    
+
     \framebreak
 
     \begin{block}{The \kt{Indicator} type is a sub-type of \kt{Struct}}
@@ -750,7 +750,7 @@
     \end{description}
 
     \ktSnippet{snippets/IndicatorUsage.kt}
-    
+
     \framebreak
 
     \begin{block}{The \kt{Truth} type is a sub-type of \kt{Atom}}
@@ -974,7 +974,7 @@
     \begin{center}
         \includegraphics[width=0.95\linewidth]{img/clause.pdf}
     \end{center}
-    
+
     \framebreak
 
     \begin{alertblock}{About clauses}
@@ -1381,7 +1381,7 @@
     \begin{center}
         \includegraphics[width=0.35\linewidth]{img/scope.pdf}
     \end{center}
-    
+
     \framebreak
 
     \begin{block}{\kt{Scope}s}\centering
@@ -1431,7 +1431,7 @@
     \ktSnippet{snippets/ScopeUsage.kt}
 \end{frame}
 
-\subsection{\kt{Subtitution}s as First Class Entities}
+\subsection{\kt{Substitution}s as First Class Entities}
 
 \begin{frame}[allowframebreaks]{The \kt{Substitution} Type Hierarchy}
     \begin{center}
@@ -1470,7 +1470,7 @@
         \item[\kt{minus(\meta{Container}): Substitution}] returns a knew \kt{Substitution} \alert{not} containing any \kt{Var} contained in \kt{\meta{Container}}
         %
         \begin{itemize}\small
-            \item where \kt{\meta{Container}} is an iterable, sequence, or vararg of \kt{Var}iables
+            \item where \kt{\meta{Container}} is an iterable, sequence, or varargs of \kt{Var}iables
         \end{itemize}
         \item[\kt{minus(Substitution): Substitution}]  returns a knew \kt{Substitution} \alert{not} containing any \kt{Var} contained in the provided \kt{Substitution}
         \item[\kt{filter(\meta{Container}): Substitution}] returns a knew \kt{Substitution} containing \alert{only} the \kt{Var}iables contained in the provided \kt{\meta{Container}}
@@ -1512,7 +1512,7 @@
         \begin{description}
             \item[\kt{Substitution.failed()}] return an instance of \kt{Fail}
             %
-            \item[\kt{Substitution.of(\meta{KeyValuePairs})}] creates a new \kt{Substition} using the provided key-value pairs, where
+            \item[\kt{Substitution.of(\meta{KeyValuePairs})}] creates a new \kt{Substitution} using the provided key-value pairs, where
             %
             \begin{itemize}\small
                 \item keys can be either strings or \kt{Var}s
@@ -1643,7 +1643,7 @@
         %
         \begin{description}
             \item[\kt{functor: String}] i.e. the operator's symbol
-            \item[\kt{priority: Int}] where lower integers correspong to higher priorities
+            \item[\kt{priority: Int}] where lower integers correspond to higher priorities
             %
             \begin{itemize}\small
                 \item conventionally, 0 is \alert{max} priority, 1200 is \alert{min} priority
@@ -1705,14 +1705,14 @@
             \item If \pl{f} and \pl{g} are operators of type \kt{FY}, and \pl{T} is a term:
             %
             \begin{itemize}
-                \item espressions of the form \alert{\pl{f(g(T))}}
+                \item expressions of the form \alert{\pl{f(g(T))}}
                 %
                 \begin{itemize}
                     \item can be written as \alert{\pl{f g T}} only if $priority(\pl{g}) \leq priority(\pl{f})$
                     \item can be written as \alert{\pl{f(g T)}} otherwise
                 \end{itemize}
 
-                \item espressions of the form \alert{\pl{f(f(T))}} or \alert{\pl{g(g(T))}}
+                \item expressions of the form \alert{\pl{f(f(T))}} or \alert{\pl{g(g(T))}}
                 %
                 \begin{itemize}
                     \item can be written as \alert{\pl{f f T}} or \alert{\pl{g g T}}
@@ -1722,14 +1722,14 @@
             \item Otherwise, if \pl{f} and \pl{g} are operators of type \kt{FX}:
             %
             \begin{itemize}
-                \item espressions of the form \alert{\pl{f(g(T))}}
+                \item expressions of the form \alert{\pl{f(g(T))}}
                 %
                 \begin{itemize}
                     \item can be written as \alert{\pl{f g T}} only if $priority(\pl{g}) < priority(\pl{f})$
                     \item can be written as \alert{\pl{f(g T)}} otherwise
                 \end{itemize}
 
-                \item espressions of the form \alert{\pl{f(f(T))}}, or \alert{\pl{g(g(T))}}
+                \item expressions of the form \alert{\pl{f(f(T))}}, or \alert{\pl{g(g(T))}}
                 %
                 \begin{itemize}
                     \item can \alert{never} be written as \alert{\pl{f f T}} or \alert{\pl{g g T}}
@@ -1744,14 +1744,14 @@
             \item If \pl{f} and \pl{g} are operators of type \kt{YF}, and \pl{T} is a term:
             %
             \begin{itemize}
-                \item espressions of the form \alert{\pl{f(g(T))}}
+                \item expressions of the form \alert{\pl{f(g(T))}}
                 %
                 \begin{itemize}
                     \item can be written as \alert{\pl{T g f}} only if $priority(\pl{g}) \leq priority(\pl{f})$
                     \item can be written as \alert{\pl{(T g) f}} otherwise
                 \end{itemize}
 
-                \item espressions of the form \alert{\pl{f(f(T))}} or \alert{\pl{g(g(T))}}
+                \item expressions of the form \alert{\pl{f(f(T))}} or \alert{\pl{g(g(T))}}
                 %
                 \begin{itemize}
                     \item can be written as \alert{\pl{T f f}} or \alert{\pl{T g g}}
@@ -1761,14 +1761,14 @@
             \item Otherwise, if \pl{f} and \pl{g} are operators of type \kt{XF}:
             %
             \begin{itemize}
-                \item espressions of the form \alert{\pl{f(g(T))}}
+                \item expressions of the form \alert{\pl{f(g(T))}}
                 %
                 \begin{itemize}
                     \item can be written as \alert{\pl{T g f}} only if $priority(\pl{g}) < priority(\pl{f})$
                     \item can be written as \alert{\pl{(T g) f}} otherwise
                 \end{itemize}
 
-                \item espressions of the form \alert{\pl{f(f(T))}}, or \alert{\pl{g(g(T))}}
+                \item expressions of the form \alert{\pl{f(f(T))}}, or \alert{\pl{g(g(T))}}
                 %
                 \begin{itemize}
                     \item can \alert{never} be written as \alert{\pl{T f f}} or \alert{\pl{T g g}}
@@ -1783,14 +1783,14 @@
             \item If \pl{f} and \pl{g} are operators of type \kt{YFX}, and \pl{A}, \pl{B}, and \pl{C} are terms:
             %
             \begin{itemize}
-                \item espressions of the form \alert{\pl{f(g(A, B), C)}}
+                \item expressions of the form \alert{\pl{f(g(A, B), C)}}
                 %
                 \begin{itemize}
                     \item can be written as \alert{\pl{A f B g C}} only if $priority(\pl{g}) \leq priority(\pl{f})$
                     \item can be written as \alert{\pl{(A f B) g C}} otherwise
                 \end{itemize}
 
-                \item espressions of the form \alert{\pl{f(f(A, B), C)}} or \alert{\pl{g(g(A, B), C)}}
+                \item expressions of the form \alert{\pl{f(f(A, B), C)}} or \alert{\pl{g(g(A, B), C)}}
                 %
                 \begin{itemize}
                     \item can be written as \alert{\pl{A f B f C}} or \alert{\pl{A g B g C}}
@@ -1800,14 +1800,14 @@
             \item Conversely, if \pl{f} and \pl{g} are operators of type \kt{XFY}:
             %
             \begin{itemize}
-                \item espressions of the form \alert{\pl{f(A, g(B, C))}}
+                \item expressions of the form \alert{\pl{f(A, g(B, C))}}
                 %
                 \begin{itemize}
                     \item can be written as \alert{\pl{A f B g C}} only if $priority(\pl{g}) \leq priority(\pl{f})$
                     \item can be written as \alert{\pl{A f (B g C)}} otherwise
                 \end{itemize}
 
-                \item espressions of the form \alert{\pl{f(A, f(B, C))}} or \alert{\pl{g(A, g(B, C))}}
+                \item expressions of the form \alert{\pl{f(A, f(B, C))}} or \alert{\pl{g(A, g(B, C))}}
                 %
                 \begin{itemize}
                     \item can be written as \alert{\pl{A f B f C}} or \alert{\pl{A g B g C}}
@@ -1821,28 +1821,28 @@
             \item If \pl{f} and \pl{g} are operators of type \kt{XFX}, and \pl{A}, \pl{B}, and \pl{C} are terms:
             %
             \begin{itemize}
-                \item espressions of the form \alert{\pl{f(g(A, B), C)}}
+                \item expressions of the form \alert{\pl{f(g(A, B), C)}}
                 %
                 \begin{itemize}
                     \item can be written as \alert{\pl{A f B g C}} only if $priority(\pl{g}) < priority(\pl{f})$
                     \item can be written as \alert{\pl{(A f B) g C}} otherwise
                 \end{itemize}
 
-                \item espressions of the form \alert{\pl{f(f(A, B), C)}} or \alert{\pl{g(g(A, B), C)}}
+                \item expressions of the form \alert{\pl{f(f(A, B), C)}} or \alert{\pl{g(g(A, B), C)}}
                 %
                 \begin{itemize}
                     \item can \alert{never} be written as \alert{\pl{A f B f C}} or \alert{\pl{A g B g C}}
                     \item but can be written as \alert{\pl{(A f B) f C}} or \alert{\pl{(A g B) g C}}
                 \end{itemize}
 
-                \item espressions of the form \alert{\pl{f(A, g(B, C))}}
+                \item expressions of the form \alert{\pl{f(A, g(B, C))}}
                 %
                 \begin{itemize}
                     \item can be written as \alert{\pl{A f B g C}} only if $priority(\pl{g}) < priority(\pl{f})$
                     \item can be written as \alert{\pl{A f (B g C)}} otherwise
                 \end{itemize}
 
-                \item espressions of the form \alert{\pl{f(A, f(B, C))}} or \alert{\pl{g(A, g(B, C))}}
+                \item expressions of the form \alert{\pl{f(A, f(B, C))}} or \alert{\pl{g(A, g(B, C))}}
                 %
                 \begin{itemize}
                     \item can \alert{never} be written as \alert{\pl{A f B f C}} or \alert{\pl{A g B g C}}
@@ -1904,7 +1904,7 @@
             \item[\kt{OperatorSet(\meta{Container})}] creates a novel set out of some operators
             %
             \begin{itemize}\scriptsize
-                \item where \kt{\meta{Container}} may be an iterable, sequence, or vararg of \kt{Operator}s
+                \item where \kt{\meta{Container}} may be an iterable, sequence, or varargs of \kt{Operator}s
             \end{itemize}
             \item[\kt{OperatorSet.EMPTY}] references an empty set
             \item[\kt{OperatorSet.ARITHMETIC}] references a set containing arithmetic operators
@@ -1924,7 +1924,7 @@
     \begin{block}{About \kt{TermVisitor}s}
         \begin{itemize}
             \item Visitor pattern\footnote{\url{https://en.wikipedia.org/wiki/Visitor_pattern}} applied to \kt{Term}
-            \item Supports use cases where a particular operation must be performed depenting on the actual type of a \kt{Term}
+            \item Supports use cases where a particular operation must be performed depending on the actual type of a \kt{Term}
             \item Essentially, a form of \alert{dynamic dispatch}\footnote{\url{https://en.wikipedia.org/wiki/Dynamic_dispatch}}
         \end{itemize}
     \end{block}
@@ -1945,7 +1945,7 @@
 
             \item This returns an object of type \kt{\textit{T}} \ldots
 
-            \item \ldots attaived via the most adequate method \kt{visit\meta{Type}} of $v$
+            \item \ldots attained via the most adequate method \kt{visit\meta{Type}} of $v$
             %
             \begin{itemize}
                 \item where \kt{\meta{Type}} is the most specific type matching the run-time type of $t$
@@ -2032,7 +2032,7 @@
 
     \begin{block}{\kt{FuncFormat} dictates how \kt{Struct}ures' functors are represented}
         \begin{description}
-            \item[\kt{QUOTED\_IF\_NECESSARY}] equotes functors if they are not well formed, escaping non-readable characters
+            \item[\kt{QUOTED\_IF\_NECESSARY}] enquotes functors if they are not well formed, escaping non-readable characters
             \item[\kt{LITERAL}] represents functors literally, without any enquoting or escaping
         \end{description}
     \end{block}
@@ -2631,7 +2631,7 @@
         Following Prolog's conventions, KB are of two sorts:
         %
         \begin{description}
-            \item[static KB] | which cannot be altered during resultion
+            \item[static KB] | which cannot be altered during resolution
             \item[dynamic KB] | which can be altered during resultion
         \end{description}
     \end{block}
@@ -2710,7 +2710,7 @@
             \item[\kt{Solution.Halt}] representing an exceptional answer
             %
             \begin{itemize}\small
-                \item carrying a \kt{TuPrologRuntimeException} locating the error w.r.t. the resultion process
+                \item carrying a \kt{TuPrologRuntimeException} locating the error w.r.t. the resolution process
             \end{itemize}
         \end{description}
     \end{block}
@@ -2725,7 +2725,7 @@
                 \item may saturate memory in case of many/infinite solutions!
             \end{itemize}
 
-            \item[\kt{isLazy: Boolean}] | if \kt{true} solutions are \emph{lazily} computed jsut before being consumed
+            \item[\kt{isLazy: Boolean}] | if \kt{true} solutions are \emph{lazily} computed just before being consumed
             %
             \begin{itemize}\small
                 \item this is \kt{true} by default
@@ -2870,13 +2870,13 @@
         \item[eg] \module{solve-classic} exposes object \kt{ClassicSolverFactory}
         %
         \begin{itemize}
-            \item also accessbile via \kt{Solver.\alert{classic}}
+            \item also accessible via \kt{Solver.\alert{classic}}
         \end{itemize}
 
         \item[eg] \module{solve-streams} exposes object \kt{StreamsSolverFactory}
         %
         \begin{itemize}
-            \item also accessbile via \kt{Solver.\alert{streams}}
+            \item also accessible via \kt{Solver.\alert{streams}}
         \end{itemize}
     \end{itemize}
 
@@ -3028,7 +3028,7 @@
             \item Implementations of \kt{Solver} should react to particular \kt{Directive}s
             %
             \begin{itemize}
-                \item upon KB provisioing (either by construciton or otherwise)
+                \item upon KB provisioning (either by construciton or otherwise)
                 \item other sorts of directives are ignored
             \end{itemize}
             \item Notice that \kt{Directive}s are just headless \kt{Clauses}
@@ -3047,7 +3047,7 @@
     \begin{description}
         \item[\pl{:- dynamic(\textit{F} / \textit{N}).}] makes any subsequent clause whose head indicator is \pl{\textit{F}/\textit{N}} be loaded into the \alert{dynamic} KB, event if the theory is loaded as static
         \item[\pl{:- static(\textit{F} / \textit{N}).}] dual w.r.t. \pl{dynamic(F/N)}
-        \item[\pl{:- op(\textit{P}, \textit{S}, \textit{F}).}] loads a new operator into the \kt{Solver}, having the provided proprity (\pl{\textit{P}}), specifier (\pl{\textit{S}}), and functor (\pl{\textit{F}})
+        \item[\pl{:- op(\textit{P}, \textit{S}, \textit{F}).}] loads a new operator into the \kt{Solver}, having the provided propriety (\pl{\textit{P}}), specifier (\pl{\textit{S}}), and functor (\pl{\textit{F}})
         \item[\pl{:- solve(\textit{G}).}] executes goal \pl{\textit{G}} as soon as the theory has been loaded
         \item[\pl{:- initialization(\textit{G}).}] alias for \pl{solve(\textit{G})}
         \item[\pl{:- set\_prolog\_flag(\textit{N}, \textit{V}).}] (re)sets the flag named \pl{\textit{N}} to the value \pl{\textit{V}}
@@ -3113,8 +3113,8 @@
 
     \begin{exampleblock}{Conventions on \textbf{aliases}}
         \begin{itemize}
-            \item Same of Jiesava packages names
-            \item[ie] camel case, dot separated, spaceless
+            \item Same of Java packages names
+            \item[ie] camel case, dot separated, space-less
             \item[eg] \texttt{prolog.lang}, \texttt{prolog.io}
         \end{itemize}
     \end{exampleblock}
@@ -3393,13 +3393,13 @@
             \item[\kt{ExpressionReducer}] reduces all sub-expressions matching some function, leaving others unreduced
             %
             \begin{itemize}\small
-                \item sub-expressions are evalued using a \alert{post-order} visit
+                \item sub-expressions are evaluated using a \alert{post-order} visit
                 \item[eg] \pl{g(f(1 + 2), 3 + 4)} $\rightarrow$ \pl{g(f(3), 7)}
             \end{itemize}
             \item[\kt{ExpressionEvaluator}] attempts to evaluate all sub-expressions matching some function, throws an error if some does not
             %
             \begin{itemize}\small
-                \item sub-expressions are evalued using a \alert{post-order} visit
+                \item sub-expressions are evaluated using a \alert{post-order} visit
                 \item[eg] \pl{(1 + 2) - (3 + f(x))} $\rightarrow$ error as there is no function for \pl{f/1}
             \end{itemize}
             \item[\kt{ArithmeticEvaluator}] like \kt{ExpressionEvaluator}, but only leverages on arithmetic functions
@@ -3442,7 +3442,7 @@
                 \item \kt{InputChannel}s (aka \alert{sources}) let \kt{Solver}s read data of type \kt{T}
                 \item \kt{OutputChannel}s (aka \alert{sinks}) let \kt{Solver}s write data of type \kt{T}
             \end{itemize}
-            \item \kt{Channel}s are identified by univoke terms, in the eyes of \kt{Solver}s
+            \item \kt{Channel}s are identified by unique terms, in the eyes of \kt{Solver}s
             %
             \begin{itemize}
                 \item or by some \alert{alias}, i.e. an \alert{atom}
@@ -3492,7 +3492,7 @@
         \item[\kt{streamTerm: Struct}] returns the \kt{Struct} identifying this channel
         %
         \begin{itemize}\small
-            \item is always a struct of the form:
+            \item is always a structure of the form:
             %
             \begin{center}
                 \pl{'\$stream'(InOut, Id)}
@@ -3501,7 +3501,7 @@
             %
             \begin{itemize}\scriptsize
                 \item \pl{InOut} is either \pl{`in'} or \pl{`out'}, depending on the sort of channel
-                \item \pl{Id} is a number univokely identifying the channel instance
+                \item \pl{Id} is a number uniquely identifying the channel instance
             \end{itemize}
         \end{itemize}
     \end{description}
@@ -3623,7 +3623,7 @@
     \framebreak
 
     \begin{block}{The \kt{InputStore} type}
-        Immmutable map keeping track of currently open \kt{InputChannel}s for a \kt{Solver}, and their aliases
+        Immutable map keeping track of currently open \kt{InputChannel}s for a \kt{Solver}, and their aliases
         %
         \begin{itemize}
             \item References the \alert{standard} input channel
@@ -3689,7 +3689,7 @@
                 \item All flags can be inspected during resolution
                 \item Editable flags' values can be altered during resolution
             \end{itemize}
-            \item Custom flags may be defined/inspected during resultion
+            \item Custom flags may be defined/inspected during resolution
         \end{itemize}
     \end{block}
 \end{frame}
@@ -3782,7 +3782,7 @@
             %
             \begin{description}
                 \item[\pl{on}] \emph{(default)} optimization is performed whenever possible
-                \item[\pl{off}] optimization is never perfomed
+                \item[\pl{off}] optimization is never performed
             \end{description}
         \end{itemize}
     \end{block}
@@ -3816,7 +3816,7 @@
     \begin{block}{About \kt{CustomDataStore}s}
         \begin{itemize}
             \item To ease extensibility, \kt{ExecutionContext}s main contain \kt{CustomData} too
-            \item This is acheieved via one more property, of type \kt{CustomDataStore}
+            \item This is achieved via one more property, of type \kt{CustomDataStore}
             \item \kt{CustomDataStore}s have 3 fields of type \kt{CustomData}
             \item \kt{CustomData} are key-value store which may keep \alert{any sort} of data
             \item This may exploited by \kt{Primitive}s/\kt{Solver}s implementers
@@ -3869,7 +3869,7 @@
         %
         \begin{itemize}\small
             \item may carry an \alert{exit code} (integer)
-            \item analogous to \kt{System.exit(\meta{int})} one the JVM
+            \item analogous to \kt{System.exit(\meta{Int})} one the JVM
             \item produces a \kt{Solution.Halt}
         \end{itemize}
 
@@ -3884,7 +3884,7 @@
         \item[\kt{PrologError}] base types for LP-related errors
         %
         \begin{itemize}\small
-            \item[ie] errors which can be catched in LP
+            \item[ie] errors which can be caught in LP
             \item[eg] via \kt{catch/3}, in Prolog
         \end{itemize}
 
@@ -3903,7 +3903,7 @@
         \begin{itemize}
             \item Each instance of \kt{PrologError} corresponds to a \kt{Term}
             \item The term can be thrown with predicate \alert{\kt{throw/1}}\ldots
-            \item \ldots and catched via \alert{\kt{catch/3}}
+            \item \ldots and caught via \alert{\kt{catch/3}}
         \end{itemize}
     \end{block}
 
@@ -3939,7 +3939,7 @@
     \framebreak
 
     \begin{description}
-        \item[\kt{InstantiationError}] to be thrown when a sub-goal/argument is being evalued but it is not sufficiently instantiated
+        \item[\kt{InstantiationError}] to be thrown when a sub-goal/argument is being evaluated but it is not sufficiently instantiated
         %
         \begin{description}\small
             \item[\pl{\textit{Description}}] is always the atom \alert{\pl{instantiation\_error}}
@@ -3948,7 +3948,7 @@
 
         \framebreak
 
-        \item[\kt{TypeError}] to be thrown when a sub-goal/argument is being evalued but has not the right logic type
+        \item[\kt{TypeError}] to be thrown when a sub-goal/argument is being evaluated but has not the right logic type
         %
         \begin{description}\small
             \item[\pl{\textit{Description}}] is a \kt{Struct} of the form \pl{type\_error(\textit{Expected}, \textit{Culprit})}
@@ -3963,7 +3963,7 @@
 
         \framebreak
 
-        \item[\kt{DomainError}] to be thrown when a sub-goal/argument is being evalued and it has the right type, but its value is not admissible
+        \item[\kt{DomainError}] to be thrown when a sub-goal/argument is being evaluated and it has the right type, but its value is not admissible
         %
         \begin{description}\small
             \item[\pl{\textit{Description}}] is a \kt{Struct} of the form \pl{domain\_error(\textit{Expected}, \textit{Culprit})}
@@ -4102,7 +4102,7 @@
 
         \bigskip
 
-        \item[!] Primitives, in particular, are the most common object libraries implementers will manupulate
+        \item[!] Primitives, in particular, are the most common object libraries implementers will manipulate
     \end{itemize}
 
     \framebreak
@@ -4223,19 +4223,19 @@
             \item May throw:
             %
             \begin{description}\small
-                \item[\kt{InstantiationError}] if the $1^{st}$ argument is a \kt{Var} 
+                \item[\kt{InstantiationError}] if the $1^{st}$ argument is a \kt{Var}
                 \item[\kt{TypeError}] if the $1^{st}$ argument is not an \kt{Atom}, or the $2^{nd}$ is not an \kt{Integer}
                 \item[\kt{DomainError}] if the $2^{nd}$ argument is a \emph{negative} \kt{Integer}
-            \end{description}  
+            \end{description}
             \item Usage example, in Prolog:
             %
             \begin{itemize}
                 \item[?-] \pl{atom\_length(abc, X)} $\rightarrow$ \pl{X=3}
                 \item[?-] \pl{atom\_length(abc, 3)} $\rightarrow$ \pl{true}
-                \item[?-] \pl{atom\_length(abc, 4)} $\rightarrow$ \pl{false}  
-                \item[?-] \pl{atom\_length(X, 4)} $\rightarrow$ \pl{instantiation\_error}   
+                \item[?-] \pl{atom\_length(abc, 4)} $\rightarrow$ \pl{false}
+                \item[?-] \pl{atom\_length(X, 4)} $\rightarrow$ \pl{instantiation\_error}
                 \item[?-] \pl{atom\_length(a, b)} $\rightarrow$ \pl{type\_error}
-                \item[?-] \pl{atom\_length(a, -1)} $\rightarrow$ \pl{domain\_error} 
+                \item[?-] \pl{atom\_length(a, -1)} $\rightarrow$ \pl{domain\_error}
             \end{itemize}
         \end{itemize}
     \end{block}
@@ -4243,7 +4243,7 @@
     \framebreak
 
     \ktSnippet[\tiny]{snippets/AtomLength.kt}
-    
+
     \framebreak
 
     \begin{block}{Example 2: \pl{assert(\textit{+Clause})}}
@@ -4253,25 +4253,25 @@
             \item May throw:
             %
             \begin{description}\small
-                \item[\kt{InstantiationError}] if the $1^{st}$ argument is a \kt{Var} 
+                \item[\kt{InstantiationError}] if the $1^{st}$ argument is a \kt{Var}
                 \item[\kt{TypeError}] if the $1^{st}$ argument is not a \kt{Struct}
                 \item[\kt{DomainError}] if the $1^{st}$ argument is a bad-formed \kt{Clause}
-                \item[\kt{PermissionError}] if the signature of \pl{\textit{Clause}} clashes with some other procedure from the \kt{Solver}'s library or static KB 
-            \end{description}  
+                \item[\kt{PermissionError}] if the signature of \pl{\textit{Clause}} clashes with some other procedure from the \kt{Solver}'s library or static KB
+            \end{description}
             \item Usage example, in Prolog:
             %
             \begin{itemize}
                 \item[?-] \pl{assert(fact)} $\rightarrow$ \pl{true}
                 \item[?-] \pl{assert(goal :- subgoal)} $\rightarrow$ \pl{true}
-                \item[?-] \pl{assert(goal :- (subgoal, G))} $\rightarrow$ \pl{domain\_error}  
-                \item[?-] \pl{assert(1)} $\rightarrow$ \pl{type\_error}   
+                \item[?-] \pl{assert(goal :- (subgoal, G))} $\rightarrow$ \pl{domain\_error}
+                \item[?-] \pl{assert(1)} $\rightarrow$ \pl{type\_error}
                 \item[?-] \pl{assert(X)} $\rightarrow$ \pl{instantiation\_error}
             \end{itemize}
         \end{itemize}
     \end{block}
 
     \framebreak
-    
+
     \ktSnippet[\tiny]{snippets/Assert.kt}
 
     \framebreak
@@ -4287,11 +4287,11 @@
             \item May throw:
             %
             \begin{description}\small
-                \item[\kt{InstantiationError}] if the $1^{st}$ argument is a \kt{Var} 
+                \item[\kt{InstantiationError}] if the $1^{st}$ argument is a \kt{Var}
                 \item[\kt{TypeError}] if the $1^{st}$ argument is not a \kt{Struct}
                 \item[\kt{DomainError}] if the $1^{st}$ argument is a bad-formed \kt{Clause}
-                \item[\kt{PermissionError}] if the signature of \pl{\textit{Clause}} matches some other procedure from the \kt{Solver}'s library or static KB 
-            \end{description}  
+                \item[\kt{PermissionError}] if the signature of \pl{\textit{Clause}} matches some other procedure from the \kt{Solver}'s library or static KB
+            \end{description}
             \item Usage example, in Prolog (assume KB contains \alert{\pl{f(1). f(2).}})
             %
             \begin{itemize}
@@ -4318,22 +4318,22 @@
         \end{itemize}
     \end{block}
 
-    \begin{block}{Example 4: \pl{findall(\textit{+Template}, \textit{:Goal}, \textit{-Solutions})} \hfill (pt. 2)} 
+    \begin{block}{Example 4: \pl{findall(\textit{+Template}, \textit{:Goal}, \textit{-Solutions})} \hfill (pt. 2)}
         \begin{itemize}
             \item May throw:
             %
             \begin{description}\small
-                \item[\kt{InstantiationError}] if the $2^{nd}$ argument is a \kt{Var} 
+                \item[\kt{InstantiationError}] if the $2^{nd}$ argument is a \kt{Var}
                 \item[\kt{TypeError}] if the $2^{nd}$ argument is not a \kt{Struct}
-                \item[any other error] possibly thrown by \pl{\textit{Goal}} 
-            \end{description}  
+                \item[any other error] possibly thrown by \pl{\textit{Goal}}
+            \end{description}
             \item Usage example, in Prolog:
             %
             \begin{itemize}
                 \item[?-] \pl{findall(X+1, member(X, [a,b]), L)} $\rightarrow$ \pl{L=[a+1, b+1]}
                 \item[?-] \pl{findall(\_, false, [])} $\rightarrow$ \pl{true}
                 \item[?-] \pl{findall(Z, (Z is X + 1), L)} $\rightarrow$ \pl{instantiation\_error}
-                \item[?-] \pl{findall(\_, 4, \_)} $\rightarrow$ \pl{type\_error}   
+                \item[?-] \pl{findall(\_, 4, \_)} $\rightarrow$ \pl{type\_error}
                 \item[?-] \pl{findall(\_, G, \_)} $\rightarrow$ \pl{instantiation\_error}
             \end{itemize}
         \end{itemize}
@@ -4353,11 +4353,11 @@
         \begin{itemize}
             \item containing all default built-in functionalities for that sort of \kt{Solver}
             \item to be used by the specific \kt{SolveFactory} implementation
-            \item modules \module{solve-classic} and \module{solve-streams} are no excetion
+            \item modules \module{solve-classic} and \module{solve-streams} are no exception
             %
             \begin{itemize}
                 \item[eg] \kt{it.unibo.tuprolog.solve.\alert{classic}.stdlib.DefaultBuiltins}
-                \item[eg] \kt{it.unibo.tuprolog.solve.\alert{streams}.stdlib.DefaultBuiltins} 
+                \item[eg] \kt{it.unibo.tuprolog.solve.\alert{streams}.stdlib.DefaultBuiltins}
             \end{itemize}
         \end{itemize}
     \end{alertblock}
@@ -4369,13 +4369,13 @@
             %
             \begin{itemize}
                 \item in \kt{it.unibo.tuprolog.solve.stdlib.\alert{CommonBuiltins}}
-            \end{itemize} 
+            \end{itemize}
             \item These functionalities are taken from the Prolog ISO Standard \cite{prologISO-pt1}
             %
             \begin{itemize}
                 \item yet, they are \alert{resolution-agnostic}
             \end{itemize}
-            \item Implementors may choose to reuse some or all functionalities from \kt{CommonBuiltins}
+            \item Implementers may choose to reuse some or all functionalities from \kt{CommonBuiltins}
         \end{itemize}
     \end{block}
 
@@ -4385,9 +4385,9 @@
     %
     \begin{description}
         \item[operators:] all Prolog standard operators
-        
+
         \item[primitives:] \pl{abolish/1}, \pl{arg/3}, \pl{'=:='/2}, \pl{'>'/2}, \pl{'>='/2}, \pl{'<'/2}, \pl{'=<'/2}, \pl{'=$\backslash$='/2}, \pl{assert/1}, \pl{asserta/1}, \pl{assertz/1}, \pl{atom/1}, \pl{atom\_chars/2}, \pl{atom\_codes/2}, \pl{atom\_concat/3}, \pl{atomic/1}, \pl{atom\_length/2}, \pl{between/3}, \pl{bagof/3}, \pl{callable/1}, \pl{char\_code/2}, \pl{clause/2}, \pl{compound/1}, \pl{copy\_term/2}, \pl{current\_op/2}, \pl{current\_prolog\_flag/2}, \pl{ensure\_executable/1}, \pl{findall/3}, \pl{float/1}, \pl{functor/3}, \pl{get\_durable/2}, \pl{get\_ephemeral/2}, \pl{get\_persistent/2}, \pl{ground/1}, \pl{halt/0}, \pl{halt/1}, \pl{integer/1}, \pl{is/2}, \pl{natural/1}, \pl{nl/0}, \pl{nonvar/1}, \pl{'$\backslash$='/2}, \pl{number/1}, \pl{number\_chars/2}, \pl{number\_codes/2}, \pl{op/3}, \pl{repeat/0}, \pl{retract/1}, \pl{retractall/1}, \pl{reverse/2}, \pl{set\_durable/2}, \pl{set\_ephemeral/2}, \pl{setof/2}, \pl{set\_persistent/2}, \pl{set\_prolog\_plag/2}, \pl{sleep/1}, \pl{sub\_atom/5}, \pl{'@>'/2}, \pl{'@>='/2}, \pl{'=='/2}, \pl{'@<'/2}, \pl{'@=<'/2}, \pl{'$\backslash$=='/2}, \pl{'$\backslash$=@='/2}, \pl{'=@='/2}, \pl{'='/2}, \pl{'=..'/2}, \pl{var/1}, \pl{write/1}
-        
+
         \item[functions:] \pl{abs/1}, \pl{'+'/2}, \pl{atan/1}, \pl{'/$\backslash$'/2}, \pl{'$\backslash$'/1}, \pl{'<<'/2}, \pl{'$\backslash$/'/2}, \pl{'>>'/2}, \pl{ceiling/1}, \pl{cos/1}, \pl{exp/1}, \pl{'**'/2}, \pl{float/1}, \pl{float\_fractional\_part/1}, \pl{float\_integer\_part/1}, \pl{'/'/2floor/1}, \pl{'//'/2}, \pl{mod/2}, \pl{'*'/2}, \pl{log/1}, \pl{rem/2}, \pl{round/1}, \pl{sign/1}, \pl{'-'/1}, \pl{sin/1}, \pl{sqrt/1}, \pl{'-'/2}, \pl{truncate/1}
 
         \item[theory:] \pl{not/1}, \pl{'->/2}, \pl{';'/2}, \pl{member/2}, \pl{append/3}
@@ -4399,17 +4399,17 @@
     %
     \begin{description}
         \item[operators:] all operators in \kt{CommonBuiltins.operators}
-        \item[functions:] all functions in \kt{CommonBuiltins.functions} 
-        \item[theory:] all clauses in \kt{CommonBuiltins.theory}  
+        \item[functions:] all functions in \kt{CommonBuiltins.functions}
+        \item[theory:] all clauses in \kt{CommonBuiltins.theory}
         %
         \begin{itemize}
             \item[+] \pl{call/1}, \pl{catch/3}, \pl{','/2}, \pl{'!'/0}, \pl{'$\backslash$+'/1}
-        \end{itemize}  
+        \end{itemize}
         \item[primitives:] all primitives in \kt{CommonBuiltins.primitives}
         %
         \begin{itemize}
             \item[+] \pl{throw/1}
-        \end{itemize}   
+        \end{itemize}
     \end{description}
 
     \framebreak
@@ -4418,13 +4418,13 @@
     %
     \begin{description}
         \item[operators:] all operators in \kt{CommonBuiltins.operators}
-        \item[functions:] all functions in \kt{CommonBuiltins.functions} 
-        \item[theory:] all clauses in \kt{CommonBuiltins.theory}  
+        \item[functions:] all functions in \kt{CommonBuiltins.functions}
+        \item[theory:] all clauses in \kt{CommonBuiltins.theory}
         \item[primitives:] all primitives in \kt{CommonBuiltins.primitives}
         %
         \begin{itemize}
             \item[+] \pl{call/1}, \pl{catch/3}, \pl{','/2}, \pl{'!'/0}, \pl{throw/1}, \pl{'$\backslash$+'/1}
-        \end{itemize}   
+        \end{itemize}
     \end{description}
 \end{frame}
 
@@ -4435,10 +4435,10 @@
     \begin{block}{Module \module{solve-classic} in a nutshell}
         \begin{itemize}
             \item Main implementation of \kt{Solver}
-            
+
             \item Provides Prolog ISO Standard resolution
-            
-            \item State-Machine-based design inspired by \cite{tuprolog-sac08} 
+
+            \item State-Machine-based design inspired by \cite{tuprolog-sac08}
         \end{itemize}
     \end{block}
 
@@ -4474,26 +4474,26 @@
 
     \begin{description}
         \item[\kt{State}] base type for states of the Prolog State Machine (PSM)
-        
+
         \medskip
 
         \item[\kt{ClassicExecutionContext}] data structure containing the \kt{ExecutionContext} of (each state of) the PSM
-        
+
         \medskip
-        
+
         \item[\kt{SolutionIterator}] where the PSM is executed
         %
         \begin{itemize}
             \item[ie] an object iterating over states and outputting \kt{Solution}s
-        \end{itemize} 
+        \end{itemize}
 
         \medskip
-        
+
         \item[\kt{MutableSolutionIterator}] a particular sort of solution iterator supporting \alert{hijack of state transitions}
         %
         \begin{itemize}
             \item[eg] to alter the execution context or the destination state
-        \end{itemize}  
+        \end{itemize}
 
         \medskip
 
@@ -4501,7 +4501,7 @@
         %
         \begin{itemize}
             \item supporting the creation of custom solvers reusing (part of) the PSM
-        \end{itemize}   
+        \end{itemize}
     \end{description}
 \end{frame}
 
@@ -4530,20 +4530,20 @@
             \item[Goal Selection] selects the next (sub-)goal to be proved, possibly popping from $\mathbf{E}$
 
             \item[Primitive Selection] looks for a primitive to solve the selected (sub-)goal;
-            
+
             \item[Primitive Execution] if some is found, the $1^{st}$ response is consumed, while a choice points are appended to $\mathbf{C}$ for the others
-        
+
             \item[Rule Selection] if no primitive is selected, some rule is looked for instead, for the same sub-goal;
-            
+
             \item[Rule Execution] if a rule is found, resolution proceeds by pushing a new execution context to $\mathbf{E}$, to tackle the body;
-            
+
             \item[Backtracking] if no rule is found, the sub-goal is considered failed and resolution continues taking the next choice point in $\mathbf{C}$.
-            
+
             \item[End] reached when there are no more goals or no more choice points.
-            
+
             \item[Execption] reached some primitive responses carries an exception. This is where catching occurs.
-            
-            \item[Halt] reached when an exception is not caught.  
+
+            \item[Halt] reached when an exception is not caught.
         \end{description}
     \end{block}
 \end{frame}
@@ -4571,7 +4571,7 @@
             \item\label{iolib:platform-independence} in a \alert{platform-independent} way
             %
             \begin{itemize}
-                \item[ie] supporting both JVM and JS 
+                \item[ie] supporting both JVM and JS
             \end{itemize}
 
             \item\label{iolib:solver-agnosticism} in a \alert{solver-implentation-agnostic} way
@@ -4636,7 +4636,7 @@
 
     \medskip
 
-    Cf. the \pl{consult/1} predicate/directive, supporting loading of extern theories into the current solver's static KB:
+    Cf. the \pl{consult/1} predicate/directive, supporting loading of external theories into the current solver's static KB:
     %
     \plSnippet{snippets/consult.pl}
 
@@ -4649,9 +4649,9 @@
 
     \begin{block}{Purpose}
         \begin{itemize}
-            \item Mimicing Java's URL type
-            \item Prividing unified multi-platform API for I/O
-            \item Supporting requirements \ref{iolib:platform-independence} and \ref{iolib:location-transparency} 
+            \item Mimicking Java's URL type
+            \item Providing unified multi-platform API for I/O
+            \item Supporting requirements \ref{iolib:platform-independence} and \ref{iolib:location-transparency}
         \end{itemize}
     \end{block}
 \end{frame}
@@ -4662,15 +4662,15 @@
     \medskip
     %
     \begin{description}
-        
+
         \item[primitives:] \pl{at\_end\_of\_stream/0}, \pl{at\_end\_of\_stream/1}, \pl{char\_conversion/2}, \pl{close/1}, \pl{close/2}, \pl{consult/1}, \pl{current\_char\_conversion/2}, \pl{current\_input/1}, \pl{current\_output/1}, \pl{flush\_output/1}, \pl{get\_byte/1}, \pl{get\_byte/2}, \pl{get\_char/1}, \pl{get\_char/2}, \pl{get\_code/1}, \pl{get\_code/2}, \pl{nl/1}, \pl{open/3}, \pl{open/4}, \pl{peek\_byte/1}, \pl{peek\_byte/2}, \pl{peek\_char/1}, \pl{peek\_char/2}, \pl{peek\_code/1}, \pl{peek\_code/2}, \pl{put\_byte/1}, \pl{put\_byte/2}, \pl{put\_char/1}, \pl{put\_char/2}, \pl{put\_code/1}, \pl{put\_code/2}, \pl{read/1}, \pl{read/2}, \pl{read\_term/2}, \pl{read\_term/3}, \pl{set\_input/1}, \pl{set\_output/1}, \pl{set\_theory/1}, \pl{stream\_property/2}, \pl{write/2}, \pl{write\_canonical/1}, \pl{write\_canonical/2}, \pl{write\_eq/1}, \pl{write\_eq/2}, \pl{write\_term/2}, \pl{write\_term/3}
-        
+
         \framebreak
 
         \item[operators:] none
-    
+
         \item[theory:] none
-        
+
         \item[functions:] none
     \end{description}
 
@@ -4692,7 +4692,7 @@
     \begin{block}{Perspective}
         \begin{description}
             \item[\kt{Solver}s] $\rightarrow$ let OOP exploit LP
-            \item[\kt{Primitive}s] $\rightarrow$ let LP wrap/call OOP 
+            \item[\kt{Primitive}s] $\rightarrow$ let LP wrap/call OOP
             \item[\module{oop-lib}] $\rightarrow$ \alert{lets LP exploit OOP}
         \end{description}
     \end{block}
@@ -4712,7 +4712,7 @@
             %
             \begin{itemize}
                 \item[eg] interfaces, classes, etc.
-            \end{itemize} 
+            \end{itemize}
         \end{description}
         %
         \begin{center}
@@ -4750,7 +4750,7 @@
         \smallskip
 
         \item Results of properties / fields / methods can be bound to variables via \kt{':='/2}:
-        %   
+        %
         \plSnippet[\tiny]{snippets/System_out_println.pl}
 
         \framebreak
@@ -4759,7 +4759,7 @@
         %
         \begin{itemize}
             \item we call this \alert{smart cast}
-            \item smart \alert{overload selection} is perfomed in case of ambiguity
+            \item smart \alert{overload selection} is performed in case of ambiguity
         \end{itemize}
         %
         \plSnippet[\tiny]{snippets/StringBuilder_append_toString.pl}
@@ -4814,7 +4814,7 @@
             %
             \begin{itemize}
                 \item Kotlin's JS reflection is poorly supported ATM
-                \item Kotlin's JVM reflection is quite buggy ATM 
+                \item Kotlin's JVM reflection is quite buggy ATM
                 \item Kotlin's reflection has a very clean design
             \end{itemize}
             \item On JVM, fields and static are supported too!
@@ -4854,7 +4854,7 @@
         \item[\kt{invoke(TermToObjectConverter, String, \meta{Terms}): Result}] invokes a \alert{method} on the current \kt{Ref}erence by name, passing the provided \kt{Term}s as arguments, which are converted into objects using the provided \kt{TermToObjectConverter}
 
         \item[\kt{invoke(String, \meta{Terms}): Result}] invokes a \alert{method} on the current \kt{Ref}erence by name, passing the provided \kt{Term}s as arguments, which are converted into objects using the \emph{default} \kt{TermToObjectConverter}
-        
+
         \item[\kt{assign(TermToObjectConverter, String, Term): Boolean}] assign the provided \kt{Term} as the new value of some \alert{property}/\alert{field} of the current \kt{Ref}erence, selected by name. The term is converted into an object using the provided \kt{TermToObjectConverter}
 
         \item[\kt{assign(String, Term): Boolean}] assign the provided \kt{Term} as the new value of some \alert{property}/\alert{field} of the current \kt{Ref}erence, selected by name. The term is converted into an object using the \emph{default} \kt{TermToObjectConverter}
@@ -4868,14 +4868,14 @@
     \end{block}
     %
     \begin{description}
-        \item[\kt{type: KClass<*>}] the type being refereced
+        \item[\kt{type: KClass<*>}] the type being referenced
 
         \item[\kt{invoke(\ldots)}] methods inherited from \kt{Ref} can be used to call both \alert{static} methods and \kt{companion objects'} methods
-        
-        \item[\kt{assign(\ldots)}] methods inherited from \kt{Ref} can be used to set both static properties/methods or compation objects' ones
-        
+
+        \item[\kt{assign(\ldots)}] methods inherited from \kt{Ref} can be used to set both static properties/methods or companion objects' ones
+
         \item[\kt{create(TermToObjectConverter, \meta{Terms}): Result}] calls the constructor of the referenced type to create a new instance. The provided terms are passed to the constructor after being converted into objects using the provided \kt{TermToObjectConverter}
-        
+
         \item[\kt{create(\meta{Terms}): Result}] calls the constructor of the referenced type to create a new instance. The provided terms are passed to the constructor after being converted into objects using the \emph{default} \kt{TermToObjectConverter}
     \end{description}
 
@@ -4888,9 +4888,9 @@
     %
     \begin{description}
         \item[\kt{object: Any}] the object being referenced
-        
+
         \item[\kt{invoke(\ldots)}] methods inherited from \kt{Ref} can be used to call both \alert{instance} methods on the referenced objects
-        
+
         \item[\kt{assign(\ldots)}] methods inherited from \kt{Ref} can be used to set \alert{instance} properties/fields on the referenced objects
     \end{description}
 
@@ -4908,15 +4908,15 @@
         %
         \begin{description}
             \item[\kt{None}] representing the lack of result
-            \item[\kt{Value}] representing the return of an object   
+            \item[\kt{Value}] representing the return of an object
         \end{description}
     \end{block}
     %
     \begin{description}
         \item[\kt{value: Any?}] is the returned object
-        
+
         \item[\kt{toTerm(): Term?}] converts the returned value (if any) into a \kt{Term}, using the default \kt{ObjectToTermConverter}
-        
+
         \item[\kt{asObjectRef(): ObjectRef?}] converts the returned value (if any) into an \kt{ObjectRef}erence
     \end{description}
 
@@ -4925,14 +4925,14 @@
 \begin{frame}{Creation of \kt{Ref}erences}
     \begin{description}
         \item[\kt{ObjectRef.of(Any?)}] creates a new \kt{ObjectRef} to the provided object. May return a \kt{NullRef} is the provided object is \kt{null}
-        
+
         \bigskip
 
         \item[\kt{ObjectRef.NULL}] returns the singleton instance of \kt{NullRef}
-        
+
         \bigskip
-        
-        \item[\kt{TypeRef.of(KClass<*>)}] creates a new \kt{TypeRef} to the provided type 
+
+        \item[\kt{TypeRef.of(KClass<*>)}] creates a new \kt{TypeRef} to the provided type
     \end{description}
 \end{frame}
 
@@ -4964,7 +4964,7 @@
     \begin{alertblock}{Platform-specific names for types}
         \begin{description}
             \item[JVM:] \kt{name.of.package.\alert{TypeName}}
-            \item[JS:] \kt{\alert{module-name}:name.of.package.\alert{TypeName}}  
+            \item[JS:] \kt{\alert{module-name}:name.of.package.\alert{TypeName}}
         \end{description}
     \end{alertblock}
 \end{frame}
@@ -5082,18 +5082,18 @@
     %
     \begin{description}
 
-        \item[operators:] \pl{'.'/2}, \pl{':='/2}, \pl{'as/2'}, \pl{'\$'/1} 
-        
+        \item[operators:] \pl{'.'/2}, \pl{':='/2}, \pl{'as/2'}, \pl{'\$'/1}
+
         \vfill
-        
+
         \item[theory:] \pl{':='/2}, \pl{'.'/2}, \pl{fluent\_reduce/2}, \pl{new\_object/2}, \pl{property\_reduce/2}
-        
+
         \vfill
-        
+
         \item[primitives:] \pl{assign/3}, \pl{cast/3}, \pl{type/2}, \pl{invoke\_method/3}, \pl{invoke\_strict/3}, \pl{new\_object/3}, \pl{null\_ref/1}, \pl{object\_ref/1}, \pl{ref/1}, \pl{register/2}, \pl{type\_ref/1}, \pl{unregister/1}
-        
+
         \vfill
-        
+
         \item[functions:] none
     \end{description}
 \end{frame}
@@ -5122,7 +5122,7 @@
     \begin{block}{Perspective}
         \begin{description}
             \item[\kt{Solver}s] $\rightarrow$ let OOP exploit LP
-            \item[\kt{Primitive}s] $\rightarrow$ let LP wrap/call OOP 
+            \item[\kt{Primitive}s] $\rightarrow$ let LP wrap/call OOP
             \item[\module{oop-lib}] $\rightarrow$ lets LP exploit OOP
             \item[\module{dsl-*}] $\rightarrow$ \alert{let Kotlin expoit LP with Prolog-like syntax}
         \end{description}
@@ -5168,7 +5168,7 @@
 
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Design Principles of the DSL (cf. \ccite{kotlinDSl4PrologWoa2020})}  
+\begin{frame}[allowframebreaks]{Design Principles of the DSL (cf. \ccite{kotlinDSl4PrologWoa2020})}
     \begin{enumerate}
         \item the DSL has to be a \textit{strict} extension of Kotlin
         \begin{description}
@@ -5199,7 +5199,7 @@
     \end{center}
 
     \framebreak
-    
+
     \begin{center}
         \includegraphics[width=0.50\linewidth]{img/dsl-core.pdf}
     \end{center}
@@ -5216,7 +5216,7 @@
                 \item a Kotlin boolean is always converted to an atom
                 \item a Kotlin iterable is always converted into a Prolog list
                 \begin{description}
-                    \item [!] each item has to be convertible to a \kt{Term} 
+                    \item [!] each item has to be convertible to a \kt{Term}
                 \end{description}
                 \item Kotlin objects that are sub-types of \kt{Term} remain unaffected
                 \item if the object cannot be converted to a \kt{Term}, an error is raised
@@ -5236,7 +5236,7 @@
         \begin{itemize}
             \item provides a number of methods that allow the invocation of standard library predicates
             \begin{description}
-                \item [e.g.] \kt{assert}, \kt{retract}, \kt{bagof}, \kt{consult}, etc\ldots 
+                \item [e.g.] \kt{assert}, \kt{retract}, \kt{bagof}, \kt{consult}, etc\ldots
             \end{description}
         \end{itemize}
     \end{block}
@@ -5269,7 +5269,7 @@
         \begin{itemize}
             \item exposes a number of extension methods providing unification-related support to Kotlin objects
             \begin{description}
-                \item [!] provided that they can be converted into \kt{Term}s 
+                \item [!] provided that they can be converted into \kt{Term}s
             \end{description}
         \end{itemize}
     \end{block}
@@ -5286,7 +5286,7 @@
         \begin{itemize}
             \item allows the combination of clauses into logic theories
             \begin{description}
-                \item [$\rightarrow$] via the \kt{theoryOf} factory method 
+                \item [$\rightarrow$] via the \kt{theoryOf} factory method
             \end{description}
         \end{itemize}
     \end{block}
@@ -5298,7 +5298,7 @@
             \begin{itemize}
                 \item instancing Prolog solvers
                 \begin{description}
-                    \item [$\rightarrow$] via \kt{solverOf(...)} 
+                    \item [$\rightarrow$] via \kt{solverOf(...)}
                 \end{description}
                 \item loading static and dynamic Prolog theories
                 \begin{description}
@@ -5326,7 +5326,7 @@
         \begin{itemize}
             \item provides methods to parse \kt{Term}s from strings
             \begin{description}
-                \item[!] throwing a \kt{ParseException} upon failure 
+                \item[!] throwing a \kt{ParseException} upon failure
             \end{description}
             \item allows to select the operators used for parsing
         \end{itemize}
@@ -5350,7 +5350,7 @@
         \item [\kt{withStandardOperators: TermParser}] creates a parser with standard operators loaded
         \item [\kt{withDefaultOperators: TermParser}] creates a parser with default operators loaded (\kt{standard} operators)
         \item [\kt{withOperators(OperatorsSet): TermParser}] creates a parser with the given \kt{OperatorSet} loaded
-        \item [\kt{withOperators(vararg Operator): TermParser}] creates a parser with the given operators loaded 
+        \item [\kt{withOperators(vararg Operator): TermParser}] creates a parser with the given operators loaded
     \end{description}
 
     \framebreak
@@ -5405,7 +5405,7 @@
         \item [\kt{withStandardOperators: TermReader}] creates a \kt{TermReader} with standard operators loaded
         \item [\kt{withDefaultOperators: TermReader}] creates a \kt{TermReader} with default operators loaded (\kt{standard} operators)
         \item [\kt{withOperators(OperatorsSet): TermReader}] creates a \kt{TermReader} with the given \kt{OperatorSet} loaded
-        \item [\kt{withOperators(vararg Operator): TermReader}] creates a \kt{TermReader} with the given operators loaded 
+        \item [\kt{withOperators(vararg Operator): TermReader}] creates a \kt{TermReader} with the given operators loaded
     \end{description}
 
     \framebreak
@@ -5430,7 +5430,7 @@
         \begin{itemize}
             \item provides methods to parse multiple \kt{Clause}s from strings
             \begin{description}
-                \item[!] throwing a \kt{ParseException} upon failure 
+                \item[!] throwing a \kt{ParseException} upon failure
             \end{description}
             \item allows to select the operators used for parsing
             \item very similar to \kt{TermParser}, but is capable of parsing entire theories instead of single \kt{Term}s
@@ -5482,11 +5482,11 @@
             \item performed via \kt{Serializer}s and \kt{Objectifier}s
             \item \kt{Serializer}s convert \kt{Term}s/\kt{Theory}s into strings
             \begin{description}
-                \item[!] formatted according to some \kt{MIME} type 
+                \item[!] formatted according to some \kt{MIME} type
             \end{description}
             \item \kt{Objectifier}s are used by \kt{Serializer}s to convert \kt{Term}s/\kt{Theory}s into translatable objects first
             \begin{description}
-                \item[!] acting as a middleware layer 
+                \item[!] acting as a middleware layer
             \end{description}
         \end{itemize}
     \end{block}
@@ -5541,11 +5541,11 @@
     \end{block}
     %
     \begin{description}
-        \item [\kt{mimeType: MimeType}] the format to which input \kt{Term}s are serialized 
+        \item [\kt{mimeType: MimeType}] the format to which input \kt{Term}s are serialized
         \item [\kt{serialize(Term): String}] serialises a given \kt{Term} to a string formatted according to the selected \kt{mimeType}
         \item [\kt{serializeMany(vararg Term): String}] serialises the given \kt{Term}s to a string formatted according to the selected \kt{mimeType}
-        \item [\kt{serializeMany(Iterable<Term>): String}] analogous to \kt{serializeMany(vararg Term): String}
-        \item [\kt{serializeMany(Sequence<Term>): String}] analogous to \kt{serializeMany(vararg Term): String}
+        \item [\kt{serializeMany(Iterable<Term>): String}] analogous to \kt{serializeMany(varargs Term): String}
+        \item [\kt{serializeMany(Sequence<Term>): String}] analogous to \kt{serializeMany(varargs Term): String}
     \end{description}
 
     \framebreak
@@ -5584,7 +5584,7 @@
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{TheorySerializer} Type}
-    
+
     \begin{block}{The \kt{TheorySerializer} Type}
         \begin{itemize}
             \item exposes methods that perform \kt{Theory} serialisation
@@ -5593,11 +5593,11 @@
     \end{block}
     %
     \begin{description}
-        \item [\kt{mimeType: MimeType}] the format to which input \kt{Theory}s are serialized 
+        \item [\kt{mimeType: MimeType}] the format to which input \kt{Theory}s are serialized
         \item [\kt{serialize(Theory): String}] serialises a given \kt{Theory} to a string formatted according to the selected \kt{mimeType}
         \item [\kt{serializeMany(vararg Theory): String}] serialises the given \kt{Theory}s to a string formatted according to the selected \kt{mimeType}
-        \item [\kt{serializeMany(Iterable<Theory>): String}] analogous to \kt{serializeMany(vararg Theory): String}
-        \item [\kt{serializeMany(Sequence<Theory>): String}] analogous to \kt{serializeMany(vararg Theory): String}
+        \item [\kt{serializeMany(Iterable<Theory>): String}] analogous to \kt{serializeMany(varargs Theory): String}
+        \item [\kt{serializeMany(Sequence<Theory>): String}] analogous to \kt{serializeMany(varargs Theory): String}
     \end{description}
 
     \framebreak
@@ -5611,7 +5611,7 @@
 \end{frame}
 
 \begin{frame}[allowframebreaks]{The \kt{TheoryDeserializer} Type}
-    
+
     \begin{block}{The \kt{TheoryDeserializer} Type}
         \begin{itemize}
             \item provides methods that convert strings back to \kt{Theory}s
@@ -5650,7 +5650,7 @@
         \centering
         For \alert{developers} willing to re-use one or more functionalities
     \end{block}
-    
+
     \vfill
 
     \begin{block}{Usage as a JVM or Web \textbf{application}}
@@ -5663,14 +5663,14 @@
 \subsection{As a library, for developers}
 
 \begin{frame}{Using \twopkt{} as a library -- Overview}
-    
+
     \begin{itemize}
         \item \twopkt{} modules are compiled, packed, and deployed on both:
         %
         \begin{description}
             \item[Maven Central Repository] | Multiplatform + JVM packages only
             \item[GitHub Packages] | Multiplatform + JVM packages only
-            \item[GitHub Releases] |JVM executables only + Dokka documentation 
+            \item[GitHub Releases] |JVM executables only + Dokka documentation
             \item[NPM] | JS packages only
         \end{description}
 
@@ -5685,7 +5685,7 @@
 
         \vfill
 
-        \item JS and JVM artifacts are versioned using \alert{\kt{SemVer}} and versions are kept aligned
+        \item JS and JVM artefacts are versioned using \alert{\kt{SemVer}} and versions are kept aligned
 
         \vfill
 
@@ -5695,7 +5695,7 @@
             \item the Java or JS API are very close to the Kotlin one
             \item yet, knowing how Kotlin code is compiled is very useful
         \end{itemize}
-        
+
     \end{itemize}
 
 \end{frame}
@@ -5704,11 +5704,11 @@
 
 \begin{frame}{Using \twopkt{} as a JVM library -- Overview}
     \begin{itemize}
-        \item \twopkt{} modules are compiled into ordinary JVM bytecode 
-        
+        \item \twopkt{} modules are compiled into ordinary JVM bytecode
+
         \vfill
 
-        \item They can be exploited as dependecies in most JVM-targetting languages
+        \item They can be exploited as dependencies in most JVM-targetting languages
         %
         \begin{itemize}
             \item[eg] Java, Scala, Groovy, etc.
@@ -5721,7 +5721,7 @@
         \begin{description}\small
             \item[\kt{groupId}:] \kt{it.unibo.tuprolog}
             \item[\kt{artifactId}:] \kt{\textit{MODULE\_NAME}-jvm}
-            \item[\kt{version}:] a \kt{SemVer}-compliant string  
+            \item[\kt{version}:] a \kt{SemVer}-compliant string
         \end{description}
         %
         which are kept coherent on all Maven Repositories\footnote{\url{https://search.maven.org/search?q=g:it.unibo.tuprolog}}
@@ -5771,7 +5771,7 @@
     \begin{exampleblock}{\twopkt{} Conventions}
         \begin{itemize}
             \item \kt{@JvmStatic} annotation on all public members of companion objects
-            \item overload provided where possible in presence of optional paramenters
+            \item overload provided where possible in presence of optional parameters
         \end{itemize}
     \end{exampleblock}
 \end{frame}
@@ -5788,14 +5788,14 @@
             \begin{itemize}
                 \item transpiled NodeJS code can then be packed via \alert{WebPack}
             \end{itemize}
-        \end{itemize} 
-        
+        \end{itemize}
+
         \vfill
 
-        \item They can be exploited as dependecies in most JS-targetting languages
+        \item They can be exploited as dependencies in most JS-targetting languages
         %
         \begin{itemize}
-            \item thereincluding TypeScript, etc
+            \item there including TypeScript, etc
         \end{itemize}
 
         \vfill
@@ -5805,7 +5805,7 @@
         \begin{description}\small
             \item[\kt{organization}:] \kt{@tuprolog}
             \item[\kt{name}:] \kt{2p-\textit{MODULE\_NAME}}
-            \item[\kt{version}:] a \kt{SemVer}-compliant string  
+            \item[\kt{version}:] a \kt{SemVer}-compliant string
         \end{description}
     \end{itemize}
 \end{frame}
@@ -5832,7 +5832,7 @@
                 \item integer \& float types are collapsed
                 \item longs are re-implemented
                 \item Kotlin's array $\rightarrow$ JS arrays
-                \item Kotlin's function $\rightarrow$ JS funcitons (there including lambdas)
+                \item Kotlin's function $\rightarrow$ JS functions (there including lambdas)
             \end{itemize}
             \item packages, interfaces, and classes are \alert{emulated} via JS objects
             %
@@ -5866,7 +5866,7 @@
             %
             \begin{itemize}
                 \item pluggable \kt{Solver}s
-            \end{itemize} 
+            \end{itemize}
             \item[Playground] Web-based, JS-specific GUI for Prolog
         \end{description}
     \end{block}
@@ -5874,7 +5874,7 @@
     \begin{block}{\textbf{Command-Line} Interface (CLI)}
         \begin{description}
             \item[\module{cli}] Kotlin-based, multi-platform CLI for Prolog
-            \item[Playground] Web-based, JS-specific GUI 
+            \item[Playground] Web-based, JS-specific GUI
         \end{description}
     \end{block}
 \end{frame}
@@ -5901,7 +5901,7 @@
             %
             \begin{itemize}
                 \item should work on Win, Linux, and MacOS
-            \end{itemize} 
+            \end{itemize}
         \end{enumerate}
     \end{block}
 
@@ -5927,7 +5927,7 @@
             %
             \begin{itemize}
                 \item it is just a proof of concept
-            \end{itemize} 
+            \end{itemize}
         \end{enumerate}
     \end{block}
 
@@ -5939,7 +5939,7 @@
             \item aims to become a valuable alternative to \href{https://swish.swi-prolog.org}{SWISH Prolog}
             %
             \begin{itemize}
-                \item where logic computation occurr on the \alert{browser-side}
+                \item where logic computation occurs on the \alert{browser-side}
                 %
                 \begin{itemize}
                     \item no sandbox required
@@ -5981,7 +5981,7 @@
             %
             \begin{itemize}
                 \item should work on Win, Linux, and MacOS
-            \end{itemize} 
+            \end{itemize}
         \end{enumerate}
     \end{block}
 
